@@ -11,8 +11,24 @@ const isProd = process.env.NEXT_PUBLIC_SITE_ENV === "production";
  * /?direction=a|b|c stores the choice in a cookie so inner pages follow the same theme.
  */
 export default function proxy(request: NextRequest) {
-  const response = intl(request);
   const direction = request.nextUrl.searchParams.get("direction");
+  // Staging: serve the chosen homepage direction (B or C) for /en or /es via an internal rewrite.
+  const homeMatch = request.nextUrl.pathname.match(/^\/(en|es)\/?$/);
+  const active = (direction && DIRECTIONS.has(direction) ? direction : request.cookies.get("ora_direction")?.value) || "a";
+  if (!isProd && homeMatch && (active === "b" || active === "c")) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${homeMatch[1]}/preview/${active}`;
+    url.searchParams.delete("direction");
+    const res = NextResponse.rewrite(url);
+    if (direction) res.cookies.set("ora_direction", direction, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
+    return res;
+  }
+  if (!isProd && homeMatch && direction === "a") {
+    const res = intl(request);
+    res.cookies.set("ora_direction", "a", { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
+    return res;
+  }
+  const response = intl(request);
   if (!isProd && direction && DIRECTIONS.has(direction)) {
     response.cookies.set("ora_direction", direction, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
   }

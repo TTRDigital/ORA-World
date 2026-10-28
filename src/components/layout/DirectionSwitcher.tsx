@@ -23,7 +23,10 @@ export function DirectionSwitcher() {
     track("direction_switch", { direction: d });
     setCurrent(d);
     setOpen(false);
-    router.refresh();
+    const locale = location.pathname.split("/")[1] || "en";
+    const onHome = /^\/(en|es)\/?$/.test(location.pathname);
+    if (onHome) window.location.assign(`/${locale}?direction=${d}`);
+    else router.refresh();
   }
 
   return (
