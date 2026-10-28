@@ -76,7 +76,7 @@ brass-ink is used whenever brass must carry small text.
 | `--bg-alt` | travertine | `#242321` | `#EEF3F2` (sea-glass mist) |
 | `--surface` | travertine | `#2E2C29` | white |
 | `--fg` | charcoal | `#F2EDE4` | `#1F2A2E` (deep marine) |
-| `--fg-muted` | sand | `#A39174` | `#5F7076` |
+| `--fg-muted` | charcoal-soft | `#A39174` | `#5F7076` |
 | `--accent` | brass | brass-light | sea |
 | `--accent-ink` | brass-ink | brass-light | `#2C6A82` |
 | `--rule` | travertine-deep | `rgb(212 185 135 / 0.35)` | `#CFE0E4` |
