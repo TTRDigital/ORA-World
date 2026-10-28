@@ -8,6 +8,7 @@ import { getSiteSettings } from "@/lib/content";
 import { siteUrl, isProd } from "@/lib/utils";
 import { MotionInit } from "@/components/providers/MotionInit";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { PageTransition } from "@/components/providers/PageTransition";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -66,6 +67,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         <NextIntlClientProvider>
           <MotionInit />
           <SmoothScroll />
+          <PageTransition />
           <SkipLink />
           <Header site={site} />
           <div id="page" className="flex-1">

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Helvetica, Arial, sans-serif">
+<rect width="1200" height="900" fill="#f7f3ec"/>
+<g fill="none" stroke="#2a2825" stroke-width="3">
+<rect x="80" y="80" width="640" height="320" fill="#efe9df"/>
+<rect x="720" y="80" width="400" height="120" fill="#efe9df"/>
+<rect x="720" y="200" width="400" height="200" fill="#efe9df"/>
+<rect x="80" y="400" width="340" height="380" fill="#efe9df"/>
+<rect x="420" y="400" width="260" height="380" fill="#efe9df"/>
+<rect x="680" y="400" width="240" height="380" fill="#efe9df"/>
+<rect x="920" y="400" width="200" height="380" fill="#efe9df"/>
+</g><g fill="none" stroke="#2a2825" stroke-width="7"><rect x="80" y="80" width="1040" height="700"/></g>
+<g fill="none" stroke="#a8864f" stroke-width="2">
+<path d="M680 400 a40 40 0 0 1 40 -40"/>
+<line x1="100" y1="80" x2="700" y2="80" stroke-dasharray="6 6"/>
+<path d="M1080 200 a40 40 0 0 1 40 -40"/>
+<line x1="740" y1="80" x2="1100" y2="80" stroke-dasharray="6 6"/>
+<path d="M1080 400 a40 40 0 0 1 40 -40"/>
+<line x1="740" y1="200" x2="1100" y2="200" stroke-dasharray="6 6"/>
+<path d="M380 780 a40 40 0 0 1 40 -40"/>
+<line x1="100" y1="400" x2="400" y2="400" stroke-dasharray="6 6"/>
+<path d="M640 780 a40 40 0 0 1 40 -40"/>
+<line x1="440" y1="400" x2="660" y2="400" stroke-dasharray="6 6"/>
+<path d="M880 780 a40 40 0 0 1 40 -40"/>
+<line x1="700" y1="400" x2="900" y2="400" stroke-dasharray="6 6"/>
+<path d="M1080 780 a40 40 0 0 1 40 -40"/>
+<line x1="940" y1="400" x2="1100" y2="400" stroke-dasharray="6 6"/>
+</g><g fill="#2a2825" font-size="20" letter-spacing="2">
+<text x="104" y="120">GREAT ROOM</text>
+<text x="744" y="120">TERRACE</text>
+<text x="744" y="240">KITCHEN</text>
+<text x="104" y="440">PRIMARY SUITE</text>
+<text x="444" y="440">BEDROOM 2</text>
+<text x="704" y="440">BEDROOM 3</text>
+<text x="944" y="440">BATHS</text>
+</g>
+<g fill="#7a5c2e" font-size="16" letter-spacing="3"><text x="80" y="840">ILLUSTRATIVE PLACEHOLDER PLAN · NOT TO SCALE · FINAL PLANS TO BE SUPPLIED BY THE ARCHITECT</text></g>
+<g stroke="#2a2825" stroke-width="2" fill="none"><circle cx="1090" cy="130" r="26"/><path d="M1090 104v52M1064 130h52"/></g><text x="1082" y="96" font-size="14" fill="#2a2825">N</text>
+</svg>

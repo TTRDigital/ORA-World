@@ -1,30 +1,50 @@
-import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/content/types";
-import { Button } from "@/components/ui/Button";
-import { Link } from "@/i18n/navigation";
-import images from "@/content/images.json";
+import { getAmenities, getCollections, getHome, getPointsOfInterest, getPress, getSiteSettings, getTeam } from "@/lib/content";
+import { Preloader } from "./Preloader";
+import { Hero } from "./Hero";
+import { Manifesto } from "./Manifesto";
+import { ContextReveal } from "./ContextReveal";
+import { PlaceChapters } from "./PlaceChapters";
+import { ResidencesPreview } from "./ResidencesPreview";
+import { ResilienceSignature } from "./ResilienceSignature";
+import { AmenitiesMosaic } from "./AmenitiesMosaic";
+import { FamilyPets } from "./FamilyPets";
+import { Prosperous } from "./Prosperous";
+import { LocationSection } from "./LocationSection";
+import { TourTeaser } from "./TourTeaser";
+import { Collaboratory } from "./Collaboratory";
+import { PressStrip } from "./PressStrip";
+import { PresentationCta } from "./PresentationCta";
 
-/** Phase 2 placeholder: hero poster + shell. Replaced by the full section stack in Phase 3. */
+/** Direction A · Travertine Editorial. Sections in the order the brief specifies. */
 export async function HomePage({ locale }: { locale: Locale }) {
-  const t = await getTranslations({ locale, namespace: "common" });
-  const poster = images["client/tdm-exterior-from-pull-scaled"];
+  const [site, home, collections, amenities, pois, team, press] = await Promise.all([
+    getSiteSettings(locale),
+    getHome(locale),
+    getCollections(locale),
+    getAmenities(locale),
+    getPointsOfInterest(locale),
+    getTeam(locale),
+    getPress(locale),
+  ]);
+
   return (
     <main id="main">
-      <section data-hero className="relative flex min-h-dvh items-end overflow-hidden bg-basalt text-white">
-        <img src={poster.src} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="scrim-bottom absolute inset-0" />
-        <div className="container-x relative pb-24">
-          <p className="eyebrow mb-6 text-brass-light">Dorado · Puerto Rico</p>
-          <h1 className="display-xl max-w-[10ch]">
-            <em className="text-brass-light">Beyond</em> expectations
-          </h1>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Button as={Link} href="/contact" variant="light">
-              {t("requestPresentation")}
-            </Button>
-          </div>
-        </div>
-      </section>
+      <Preloader />
+      <Hero hero={home.hero} site={site} />
+      <Manifesto manifesto={home.manifesto} />
+      <ContextReveal context={home.context} />
+      <PlaceChapters place={home.place} />
+      <ResidencesPreview block={home.residences} collections={collections} />
+      <ResilienceSignature block={home.resilience} />
+      <AmenitiesMosaic block={home.amenities} amenities={amenities} />
+      <FamilyPets family={home.family} pets={home.pets} />
+      <Prosperous block={home.prosperous} />
+      <LocationSection block={home.location} pois={pois} site={site} />
+      <TourTeaser block={home.tour} url={site.vrTourUrl} />
+      <Collaboratory block={home.team} team={team} />
+      <PressStrip eyebrow={home.press.eyebrow} press={press} />
+      <PresentationCta block={home.cta} site={site} residenceOptions={collections.map((c) => c.name)} />
     </main>
   );
 }

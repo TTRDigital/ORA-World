@@ -206,5 +206,46 @@
     "text": "The page may have moved. Return to the homepage or explore the residences.",
     "cta": "Back to home"
   },
-  "studio": { "title": "ORA World Studio" }
+  "studio": {
+    "title": "ORA World Studio"
+  },
+  "home": {
+    "exploreResidences": "Explore the residences",
+    "allPlans": "View floor plans",
+    "openTour": "Open the virtual tour",
+    "chapterOf": "of",
+    "filterAll": "All",
+    "driveTime": "{min} min drive",
+    "walkTime": "{min} min walk",
+    "approx": "approx.",
+    "toBeConfirmed": "to be confirmed",
+    "theSite": "ORA World · Tesoro Del Mar",
+    "mapHint": "Select a place to see travel time",
+    "meetTeam": "Meet the Collaboratory",
+    "pressCenter": "Press Center",
+    "readArticle": "Read",
+    "detailsSoon": "Details to be confirmed",
+    "inquire": "Inquire",
+    "scrollToExplore": "Scroll to explore",
+    "skipPreloader": "Skip intro",
+    "watchFilmSoon": "Film coming soon",
+    "statsOf": "Tesoro Del Mar"
+  },
+  "amenityCat": {
+    "wellness": "Wellness",
+    "family": "Family",
+    "pets": "Pets",
+    "resort": "Resort",
+    "eco": "Eco"
+  },
+  "poiCat": {
+    "beach": "Beaches",
+    "golf": "Golf",
+    "school": "Schools",
+    "healthcare": "Healthcare",
+    "airport": "Airport",
+    "dining": "Dining",
+    "culture": "Culture",
+    "nature": "Nature"
+  }
 }

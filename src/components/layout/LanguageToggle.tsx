@@ -1,7 +1,6 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
@@ -11,15 +10,10 @@ export function LanguageToggle({ className, tone = "inherit" }: { className?: st
   const t = useTranslations("nav");
   const pathname = usePathname();
   const router = useRouter();
-  const params = useParams();
 
   function switchTo(next: (typeof routing.locales)[number]) {
     if (next === locale) return;
-    router.replace(
-      // @ts-expect-error -- params are forwarded for dynamic segments
-      { pathname, params },
-      { locale: next },
-    );
+    router.replace(pathname, { locale: next });
   }
 
   return (

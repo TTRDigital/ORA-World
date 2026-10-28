@@ -7,9 +7,11 @@ export const client = sanityConfigured
 
 /** Server-only client with write access (leads, seed). Never import from client components. */
 export function writeClient() {
-  const token = process.env.SANITY_API_WRITE_TOKEN;
-  if (!sanityConfigured || !token) return null;
-  return createClient({ projectId, dataset, apiVersion, useCdn: false, token });
+  const token = process.env.ORA_SANITY_WRITE_TOKEN;
+  if (!sanityConfigured) return null;
+  // Without a token this only works behind an authenticating proxy (TTR build environment);
+  // in production the write token is required and failures are caught by the callers.
+  return createClient({ projectId, dataset, apiVersion, useCdn: false, token: token || undefined });
 }
 
 export async function sanityFetch<T>(query: string, params: QueryParams = {}, tags: string[] = []): Promise<T | null> {

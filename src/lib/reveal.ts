@@ -14,6 +14,7 @@ export async function initReveals(): Promise<() => void> {
   if (reduced) {
     nodes.forEach((n) => {
       n.classList.add("is-revealed");
+      n.querySelectorAll("[data-reveal-line]").forEach((l) => l.classList.add("is-revealed"));
       if (n.dataset.counter) n.textContent = formatCounter(n, Number(n.dataset.counter));
     });
     return () => {};
@@ -22,13 +23,19 @@ export async function initReveals(): Promise<() => void> {
   const { gsap, ScrollTrigger } = await import("./gsap");
   const triggers: InstanceType<typeof ScrollTrigger>[] = [];
 
+  const bind = (el: HTMLElement) => {
+    if (el.dataset.revealBound) return false;
+    el.dataset.revealBound = "1";
+    return true;
+  };
+
   document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
-    if (el.classList.contains("is-revealed")) return;
+    if (el.classList.contains("is-revealed") || !bind(el)) return;
     const image = el.dataset.reveal === "image";
     const inner = image ? el.querySelector<HTMLElement>("img, video, picture, [data-reveal-inner]") : null;
     const tween = gsap.fromTo(
       el,
-      image ? { clipPath: "inset(0 0 100% 0)", opacity: 1 } : { opacity: 0, y: 24 },
+      image ? { clipPath: "inset(0 0 100% 0)", opacity: 1 } : { opacity: 0, y: 24, yPercent: 0 },
       {
         opacity: 1,
         y: 0,
@@ -47,25 +54,30 @@ export async function initReveals(): Promise<() => void> {
 
   document.querySelectorAll<HTMLElement>("[data-reveal-lines]").forEach((block) => {
     const lines = block.querySelectorAll<HTMLElement>("[data-reveal-line] > span");
-    if (!lines.length || block.classList.contains("is-revealed")) return;
+    if (!lines.length || block.classList.contains("is-revealed") || !bind(block)) return;
+    // The CSS pre-hide uses translateY(110%); pin y to 0 so GSAP does not carry that offset over.
     const tween = gsap.fromTo(
       lines,
-      { yPercent: 110 },
+      { yPercent: 110, y: 0 },
       {
         yPercent: 0,
+        y: 0,
         duration: 1.1,
         ease: "expo.out",
         stagger: 0.08,
         paused: true,
         onStart: () => block.querySelectorAll("[data-reveal-line]").forEach((l) => l.classList.add("is-revealed")),
-        onComplete: () => block.classList.add("is-revealed"),
+        onComplete: () => {
+          block.classList.add("is-revealed");
+          gsap.set(lines, { clearProps: "transform,translate,rotate,scale" });
+        },
       },
     );
     triggers.push(ScrollTrigger.create({ trigger: block, start: "top 85%", once: true, onEnter: () => tween.play() }));
   });
 
   document.querySelectorAll<HTMLElement>("[data-counter]").forEach((el) => {
-    if (el.dataset.counted) return;
+    if (el.dataset.counted || !bind(el)) return;
     const target = Number(el.dataset.counter);
     const obj = { v: 0 };
     el.textContent = formatCounter(el, 0);
@@ -77,10 +89,11 @@ export async function initReveals(): Promise<() => void> {
       onUpdate: () => (el.textContent = formatCounter(el, obj.v)),
       onComplete: () => (el.dataset.counted = "1"),
     });
-    triggers.push(ScrollTrigger.create({ trigger: el, start: "top 80%", once: true, onEnter: () => tween.play() }));
+    triggers.push(ScrollTrigger.create({ trigger: el, start: "top 97%", once: true, onEnter: () => tween.play() }));
   });
 
   document.querySelectorAll<HTMLElement>("[data-parallax]").forEach((el) => {
+    if (!bind(el)) return;
     const ratio = Number(el.dataset.parallax || 0.06);
     const tween = gsap.fromTo(
       el,

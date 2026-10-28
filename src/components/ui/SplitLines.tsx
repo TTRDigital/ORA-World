@@ -17,26 +17,35 @@ export function SplitLines({ as: Tag = "h2", className, children }: { as?: Eleme
 
     const split = () => {
       el.innerHTML = original;
-      // wrap words
+      // 1) wrap every word in a span; inline wrappers (em, strong, span) are cloned around each word
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
       const textNodes: Text[] = [];
       while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+      const wrappersToUnwrap = new Set<HTMLElement>();
       textNodes.forEach((node) => {
+        const parent = node.parentElement;
         const frag = document.createDocumentFragment();
         node.textContent?.split(/(\s+)/).forEach((part) => {
           if (!part) return;
-          if (/^\s+$/.test(part)) frag.appendChild(document.createTextNode(part));
-          else {
-            const w = document.createElement("span");
-            w.className = "inline-block";
-            w.dataset.word = "";
-            w.textContent = part;
-            frag.appendChild(w);
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(part));
+            return;
           }
+          const w = document.createElement("span");
+          w.className = "inline-block";
+          w.dataset.word = "";
+          w.textContent = part;
+          if (parent && parent !== el) {
+            const clone = parent.cloneNode(false) as HTMLElement;
+            clone.appendChild(w);
+            frag.appendChild(clone);
+            wrappersToUnwrap.add(parent);
+          } else frag.appendChild(w);
         });
         node.parentNode?.replaceChild(frag, node);
       });
-      // group by line
+      wrappersToUnwrap.forEach((p) => p.replaceWith(...Array.from(p.childNodes)));
+      // 2) group words by rendered line
       const words = Array.from(el.querySelectorAll<HTMLElement>("[data-word]"));
       const lines: HTMLElement[][] = [];
       let top: number | null = null;
@@ -49,12 +58,8 @@ export function SplitLines({ as: Tag = "h2", className, children }: { as?: Eleme
       });
       const html = lines
         .map((line) => {
-          const parent = line[0].parentElement;
-          const inner = line.map((w) => (w.parentElement !== el && parent === w.parentElement ? w.outerHTML : w.outerHTML)).join(" ");
-          const wrapTag = parent && parent !== el ? parent.tagName.toLowerCase() : null;
-          const wrapClass = parent && parent !== el ? parent.className : "";
-          const content = wrapTag ? `<${wrapTag} class="${wrapClass}">${inner}</${wrapTag}>` : inner;
-          return `<span data-reveal-line><span>${content}</span></span>`;
+          const inner = line.map((w) => (w.parentElement && w.parentElement !== el ? w.parentElement.outerHTML : w.outerHTML)).join(" ");
+          return `<span data-reveal-line><span>${inner}</span></span>`;
         })
         .join("");
       el.innerHTML = html;

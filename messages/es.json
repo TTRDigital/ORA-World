@@ -206,5 +206,46 @@
     "text": "Puede que la página se haya movido. Vuelva al inicio o explore las residencias.",
     "cta": "Volver al inicio"
   },
-  "studio": { "title": "ORA World Studio" }
+  "studio": {
+    "title": "ORA World Studio"
+  },
+  "home": {
+    "exploreResidences": "Explorar las residencias",
+    "allPlans": "Ver planos",
+    "openTour": "Abrir el recorrido virtual",
+    "chapterOf": "de",
+    "filterAll": "Todo",
+    "driveTime": "{min} min en auto",
+    "walkTime": "{min} min a pie",
+    "approx": "aprox.",
+    "toBeConfirmed": "por confirmar",
+    "theSite": "ORA World · Tesoro Del Mar",
+    "mapHint": "Seleccione un lugar para ver el tiempo de viaje",
+    "meetTeam": "Conozca al Collaboratory",
+    "pressCenter": "Centro de prensa",
+    "readArticle": "Leer",
+    "detailsSoon": "Detalles por confirmar",
+    "inquire": "Consultar",
+    "scrollToExplore": "Desplácese para explorar",
+    "skipPreloader": "Saltar intro",
+    "watchFilmSoon": "Película próximamente",
+    "statsOf": "Tesoro Del Mar"
+  },
+  "amenityCat": {
+    "wellness": "Bienestar",
+    "family": "Familia",
+    "pets": "Mascotas",
+    "resort": "Resort",
+    "eco": "Eco"
+  },
+  "poiCat": {
+    "beach": "Playas",
+    "golf": "Golf",
+    "school": "Escuelas",
+    "healthcare": "Salud",
+    "airport": "Aeropuerto",
+    "dining": "Gastronomía",
+    "culture": "Cultura",
+    "nature": "Naturaleza"
+  }
 }

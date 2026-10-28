@@ -33,3 +33,42 @@ export function mapSiteSettings(s: SanitySiteSettings): Partial<SiteSettings> {
   }
   return out;
 }
+
+/* ---------- list documents ----------
+ * Each query projects Sanity documents into the same shape as the local seed types,
+ * so the data layer can swap sources without components noticing.
+ */
+const fig = figureProjection;
+export const listQueries = {
+  collection: groq`*[_type=="collection"]|order(order asc){ "slug": slug.current, name, tagline, description, bedrooms, sizeRange, fromPrice, "image": image ${fig}, "hoverImage": hoverImage ${fig}, features, finishes, placeholder }`,
+  floorPlan: groq`*[_type=="floorPlan"]|order(name.en asc){ "slug": slug.current, name, "collection": collection->slug.current, bedrooms, bathrooms, interiorSqFt, exteriorSqFt, orientation, view, tower, floors, status, fromPrice, "image": image ${fig}, "keyplan": keyplan ${fig}, keyplanPosition, "pdf": pdf.asset->url, highlights, placeholder }`,
+  amenity: groq`*[_type=="amenity"]|order(order asc){ "slug": slug.current, name, description, category, "image": image ${fig}, featured }`,
+  teamMember: groq`*[_type=="teamMember"]|order(order asc){ "slug": slug.current, name, role, discipline, bio, quote, "portrait": portrait ${fig}, website, placeholder }`,
+  pointOfInterest: groq`*[_type=="pointOfInterest"]{ "slug": slug.current, name, category, lat, lng, driveMinutes, walkMinutes, note, placeholder }`,
+  pressArticle: groq`*[_type=="pressArticle"]|order(date desc){ "slug": slug.current, title, outlet, date, excerpt, body, url, "image": image ${fig}, placeholder }`,
+  investmentStep: groq`*[_type=="investmentStep"]|order(order asc){ order, title, detail, percent, when, placeholder }`,
+  incentive: groq`*[_type=="incentive"]|order(order asc){ "slug": slug.current, title, summary, body }`,
+  faq: groq`*[_type=="faq"]|order(order asc){ "slug": slug.current, topic, question, answer }`,
+  project: groq`*[_type=="project"]{ "slug": slug.current, name, tagline, location, summary, facts, "sections": sections[]{ title, body, "image": image ${fig} }, "hero": hero ${fig}, "gallery": gallery[] ${fig}, flagship }`,
+  galleryImage: groq`*[_type=="galleryImage"]|order(order asc){ "id": _id, "image": image ${fig}, category, caption }`,
+  page: groq`*[_type=="page"]{ "slug": slug.current, title, intro, "hero": hero ${fig}, "sections": sections[]{ title, body, "image": image ${fig} }, "seoDescription": seo.description }`,
+} as const;
+
+/** Drop null images / empty arrays so seed-shaped components get the optional fields they expect. */
+export function mapList<T>(_type: keyof typeof listQueries, docs: unknown[]): T[] {
+  const clean = (v: unknown): unknown => {
+    if (Array.isArray(v)) return v.map(clean).filter((x) => x !== undefined);
+    if (v && typeof v === "object") {
+      const o = v as Record<string, unknown>;
+      if ("src" in o && (o.src === null || o.src === undefined)) return undefined;
+      const out: Record<string, unknown> = {};
+      for (const [k, val] of Object.entries(o)) {
+        const c = clean(val);
+        if (c !== undefined) out[k] = c;
+      }
+      return out;
+    }
+    return v;
+  };
+  return docs.map((d) => clean(d) as T);
+}

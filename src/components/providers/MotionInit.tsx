@@ -21,14 +21,46 @@ export function MotionInit() {
     return () => mq.removeEventListener("change", apply);
   }, []);
 
+  // Magnetic pull on primary CTAs (desktop pointer only, max 8px).
   useEffect(() => {
-    let cleanup: (() => void) | undefined;
-    const id = window.requestAnimationFrame(() => {
-      initReveals().then((c) => (cleanup = c));
-    });
+    if (!window.matchMedia("(pointer: fine)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const onMove = (e: MouseEvent) => {
+      const el = (e.target as HTMLElement).closest<HTMLElement>("[data-magnetic]");
+      document.querySelectorAll<HTMLElement>("[data-magnetic][data-mag-active]").forEach((m) => {
+        if (m !== el) {
+          m.style.transform = "";
+          delete m.dataset.magActive;
+        }
+      });
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const dx = ((e.clientX - (r.left + r.width / 2)) / r.width) * 16;
+      const dy = ((e.clientY - (r.top + r.height / 2)) / r.height) * 16;
+      el.dataset.magActive = "1";
+      el.style.transition = "transform 600ms var(--ease-out-expo)";
+      el.style.transform = `translate(${Math.max(-8, Math.min(8, dx))}px, ${Math.max(-8, Math.min(8, dy))}px)`;
+    };
+    document.addEventListener("mousemove", onMove, { passive: true });
+    return () => document.removeEventListener("mousemove", onMove);
+  }, []);
+
+  useEffect(() => {
+    const cleanups: (() => void)[] = [];
+    let raf = 0;
+    const run = () => {
+      cancelAnimationFrame(raf);
+      raf = window.requestAnimationFrame(() => {
+        initReveals().then((c) => cleanups.push(c));
+      });
+    };
+    run();
+    // SplitLines and lazy sections ask for a re-scan once they have produced new reveal nodes.
+    window.addEventListener("ora:reveal-refresh", run);
     return () => {
-      window.cancelAnimationFrame(id);
-      cleanup?.();
+      window.removeEventListener("ora:reveal-refresh", run);
+      cancelAnimationFrame(raf);
+      cleanups.forEach((c) => c());
+      document.querySelectorAll<HTMLElement>("[data-reveal-bound]").forEach((n) => delete n.dataset.revealBound);
     };
   }, [pathname]);
 

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Helvetica, Arial, sans-serif">
+<rect width="1200" height="900" fill="#f7f3ec"/>
+<g fill="none" stroke="#2a2825" stroke-width="3">
+<rect x="80" y="80" width="600" height="380" fill="#efe9df"/>
+<rect x="680" y="80" width="440" height="170" fill="#efe9df"/>
+<rect x="680" y="250" width="440" height="210" fill="#efe9df"/>
+<rect x="80" y="460" width="420" height="320" fill="#efe9df"/>
+<rect x="500" y="460" width="320" height="320" fill="#efe9df"/>
+<rect x="820" y="460" width="300" height="320" fill="#efe9df"/>
+</g><g fill="none" stroke="#2a2825" stroke-width="7"><rect x="80" y="80" width="1040" height="700"/></g>
+<g fill="none" stroke="#a8864f" stroke-width="2">
+<path d="M640 460 a40 40 0 0 1 40 -40"/>
+<line x1="100" y1="80" x2="660" y2="80" stroke-dasharray="6 6"/>
+<path d="M1080 250 a40 40 0 0 1 40 -40"/>
+<line x1="700" y1="80" x2="1100" y2="80" stroke-dasharray="6 6"/>
+<path d="M1080 460 a40 40 0 0 1 40 -40"/>
+<line x1="700" y1="250" x2="1100" y2="250" stroke-dasharray="6 6"/>
+<path d="M460 780 a40 40 0 0 1 40 -40"/>
+<line x1="100" y1="460" x2="480" y2="460" stroke-dasharray="6 6"/>
+<path d="M780 780 a40 40 0 0 1 40 -40"/>
+<line x1="520" y1="460" x2="800" y2="460" stroke-dasharray="6 6"/>
+<path d="M1080 780 a40 40 0 0 1 40 -40"/>
+<line x1="840" y1="460" x2="1100" y2="460" stroke-dasharray="6 6"/>
+</g><g fill="#2a2825" font-size="20" letter-spacing="2">
+<text x="104" y="120">LIVING / DINING</text>
+<text x="704" y="120">TERRACE</text>
+<text x="704" y="290">KITCHEN</text>
+<text x="104" y="500">PRIMARY BEDROOM</text>
+<text x="524" y="500">BEDROOM 2</text>
+<text x="844" y="500">BATHS</text>
+</g>
+<g fill="#7a5c2e" font-size="16" letter-spacing="3"><text x="80" y="840">ILLUSTRATIVE PLACEHOLDER PLAN · NOT TO SCALE · FINAL PLANS TO BE SUPPLIED BY THE ARCHITECT</text></g>
+<g stroke="#2a2825" stroke-width="2" fill="none"><circle cx="1090" cy="130" r="26"/><path d="M1090 104v52M1064 130h52"/></g><text x="1082" y="96" font-size="14" fill="#2a2825">N</text>
+</svg>
