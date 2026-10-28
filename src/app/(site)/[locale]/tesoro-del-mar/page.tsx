@@ -8,7 +8,14 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/tesoro-d
   const { locale } = await params;
   const p = await getProject(locale as "en" | "es", "tesoro-del-mar");
   if (!p) return {};
-  return pageMetadata({ locale: locale as "en" | "es", title: plain(p.name), description: p.summary[0], path: "/tesoro-del-mar", image: p.hero.src, eyebrow: p.location });
+  return pageMetadata({
+    locale: locale as "en" | "es",
+    title: plain(p.name),
+    description: p.summary[0],
+    path: "/tesoro-del-mar",
+    image: p.hero.src,
+    eyebrow: p.location,
+  });
 }
 
 export default async function TesoroPage({ params }: PageProps<"/[locale]/tesoro-del-mar">) {

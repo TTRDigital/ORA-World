@@ -21,16 +21,21 @@ export function OverlayMenu({ open, onClose, site }: Props) {
   const [mounted, setMounted] = useState(open);
 
   useEffect(() => {
-    if (open) setMounted(true);
+    const id = open ? window.requestAnimationFrame(() => setMounted(true)) : 0;
     const unlock = lockScroll(open);
-    return unlock;
+    return () => {
+      if (id) window.cancelAnimationFrame(id);
+      unlock();
+    };
   }, [open]);
 
   const onKey = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "Tab" && ref.current) {
-        const f = ref.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+        const f = ref.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        );
         if (!f.length) return;
         const first = f[0];
         const last = f[f.length - 1];
@@ -63,13 +68,13 @@ export function OverlayMenu({ open, onClose, site }: Props) {
     <div
       id="overlay-menu"
       ref={ref}
-      role="dialog"
-      aria-modal="true"
+      role={open ? "dialog" : undefined}
+      aria-modal={open || undefined}
       aria-label={t("menu")}
       aria-hidden={!open}
       onTransitionEnd={() => !open && setMounted(false)}
       className={cn(
-        "dark-section fixed inset-0 z-40 flex flex-col transition-[clip-path,visibility] duration-[900ms] ease-[var(--ease-in-out-quart)]",
+        "fixed inset-0 z-40 flex flex-col dark-section transition-[clip-path,visibility] duration-[900ms] ease-[var(--ease-in-out-quart)]",
         open ? "visible [clip-path:inset(0_0_0_0)]" : "invisible [clip-path:inset(0_0_100%_0)]",
       )}
       inert={!open ? true : undefined}
@@ -91,7 +96,7 @@ export function OverlayMenu({ open, onClose, site }: Props) {
                     )}
                     style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
                   >
-                    <span className="eyebrow tnum w-8 text-dark-accent opacity-70">0{i + 1}</span>
+                    <span className="w-8 eyebrow text-dark-accent tnum opacity-70">0{i + 1}</span>
                     <span className="display-m transition-colors group-hover:text-dark-accent">{t(item.key)}</span>
                   </Link>
                 </li>
@@ -100,7 +105,11 @@ export function OverlayMenu({ open, onClose, site }: Props) {
             <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 md:mt-10">
               {secondaryNav.map((item) => (
                 <li key={item.key}>
-                  <Link href={item.href} onClick={onClose} className="small link-underline text-dark-fg/80 hover:text-dark-fg">
+                  <Link
+                    href={item.href}
+                    onClick={onClose}
+                    className="link-underline small text-dark-fg/80 hover:text-dark-fg"
+                  >
                     {t(item.key)}
                   </Link>
                 </li>
@@ -123,13 +132,13 @@ export function OverlayMenu({ open, onClose, site }: Props) {
               ) : (
                 <div className="h-full w-full bg-surface" />
               )}
-              <div className="scrim-bottom absolute inset-0" />
-              {image?.caption && <p className="small absolute bottom-4 left-4 text-white/80">{image.caption}</p>}
+              <div className="absolute inset-0 scrim-bottom" />
+              {image?.caption && <p className="absolute bottom-4 left-4 small text-white/80">{image.caption}</p>}
             </div>
           </div>
 
           <div className="col-span-12 mt-8 flex flex-wrap items-end justify-between gap-6 border-t border-dark-rule pt-6 md:col-span-6 md:col-start-7 md:self-end md:border-0 md:pt-0">
-            <div className="small flex flex-col gap-1 text-dark-fg/80">
+            <div className="flex flex-col gap-1 small text-dark-fg/80">
               {site.phone && (
                 <a className="link-underline" href={telHref(site.phone)}>
                   {site.phone}
@@ -148,7 +157,7 @@ export function OverlayMenu({ open, onClose, site }: Props) {
               <span className="text-dark-muted">{site.salesGalleryAddress}</span>
             </div>
             <div className="flex items-center gap-6">
-              <a href={site.portalUrl} className="eyebrow link-underline" rel="noopener">
+              <a href={site.portalUrl} className="link-underline eyebrow" rel="noopener">
                 {t("login")}
               </a>
               <LanguageToggle tone="light" />

@@ -44,10 +44,14 @@ export function ExitIntent() {
     <Modal open={open} onClose={() => setOpen(false)} label={t("title")} dark={false}>
       <div className="max-w-xl border border-rule bg-bg p-10 text-fg">
         <p className="eyebrow text-accent-ink">{t("title")}</p>
-        <h2 className="display-m mt-4">{t("text")}</h2>
+        <h2 className="mt-4 display-m">{t("text")}</h2>
         <div className="mt-8 flex flex-wrap gap-4">
-          <Button as={Link} href="/residences#brochure" onClick={() => setOpen(false)}>{t("cta")}</Button>
-          <Button variant="text" onClick={() => setOpen(false)}>{t("dismiss")}</Button>
+          <Button as={Link} href="/residences#brochure" onClick={() => setOpen(false)}>
+            {t("cta")}
+          </Button>
+          <Button variant="text" onClick={() => setOpen(false)}>
+            {t("dismiss")}
+          </Button>
         </div>
       </div>
     </Modal>

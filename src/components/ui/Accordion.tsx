@@ -6,7 +6,17 @@ import { cn } from "@/lib/utils";
 export type AccordionItem = { id: string; title: ReactNode; content: ReactNode; meta?: ReactNode };
 
 /** Accessible accordion: buttons with aria-expanded, regions, keyboard-native. One open at a time by default. */
-export function Accordion({ items, single = true, className, defaultOpen }: { items: AccordionItem[]; single?: boolean; className?: string; defaultOpen?: string }) {
+export function Accordion({
+  items,
+  single = true,
+  className,
+  defaultOpen,
+}: {
+  items: AccordionItem[];
+  single?: boolean;
+  className?: string;
+  defaultOpen?: string;
+}) {
   const base = useId();
   const [open, setOpen] = useState<Set<string>>(new Set(defaultOpen ? [defaultOpen] : []));
   const toggle = (id: string) =>
@@ -35,7 +45,12 @@ export function Accordion({ items, single = true, className, defaultOpen }: { it
                   {it.meta}
                   <span aria-hidden className="relative block h-4 w-4">
                     <span className="absolute inset-x-0 top-1/2 h-px bg-current" />
-                    <span className={cn("absolute inset-y-0 left-1/2 w-px bg-current transition-transform duration-500 ease-[var(--ease-out-expo)]", isOpen && "scale-y-0")} />
+                    <span
+                      className={cn(
+                        "absolute inset-y-0 left-1/2 w-px bg-current transition-transform duration-500 ease-[var(--ease-out-expo)]",
+                        isOpen && "scale-y-0",
+                      )}
+                    />
                   </span>
                 </span>
               </button>

@@ -16,14 +16,14 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
   const h = useTranslations("home");
   const [open, setOpen] = useState(false);
   return (
-    <section className="dark-section py-section">
+    <section className="py-section dark-section">
       <div className="container-x grid grid-cols-12 items-center gap-x-6 gap-y-10">
         <div className="col-span-12 md:col-span-4">
           <Eyebrow className="text-dark-accent">{block.eyebrow}</Eyebrow>
-          <h2 className="display-l mt-6" data-reveal>
+          <h2 className="mt-6 display-l" data-reveal>
             <Accent text={block.title} className="text-dark-accent" />
           </h2>
-          <p className="lead mt-6 max-w-[36ch] text-dark-fg/80" data-reveal>
+          <p className="mt-6 max-w-[36ch] lead text-dark-fg/80" data-reveal>
             {block.text}
           </p>
         </div>
@@ -36,21 +36,27 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
               track("tour_open");
             }}
             className="group relative block w-full cursor-pointer text-left disabled:cursor-default"
-            aria-label={h("openTour")}
           >
+            <span className="sr-only">{h("openTour")}</span>
             <Picture image={block.image} sizes="(min-width: 768px) 66vw, 100vw" aspect="16/9" showCaption />
             <span className="absolute inset-0 flex items-center justify-center">
               <span className="flex h-20 w-20 items-center justify-center rounded-full border border-white/70 bg-basalt/30 text-white backdrop-blur-sm transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-110">
                 <PlayGlyph className="ml-1 h-5 w-5" />
               </span>
             </span>
-            <span className="eyebrow absolute top-4 left-4 text-white/90">360° · VR</span>
+            <span className="absolute top-4 left-4 eyebrow text-white/90">360° · VR</span>
           </button>
         </div>
       </div>
       {url && (
         <Modal open={open} onClose={() => setOpen(false)} label={h("openTour")}>
-          <iframe src={url} title={h("openTour")} className="h-[85vh] w-full max-w-7xl bg-black" allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen" allowFullScreen />
+          <iframe
+            src={url}
+            title={h("openTour")}
+            className="h-[85vh] w-full max-w-7xl bg-black"
+            allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+            allowFullScreen
+          />
         </Modal>
       )}
     </section>

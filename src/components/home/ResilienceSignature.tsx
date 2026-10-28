@@ -21,7 +21,9 @@ export function ResilienceSignature({ block }: { block: Localized<HomeContent["r
   useEffect(() => {
     const el = svg.current;
     if (!el) return;
-    const paths = Array.from(el.querySelectorAll<SVGPathElement | SVGLineElement | SVGRectElement | SVGCircleElement>("[data-draw]"));
+    const paths = Array.from(
+      el.querySelectorAll<SVGPathElement | SVGLineElement | SVGRectElement | SVGCircleElement>("[data-draw]"),
+    );
     if (document.documentElement.classList.contains("reduced-motion")) return;
     paths.forEach((p) => {
       const len = (p as SVGGeometryElement).getTotalLength?.() ?? 400;
@@ -44,29 +46,52 @@ export function ResilienceSignature({ block }: { block: Localized<HomeContent["r
   const callouts = block.features.slice(0, 4);
 
   return (
-    <section className="dark-section py-section" aria-labelledby="resilience-title">
+    <section className="py-section dark-section" aria-labelledby="resilience-title">
       <div className="container-x grid grid-cols-12 gap-x-6 gap-y-16">
         <div className="col-span-12 lg:col-span-6">
           <div className="lg:sticky lg:top-28">
-            <svg ref={svg} viewBox="0 0 800 720" className="w-full max-w-[640px] text-dark-accent" role="img" aria-label="Line drawing of the tower showing hurricane-rated glazing, seismic base isolation, backup power and secured perimeter">
+            <svg
+              ref={svg}
+              viewBox="0 0 800 720"
+              className="w-full max-w-[640px] text-dark-accent"
+              role="img"
+              aria-label="Line drawing of the tower showing hurricane-rated glazing, seismic base isolation, backup power and secured perimeter"
+            >
               <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
                 {/* ground and seismic base */}
                 <line data-draw x1="40" y1="640" x2="560" y2="640" />
-                <path data-draw d="M150 640 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0" />
+                <path
+                  data-draw
+                  d="M150 640 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0 q15 -28 30 0"
+                />
                 <rect data-draw x="150" y="596" width="300" height="16" />
                 {/* tower body: curved slabs */}
                 {Array.from({ length: 16 }).map((_, i) => {
                   const y = 580 - i * 32;
                   const w = 300 + Math.sin(i * 0.8) * 26;
                   const x = 300 - w / 2;
-                  return <path key={i} data-draw d={`M${x} ${y} C ${x + w * 0.25} ${y - 10}, ${x + w * 0.75} ${y - 10}, ${x + w} ${y}`} />;
+                  return (
+                    <path
+                      key={i}
+                      data-draw
+                      d={`M${x} ${y} C ${x + w * 0.25} ${y - 10}, ${x + w * 0.75} ${y - 10}, ${x + w} ${y}`}
+                    />
+                  );
                 })}
                 <path data-draw d="M160 584 C 150 400, 150 240, 190 68" />
                 <path data-draw d="M440 584 C 450 400, 450 240, 410 68" />
                 <path data-draw d="M190 68 C 240 56, 360 56, 410 68" />
                 {/* glazing fins */}
                 {Array.from({ length: 9 }).map((_, i) => (
-                  <line key={`f${i}`} data-draw x1={200 + i * 25} y1="90" x2={200 + i * 25} y2="580" strokeOpacity="0.45" />
+                  <line
+                    key={`f${i}`}
+                    data-draw
+                    x1={200 + i * 25}
+                    y1="90"
+                    x2={200 + i * 25}
+                    y2="580"
+                    strokeOpacity="0.45"
+                  />
                 ))}
                 {/* rooftop solar */}
                 <path data-draw d="M230 56 l20 -18 h110 l20 18" />
@@ -88,10 +113,21 @@ export function ResilienceSignature({ block }: { block: Localized<HomeContent["r
                 <line data-draw x1="540" y1="660" x2="560" y2="700" strokeOpacity="0.6" />
               </g>
               <g className="fill-current text-dark-fg" fontSize="11" letterSpacing="2" fontFamily="var(--font-sans)">
-                <text x="568" y="34">{block.features.find((f) => f.slug === "power")?.title?.toUpperCase().slice(0, 30)}</text>
-                <text x="568" y="154">{callouts[0]?.title?.toUpperCase().slice(0, 30)}</text>
-                <text x="568" y="516">{callouts[1]?.title?.toUpperCase().slice(0, 30)}</text>
-                <text x="568" y="704">{callouts[2]?.title?.toUpperCase().slice(0, 30)}</text>
+                <text x="568" y="34">
+                  {block.features
+                    .find((f) => f.slug === "power")
+                    ?.title?.toUpperCase()
+                    .slice(0, 30)}
+                </text>
+                <text x="568" y="154">
+                  {callouts[0]?.title?.toUpperCase().slice(0, 30)}
+                </text>
+                <text x="568" y="516">
+                  {callouts[1]?.title?.toUpperCase().slice(0, 30)}
+                </text>
+                <text x="568" y="704">
+                  {callouts[2]?.title?.toUpperCase().slice(0, 30)}
+                </text>
               </g>
             </svg>
           </div>
@@ -99,10 +135,10 @@ export function ResilienceSignature({ block }: { block: Localized<HomeContent["r
 
         <div className="col-span-12 lg:col-span-5 lg:col-start-8">
           <Eyebrow className="text-dark-accent">{block.eyebrow}</Eyebrow>
-          <h2 id="resilience-title" className="display-l mt-6" data-reveal>
+          <h2 id="resilience-title" className="mt-6 display-l" data-reveal>
             <Accent text={block.title} className="text-dark-accent" />
           </h2>
-          <p className="lead mt-6 max-w-[44ch] text-dark-fg/80" data-reveal>
+          <p className="mt-6 max-w-[44ch] lead text-dark-fg/80" data-reveal>
             {block.intro}
           </p>
 
@@ -116,7 +152,7 @@ export function ResilienceSignature({ block }: { block: Localized<HomeContent["r
                     {c.suffix}
                   </span>
                 </dd>
-                <dt className="eyebrow mt-3 text-dark-fg/65">
+                <dt className="mt-3 eyebrow text-dark-fg/65">
                   {c.label}
                   {c.placeholder && <span className="ml-1 text-dark-accent/70">· {h("toBeConfirmed")}</span>}
                 </dt>
@@ -127,16 +163,17 @@ export function ResilienceSignature({ block }: { block: Localized<HomeContent["r
           <ul className="mt-10 divide-y divide-dark-rule">
             {block.features.slice(0, 6).map((f, i) => (
               <li key={f.slug} className="grid grid-cols-[2.5rem_1fr] gap-4 py-5" data-reveal data-delay={i * 0.06}>
-                <span className="eyebrow tnum pt-1 text-dark-accent">0{i + 1}</span>
+                <span className="pt-1 eyebrow text-dark-accent tnum">0{i + 1}</span>
                 <div>
                   <h3 className="display-s">{f.title}</h3>
-                  <p className="small mt-2 text-dark-fg/70">{f.points[0]}</p>
+                  <p className="mt-2 small text-dark-fg/70">{f.points[0]}</p>
                 </div>
               </li>
             ))}
           </ul>
           <Button as={Link} href="/resilience" variant="ghost" className="mt-10 text-dark-fg">
             {t("learnMore")}
+            <span className="sr-only"> · {block.eyebrow}</span>
           </Button>
         </div>
       </div>

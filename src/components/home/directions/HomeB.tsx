@@ -1,5 +1,13 @@
 import type { Locale } from "@/content/types";
-import { getAmenities, getCollections, getHome, getPointsOfInterest, getPress, getSiteSettings, getTeam } from "@/lib/content";
+import {
+  getAmenities,
+  getCollections,
+  getHome,
+  getPointsOfInterest,
+  getPress,
+  getSiteSettings,
+  getTeam,
+} from "@/lib/content";
 import { Preloader } from "@/components/home/Preloader";
 import { HeroB } from "./HeroB";
 import { Manifesto } from "@/components/home/Manifesto";
@@ -17,7 +25,15 @@ import { PresentationCta } from "@/components/home/PresentationCta";
 
 /** Direction B · Basalt Cinema: dark base, brass accents, full-screen pinned chapters, longer motion. */
 export async function HomeB({ locale }: { locale: Locale }) {
-  const [site, home, collections, amenities, pois, team, press] = await Promise.all([getSiteSettings(locale), getHome(locale), getCollections(locale), getAmenities(locale), getPointsOfInterest(locale), getTeam(locale), getPress(locale)]);
+  const [site, home, collections, amenities, pois, team, press] = await Promise.all([
+    getSiteSettings(locale),
+    getHome(locale),
+    getCollections(locale),
+    getAmenities(locale),
+    getPointsOfInterest(locale),
+    getTeam(locale),
+    getPress(locale),
+  ]);
   return (
     <main id="main">
       <Preloader />

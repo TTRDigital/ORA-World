@@ -33,7 +33,14 @@ export const siteSettings: SiteSettings = {
   filmUrl: null, // set by the video pipeline or a Sanity file asset
   brochureUrl: null, // [[PLACEHOLDER: brochure PDF]]
   // [[PLACEHOLDER: brochure spreads. Renders stand in for the designed pages so the flipbook can be reviewed.]]
-  brochurePages: [renders.tdmExterior, renders.towerDetail, renders.tdmPenthouse, renders.poolTerrace, lifestyle.beach, renders.naguaboWide].map((i) => ({ ...i, placeholder: true })),
+  brochurePages: [
+    renders.tdmExterior,
+    renders.towerDetail,
+    renders.tdmPenthouse,
+    renders.poolTerrace,
+    lifestyle.beach,
+    renders.naguaboWide,
+  ].map((i) => ({ ...i, placeholder: true })),
   brokerKitUrl: null, // [[PLACEHOLDER: broker kit PDF]]
   mediaKitUrl: null, // [[PLACEHOLDER: media kit]]
   consentText: {

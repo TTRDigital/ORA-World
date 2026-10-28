@@ -20,13 +20,20 @@ const styles: Record<Variant, string> = {
 };
 
 /** Hairline button. Square corners, tracked uppercase label, magnetic on desktop via data-magnetic. */
-export function Button<T extends ElementType = "button">({ as, variant = "primary", className, children, icon, ...rest }: Props<T>) {
+export function Button<T extends ElementType = "button">({
+  as,
+  variant = "primary",
+  className,
+  children,
+  icon,
+  ...rest
+}: Props<T>) {
   const Tag = (as ?? "button") as ElementType;
   return (
     <Tag
       data-magnetic
       className={cn(
-        "eyebrow inline-flex cursor-pointer items-center justify-center gap-3 px-7 py-4 text-center transition-[background-color,color,border-color] duration-500 ease-[var(--ease-out-expo)]",
+        "inline-flex cursor-pointer items-center justify-center gap-3 px-7 py-4 text-center eyebrow transition-[background-color,color,border-color] duration-500 ease-[var(--ease-out-expo)]",
         styles[variant],
         className,
       )}

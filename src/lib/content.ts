@@ -5,7 +5,13 @@ import { siteSettings as seedSite } from "@/content/seed/site";
 import { home as seedHome } from "@/content/seed/home";
 import { collections as seedCollections, floorPlans as seedPlans } from "@/content/seed/collections";
 import { amenities as seedAmenities, activities as seedActivities } from "@/content/seed/amenities";
-import { team as seedTeam, pointsOfInterest as seedPois, press as seedPress, investmentSteps as seedSteps, incentives as seedIncentives } from "@/content/seed/people-places";
+import {
+  team as seedTeam,
+  pointsOfInterest as seedPois,
+  press as seedPress,
+  investmentSteps as seedSteps,
+  incentives as seedIncentives,
+} from "@/content/seed/people-places";
 import { faqs as seedFaqs } from "@/content/seed/faq";
 import { projects as seedProjects, galleryImages as seedGallery, pages as seedPages } from "@/content/seed/projects";
 import { sanityFetch } from "@/sanity/client";
@@ -28,14 +34,20 @@ async function list<T>(type: keyof typeof listQueries, seed: T[]): Promise<T[]> 
 }
 
 export const getHome = cache(async (locale: Locale) => localize(seedHome, locale));
-export const getCollections = cache(async (locale: Locale) => localize(await list("collection", seedCollections), locale));
+export const getCollections = cache(async (locale: Locale) =>
+  localize(await list("collection", seedCollections), locale),
+);
 export const getFloorPlans = cache(async (locale: Locale) => localize(await list("floorPlan", seedPlans), locale));
 export const getAmenities = cache(async (locale: Locale) => localize(await list("amenity", seedAmenities), locale));
 export const getActivities = cache(async (locale: Locale) => localize(seedActivities, locale));
 export const getTeam = cache(async (locale: Locale) => localize(await list("teamMember", seedTeam), locale));
-export const getPointsOfInterest = cache(async (locale: Locale) => localize(await list("pointOfInterest", seedPois), locale));
+export const getPointsOfInterest = cache(async (locale: Locale) =>
+  localize(await list("pointOfInterest", seedPois), locale),
+);
 export const getPress = cache(async (locale: Locale) => localize(await list("pressArticle", seedPress), locale));
-export const getInvestmentSteps = cache(async (locale: Locale) => localize(await list("investmentStep", seedSteps), locale));
+export const getInvestmentSteps = cache(async (locale: Locale) =>
+  localize(await list("investmentStep", seedSteps), locale),
+);
 export const getIncentives = cache(async (locale: Locale) => localize(await list("incentive", seedIncentives), locale));
 export const getFaqs = cache(async (locale: Locale) => localize(await list("faq", seedFaqs), locale));
 export const getProjects = cache(async (locale: Locale) => localize(await list("project", seedProjects), locale));

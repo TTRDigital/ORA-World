@@ -50,10 +50,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/((?!studio).*)",
-        headers: [
-          ...securityHeaders,
-          ...(isProd ? [] : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]),
-        ],
+        headers: [...securityHeaders, ...(isProd ? [] : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }])],
       },
       // Sanity Studio needs a looser policy for its own bundles.
       {

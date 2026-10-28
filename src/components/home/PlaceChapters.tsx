@@ -56,11 +56,14 @@ export function PlaceChapters({ place }: { place: Localized<HomeContent["place"]
       <div className="container-x grid grid-cols-12 gap-x-6">
         <div className="col-span-12 md:col-span-5">
           <Eyebrow>{place.eyebrow}</Eyebrow>
-          <h2 id="place-title" className="display-l mt-6" data-reveal>
+          <h2 id="place-title" className="mt-6 display-l" data-reveal>
             <Accent text={place.title} />
           </h2>
         </div>
-        <p className="lead col-span-12 mt-6 max-w-[48ch] text-fg-muted md:col-span-6 md:col-start-7 md:mt-16" data-reveal>
+        <p
+          className="col-span-12 mt-6 max-w-[48ch] lead text-fg-muted md:col-span-6 md:col-start-7 md:mt-16"
+          data-reveal
+        >
           {place.intro}
         </p>
       </div>
@@ -68,7 +71,10 @@ export function PlaceChapters({ place }: { place: Localized<HomeContent["place"]
       <div ref={pin} className="relative mt-16 lg:h-dvh lg:overflow-hidden">
         <div
           ref={track}
-          className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-[var(--gutter)] pb-6 [scrollbar-width:none] lg:h-full lg:snap-none lg:items-center lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden"
+          role="region"
+          aria-label={place.eyebrow}
+          tabIndex={0}
+          className="flex snap-x snap-mandatory [scrollbar-width:none] gap-5 overflow-x-auto px-[var(--gutter)] pb-6 lg:h-full lg:snap-none lg:items-center lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden"
         >
           {place.chapters.map((c, i) => (
             <article
@@ -76,11 +82,24 @@ export function PlaceChapters({ place }: { place: Localized<HomeContent["place"]
               className={`relative w-[78vw] shrink-0 snap-start md:w-[52vw] lg:w-[44vw] ${i % 2 === 1 ? "lg:translate-y-10" : "lg:-translate-y-6"}`}
             >
               <figure className="relative aspect-[4/5] overflow-hidden md:aspect-[4/3]" data-reveal="image">
-                <Image src={c.image.src} alt={c.image.alt} fill sizes="(min-width:1024px) 44vw, 78vw" className="object-cover" placeholder={c.image.blurDataURL ? "blur" : "empty"} blurDataURL={c.image.blurDataURL} data-reveal-inner />
-                {c.image.placeholder && <figcaption className="absolute bottom-3 left-3 text-[10px] tracking-[0.14em] text-white/85 uppercase mix-blend-difference">{t("placeholderImage")}</figcaption>}
+                <Image
+                  src={c.image.src}
+                  alt={c.image.alt}
+                  fill
+                  sizes="(min-width:1024px) 44vw, 78vw"
+                  className="object-cover"
+                  placeholder={c.image.blurDataURL ? "blur" : "empty"}
+                  blurDataURL={c.image.blurDataURL}
+                  data-reveal-inner
+                />
+                {c.image.placeholder && (
+                  <figcaption className="absolute bottom-3 left-3 text-[10px] tracking-[0.14em] text-white/85 uppercase mix-blend-difference">
+                    {t("placeholderImage")}
+                  </figcaption>
+                )}
               </figure>
               <div className="mt-5 flex items-baseline gap-5">
-                <span className="display-s tnum text-accent-ink">{c.number}</span>
+                <span className="display-s text-accent-ink tnum">{c.number}</span>
                 <div>
                   <h3 className="display-s">{c.title}</h3>
                   <p className="mt-2 max-w-[36ch] text-fg-muted">{c.text}</p>
@@ -90,7 +109,7 @@ export function PlaceChapters({ place }: { place: Localized<HomeContent["place"]
           ))}
           <div aria-hidden className="hidden w-[8vw] shrink-0 lg:block" />
         </div>
-        <div className="container-x absolute inset-x-0 bottom-8 hidden lg:block" aria-hidden="true">
+        <div className="absolute inset-x-0 bottom-8 container-x hidden lg:block" aria-hidden="true">
           <div className="h-px w-full bg-rule-strong">
             <div ref={progress} className="h-px origin-left bg-accent" style={{ transform: "scaleX(0)" }} />
           </div>

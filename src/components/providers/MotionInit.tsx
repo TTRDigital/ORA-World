@@ -23,7 +23,8 @@ export function MotionInit() {
 
   // Magnetic pull on primary CTAs (desktop pointer only, max 8px).
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(pointer: fine)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
     const onMove = (e: MouseEvent) => {
       const el = (e.target as HTMLElement).closest<HTMLElement>("[data-magnetic]");
       document.querySelectorAll<HTMLElement>("[data-magnetic][data-mag-active]").forEach((m) => {
@@ -50,7 +51,9 @@ export function MotionInit() {
     const run = () => {
       cancelAnimationFrame(raf);
       raf = window.requestAnimationFrame(() => {
-        initReveals().then((c) => cleanups.push(c));
+        const start = () => initReveals().then((c) => cleanups.push(c));
+        if ("requestIdleCallback" in window) window.requestIdleCallback(() => start(), { timeout: 800 });
+        else start();
       });
     };
     run();

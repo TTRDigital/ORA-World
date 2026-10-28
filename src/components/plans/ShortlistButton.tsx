@@ -21,9 +21,20 @@ export function ShortlistButton({ slug, className, label }: { slug: string; clas
       aria-pressed={active}
       aria-label={active ? t("removeFromShortlist") : t("addToShortlist")}
       title={disabled ? t("shortlistFull") : undefined}
-      className={cn("eyebrow inline-flex cursor-pointer items-center gap-2 py-1 transition-colors disabled:cursor-not-allowed disabled:opacity-40", active ? "text-accent-ink" : "text-fg-muted hover:text-fg", className)}
+      className={cn(
+        "inline-flex cursor-pointer items-center gap-2 py-1 eyebrow transition-colors disabled:cursor-not-allowed disabled:opacity-40",
+        active ? "text-accent-ink" : "text-fg-muted hover:text-fg",
+        className,
+      )}
     >
-      <svg viewBox="0 0 16 16" className="h-4 w-4" fill={active ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+      <svg
+        viewBox="0 0 16 16"
+        className="h-4 w-4"
+        fill={active ? "currentColor" : "none"}
+        stroke="currentColor"
+        strokeWidth="1.2"
+        aria-hidden="true"
+      >
         <path d="M8 13.5 2.6 8.3a3.1 3.1 0 0 1 4.4-4.4L8 4.9l1-1a3.1 3.1 0 0 1 4.4 4.4z" />
       </svg>
       {label && <span>{active ? t("removeFromShortlist") : t("addToShortlist")}</span>}

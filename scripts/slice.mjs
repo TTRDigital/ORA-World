@@ -7,6 +7,8 @@ const H = Number(h);
 let i = 0;
 for (let y = 0; y < height; y += H, i++) {
   const out = file.replace(/\.png$/, `-${String(i).padStart(2, "0")}.png`);
-  await sharp(file).extract({ left: 0, top: y, width, height: Math.min(H, height - y) }).toFile(out);
+  await sharp(file)
+    .extract({ left: 0, top: y, width, height: Math.min(H, height - y) })
+    .toFile(out);
 }
 console.log(`${i} slices`);

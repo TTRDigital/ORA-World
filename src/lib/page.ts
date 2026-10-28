@@ -13,8 +13,20 @@ export async function localeOf(params: Promise<{ locale: string }>): Promise<Loc
 }
 
 /** Metadata for pages whose eyebrow/title/intro live in messages.pages.<ns>. */
-export async function pageMetaFromMessages(params: Promise<{ locale: string }>, ns: string, path: string, overrides: Partial<{ title: string; description: string; image: string }> = {}): Promise<Metadata> {
+export async function pageMetaFromMessages(
+  params: Promise<{ locale: string }>,
+  ns: string,
+  path: string,
+  overrides: Partial<{ title: string; description: string; image: string }> = {},
+): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: `pages.${ns}` });
-  return pageMetadata({ locale: locale as Locale, title: overrides.title ?? plain(t("title")), description: overrides.description ?? t("intro"), path, eyebrow: t("eyebrow"), image: overrides.image });
+  return pageMetadata({
+    locale: locale as Locale,
+    title: overrides.title ?? plain(t("title")),
+    description: overrides.description ?? t("intro"),
+    path,
+    eyebrow: t("eyebrow"),
+    image: overrides.image,
+  });
 }

@@ -13,7 +13,7 @@ export function FilmButton({ url, variant = "light" }: { url: string | null; var
   const [open, setOpen] = useState(false);
   if (!url) {
     return (
-      <span className="eyebrow inline-flex items-center gap-3 px-2 py-4 text-white/55" title={h("watchFilmSoon")}>
+      <span className="inline-flex items-center gap-3 px-2 py-4 eyebrow text-white/55" title={h("watchFilmSoon")}>
         <PlayGlyph />
         {t("watchFilm")} · {h("watchFilmSoon")}
       </span>

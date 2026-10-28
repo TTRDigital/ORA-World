@@ -28,10 +28,11 @@ export function FloatingBar({ site }: { site: Localized<SiteSettings> }) {
   const call = telHref(site.phone);
   const wa = whatsappHref(site.whatsapp, "Hello ORA World, I would like to learn more about the residences.");
 
-  const item = "eyebrow flex flex-1 items-center justify-center gap-2 px-4 py-4 transition-colors md:flex-none md:px-5 md:py-3";
+  const item =
+    "eyebrow flex flex-1 items-center justify-center gap-2 px-4 py-4 transition-colors md:flex-none md:px-5 md:py-3";
 
   return (
-    <div
+    <nav
       aria-label="Quick actions"
       className={cn(
         "fixed inset-x-0 bottom-0 z-30 flex border-t border-rule bg-bg/95 text-fg backdrop-blur-sm transition-[transform,opacity] duration-700 ease-[var(--ease-out-expo)] md:inset-x-auto md:right-6 md:bottom-6 md:rounded-full md:border md:shadow-none",
@@ -40,7 +41,11 @@ export function FloatingBar({ site }: { site: Localized<SiteSettings> }) {
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       {call ? (
-        <a href={call} className={cn(item, "hover:text-accent-ink")} onClick={() => track("call_click", { source: "floating_bar" })}>
+        <a
+          href={call}
+          className={cn(item, "hover:text-accent-ink")}
+          onClick={() => track("call_click", { source: "floating_bar" })}
+        >
           {t("call")}
         </a>
       ) : null}
@@ -51,10 +56,16 @@ export function FloatingBar({ site }: { site: Localized<SiteSettings> }) {
         {t("pricing")}
       </Link>
       {wa ? (
-        <a href={wa} target="_blank" rel="noopener" className={cn(item, "hover:text-accent-ink")} onClick={() => track("whatsapp_click", { source: "floating_bar" })}>
+        <a
+          href={wa}
+          target="_blank"
+          rel="noopener"
+          className={cn(item, "hover:text-accent-ink")}
+          onClick={() => track("whatsapp_click", { source: "floating_bar" })}
+        >
           {t("whatsapp")}
         </a>
       ) : null}
-    </div>
+    </nav>
   );
 }

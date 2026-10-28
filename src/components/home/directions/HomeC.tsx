@@ -1,5 +1,13 @@
 import type { Locale } from "@/content/types";
-import { getAmenities, getCollections, getHome, getPointsOfInterest, getPress, getSiteSettings, getTeam } from "@/lib/content";
+import {
+  getAmenities,
+  getCollections,
+  getHome,
+  getPointsOfInterest,
+  getPress,
+  getSiteSettings,
+  getTeam,
+} from "@/lib/content";
 import { HeroC } from "./HeroC";
 import { FamilyPets } from "@/components/home/FamilyPets";
 import { PlaceChapters } from "@/components/home/PlaceChapters";
@@ -16,7 +24,15 @@ import { PresentationCta } from "@/components/home/PresentationCta";
 
 /** Direction C · Caribbean Light: lifestyle first (people, ocean, family), sea-glass accent, softer motion. */
 export async function HomeC({ locale }: { locale: Locale }) {
-  const [site, home, collections, amenities, pois, team, press] = await Promise.all([getSiteSettings(locale), getHome(locale), getCollections(locale), getAmenities(locale), getPointsOfInterest(locale), getTeam(locale), getPress(locale)]);
+  const [site, home, collections, amenities, pois, team, press] = await Promise.all([
+    getSiteSettings(locale),
+    getHome(locale),
+    getCollections(locale),
+    getAmenities(locale),
+    getPointsOfInterest(locale),
+    getTeam(locale),
+    getPress(locale),
+  ]);
   return (
     <main id="main">
       <HeroC hero={home.hero} site={site} locale={locale} />

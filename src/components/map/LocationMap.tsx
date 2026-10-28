@@ -30,12 +30,39 @@ export function LocationMap({ pois, site, className, compact }: Props) {
   const shown = useMemo(() => (filter === "all" ? pois : pois.filter((p) => p.category === filter)), [pois, filter]);
   const current = pois.find((p) => p.slug === selected) ?? null;
 
+  // Load the map library only once the section is near the viewport AND the visitor has interacted
+  // (scroll, pointer, touch, key) or the page has been idle for a while, so it never competes with first paint.
   useEffect(() => {
     const el = host.current;
     if (!el) return;
-    const io = new IntersectionObserver((entries) => entries.some((e) => e.isIntersecting) && (setVisible(true), io.disconnect()), { rootMargin: "400px" });
+    let near = false;
+    let interacted = false;
+    let timer = 0;
+    const maybe = () => {
+      if (near && interacted) setVisible(true);
+    };
+    const onInteract = () => {
+      interacted = true;
+      maybe();
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          near = true;
+          maybe();
+          timer = window.setTimeout(onInteract, 6000);
+        }
+      },
+      { rootMargin: "300px" },
+    );
     io.observe(el);
-    return () => io.disconnect();
+    const evs = ["scroll", "pointerdown", "pointermove", "touchstart", "keydown"] as const;
+    evs.forEach((e) => window.addEventListener(e, onInteract, { passive: true, once: true }));
+    return () => {
+      io.disconnect();
+      window.clearTimeout(timer);
+      evs.forEach((e) => window.removeEventListener(e, onInteract));
+    };
   }, []);
 
   useEffect(() => {
@@ -119,21 +146,39 @@ export function LocationMap({ pois, site, className, compact }: Props) {
 
   useEffect(() => {
     markers.current.forEach((m, slug) => (m.getElement().dataset.active = String(slug === selected)));
-    if (current && mapRef.current) mapRef.current.easeTo({ center: [current.lng, current.lat], duration: 800, zoom: Math.max(mapRef.current.getZoom(), 11.5) });
+    if (current && mapRef.current)
+      mapRef.current.easeTo({
+        center: [current.lng, current.lat],
+        duration: 800,
+        zoom: Math.max(mapRef.current.getZoom(), 11.5),
+      });
   }, [selected, current]);
 
-  const time = (p: Poi) => (p.driveMinutes ? h("driveTime", { min: p.driveMinutes }) : p.walkMinutes ? h("walkTime", { min: p.walkMinutes }) : null);
+  const time = (p: Poi) =>
+    p.driveMinutes
+      ? h("driveTime", { min: p.driveMinutes })
+      : p.walkMinutes
+        ? h("walkTime", { min: p.walkMinutes })
+        : null;
 
   return (
     <div className={cn("grid grid-cols-12 gap-x-6 gap-y-8", className)}>
       <div className="col-span-12 lg:col-span-8">
-        <div ref={host} className="relative aspect-[4/3] w-full bg-surface md:aspect-[16/10]" aria-label="Map of Dorado and points of interest" role="region">
+        <div
+          ref={host}
+          className="relative aspect-[4/3] w-full bg-surface md:aspect-[16/10]"
+          aria-label="Map of Dorado and points of interest"
+          role="region"
+        >
           {!ready && <div className="absolute inset-0 animate-pulse bg-surface" />}
           {current && (
-            <div className="absolute bottom-4 left-4 max-w-[22rem] border border-rule bg-bg/95 p-4 text-fg backdrop-blur-sm" role="status">
+            <div
+              className="absolute bottom-4 left-4 max-w-[22rem] border border-rule bg-bg/95 p-4 text-fg backdrop-blur-sm"
+              role="status"
+            >
               <p className="eyebrow text-accent-ink">{t(current.category)}</p>
-              <p className="display-s mt-1">{current.name}</p>
-              <p className="small mt-1 text-fg-muted">
+              <p className="mt-1 display-s">{current.name}</p>
+              <p className="mt-1 small text-fg-muted">
                 {time(current)}
                 {current.placeholder && time(current) ? ` · ${h("approx")} · ${h("toBeConfirmed")}` : ""}
                 {current.note ? ` · ${current.note}` : ""}
@@ -143,14 +188,27 @@ export function LocationMap({ pois, site, className, compact }: Props) {
         </div>
       </div>
       <div className="col-span-12 lg:col-span-4">
-        <div role="group" aria-label={c("filters")} className="flex flex-wrap gap-x-5 gap-y-2 border-b border-rule pb-4">
+        <div
+          role="group"
+          aria-label={c("filters")}
+          className="flex flex-wrap gap-x-5 gap-y-2 border-b border-rule pb-4"
+        >
           {(["all", ...CATS] as const).map((cat) => (
-            <button key={cat} type="button" onClick={() => setFilter(cat)} aria-pressed={filter === cat} className={cn("eyebrow cursor-pointer py-1 transition-colors", filter === cat ? "text-accent-ink" : "text-fg-muted hover:text-fg")}>
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setFilter(cat)}
+              aria-pressed={filter === cat}
+              className={cn(
+                "cursor-pointer py-1 eyebrow transition-colors",
+                filter === cat ? "text-accent-ink" : "text-fg-muted hover:text-fg",
+              )}
+            >
               {cat === "all" ? h("filterAll") : t(cat)}
             </button>
           ))}
         </div>
-        <p className="small mt-4 text-fg-muted">{h("mapHint")}</p>
+        <p className="mt-4 small text-fg-muted">{h("mapHint")}</p>
         <ul className="mt-2 divide-y divide-rule">
           {shown.map((p) => (
             <li key={p.slug}>
@@ -158,13 +216,16 @@ export function LocationMap({ pois, site, className, compact }: Props) {
                 type="button"
                 onClick={() => setSelected(p.slug)}
                 aria-pressed={selected === p.slug}
-                className={cn("flex w-full cursor-pointer items-baseline justify-between gap-4 py-3 text-left transition-colors hover:text-accent-ink", selected === p.slug && "text-accent-ink")}
+                className={cn(
+                  "flex w-full cursor-pointer items-baseline justify-between gap-4 py-3 text-left transition-colors hover:text-accent-ink",
+                  selected === p.slug && "text-accent-ink",
+                )}
               >
                 <span>
                   <span className="block">{p.name}</span>
                   <span className="eyebrow text-fg-muted">{t(p.category)}</span>
                 </span>
-                <span className="eyebrow tnum shrink-0 text-fg-muted">
+                <span className="shrink-0 eyebrow text-fg-muted tnum">
                   {time(p) ?? "—"}
                   {p.placeholder && time(p) ? "*" : ""}
                 </span>
@@ -172,14 +233,17 @@ export function LocationMap({ pois, site, className, compact }: Props) {
             </li>
           ))}
         </ul>
-        <p className="small mt-4 text-fg-muted">* {h("approx")} · {h("toBeConfirmed")}</p>
+        <p className="mt-4 small text-fg-muted">
+          * {h("approx")} · {h("toBeConfirmed")}
+        </p>
       </div>
       <style>{`
         .ora-pin{display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none}
         .ora-pin__dot{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 25%,transparent)}
         .ora-pin__label{font-family:var(--font-sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg);background:var(--bg);padding:4px 8px;border:1px solid var(--rule);white-space:nowrap}
-        .ora-poi{width:12px;height:12px;border-radius:50%;background:var(--bg);border:1.5px solid var(--accent);cursor:pointer;transition:transform .4s var(--ease-out-expo),background .3s}
-        .ora-poi[data-active="true"]{background:var(--accent);transform:scale(1.5)}
+        .ora-poi{width:24px;height:24px;border-radius:50%;background:transparent;border:0;padding:0;cursor:pointer;display:grid;place-items:center}
+        .ora-poi::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--bg);border:1.5px solid var(--accent);transition:transform .4s var(--ease-out-expo),background .3s}
+        .ora-poi[data-active="true"]::after{background:var(--accent);transform:scale(1.5)}
         .maplibregl-ctrl-group{border-radius:0;box-shadow:none;border:1px solid var(--rule);background:var(--bg)}
         .maplibregl-ctrl-group button{border-radius:0}
         .maplibregl-ctrl-attrib{background:color-mix(in srgb,var(--bg) 85%,transparent);color:var(--fg-muted)}

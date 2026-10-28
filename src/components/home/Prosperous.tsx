@@ -30,9 +30,10 @@ export async function Prosperous({ block }: { block: Localized<HomeContent["pros
           <div className="mt-10 flex flex-wrap items-center gap-6" data-reveal>
             <Button as={Link} href="/incentives">
               {t("learnMore")}
+              <span className="sr-only"> · {block.eyebrow}</span>
             </Button>
           </div>
-          <p className="small mt-10 max-w-[64ch] border-t border-rule pt-5 text-fg-muted" data-reveal>
+          <p className="mt-10 max-w-[64ch] border-t border-rule pt-5 small text-fg-muted" data-reveal>
             {block.disclaimer}
           </p>
         </div>

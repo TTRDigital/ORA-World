@@ -3,7 +3,6 @@ import type { HomeContent, SiteSettings } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { Accent } from "@/components/ui/Accent";
 import { SplitLines } from "@/components/ui/SplitLines";
-import { Button } from "@/components/ui/Button";
 import { HeroVideo } from "./HeroVideo";
 import { FilmButton } from "./FilmLightbox";
 import { ScrollToButton } from "@/components/ui/ScrollToButton";
@@ -16,17 +15,17 @@ export async function Hero({ hero, site }: Props) {
   return (
     <section data-hero className="relative flex min-h-dvh flex-col justify-end text-white">
       <HeroVideo poster={hero.poster} mp4={hero.videoLoop} webm={hero.videoLoopWebm} mobileMp4={hero.videoMobile} />
-      <div className="scrim-bottom absolute inset-0" />
-      <div className="scrim-top absolute inset-x-0 top-0 h-48" />
+      <div className="absolute inset-0 scrim-bottom" />
+      <div className="absolute inset-x-0 top-0 h-48 scrim-top" />
 
-      <div className="container-x relative pt-[calc(var(--header-h)+4rem)] pb-14 md:pb-20">
-        <p className="eyebrow mb-6 text-brass-light" data-reveal>
+      <div className="relative container-x pt-[calc(var(--header-h)+4rem)] pb-14 md:pb-20">
+        <p className="mb-6 eyebrow text-brass-light" data-reveal>
           {hero.eyebrow}
         </p>
-        <SplitLines as="h1" className="display-xl max-w-[12ch] text-white">
+        <SplitLines as="h1" className="max-w-[12ch] display-xl text-white">
           <Accent text={hero.headline} className="text-brass-light" />
         </SplitLines>
-        <p className="lead mt-8 max-w-[44ch] text-white/85" data-reveal data-delay="0.3">
+        <p className="mt-8 max-w-[44ch] lead text-white/85" data-reveal data-delay="0.3">
           {hero.tagline}
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal data-delay="0.45">
@@ -41,7 +40,10 @@ export async function Hero({ hero, site }: Props) {
         <div className="container-x">
           <dl className="grid grid-cols-2 md:grid-cols-4">
             {hero.stats.map((s, i) => (
-              <div key={i} className={`py-6 md:py-7 ${i > 0 ? "border-l border-white/15 pl-5 md:pl-8" : ""} ${i === 2 ? "border-l-0 md:border-l" : ""} ${i >= 2 ? "border-t border-white/15 md:border-t-0" : ""}`}>
+              <div
+                key={i}
+                className={`py-6 md:py-7 ${i > 0 ? "border-l border-white/15 pl-5 md:pl-8" : ""} ${i === 2 ? "border-l-0 md:border-l" : ""} ${i >= 2 ? "border-t border-white/15 md:border-t-0" : ""}`}
+              >
                 <dd className="stat text-white">
                   {s.value === null ? (
                     <span className="text-white/40">—</span>
@@ -53,18 +55,25 @@ export async function Hero({ hero, site }: Props) {
                     </span>
                   )}
                 </dd>
-                <dt className="eyebrow mt-3 text-white/70">
+                <dt className="mt-3 eyebrow text-white/70">
                   {s.label}
-                  {s.placeholder || s.value === null ? <span className="ml-2 text-brass-light/70">· {h("toBeConfirmed")}</span> : null}
+                  {s.placeholder || s.value === null ? (
+                    <span className="ml-2 text-brass-light/70">· {h("toBeConfirmed")}</span>
+                  ) : null}
                 </dt>
               </div>
             ))}
           </dl>
         </div>
-        <p className="eyebrow pointer-events-none absolute right-[var(--gutter)] -top-8 hidden text-white/45 md:block">{h("statsOf")}</p>
+        <p className="pointer-events-none absolute -top-8 right-[var(--gutter)] hidden eyebrow text-white/45 md:block">
+          {h("statsOf")}
+        </p>
       </div>
 
-      <div className="pointer-events-none absolute right-[var(--gutter)] bottom-[calc(7.5rem+var(--gutter))] hidden items-center gap-3 text-white/70 md:flex" aria-hidden="true">
+      <div
+        className="pointer-events-none absolute right-[var(--gutter)] bottom-[calc(7.5rem+var(--gutter))] hidden items-center gap-3 text-white/70 md:flex"
+        aria-hidden="true"
+      >
         <span className="eyebrow">{t("scroll")}</span>
         <span className="block h-12 w-px overflow-hidden bg-white/25">
           <span className="block h-full w-full origin-top animate-[scrollhint_2.4s_var(--ease-in-out-quart)_infinite] bg-brass-light" />

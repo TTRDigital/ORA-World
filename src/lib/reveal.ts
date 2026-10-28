@@ -9,7 +9,9 @@
 export async function initReveals(): Promise<() => void> {
   const html = document.documentElement;
   const reduced = html.classList.contains("reduced-motion");
-  const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal], [data-reveal-line], [data-counter], [data-parallax]"));
+  const nodes = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-reveal], [data-reveal-line], [data-counter], [data-parallax]"),
+  );
 
   if (reduced) {
     nodes.forEach((n) => {
@@ -48,7 +50,18 @@ export async function initReveals(): Promise<() => void> {
         onComplete: () => gsap.set(el, { clearProps: "clipPath,transform" }),
       },
     );
-    if (inner) gsap.fromTo(inner, { scale: 1.06 }, { scale: 1, duration: 1.6, ease: "expo.out", paused: true, scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+    if (inner)
+      gsap.fromTo(
+        inner,
+        { scale: 1.06 },
+        {
+          scale: 1,
+          duration: 1.6,
+          ease: "expo.out",
+          paused: true,
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        },
+      );
     triggers.push(ScrollTrigger.create({ trigger: el, start: "top 88%", once: true, onEnter: () => tween.play() }));
   });
 
@@ -98,7 +111,11 @@ export async function initReveals(): Promise<() => void> {
     const tween = gsap.fromTo(
       el,
       { yPercent: -ratio * 100 },
-      { yPercent: ratio * 100, ease: "none", scrollTrigger: { trigger: el.parentElement ?? el, start: "top bottom", end: "bottom top", scrub: 0.8 } },
+      {
+        yPercent: ratio * 100,
+        ease: "none",
+        scrollTrigger: { trigger: el.parentElement ?? el, start: "top bottom", end: "bottom top", scrub: 0.8 },
+      },
     );
     if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
   });
@@ -109,6 +126,8 @@ export async function initReveals(): Promise<() => void> {
 
 function formatCounter(el: HTMLElement, value: number) {
   const decimals = Number(el.dataset.decimals || 0);
-  const n = decimals ? value.toFixed(decimals) : Math.round(value).toLocaleString(document.documentElement.lang || "en");
+  const n = decimals
+    ? value.toFixed(decimals)
+    : Math.round(value).toLocaleString(document.documentElement.lang || "en");
   return `${el.dataset.prefix || ""}${n}${el.dataset.suffix || ""}`;
 }

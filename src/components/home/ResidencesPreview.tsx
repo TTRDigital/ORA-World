@@ -21,11 +21,14 @@ export async function ResidencesPreview({ block, collections }: Props) {
       <div className="grid grid-cols-12 gap-x-6">
         <div className="col-span-12 md:col-span-6">
           <Eyebrow>{block.eyebrow}</Eyebrow>
-          <h2 className="display-l mt-6" data-reveal>
+          <h2 className="mt-6 display-l" data-reveal>
             <Accent text={block.title} />
           </h2>
         </div>
-        <p className="lead col-span-12 mt-6 max-w-[46ch] text-fg-muted md:col-span-5 md:col-start-8 md:mt-16" data-reveal>
+        <p
+          className="col-span-12 mt-6 max-w-[46ch] lead text-fg-muted md:col-span-5 md:col-start-8 md:mt-16"
+          data-reveal
+        >
           {block.intro}
         </p>
       </div>

@@ -7,7 +7,14 @@ import { useTranslations } from "next-intl";
 export function IntentNote() {
   const t = useTranslations("contact");
   const [intent, setIntent] = useState<string | null>(null);
-  useEffect(() => setIntent(new URLSearchParams(window.location.search).get("intent")), []);
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => setIntent(new URLSearchParams(window.location.search).get("intent")));
+    return () => window.cancelAnimationFrame(id);
+  }, []);
   if (intent !== "pricing") return null;
-  return <p className="mt-4 border-l-2 border-accent pl-4 text-fg-muted" role="status">{t("intentPricing")}</p>;
+  return (
+    <p className="mt-4 border-l-2 border-accent pl-4 text-fg-muted" role="status">
+      {t("intentPricing")}
+    </p>
+  );
 }

@@ -18,11 +18,20 @@ export async function sendConfirmationEmail({ to, name, locale }: { to: string; 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ from: process.env.EMAIL_FROM || "ORA World <onboarding@resend.dev>", to: [to], bcc: process.env.EMAIL_BCC ? [process.env.EMAIL_BCC] : undefined, subject, html }),
+    body: JSON.stringify({
+      from: process.env.EMAIL_FROM || "ORA World <onboarding@resend.dev>",
+      to: [to],
+      bcc: process.env.EMAIL_BCC ? [process.env.EMAIL_BCC] : undefined,
+      subject,
+      html,
+    }),
   });
   if (!res.ok) throw new Error(`resend ${res.status}`);
 }
 
 function escapeHtml(s: string) {
-  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
+  return s.replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string,
+  );
 }

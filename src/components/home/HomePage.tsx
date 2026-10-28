@@ -1,5 +1,13 @@
 import type { Locale } from "@/content/types";
-import { getAmenities, getCollections, getHome, getPointsOfInterest, getPress, getSiteSettings, getTeam } from "@/lib/content";
+import {
+  getAmenities,
+  getCollections,
+  getHome,
+  getPointsOfInterest,
+  getPress,
+  getSiteSettings,
+  getTeam,
+} from "@/lib/content";
 import { Preloader } from "./Preloader";
 import { Hero } from "./Hero";
 import { Manifesto } from "./Manifesto";

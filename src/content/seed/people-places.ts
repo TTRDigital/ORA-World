@@ -1,7 +1,13 @@
 import type { TeamMember, PointOfInterest, PressArticle, InvestmentStep, Incentive } from "../types";
 import { renders } from "./images";
 
-const portrait = (name: string) => ({ src: "/images/placeholder-portrait.svg", width: 800, height: 1000, alt: { en: `Portrait placeholder for ${name}`, es: `Retrato provisional de ${name}` }, placeholder: true });
+const portrait = (name: string) => ({
+  src: "/images/placeholder-portrait.svg",
+  width: 800,
+  height: 1000,
+  alt: { en: `Portrait placeholder for ${name}`, es: `Retrato provisional de ${name}` },
+  placeholder: true,
+});
 
 /** The Collaboratory. Only the sponsor is public; design partners are placeholders until named. */
 export const team: TeamMember[] = [
@@ -11,48 +17,324 @@ export const team: TeamMember[] = [
     role: { en: "Developer and sponsor", es: "Desarrollador y patrocinador" },
     discipline: { en: "Development", es: "Desarrollo" },
     bio: {
-      en: ["Our mission is to revolutionize Puerto Rico's real estate landscape by creating luxurious, eco-friendly developments that seamlessly blend modern elegance with the island's natural beauty. We are committed to delivering exceptional quality, innovative design, and unparalleled comfort in every project."],
-      es: ["Nuestra misión es revolucionar el panorama inmobiliario de Puerto Rico creando desarrollos de lujo y ecológicos que integran la elegancia moderna con la belleza natural de la isla. Nos comprometemos a ofrecer calidad excepcional, diseño innovador y un confort sin igual en cada proyecto."],
+      en: [
+        "Our mission is to revolutionize Puerto Rico's real estate landscape by creating luxurious, eco-friendly developments that seamlessly blend modern elegance with the island's natural beauty. We are committed to delivering exceptional quality, innovative design, and unparalleled comfort in every project.",
+      ],
+      es: [
+        "Nuestra misión es revolucionar el panorama inmobiliario de Puerto Rico creando desarrollos de lujo y ecológicos que integran la elegancia moderna con la belleza natural de la isla. Nos comprometemos a ofrecer calidad excepcional, diseño innovador y un confort sin igual en cada proyecto.",
+      ],
     },
-    quote: { en: "Creating luxury living with timeless elegance and comfort.", es: "Creando una vida de lujo con elegancia y confort atemporales." },
+    quote: {
+      en: "Creating luxury living with timeless elegance and comfort.",
+      es: "Creando una vida de lujo con elegancia y confort atemporales.",
+    },
     portrait: renders.towerDetail,
     website: "https://www.oraworld.com",
   },
-  { slug: "architect", name: "[[PLACEHOLDER: Architecture firm]]", role: { en: "Design architect", es: "Arquitecto de diseño" }, discipline: { en: "Architecture", es: "Arquitectura" }, bio: { en: ["Architecture inspired by the graceful flight of birds: sleek, aerodynamic forms with curved facades, expansive glass surfaces and light, airy elements that appear to soar above the landscape."], es: ["Arquitectura inspirada en el vuelo elegante de las aves: formas aerodinámicas con fachadas curvas, grandes superficies de cristal y elementos ligeros que parecen elevarse sobre el paisaje."] }, quote: null, portrait: portrait("architect"), website: null, placeholder: true },
-  { slug: "interiors", name: "[[PLACEHOLDER: Interior design studio]]", role: { en: "Interior design", es: "Diseño de interiores" }, discipline: { en: "Interiors", es: "Interiores" }, bio: { en: ["High-end finishes, custom detailing and a palette inspired by the natural surroundings create a living experience that is both sophisticated and serene."], es: ["Acabados de alta gama, detalles a medida y una paleta inspirada en el entorno natural crean una experiencia de vida sofisticada y serena."] }, quote: null, portrait: portrait("interior designer"), website: null, placeholder: true },
-  { slug: "landscape", name: "[[PLACEHOLDER: Landscape architect]]", role: { en: "Landscape architecture", es: "Arquitectura del paisaje" }, discipline: { en: "Landscape", es: "Paisaje" }, bio: { en: ["Terraces landscaped with native plants and flowers, sensory gardens, reflecting pools and gentle cascades that foster tranquility and connection to nature."], es: ["Terrazas ajardinadas con plantas y flores nativas, jardines sensoriales, espejos de agua y suaves cascadas que invitan a la calma y a la conexión con la naturaleza."] }, quote: null, portrait: portrait("landscape architect"), website: null, placeholder: true },
+  {
+    slug: "architect",
+    name: "[[PLACEHOLDER: Architecture firm]]",
+    role: { en: "Design architect", es: "Arquitecto de diseño" },
+    discipline: { en: "Architecture", es: "Arquitectura" },
+    bio: {
+      en: [
+        "Architecture inspired by the graceful flight of birds: sleek, aerodynamic forms with curved facades, expansive glass surfaces and light, airy elements that appear to soar above the landscape.",
+      ],
+      es: [
+        "Arquitectura inspirada en el vuelo elegante de las aves: formas aerodinámicas con fachadas curvas, grandes superficies de cristal y elementos ligeros que parecen elevarse sobre el paisaje.",
+      ],
+    },
+    quote: null,
+    portrait: portrait("architect"),
+    website: null,
+    placeholder: true,
+  },
+  {
+    slug: "interiors",
+    name: "[[PLACEHOLDER: Interior design studio]]",
+    role: { en: "Interior design", es: "Diseño de interiores" },
+    discipline: { en: "Interiors", es: "Interiores" },
+    bio: {
+      en: [
+        "High-end finishes, custom detailing and a palette inspired by the natural surroundings create a living experience that is both sophisticated and serene.",
+      ],
+      es: [
+        "Acabados de alta gama, detalles a medida y una paleta inspirada en el entorno natural crean una experiencia de vida sofisticada y serena.",
+      ],
+    },
+    quote: null,
+    portrait: portrait("interior designer"),
+    website: null,
+    placeholder: true,
+  },
+  {
+    slug: "landscape",
+    name: "[[PLACEHOLDER: Landscape architect]]",
+    role: { en: "Landscape architecture", es: "Arquitectura del paisaje" },
+    discipline: { en: "Landscape", es: "Paisaje" },
+    bio: {
+      en: [
+        "Terraces landscaped with native plants and flowers, sensory gardens, reflecting pools and gentle cascades that foster tranquility and connection to nature.",
+      ],
+      es: [
+        "Terrazas ajardinadas con plantas y flores nativas, jardines sensoriales, espejos de agua y suaves cascadas que invitan a la calma y a la conexión con la naturaleza.",
+      ],
+    },
+    quote: null,
+    portrait: portrait("landscape architect"),
+    website: null,
+    placeholder: true,
+  },
 ];
 
 /** Points of interest around Dorado / Vega Alta. Coordinates approximate; drive times are estimates until confirmed. */
 export const pointsOfInterest: PointOfInterest[] = [
-  { slug: "cerro-gordo", name: { en: "Balneario Cerro Gordo", es: "Balneario Cerro Gordo" }, category: "beach", lat: 18.4885, lng: -66.3386, driveMinutes: null, walkMinutes: 15, note: { en: "Walking distance from Tesoro Del Mar", es: "A pasos de Tesoro Del Mar" }, placeholder: true },
-  { slug: "dorado-beach", name: { en: "Dorado Beach", es: "Playa Dorado" }, category: "beach", lat: 18.4765, lng: -66.2810, driveMinutes: 12, walkMinutes: null, note: null, placeholder: true },
-  { slug: "tpc-dorado", name: { en: "TPC Dorado Beach golf", es: "Golf TPC Dorado Beach" }, category: "golf", lat: 18.4742, lng: -66.2890, driveMinutes: 12, walkMinutes: null, note: { en: "Championship courses", es: "Campos de campeonato" }, placeholder: true },
-  { slug: "tasis-dorado", name: { en: "TASIS Dorado", es: "TASIS Dorado" }, category: "school", lat: 18.4553, lng: -66.2818, driveMinutes: 14, walkMinutes: null, note: { en: "International school, PreK–12", es: "Escuela internacional, PreK–12" }, placeholder: true },
-  { slug: "dorado-health", name: { en: "Medical center, Dorado", es: "Centro médico, Dorado" }, category: "healthcare", lat: 18.4620, lng: -66.2690, driveMinutes: 15, walkMinutes: null, note: { en: "[[PLACEHOLDER: facility name]]", es: "[[PROVISIONAL: nombre del centro]]" }, placeholder: true },
-  { slug: "sju", name: { en: "Luis Muñoz Marín International Airport", es: "Aeropuerto Internacional Luis Muñoz Marín" }, category: "airport", lat: 18.4394, lng: -66.0018, driveMinutes: 30, walkMinutes: null, note: { en: "Published: 30 minutes", es: "Publicado: 30 minutos" }, placeholder: false },
-  { slug: "dorado-dining", name: { en: "Dorado dining and plaza", es: "Restaurantes y plaza de Dorado" }, category: "dining", lat: 18.4588, lng: -66.2676, driveMinutes: 14, walkMinutes: null, note: null, placeholder: true },
-  { slug: "old-san-juan", name: { en: "Old San Juan", es: "Viejo San Juan" }, category: "culture", lat: 18.4663, lng: -66.1178, driveMinutes: 35, walkMinutes: null, note: { en: "Cobblestone streets and colonial architecture", es: "Calles adoquinadas y arquitectura colonial" }, placeholder: true },
-  { slug: "el-yunque", name: { en: "El Yunque National Forest", es: "Bosque Nacional El Yunque" }, category: "nature", lat: 18.2955, lng: -65.79, driveMinutes: 75, walkMinutes: null, note: null, placeholder: true },
+  {
+    slug: "cerro-gordo",
+    name: { en: "Balneario Cerro Gordo", es: "Balneario Cerro Gordo" },
+    category: "beach",
+    lat: 18.4885,
+    lng: -66.3386,
+    driveMinutes: null,
+    walkMinutes: 15,
+    note: { en: "Walking distance from Tesoro Del Mar", es: "A pasos de Tesoro Del Mar" },
+    placeholder: true,
+  },
+  {
+    slug: "dorado-beach",
+    name: { en: "Dorado Beach", es: "Playa Dorado" },
+    category: "beach",
+    lat: 18.4765,
+    lng: -66.281,
+    driveMinutes: 12,
+    walkMinutes: null,
+    note: null,
+    placeholder: true,
+  },
+  {
+    slug: "tpc-dorado",
+    name: { en: "TPC Dorado Beach golf", es: "Golf TPC Dorado Beach" },
+    category: "golf",
+    lat: 18.4742,
+    lng: -66.289,
+    driveMinutes: 12,
+    walkMinutes: null,
+    note: { en: "Championship courses", es: "Campos de campeonato" },
+    placeholder: true,
+  },
+  {
+    slug: "tasis-dorado",
+    name: { en: "TASIS Dorado", es: "TASIS Dorado" },
+    category: "school",
+    lat: 18.4553,
+    lng: -66.2818,
+    driveMinutes: 14,
+    walkMinutes: null,
+    note: { en: "International school, PreK–12", es: "Escuela internacional, PreK–12" },
+    placeholder: true,
+  },
+  {
+    slug: "dorado-health",
+    name: { en: "Medical center, Dorado", es: "Centro médico, Dorado" },
+    category: "healthcare",
+    lat: 18.462,
+    lng: -66.269,
+    driveMinutes: 15,
+    walkMinutes: null,
+    note: { en: "[[PLACEHOLDER: facility name]]", es: "[[PROVISIONAL: nombre del centro]]" },
+    placeholder: true,
+  },
+  {
+    slug: "sju",
+    name: { en: "Luis Muñoz Marín International Airport", es: "Aeropuerto Internacional Luis Muñoz Marín" },
+    category: "airport",
+    lat: 18.4394,
+    lng: -66.0018,
+    driveMinutes: 30,
+    walkMinutes: null,
+    note: { en: "Published: 30 minutes", es: "Publicado: 30 minutos" },
+    placeholder: false,
+  },
+  {
+    slug: "dorado-dining",
+    name: { en: "Dorado dining and plaza", es: "Restaurantes y plaza de Dorado" },
+    category: "dining",
+    lat: 18.4588,
+    lng: -66.2676,
+    driveMinutes: 14,
+    walkMinutes: null,
+    note: null,
+    placeholder: true,
+  },
+  {
+    slug: "old-san-juan",
+    name: { en: "Old San Juan", es: "Viejo San Juan" },
+    category: "culture",
+    lat: 18.4663,
+    lng: -66.1178,
+    driveMinutes: 35,
+    walkMinutes: null,
+    note: { en: "Cobblestone streets and colonial architecture", es: "Calles adoquinadas y arquitectura colonial" },
+    placeholder: true,
+  },
+  {
+    slug: "el-yunque",
+    name: { en: "El Yunque National Forest", es: "Bosque Nacional El Yunque" },
+    category: "nature",
+    lat: 18.2955,
+    lng: -65.79,
+    driveMinutes: 75,
+    walkMinutes: null,
+    note: null,
+    placeholder: true,
+  },
 ];
 
 /** No press coverage is public yet. Placeholder entries keep the Press Center and strip functional. */
 export const press: PressArticle[] = [
-  { slug: "placeholder-1", title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" }, outlet: "[[Outlet]]", date: "2026-01-15", excerpt: { en: "Article summary to be supplied by the ORA World press office.", es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World." }, body: { en: ["Full article text or external link to be supplied."], es: ["Texto completo o enlace externo por suministrar."] }, url: null, image: renders.tdmExterior, placeholder: true },
-  { slug: "placeholder-2", title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" }, outlet: "[[Outlet]]", date: "2025-11-02", excerpt: { en: "Article summary to be supplied by the ORA World press office.", es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World." }, body: { en: ["Full article text or external link to be supplied."], es: ["Texto completo o enlace externo por suministrar."] }, url: null, image: renders.doradoWaterfalls, placeholder: true },
-  { slug: "placeholder-3", title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" }, outlet: "[[Outlet]]", date: "2025-09-20", excerpt: { en: "Article summary to be supplied by the ORA World press office.", es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World." }, body: { en: ["Full article text or external link to be supplied."], es: ["Texto completo o enlace externo por suministrar."] }, url: null, image: renders.naguabo, placeholder: true },
+  {
+    slug: "placeholder-1",
+    title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" },
+    outlet: "[[Outlet]]",
+    date: "2026-01-15",
+    excerpt: {
+      en: "Article summary to be supplied by the ORA World press office.",
+      es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World.",
+    },
+    body: {
+      en: ["Full article text or external link to be supplied."],
+      es: ["Texto completo o enlace externo por suministrar."],
+    },
+    url: null,
+    image: renders.tdmExterior,
+    placeholder: true,
+  },
+  {
+    slug: "placeholder-2",
+    title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" },
+    outlet: "[[Outlet]]",
+    date: "2025-11-02",
+    excerpt: {
+      en: "Article summary to be supplied by the ORA World press office.",
+      es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World.",
+    },
+    body: {
+      en: ["Full article text or external link to be supplied."],
+      es: ["Texto completo o enlace externo por suministrar."],
+    },
+    url: null,
+    image: renders.doradoWaterfalls,
+    placeholder: true,
+  },
+  {
+    slug: "placeholder-3",
+    title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" },
+    outlet: "[[Outlet]]",
+    date: "2025-09-20",
+    excerpt: {
+      en: "Article summary to be supplied by the ORA World press office.",
+      es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World.",
+    },
+    body: {
+      en: ["Full article text or external link to be supplied."],
+      es: ["Texto completo o enlace externo por suministrar."],
+    },
+    url: null,
+    image: renders.naguabo,
+    placeholder: true,
+  },
 ];
 
 /** Deposit schedule and timeline. Entirely placeholder until the offering plan is filed. */
 export const investmentSteps: InvestmentStep[] = [
-  { order: 1, title: { en: "Reservation", es: "Reserva" }, detail: { en: "No deposits or reservations can be accepted until an offering plan is filed with the New York State Department of Law.", es: "No se pueden aceptar depósitos ni reservas hasta que se presente un plan de oferta ante el Departamento de Justicia del Estado de Nueva York." }, percent: null, when: { en: "After offering plan is filed", es: "Tras la presentación del plan de oferta" }, placeholder: true },
-  { order: 2, title: { en: "Contract", es: "Contrato" }, detail: { en: "[[PLACEHOLDER: deposit at contract]]", es: "[[PROVISIONAL: depósito al contrato]]" }, percent: null, when: { en: "[[PLACEHOLDER]]", es: "[[PROVISIONAL]]" }, placeholder: true },
-  { order: 3, title: { en: "Construction milestone", es: "Hito de construcción" }, detail: { en: "[[PLACEHOLDER: deposit at milestone]]", es: "[[PROVISIONAL: depósito al hito]]" }, percent: null, when: { en: "[[PLACEHOLDER]]", es: "[[PROVISIONAL]]" }, placeholder: true },
-  { order: 4, title: { en: "Closing", es: "Cierre" }, detail: { en: "[[PLACEHOLDER: balance at closing]]", es: "[[PROVISIONAL: saldo al cierre]]" }, percent: null, when: { en: "[[PLACEHOLDER: estimated delivery]]", es: "[[PROVISIONAL: entrega estimada]]" }, placeholder: true },
+  {
+    order: 1,
+    title: { en: "Reservation", es: "Reserva" },
+    detail: {
+      en: "No deposits or reservations can be accepted until an offering plan is filed with the New York State Department of Law.",
+      es: "No se pueden aceptar depósitos ni reservas hasta que se presente un plan de oferta ante el Departamento de Justicia del Estado de Nueva York.",
+    },
+    percent: null,
+    when: { en: "After offering plan is filed", es: "Tras la presentación del plan de oferta" },
+    placeholder: true,
+  },
+  {
+    order: 2,
+    title: { en: "Contract", es: "Contrato" },
+    detail: { en: "[[PLACEHOLDER: deposit at contract]]", es: "[[PROVISIONAL: depósito al contrato]]" },
+    percent: null,
+    when: { en: "[[PLACEHOLDER]]", es: "[[PROVISIONAL]]" },
+    placeholder: true,
+  },
+  {
+    order: 3,
+    title: { en: "Construction milestone", es: "Hito de construcción" },
+    detail: { en: "[[PLACEHOLDER: deposit at milestone]]", es: "[[PROVISIONAL: depósito al hito]]" },
+    percent: null,
+    when: { en: "[[PLACEHOLDER]]", es: "[[PROVISIONAL]]" },
+    placeholder: true,
+  },
+  {
+    order: 4,
+    title: { en: "Closing", es: "Cierre" },
+    detail: { en: "[[PLACEHOLDER: balance at closing]]", es: "[[PROVISIONAL: saldo al cierre]]" },
+    percent: null,
+    when: { en: "[[PLACEHOLDER: estimated delivery]]", es: "[[PROVISIONAL: entrega estimada]]" },
+    placeholder: true,
+  },
 ];
 
 export const incentives: Incentive[] = [
-  { slug: "act-60", title: { en: "What is Puerto Rico Act 60?", es: "¿Qué es la Ley 60 de Puerto Rico?" }, summary: { en: "Act 60, the Puerto Rico Incentives Code, consolidates the island's tax incentive programs, including those formerly under Acts 20 and 22, into a single framework.", es: "La Ley 60, el Código de Incentivos de Puerto Rico, consolida los programas de incentivos fiscales de la isla, incluidos los antiguos de las Leyes 20 y 22, en un solo marco." }, body: { en: ["Enacted in 2019, Act 60 aims to stimulate economic growth, generate job opportunities, and attract both businesses and individuals to Puerto Rico through a range of favorable tax structures.", "Incentives that apply to export services, manufacturing, creative industries and more are organized under one umbrella, making it easier for newcomers and existing businesses to take advantage of lower tax rates, capital gains exemptions and other financial benefits."], es: ["Promulgada en 2019, la Ley 60 busca estimular el crecimiento económico, generar empleo y atraer empresas y personas a Puerto Rico mediante estructuras fiscales favorables.", "Los incentivos para servicios de exportación, manufactura, industrias creativas y otros sectores se agrupan bajo un mismo marco, lo que facilita aprovechar tasas más bajas, exenciones de ganancias de capital y otros beneficios."] } },
-  { slug: "individuals", title: { en: "Individual investors", es: "Inversionistas individuales" }, summary: { en: "Bona fide residents who qualify may benefit from reduced rates on capital gains, dividends and certain passive income.", es: "Los residentes bona fide que califiquen pueden beneficiarse de tasas reducidas sobre ganancias de capital, dividendos y ciertos ingresos pasivos." }, body: { en: ["To qualify, individuals must establish bona fide residency in Puerto Rico: generally at least 183 days per year on the island, a closer connection to Puerto Rico than to any other jurisdiction, and no tax home elsewhere.", "Certain benefits require annual philanthropic contributions to local nonprofits and ongoing compliance filings."], es: ["Para calificar, la persona debe establecer residencia bona fide en Puerto Rico: en general, al menos 183 días al año en la isla, una conexión más estrecha con Puerto Rico que con cualquier otra jurisdicción y ningún domicilio fiscal en otro lugar.", "Ciertos beneficios exigen aportaciones filantrópicas anuales a organizaciones locales y el cumplimiento de obligaciones de reporte."] } },
-  { slug: "businesses", title: { en: "Export services and businesses", es: "Servicios de exportación y empresas" }, summary: { en: "Companies providing services to clients outside Puerto Rico, as well as manufacturing, tourism, creative and technology ventures, may qualify for reduced corporate rates.", es: "Empresas que prestan servicios a clientes fuera de Puerto Rico, así como negocios de manufactura, turismo, industrias creativas y tecnología, pueden calificar para tasas corporativas reducidas." }, body: { en: ["Businesses must be headquartered in Puerto Rico or maintain substantial operations on the island, including office space and local employees. Each program has specific requirements regarding investment, job creation or operational benchmarks."], es: ["Las empresas deben tener su sede en Puerto Rico o mantener operaciones sustanciales en la isla, incluidos oficinas y empleados locales. Cada programa tiene requisitos específicos de inversión, creación de empleo o métricas operativas."] } },
+  {
+    slug: "act-60",
+    title: { en: "What is Puerto Rico Act 60?", es: "¿Qué es la Ley 60 de Puerto Rico?" },
+    summary: {
+      en: "Act 60, the Puerto Rico Incentives Code, consolidates the island's tax incentive programs, including those formerly under Acts 20 and 22, into a single framework.",
+      es: "La Ley 60, el Código de Incentivos de Puerto Rico, consolida los programas de incentivos fiscales de la isla, incluidos los antiguos de las Leyes 20 y 22, en un solo marco.",
+    },
+    body: {
+      en: [
+        "Enacted in 2019, Act 60 aims to stimulate economic growth, generate job opportunities, and attract both businesses and individuals to Puerto Rico through a range of favorable tax structures.",
+        "Incentives that apply to export services, manufacturing, creative industries and more are organized under one umbrella, making it easier for newcomers and existing businesses to take advantage of lower tax rates, capital gains exemptions and other financial benefits.",
+      ],
+      es: [
+        "Promulgada en 2019, la Ley 60 busca estimular el crecimiento económico, generar empleo y atraer empresas y personas a Puerto Rico mediante estructuras fiscales favorables.",
+        "Los incentivos para servicios de exportación, manufactura, industrias creativas y otros sectores se agrupan bajo un mismo marco, lo que facilita aprovechar tasas más bajas, exenciones de ganancias de capital y otros beneficios.",
+      ],
+    },
+  },
+  {
+    slug: "individuals",
+    title: { en: "Individual investors", es: "Inversionistas individuales" },
+    summary: {
+      en: "Bona fide residents who qualify may benefit from reduced rates on capital gains, dividends and certain passive income.",
+      es: "Los residentes bona fide que califiquen pueden beneficiarse de tasas reducidas sobre ganancias de capital, dividendos y ciertos ingresos pasivos.",
+    },
+    body: {
+      en: [
+        "To qualify, individuals must establish bona fide residency in Puerto Rico: generally at least 183 days per year on the island, a closer connection to Puerto Rico than to any other jurisdiction, and no tax home elsewhere.",
+        "Certain benefits require annual philanthropic contributions to local nonprofits and ongoing compliance filings.",
+      ],
+      es: [
+        "Para calificar, la persona debe establecer residencia bona fide en Puerto Rico: en general, al menos 183 días al año en la isla, una conexión más estrecha con Puerto Rico que con cualquier otra jurisdicción y ningún domicilio fiscal en otro lugar.",
+        "Ciertos beneficios exigen aportaciones filantrópicas anuales a organizaciones locales y el cumplimiento de obligaciones de reporte.",
+      ],
+    },
+  },
+  {
+    slug: "businesses",
+    title: { en: "Export services and businesses", es: "Servicios de exportación y empresas" },
+    summary: {
+      en: "Companies providing services to clients outside Puerto Rico, as well as manufacturing, tourism, creative and technology ventures, may qualify for reduced corporate rates.",
+      es: "Empresas que prestan servicios a clientes fuera de Puerto Rico, así como negocios de manufactura, turismo, industrias creativas y tecnología, pueden calificar para tasas corporativas reducidas.",
+    },
+    body: {
+      en: [
+        "Businesses must be headquartered in Puerto Rico or maintain substantial operations on the island, including office space and local employees. Each program has specific requirements regarding investment, job creation or operational benchmarks.",
+      ],
+      es: [
+        "Las empresas deben tener su sede en Puerto Rico o mantener operaciones sustanciales en la isla, incluidos oficinas y empleados locales. Cada programa tiene requisitos específicos de inversión, creación de empleo o métricas operativas.",
+      ],
+    },
+  },
 ];

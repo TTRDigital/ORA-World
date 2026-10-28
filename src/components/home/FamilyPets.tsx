@@ -21,10 +21,16 @@ export async function FamilyPets({ family, pets }: { family: Block; pets: Block 
       <div className="container-x grid grid-cols-12 gap-x-6 gap-y-20">
         {blocks.map(({ b, href, offset }, i) => (
           <article key={i} className={`col-span-12 lg:col-span-6 ${offset}`}>
-            <Picture image={b.image} sizes="(min-width: 1024px) 50vw, 100vw" aspect={i === 0 ? "4/3" : "4/5"} className={i === 1 ? "lg:mr-16" : "lg:ml-8"} showCaption={false} />
+            <Picture
+              image={b.image}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              aspect={i === 0 ? "4/3" : "4/5"}
+              className={i === 1 ? "lg:mr-16" : "lg:ml-8"}
+              showCaption={false}
+            />
             <div className={`mt-8 ${i === 0 ? "lg:ml-24" : "lg:mr-16"}`}>
               <Eyebrow>{b.eyebrow}</Eyebrow>
-              <h2 className="display-m mt-5" data-reveal>
+              <h2 className="mt-5 display-m" data-reveal>
                 <Accent text={b.title} />
               </h2>
               {b.body.map((p, j) => (
@@ -34,6 +40,7 @@ export async function FamilyPets({ family, pets }: { family: Block; pets: Block 
               ))}
               <Button as={Link} href={href} variant="text" className="mt-6">
                 {t("learnMore")}
+                <span className="sr-only"> · {b.eyebrow}</span>
               </Button>
             </div>
           </article>

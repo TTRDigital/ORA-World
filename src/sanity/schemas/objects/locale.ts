@@ -20,7 +20,9 @@ export const localeText = defineType({
   name: "localeText",
   title: "Localized paragraph",
   type: "object",
-  fields: langs.map((l) => defineField({ name: l.id, title: l.title, type: "text", rows: 4, validation: (r) => r.required() })),
+  fields: langs.map((l) =>
+    defineField({ name: l.id, title: l.title, type: "text", rows: 4, validation: (r) => r.required() }),
+  ),
 });
 
 /** Paragraph arrays keep the site's typographic rhythm without a full block editor. */
@@ -29,7 +31,13 @@ export const localeParagraphs = defineType({
   title: "Localized paragraphs",
   type: "object",
   fields: langs.map((l) =>
-    defineField({ name: l.id, title: l.title, type: "array", of: [{ type: "text", rows: 4 }], validation: (r) => r.required().min(1) }),
+    defineField({
+      name: l.id,
+      title: l.title,
+      type: "array",
+      of: [{ type: "text", rows: 4 }],
+      validation: (r) => r.required().min(1),
+    }),
   ),
 });
 

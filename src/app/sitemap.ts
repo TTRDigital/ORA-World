@@ -5,7 +5,25 @@ import { collections, floorPlans } from "@/content/seed/collections";
 import { press } from "@/content/seed/people-places";
 import { pages, projects } from "@/content/seed/projects";
 
-const STATIC = ["", "/residences", "/floor-plans", "/amenities", "/lifestyle", "/tesoro-del-mar", "/location", "/resilience", "/incentives", "/gallery", "/virtual-tour", "/the-team", "/investment", "/press", "/faq", "/brokers", "/contact"];
+const STATIC = [
+  "",
+  "/residences",
+  "/floor-plans",
+  "/amenities",
+  "/lifestyle",
+  "/tesoro-del-mar",
+  "/location",
+  "/resilience",
+  "/incentives",
+  "/gallery",
+  "/virtual-tour",
+  "/the-team",
+  "/investment",
+  "/press",
+  "/faq",
+  "/brokers",
+  "/contact",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [

@@ -14,13 +14,15 @@ export default function proxy(request: NextRequest) {
   const direction = request.nextUrl.searchParams.get("direction");
   // Staging: serve the chosen homepage direction (B or C) for /en or /es via an internal rewrite.
   const homeMatch = request.nextUrl.pathname.match(/^\/(en|es)\/?$/);
-  const active = (direction && DIRECTIONS.has(direction) ? direction : request.cookies.get("ora_direction")?.value) || "a";
+  const active =
+    (direction && DIRECTIONS.has(direction) ? direction : request.cookies.get("ora_direction")?.value) || "a";
   if (!isProd && homeMatch && (active === "b" || active === "c")) {
     const url = request.nextUrl.clone();
     url.pathname = `/${homeMatch[1]}/preview/${active}`;
     url.searchParams.delete("direction");
     const res = NextResponse.rewrite(url);
-    if (direction) res.cookies.set("ora_direction", direction, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
+    if (direction)
+      res.cookies.set("ora_direction", direction, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
     return res;
   }
   if (!isProd && homeMatch && direction === "a") {

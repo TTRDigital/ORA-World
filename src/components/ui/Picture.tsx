@@ -21,7 +21,18 @@ type Props = {
  * next/image with the house rules: blur placeholder, "Artist's conceptual rendering" label,
  * placeholder badge for images awaiting client photography, optional reveal and parallax.
  */
-export function Picture({ image, sizes, priority, fill = true, className, imgClassName, reveal = true, parallax, showCaption = true, aspect }: Props) {
+export function Picture({
+  image,
+  sizes,
+  priority,
+  fill = true,
+  className,
+  imgClassName,
+  reveal = true,
+  parallax,
+  showCaption = true,
+  aspect,
+}: Props) {
   const t = useTranslations("common");
   const label = image.rendering ? t("rendering") : image.placeholder ? t("placeholderImage") : image.caption;
   return (

@@ -26,7 +26,11 @@ for (const g of groups) {
   }
   await mkdir(g.out, { recursive: true });
   for (const f of files) {
-    const key = `${g.prefix}/${path.parse(f).name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+    const key = `${g.prefix}/${path
+      .parse(f)
+      .name.toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")}`;
     const outName = key.split("/")[1] + ".jpg";
     const outPath = path.join(g.out, outName);
     const src = sharp(path.join(g.dir, f)).rotate();
@@ -39,9 +43,20 @@ for (const g of groups) {
       const [a, b] = await Promise.all([stat(outPath), stat(path.join(g.dir, f))]);
       needs = a.mtimeMs < b.mtimeMs;
     } catch {}
-    if (needs) await src.clone().resize({ width }).flatten({ background: "#e3d9c8" }).jpeg({ quality: 82, mozjpeg: true, progressive: true }).toFile(outPath);
+    if (needs)
+      await src
+        .clone()
+        .resize({ width })
+        .flatten({ background: "#e3d9c8" })
+        .jpeg({ quality: 82, mozjpeg: true, progressive: true })
+        .toFile(outPath);
     const blur = await src.clone().resize({ width: 16 }).blur(1).jpeg({ quality: 50 }).toBuffer();
-    manifest[key] = { src: `/images/${g.prefix}/${outName}`, width, height, blurDataURL: `data:image/jpeg;base64,${blur.toString("base64")}` };
+    manifest[key] = {
+      src: `/images/${g.prefix}/${outName}`,
+      width,
+      height,
+      blurDataURL: `data:image/jpeg;base64,${blur.toString("base64")}`,
+    };
     console.log(key, width, height);
   }
 }

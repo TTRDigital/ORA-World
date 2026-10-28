@@ -28,10 +28,12 @@ export function Header({ site }: Props) {
 
   // Does this page start with a dark, full-bleed hero? Pages mark it with data-hero on the section.
   useEffect(() => {
-    setMenuOpen(false);
-    const hero = document.querySelector("[data-hero]");
-    setOverHero(!!hero);
-    setScrolled(window.scrollY > 40);
+    const id = window.requestAnimationFrame(() => {
+      setMenuOpen(false);
+      setOverHero(!!document.querySelector("[data-hero]"));
+      setScrolled(window.scrollY > 40);
+    });
+    return () => window.cancelAnimationFrame(id);
   }, [pathname]);
 
   useEffect(() => {
@@ -75,25 +77,21 @@ export function Header({ site }: Props) {
 
           <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
             {headerNav.map((item) => (
-              <Link key={item.key} href={item.href} className="eyebrow link-underline py-2">
+              <Link key={item.key} href={item.href} className="link-underline py-2 eyebrow">
                 {t(item.key)}
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-4 md:gap-6">
-            <a
-              href={site.portalUrl}
-              className="eyebrow link-underline hidden py-2 md:inline-block"
-              rel="noopener"
-            >
+            <a href={site.portalUrl} className="hidden link-underline py-2 eyebrow md:inline-block" rel="noopener">
               {t("login")}
             </a>
             <LanguageToggle className="hidden md:inline-flex" />
             <Link
               href="/contact"
               className={cn(
-                "eyebrow hidden border px-5 py-3 transition-colors duration-500 md:inline-block",
+                "hidden border px-5 py-3 eyebrow transition-colors duration-500 md:inline-block",
                 light
                   ? "border-white/60 hover:bg-white hover:text-basalt"
                   : "border-accent text-accent-ink hover:bg-accent hover:text-white",
@@ -106,7 +104,7 @@ export function Header({ site }: Props) {
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
               aria-controls="overlay-menu"
-              className="eyebrow group inline-flex cursor-pointer items-center gap-3 py-2"
+              className="group inline-flex cursor-pointer items-center gap-3 py-2 eyebrow"
             >
               <span className="hidden sm:inline">{menuOpen ? t("close") : t("menu")}</span>
               <span aria-hidden className="relative block h-3 w-7">

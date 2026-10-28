@@ -8,7 +8,13 @@ import { Link } from "@/i18n/navigation";
 import { useShortlist } from "@/lib/shortlist";
 import { Button } from "@/components/ui/Button";
 
-export function CompareTable({ plans, collections }: { plans: Localized<FloorPlan>[]; collections: Record<string, string> }) {
+export function CompareTable({
+  plans,
+  collections,
+}: {
+  plans: Localized<FloorPlan>[];
+  collections: Record<string, string>;
+}) {
   const t = useTranslations("pages.floorPlans");
   const c = useTranslations("common");
   const { items, remove } = useShortlist();
@@ -17,7 +23,9 @@ export function CompareTable({ plans, collections }: { plans: Localized<FloorPla
     return (
       <div className="border border-rule p-10 text-center">
         <p className="text-fg-muted">{c("shortlistEmpty")}</p>
-        <Button as={Link} href="/floor-plans" className="mt-6">{t("addMore")}</Button>
+        <Button as={Link} href="/floor-plans" className="mt-6">
+          {t("addMore")}
+        </Button>
       </div>
     );
   }
@@ -38,13 +46,25 @@ export function CompareTable({ plans, collections }: { plans: Localized<FloorPla
       <table className="w-full min-w-[40rem] border-collapse">
         <thead>
           <tr>
-            <th className="w-40 py-4 text-left align-bottom"><span className="eyebrow text-fg-muted">{c("compare")}</span></th>
+            <th className="w-40 py-4 text-left align-bottom">
+              <span className="eyebrow text-fg-muted">{c("compare")}</span>
+            </th>
             {chosen.map((p) => (
               <th key={p.slug} className="py-4 pl-6 text-left align-bottom">
-                <div className="relative aspect-[4/3] w-full overflow-hidden border border-rule bg-bone"><Image src={p.image.src} alt={p.image.alt} fill sizes="30vw" className="object-cover" /></div>
-                <Link href={`/floor-plans/${p.slug}`} className="display-s mt-4 block hover:text-accent-ink">{p.name}</Link>
-                <p className="eyebrow mt-1 text-fg-muted">{collections[p.collection]}</p>
-                <button type="button" onClick={() => remove(p.slug)} className="eyebrow mt-2 cursor-pointer text-fg-muted hover:text-fg">{c("removeFromShortlist")}</button>
+                <div className="relative aspect-[4/3] w-full overflow-hidden border border-rule bg-bone">
+                  <Image src={p.image.src} alt={p.image.alt} fill sizes="30vw" className="object-cover" />
+                </div>
+                <Link href={`/floor-plans/${p.slug}`} className="mt-4 block display-s hover:text-accent-ink">
+                  {p.name}
+                </Link>
+                <p className="mt-1 eyebrow text-fg-muted">{collections[p.collection]}</p>
+                <button
+                  type="button"
+                  onClick={() => remove(p.slug)}
+                  className="mt-2 cursor-pointer eyebrow text-fg-muted hover:text-fg"
+                >
+                  {c("removeFromShortlist")}
+                </button>
               </th>
             ))}
           </tr>
@@ -52,14 +72,22 @@ export function CompareTable({ plans, collections }: { plans: Localized<FloorPla
         <tbody>
           {rows.map(([label, fn]) => (
             <tr key={label} className="border-t border-rule">
-              <th scope="row" className="eyebrow py-4 text-left text-fg-muted">{label}</th>
-              {chosen.map((p) => (<td key={p.slug} className="tnum py-4 pl-6">{fn(p)}</td>))}
+              <th scope="row" className="py-4 text-left eyebrow text-fg-muted">
+                {label}
+              </th>
+              {chosen.map((p) => (
+                <td key={p.slug} className="py-4 pl-6 tnum">
+                  {fn(p)}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>
       </table>
       {chosen.length < 3 && (
-        <Link href="/floor-plans" className="eyebrow link-underline mt-8 inline-block">{t("addMore")} →</Link>
+        <Link href="/floor-plans" className="mt-8 inline-block link-underline eyebrow">
+          {t("addMore")} →
+        </Link>
       )}
     </div>
   );

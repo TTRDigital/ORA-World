@@ -29,16 +29,6 @@ export function Consent() {
   const gtm = process.env.NEXT_PUBLIC_GTM_ID;
   const ga = process.env.NEXT_PUBLIC_GA4_ID;
 
-  useEffect(() => {
-    gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied", functionality_storage: "granted", security_storage: "granted", wait_for_update: 500 });
-    let stored: Choice | null = null;
-    try {
-      stored = localStorage.getItem(KEY) as Choice | null;
-    } catch {}
-    setChoice(stored);
-    if (stored === "granted") grant();
-  }, []);
-
   function loadTags() {
     if (!gtm && !ga) return;
     if (document.getElementById("ora-tags")) return;
@@ -60,10 +50,37 @@ export function Consent() {
   }
 
   function grant() {
-    gtag("consent", "update", { ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted" });
+    gtag("consent", "update", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted",
+    });
     window.__oraConsent = "granted";
     loadTags();
   }
+
+  useEffect(() => {
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      functionality_storage: "granted",
+      security_storage: "granted",
+      wait_for_update: 500,
+    });
+    const id = window.requestAnimationFrame(() => {
+      let stored: Choice | null = null;
+      try {
+        stored = localStorage.getItem(KEY) as Choice | null;
+      } catch {}
+      setChoice(stored);
+      if (stored === "granted") grant();
+    });
+    return () => window.cancelAnimationFrame(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- grant depends only on build-time env ids
+  }, []);
 
   function decide(c: Choice) {
     try {
@@ -71,22 +88,46 @@ export function Consent() {
     } catch {}
     setChoice(c);
     if (c === "granted") grant();
-    else gtag("consent", "update", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied" });
+    else
+      gtag("consent", "update", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
   }
 
   if (choice !== null) return null;
 
   return (
-    <div role="dialog" aria-label={t("title")} aria-live="polite" className={cn("fixed inset-x-4 bottom-4 z-40 border border-rule bg-bg p-5 text-fg md:inset-x-auto md:left-6 md:bottom-6 md:max-w-sm")}>
+    <div
+      role="region"
+      aria-label={t("title")}
+      aria-live="polite"
+      className={cn(
+        "fixed inset-x-4 bottom-4 z-40 border border-rule bg-bg p-5 text-fg md:inset-x-auto md:bottom-6 md:left-6 md:max-w-sm",
+      )}
+    >
       <p className="eyebrow text-accent-ink">{t("title")}</p>
-      <p className="small mt-3 text-fg-muted">
-        {t("text")} <Link href="/privacy" className="underline">Privacy</Link>
+      <p className="mt-3 small text-fg-muted">
+        {t("text")}{" "}
+        <Link href="/privacy" className="underline">
+          Privacy
+        </Link>
       </p>
       <div className="mt-5 flex flex-wrap gap-3">
-        <button type="button" onClick={() => decide("granted")} className="eyebrow cursor-pointer border border-accent px-4 py-3 text-accent-ink hover:bg-accent hover:text-white">
+        <button
+          type="button"
+          onClick={() => decide("granted")}
+          className="cursor-pointer border border-accent px-4 py-3 eyebrow text-accent-ink hover:bg-accent hover:text-white"
+        >
           {t("accept")}
         </button>
-        <button type="button" onClick={() => decide("denied")} className="eyebrow cursor-pointer px-4 py-3 text-fg-muted hover:text-fg">
+        <button
+          type="button"
+          onClick={() => decide("denied")}
+          className="cursor-pointer px-4 py-3 eyebrow text-fg-muted hover:text-fg"
+        >
           {t("reject")}
         </button>
       </div>

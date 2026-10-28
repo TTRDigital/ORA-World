@@ -22,7 +22,10 @@ export interface ImageRef {
   blurDataURL?: string;
 }
 
-export interface Social { label: string; href: string }
+export interface Social {
+  label: string;
+  href: string;
+}
 
 export interface SiteSettings {
   phone: string | null;

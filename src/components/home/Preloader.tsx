@@ -24,10 +24,11 @@ export function Preloader() {
     try {
       window.sessionStorage.setItem(KEY, "1");
     } catch {}
-    setState("drawing");
+    const t0 = window.setTimeout(() => setState("drawing"), 0);
     const t1 = window.setTimeout(() => setState("leaving"), 950);
     const t2 = window.setTimeout(() => setState("hidden"), 1500);
     return () => {
+      window.clearTimeout(t0);
       window.clearTimeout(t1);
       window.clearTimeout(t2);
     };
@@ -43,7 +44,10 @@ export function Preloader() {
     >
       <div className="relative w-[56vw] max-w-[420px] text-brass-light">
         <Wordmark className="w-full opacity-20" />
-        <div className="absolute inset-0 overflow-hidden motion-safe:animate-[wmdraw_900ms_var(--ease-out-expo)_forwards]" style={{ clipPath: "inset(0 100% 0 0)" }}>
+        <div
+          className="absolute inset-0 overflow-hidden motion-safe:animate-[wmdraw_900ms_var(--ease-out-expo)_forwards]"
+          style={{ clipPath: "inset(0 100% 0 0)" }}
+        >
           <Wordmark className="w-full" />
         </div>
         <style>{`@keyframes wmdraw{to{clip-path:inset(0 0% 0 0)}}`}</style>

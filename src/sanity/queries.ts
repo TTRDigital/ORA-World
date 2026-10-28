@@ -7,11 +7,31 @@ export const figureProjection = groq`{
   "blurDataURL": asset->metadata.lqip, alt, caption, rendering, placeholder, credit
 }`;
 
-export type SanityFigure = { src: string; width: number; height: number; blurDataURL?: string; alt: L; caption?: L; rendering?: boolean; placeholder?: boolean; credit?: string } | null;
+export type SanityFigure = {
+  src: string;
+  width: number;
+  height: number;
+  blurDataURL?: string;
+  alt: L;
+  caption?: L;
+  rendering?: boolean;
+  placeholder?: boolean;
+  credit?: string;
+} | null;
 
 export function mapFigure(f: SanityFigure): ImageRef | undefined {
   if (!f || !f.src) return undefined;
-  return { src: f.src, width: f.width, height: f.height, blurDataURL: f.blurDataURL, alt: f.alt, caption: f.caption, rendering: f.rendering, placeholder: f.placeholder, credit: f.credit };
+  return {
+    src: f.src,
+    width: f.width,
+    height: f.height,
+    blurDataURL: f.blurDataURL,
+    alt: f.alt,
+    caption: f.caption,
+    rendering: f.rendering,
+    placeholder: f.placeholder,
+    credit: f.credit,
+  };
 }
 
 /* ---------- site settings ---------- */
@@ -23,14 +43,22 @@ export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
   "menuImages": menuImages[]{ key, "image": image ${figureProjection} }
 }`;
 
-export type SanitySiteSettings = Partial<Omit<SiteSettings, "menuImages" | "brochurePages">> & { menuImages?: { key: string; image: SanityFigure }[] | null; brochurePages?: SanityFigure[] | null };
+export type SanitySiteSettings = Partial<Omit<SiteSettings, "menuImages" | "brochurePages">> & {
+  menuImages?: { key: string; image: SanityFigure }[] | null;
+  brochurePages?: SanityFigure[] | null;
+};
 
 export function mapSiteSettings(s: SanitySiteSettings): Partial<SiteSettings> {
   const out: Partial<SiteSettings> = {};
-  for (const [k, v] of Object.entries(s)) if (v !== null && v !== undefined && k !== "menuImages" && k !== "brochurePages") (out as Record<string, unknown>)[k] = v;
-  if (s.brochurePages?.length) out.brochurePages = s.brochurePages.map(mapFigure).filter((f): f is NonNullable<typeof f> => !!f);
+  for (const [k, v] of Object.entries(s))
+    if (v !== null && v !== undefined && k !== "menuImages" && k !== "brochurePages")
+      (out as Record<string, unknown>)[k] = v;
+  if (s.brochurePages?.length)
+    out.brochurePages = s.brochurePages.map(mapFigure).filter((f): f is NonNullable<typeof f> => !!f);
   if (s.menuImages?.length) {
-    out.menuImages = Object.fromEntries(s.menuImages.flatMap((m) => (mapFigure(m.image) ? [[m.key, mapFigure(m.image)!]] : [])));
+    out.menuImages = Object.fromEntries(
+      s.menuImages.flatMap((m) => (mapFigure(m.image) ? [[m.key, mapFigure(m.image)!]] : [])),
+    );
   }
   return out;
 }

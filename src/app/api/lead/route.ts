@@ -19,7 +19,10 @@ export async function POST(req: Request) {
   const body = await req.json().catch(() => null);
   const parsed = leadSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json({ ok: false, error: "invalid", issues: parsed.error.issues.map((i) => i.path.join(".")) }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "invalid", issues: parsed.error.issues.map((i) => i.path.join(".")) },
+      { status: 400 },
+    );
   }
   const data = parsed.data;
   if (data.company) return NextResponse.json({ ok: true }); // honeypot: pretend success
@@ -77,7 +80,9 @@ export async function POST(req: Request) {
       .catch((e) => console.error("[lead] sanity save failed", e));
   }
 
-  await sendConfirmationEmail({ to: data.email, name: data.name, locale: data.locale }).catch((e) => console.error("[lead] email failed", e));
+  await sendConfirmationEmail({ to: data.email, name: data.name, locale: data.locale }).catch((e) =>
+    console.error("[lead] email failed", e),
+  );
 
   return NextResponse.json({ ok: true, crmStatus });
 }

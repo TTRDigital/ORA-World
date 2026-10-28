@@ -10,7 +10,10 @@ const [outDir, path, which = "both"] = process.argv.slice(2);
 const base = process.env.BASE_URL || "http://localhost:3000";
 await mkdir(outDir, { recursive: true });
 const browser = await chromium.launch();
-const vps = [["desktop", { width: 1440, height: 900 }], ["mobile", { width: 390, height: 844 }]].filter(([n]) => which === "both" || which === n);
+const vps = [
+  ["desktop", { width: 1440, height: 900 }],
+  ["mobile", { width: 390, height: 844 }],
+].filter(([n]) => which === "both" || which === n);
 for (const [name, vp] of vps) {
   const ctx = await browser.newContext({ viewport: vp, isMobile: name === "mobile", hasTouch: name === "mobile" });
   const page = await ctx.newPage();
@@ -18,7 +21,9 @@ for (const [name, vp] of vps) {
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(base + path, { waitUntil: "load" });
   await page.waitForTimeout(1500);
-  const count = await page.evaluate(() => document.querySelectorAll("main > section, main > div > section, footer").length);
+  const count = await page.evaluate(
+    () => document.querySelectorAll("main > section, main > div > section, footer").length,
+  );
   for (let i = 0; i < count; i++) {
     const top = await page.evaluate((i) => {
       const els = document.querySelectorAll("main > section, main > div > section, footer");

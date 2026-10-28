@@ -1,6 +1,7 @@
 import { defineField, defineType } from "sanity";
 
-const slug = (source: string) => defineField({ name: "slug", title: "Slug", type: "slug", options: { source }, validation: (r) => r.required() });
+const slug = (source: string) =>
+  defineField({ name: "slug", title: "Slug", type: "slug", options: { source }, validation: (r) => r.required() });
 
 export const project = defineType({
   name: "project",
@@ -30,12 +31,37 @@ export const collection = defineType({
     defineField({ name: "name", title: "Name", type: "localeString", validation: (r) => r.required() }),
     slug("name.en"),
     defineField({ name: "order", title: "Order", type: "number", initialValue: 0 }),
-    defineField({ name: "placeholder", title: "Placeholder (details unconfirmed)", type: "boolean", initialValue: true }),
+    defineField({
+      name: "placeholder",
+      title: "Placeholder (details unconfirmed)",
+      type: "boolean",
+      initialValue: true,
+    }),
     defineField({ name: "tagline", title: "Tagline", type: "localeString", validation: (r) => r.required() }),
-    defineField({ name: "description", title: "Description", type: "localeParagraphs", validation: (r) => r.required() }),
-    defineField({ name: "bedrooms", title: "Bedrooms (display)", type: "string", description: 'e.g. "2–3". Leave empty if unconfirmed.' }),
-    defineField({ name: "sizeRange", title: "Interior size range (display)", type: "string", description: 'e.g. "1,850–2,400 sq ft"' }),
-    defineField({ name: "fromPrice", title: "From price (USD)", type: "number", description: "Leave empty to show “Pricing on request”." }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "localeParagraphs",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "bedrooms",
+      title: "Bedrooms (display)",
+      type: "string",
+      description: 'e.g. "2–3". Leave empty if unconfirmed.',
+    }),
+    defineField({
+      name: "sizeRange",
+      title: "Interior size range (display)",
+      type: "string",
+      description: 'e.g. "1,850–2,400 sq ft"',
+    }),
+    defineField({
+      name: "fromPrice",
+      title: "From price (USD)",
+      type: "number",
+      description: "Leave empty to show “Pricing on request”.",
+    }),
     defineField({ name: "image", title: "Image", type: "figure", validation: (r) => r.required() }),
     defineField({ name: "hoverImage", title: "Hover image", type: "figure" }),
     defineField({ name: "features", title: "Features", type: "array", of: [{ type: "localeString" }] }),
@@ -43,7 +69,16 @@ export const collection = defineType({
       name: "finishes",
       title: "Finishes & materials",
       type: "array",
-      of: [{ type: "object", fields: [defineField({ name: "group", title: "Group", type: "localeString" }), defineField({ name: "items", title: "Items", type: "array", of: [{ type: "localeString" }] })], preview: { select: { title: "group.en" } } }],
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "group", title: "Group", type: "localeString" }),
+            defineField({ name: "items", title: "Items", type: "array", of: [{ type: "localeString" }] }),
+          ],
+          preview: { select: { title: "group.en" } },
+        },
+      ],
     }),
   ],
   orderings: [{ title: "Order", name: "order", by: [{ field: "order", direction: "asc" }] }],
@@ -58,16 +93,39 @@ export const floorPlan = defineType({
     defineField({ name: "name", title: "Name", type: "localeString", validation: (r) => r.required() }),
     slug("name.en"),
     defineField({ name: "placeholder", title: "Placeholder (unconfirmed plan)", type: "boolean", initialValue: true }),
-    defineField({ name: "collection", title: "Collection", type: "reference", to: [{ type: "collection" }], validation: (r) => r.required() }),
+    defineField({
+      name: "collection",
+      title: "Collection",
+      type: "reference",
+      to: [{ type: "collection" }],
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "bedrooms", title: "Bedrooms", type: "number", validation: (r) => r.required().min(0).max(8) }),
-    defineField({ name: "bathrooms", title: "Bathrooms", type: "number", validation: (r) => r.required().min(1).max(10) }),
+    defineField({
+      name: "bathrooms",
+      title: "Bathrooms",
+      type: "number",
+      validation: (r) => r.required().min(1).max(10),
+    }),
     defineField({ name: "interiorSqFt", title: "Interior sq ft", type: "number" }),
     defineField({ name: "exteriorSqFt", title: "Exterior sq ft", type: "number" }),
-    defineField({ name: "orientation", title: "Orientation", type: "string", options: { list: ["N", "NE", "E", "SE", "S", "SW", "W", "NW"] }, validation: (r) => r.required() }),
+    defineField({
+      name: "orientation",
+      title: "Orientation",
+      type: "string",
+      options: { list: ["N", "NE", "E", "SE", "S", "SW", "W", "NW"] },
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "view", title: "View", type: "localeString" }),
     defineField({ name: "tower", title: "Building / tower", type: "string", validation: (r) => r.required() }),
     defineField({ name: "floors", title: "Floors", type: "string", description: 'e.g. "4–12"' }),
-    defineField({ name: "status", title: "Status", type: "string", options: { list: ["available", "reserved", "sold"], layout: "radio" }, initialValue: "available" }),
+    defineField({
+      name: "status",
+      title: "Status",
+      type: "string",
+      options: { list: ["available", "reserved", "sold"], layout: "radio" },
+      initialValue: "available",
+    }),
     defineField({ name: "fromPrice", title: "From price (USD)", type: "number" }),
     defineField({ name: "image", title: "Plan image", type: "figure", validation: (r) => r.required() }),
     defineField({ name: "keyplan", title: "Keyplan", type: "figure" }),
@@ -75,7 +133,9 @@ export const floorPlan = defineType({
       name: "keyplanPosition",
       title: "Unit position on keyplan (%)",
       type: "object",
-      fields: ["x", "y", "w", "h"].map((n) => defineField({ name: n, title: n.toUpperCase(), type: "number", validation: (r) => r.min(0).max(100) })),
+      fields: ["x", "y", "w", "h"].map((n) =>
+        defineField({ name: n, title: n.toUpperCase(), type: "number", validation: (r) => r.min(0).max(100) }),
+      ),
     }),
     defineField({ name: "pdf", title: "PDF", type: "file", options: { accept: "application/pdf" } }),
     defineField({ name: "highlights", title: "Highlights", type: "array", of: [{ type: "localeString" }] }),
@@ -90,7 +150,21 @@ export const amenity = defineType({
   fields: [
     defineField({ name: "name", title: "Name", type: "localeString", validation: (r) => r.required() }),
     slug("name.en"),
-    defineField({ name: "category", title: "Category", type: "string", options: { list: [{ title: "Wellness", value: "wellness" }, { title: "Family", value: "family" }, { title: "Pets", value: "pets" }, { title: "Resort", value: "resort" }, { title: "Eco", value: "eco" }] }, validation: (r) => r.required() }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: {
+        list: [
+          { title: "Wellness", value: "wellness" },
+          { title: "Family", value: "family" },
+          { title: "Pets", value: "pets" },
+          { title: "Resort", value: "resort" },
+          { title: "Eco", value: "eco" },
+        ],
+      },
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "description", title: "Description", type: "localeText", validation: (r) => r.required() }),
     defineField({ name: "image", title: "Image", type: "figure", validation: (r) => r.required() }),
     defineField({ name: "featured", title: "Show on homepage mosaic", type: "boolean", initialValue: false }),
@@ -105,7 +179,13 @@ export const galleryImage = defineType({
   type: "document",
   fields: [
     defineField({ name: "image", title: "Image", type: "figure", validation: (r) => r.required() }),
-    defineField({ name: "category", title: "Category", type: "string", options: { list: ["exteriors", "interiors", "amenities", "lifestyle", "construction"] }, validation: (r) => r.required() }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: { list: ["exteriors", "interiors", "amenities", "lifestyle", "construction"] },
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "caption", title: "Caption", type: "localeString", validation: (r) => r.required() }),
     defineField({ name: "order", title: "Order", type: "number", initialValue: 0 }),
   ],
@@ -121,7 +201,12 @@ export const teamMember = defineType({
     slug("name"),
     defineField({ name: "placeholder", title: "Placeholder (unconfirmed)", type: "boolean", initialValue: true }),
     defineField({ name: "role", title: "Role", type: "localeString", validation: (r) => r.required() }),
-    defineField({ name: "discipline", title: "Discipline", type: "localeString", description: "Developer · Architecture · Interiors · Landscape · Partner" }),
+    defineField({
+      name: "discipline",
+      title: "Discipline",
+      type: "localeString",
+      description: "Developer · Architecture · Interiors · Landscape · Partner",
+    }),
     defineField({ name: "bio", title: "Bio", type: "localeParagraphs" }),
     defineField({ name: "quote", title: "Pull quote", type: "localeText" }),
     defineField({ name: "portrait", title: "Portrait", type: "figure", validation: (r) => r.required() }),
@@ -138,7 +223,13 @@ export const pointOfInterest = defineType({
   fields: [
     defineField({ name: "name", title: "Name", type: "localeString", validation: (r) => r.required() }),
     slug("name.en"),
-    defineField({ name: "category", title: "Category", type: "string", options: { list: ["beach", "golf", "school", "healthcare", "airport", "dining", "culture", "nature"] }, validation: (r) => r.required() }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: { list: ["beach", "golf", "school", "healthcare", "airport", "dining", "culture", "nature"] },
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "lat", title: "Latitude", type: "number", validation: (r) => r.required() }),
     defineField({ name: "lng", title: "Longitude", type: "number", validation: (r) => r.required() }),
     defineField({ name: "driveMinutes", title: "Drive time (min)", type: "number" }),
@@ -261,7 +352,12 @@ export const redirect = defineType({
   title: "Redirect",
   type: "document",
   fields: [
-    defineField({ name: "from", title: "From path", type: "string", validation: (r) => r.required().regex(/^\//, { name: "path" }) }),
+    defineField({
+      name: "from",
+      title: "From path",
+      type: "string",
+      validation: (r) => r.required().regex(/^\//, { name: "path" }),
+    }),
     defineField({ name: "to", title: "To path or URL", type: "string", validation: (r) => r.required() }),
     defineField({ name: "permanent", title: "Permanent (308)", type: "boolean", initialValue: true }),
   ],

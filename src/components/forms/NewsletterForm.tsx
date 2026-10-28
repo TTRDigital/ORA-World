@@ -30,10 +30,19 @@ export function NewsletterForm() {
     }
   }
 
-  if (state === "done") return <p className="small mt-5 text-dark-accent" role="status">{t("subscribed")}</p>;
+  if (state === "done")
+    return (
+      <p className="mt-5 small text-dark-accent" role="status">
+        {t("subscribed")}
+      </p>
+    );
 
   return (
-    <form onSubmit={onSubmit} className="mt-5 flex border-b border-dark-rule focus-within:border-dark-accent" noValidate>
+    <form
+      onSubmit={onSubmit}
+      className="mt-5 flex border-b border-dark-rule focus-within:border-dark-accent"
+      noValidate
+    >
       <label className="sr-only" htmlFor="newsletter-email">
         {t("newsletterPlaceholder")}
       </label>
@@ -44,13 +53,21 @@ export function NewsletterForm() {
         required
         autoComplete="email"
         placeholder={t("newsletterPlaceholder")}
-        className="small min-w-0 flex-1 bg-transparent py-3 text-dark-fg placeholder:text-dark-fg/45 focus:outline-none"
+        className="min-w-0 flex-1 bg-transparent py-3 small text-dark-fg placeholder:text-dark-fg/45 focus:outline-none"
       />
       <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
-      <button type="submit" disabled={state === "sending"} className="eyebrow cursor-pointer py-3 pl-4 text-dark-accent disabled:opacity-50">
+      <button
+        type="submit"
+        disabled={state === "sending"}
+        className="cursor-pointer py-3 pl-4 eyebrow text-dark-accent disabled:opacity-50"
+      >
         {state === "sending" ? c("loading") : t("subscribe")}
       </button>
-      {state === "error" && <p className="small sr-only" role="alert">{c("error")}</p>}
+      {state === "error" && (
+        <p className="sr-only small" role="alert">
+          {c("error")}
+        </p>
+      )}
     </form>
   );
 }

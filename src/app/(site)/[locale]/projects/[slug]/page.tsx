@@ -7,14 +7,23 @@ import { ProjectPage } from "@/components/projects/ProjectPage";
 import { projects as seed } from "@/content/seed/projects";
 
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) => seed.filter((p) => p.slug !== "tesoro-del-mar").map((p) => ({ locale, slug: p.slug })));
+  return routing.locales.flatMap((locale) =>
+    seed.filter((p) => p.slug !== "tesoro-del-mar").map((p) => ({ locale, slug: p.slug })),
+  );
 }
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/projects/[slug]">) {
   const { locale, slug } = await params;
   const p = await getProject(locale as "en" | "es", slug);
   if (!p) return {};
-  return pageMetadata({ locale: locale as "en" | "es", title: plain(p.name), description: p.summary[0], path: `/projects/${slug}`, image: p.hero.src, eyebrow: p.location });
+  return pageMetadata({
+    locale: locale as "en" | "es",
+    title: plain(p.name),
+    description: p.summary[0],
+    path: `/projects/${slug}`,
+    image: p.hero.src,
+    eyebrow: p.location,
+  });
 }
 
 export default async function ProjectRoute({ params }: PageProps<"/[locale]/projects/[slug]">) {

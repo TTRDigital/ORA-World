@@ -22,8 +22,11 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4 }: Props) {
     const nav = navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } };
     const slow = nav.connection?.saveData || /2g/.test(nav.connection?.effectiveType || "");
     if (reduced || slow) return;
-    const id = window.requestIdleCallback ? window.requestIdleCallback(() => setUseVideo(true)) : window.setTimeout(() => setUseVideo(true), 300);
-    return () => (window.cancelIdleCallback ? window.cancelIdleCallback(id as number) : window.clearTimeout(id as number));
+    const id = window.requestIdleCallback
+      ? window.requestIdleCallback(() => setUseVideo(true))
+      : window.setTimeout(() => setUseVideo(true), 300);
+    return () =>
+      window.cancelIdleCallback ? window.cancelIdleCallback(id as number) : window.clearTimeout(id as number);
   }, [mp4, webm]);
 
   const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;

@@ -20,7 +20,7 @@ export function LanguageToggle({ className, tone = "inherit" }: { className?: st
     <div
       role="group"
       aria-label={t("language")}
-      className={cn("eyebrow inline-flex items-center gap-3", tone === "light" && "text-white", className)}
+      className={cn("inline-flex items-center gap-3 eyebrow", tone === "light" && "text-white", className)}
     >
       {routing.locales.map((l, i) => (
         <span key={l} className="inline-flex items-center gap-3">
@@ -31,7 +31,7 @@ export function LanguageToggle({ className, tone = "inherit" }: { className?: st
             aria-pressed={l === locale}
             lang={l}
             className={cn(
-              "link-underline cursor-pointer py-1 transition-opacity",
+              "cursor-pointer link-underline py-1 transition-opacity",
               l === locale ? "opacity-100" : "opacity-55 hover:opacity-100",
             )}
           >

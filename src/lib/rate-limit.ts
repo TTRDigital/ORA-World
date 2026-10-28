@@ -13,7 +13,10 @@ export async function rateLimit(key: string, limit: number, windowMs: number): P
       const res = await fetch(`${url}/pipeline`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify([["INCR", key], ["PEXPIRE", key, windowMs, "NX"]]),
+        body: JSON.stringify([
+          ["INCR", key],
+          ["PEXPIRE", key, windowMs, "NX"],
+        ]),
       });
       const data = (await res.json()) as { result: number }[];
       return (data[0]?.result ?? 0) <= limit;

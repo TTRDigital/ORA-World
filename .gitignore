@@ -22,3 +22,4 @@ assets-source/images/client/*
 !assets-source/images/client/.gitkeep
 assets-source/images/free/*
 !assets-source/images/free/.gitkeep
+reports/lighthouse/*.json

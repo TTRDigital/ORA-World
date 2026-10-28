@@ -6,7 +6,15 @@ import { useEffect, useRef, type ElementType, type ReactNode } from "react";
  * Wraps each rendered line of a headline in a masked span so it can rise into view.
  * Lines are measured after fonts load and re-measured on resize. Reduced motion shows text immediately.
  */
-export function SplitLines({ as: Tag = "h2", className, children }: { as?: ElementType; className?: string; children: ReactNode }) {
+export function SplitLines({
+  as: Tag = "h2",
+  className,
+  children,
+}: {
+  as?: ElementType;
+  className?: string;
+  children: ReactNode;
+}) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -58,7 +66,9 @@ export function SplitLines({ as: Tag = "h2", className, children }: { as?: Eleme
       });
       const html = lines
         .map((line) => {
-          const inner = line.map((w) => (w.parentElement && w.parentElement !== el ? w.parentElement.outerHTML : w.outerHTML)).join(" ");
+          const inner = line
+            .map((w) => (w.parentElement && w.parentElement !== el ? w.parentElement.outerHTML : w.outerHTML))
+            .join(" ");
           return `<span data-reveal-line><span>${inner}</span></span>`;
         })
         .join("");

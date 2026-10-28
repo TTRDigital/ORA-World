@@ -12,7 +12,7 @@ export function Manifesto({ manifesto }: { manifesto: Localized<HomeContent["man
           <SplitLines as="h2" className="display-m lg:display-l">
             <Accent text={manifesto.text} />
           </SplitLines>
-          <p className="eyebrow mt-10 flex items-center gap-4 text-accent-ink" data-reveal>
+          <p className="mt-10 flex items-center gap-4 eyebrow text-accent-ink" data-reveal>
             <span aria-hidden className="h-px w-10 bg-current" />
             {manifesto.signature}
           </p>

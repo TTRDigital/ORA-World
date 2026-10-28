@@ -31,8 +31,14 @@ export const home: HomeContent = {
   context: {
     image: renders.naguaboWide,
     captions: [
-      { en: "Curved facades inspired by the flight of birds, cantilevered terraces extending like wings.", es: "Fachadas curvas inspiradas en el vuelo de las aves; terrazas en voladizo que se extienden como alas." },
-      { en: "Walking distance to Balneario Cerro Gordo. Thirty minutes from the airport.", es: "A pasos del Balneario Cerro Gordo. A treinta minutos del aeropuerto." },
+      {
+        en: "Curved facades inspired by the flight of birds, cantilevered terraces extending like wings.",
+        es: "Fachadas curvas inspiradas en el vuelo de las aves; terrazas en voladizo que se extienden como alas.",
+      },
+      {
+        en: "Walking distance to Balneario Cerro Gordo. Thirty minutes from the airport.",
+        es: "A pasos del Balneario Cerro Gordo. A treinta minutos del aeropuerto.",
+      },
     ],
   },
   place: {
@@ -43,11 +49,51 @@ export const home: HomeContent = {
       es: "Descubra la belleza luminosa de Puerto Rico, desde sus costas turquesa hasta sus paisajes de montaña. La cultura vibrante de la isla está entretejida en cada experiencia.",
     },
     chapters: [
-      { number: "01", title: { en: "The shore", es: "La costa" }, text: { en: "Sparkling turquoise waters lap against soft sandy shores.", es: "Aguas turquesa resplandecientes acarician suaves orillas de arena." }, image: lifestyle.beach },
-      { number: "02", title: { en: "The rainforest", es: "El bosque" }, text: { en: "Hike the trails of El Yunque National Forest beneath a serene canopy.", es: "Recorra los senderos del Bosque Nacional El Yunque bajo un dosel sereno." }, image: lifestyle.rainforest },
-      { number: "03", title: { en: "The sea", es: "El mar" }, text: { en: "Paddle through bioluminescent bays or sail into the sunset.", es: "Reme por bahías bioluminiscentes o navegue hacia el atardecer." }, image: free.bioBay },
-      { number: "04", title: { en: "The table", es: "La mesa" }, text: { en: "The aromas of mofongo and lechón, the rhythms of salsa and bomba.", es: "Los aromas del mofongo y el lechón, los ritmos de la salsa y la bomba." }, image: lifestyle.culinary },
-      { number: "05", title: { en: "The horizon", es: "El horizonte" }, text: { en: "Each sunrise casts a golden glow from coastal plains to rugged peaks.", es: "Cada amanecer tiñe de dorado desde las llanuras costeras hasta los picos escarpados." }, image: lifestyle.adventure },
+      {
+        number: "01",
+        title: { en: "The shore", es: "La costa" },
+        text: {
+          en: "Sparkling turquoise waters lap against soft sandy shores.",
+          es: "Aguas turquesa resplandecientes acarician suaves orillas de arena.",
+        },
+        image: lifestyle.beach,
+      },
+      {
+        number: "02",
+        title: { en: "The rainforest", es: "El bosque" },
+        text: {
+          en: "Hike the trails of El Yunque National Forest beneath a serene canopy.",
+          es: "Recorra los senderos del Bosque Nacional El Yunque bajo un dosel sereno.",
+        },
+        image: lifestyle.rainforest,
+      },
+      {
+        number: "03",
+        title: { en: "The sea", es: "El mar" },
+        text: {
+          en: "Paddle through bioluminescent bays or sail into the sunset.",
+          es: "Reme por bahías bioluminiscentes o navegue hacia el atardecer.",
+        },
+        image: free.bioBay,
+      },
+      {
+        number: "04",
+        title: { en: "The table", es: "La mesa" },
+        text: {
+          en: "The aromas of mofongo and lechón, the rhythms of salsa and bomba.",
+          es: "Los aromas del mofongo y el lechón, los ritmos de la salsa y la bomba.",
+        },
+        image: lifestyle.culinary,
+      },
+      {
+        number: "05",
+        title: { en: "The horizon", es: "El horizonte" },
+        text: {
+          en: "Each sunrise casts a golden glow from coastal plains to rugged peaks.",
+          es: "Cada amanecer tiñe de dorado desde las llanuras costeras hasta los picos escarpados.",
+        },
+        image: lifestyle.adventure,
+      },
     ],
   },
   residences: {
@@ -68,18 +114,132 @@ export const home: HomeContent = {
     counters: [
       { value: 5, prefix: "Cat. ", label: { en: "Hurricane-rated engineering", es: "Ingeniería para huracanes" } },
       { value: 24, suffix: "/7", label: { en: "On-site security", es: "Seguridad en el lugar" } },
-      { value: 100, suffix: "%", label: { en: "Backup power coverage", es: "Cobertura de energía de respaldo" }, placeholder: true },
+      {
+        value: 100,
+        suffix: "%",
+        label: { en: "Backup power coverage", es: "Cobertura de energía de respaldo" },
+        placeholder: true,
+      },
     ],
     features: [
-      { slug: "hurricane", title: { en: "Hurricane-resilient design", es: "Diseño resistente a huracanes" }, points: [{ en: "Structures engineered to withstand Category 5 hurricanes.", es: "Estructuras diseñadas para resistir huracanes de categoría 5." }, { en: "Impact-resistant windows, reinforced walls, and advanced drainage systems.", es: "Ventanas resistentes a impactos, muros reforzados y sistemas avanzados de drenaje." }] },
-      { slug: "seismic", title: { en: "Seismic resilience", es: "Resiliencia sísmica" }, points: [{ en: "Advanced seismic engineering to ensure safety during earthquakes.", es: "Ingeniería sísmica avanzada para garantizar la seguridad durante terremotos." }, { en: "Materials and techniques that exceed local codes for seismic zones.", es: "Materiales y técnicas que superan los códigos locales para zonas sísmicas." }] },
-      { slug: "security", title: { en: "24/7 security", es: "Seguridad 24/7" }, points: [{ en: "Professionally trained security teams on site.", es: "Equipos de seguridad profesionales en el lugar." }, { en: "Patrols, secure perimeters and monitored access points.", es: "Patrullas, perímetros seguros y accesos monitoreados." }] },
-      { slug: "smart", title: { en: "Smart security systems", es: "Sistemas inteligentes de seguridad" }, points: [{ en: "State-of-the-art surveillance with AI-enhanced monitoring.", es: "Vigilancia de última generación con monitoreo asistido por IA." }, { en: "Smart locks, motion detectors and remote-access controls for residents.", es: "Cerraduras inteligentes, detectores de movimiento y control de acceso remoto para residentes." }] },
-      { slug: "power", title: { en: "Backup power", es: "Energía de respaldo" }, points: [{ en: "High-capacity generators for uninterrupted power during outages.", es: "Generadores de alta capacidad para energía ininterrumpida durante apagones." }, { en: "Solar panels and battery storage for sustainable, reliable backup.", es: "Paneles solares y almacenamiento en baterías para un respaldo sostenible y fiable." }] },
-      { slug: "flood", title: { en: "Flood and stormwater management", es: "Gestión de inundaciones y aguas pluviales" }, points: [{ en: "Elevated foundations and landscape grading to prevent flooding.", es: "Cimientos elevados y nivelación del terreno para prevenir inundaciones." }, { en: "Stormwater systems that reduce runoff and protect the property.", es: "Sistemas pluviales que reducen la escorrentía y protegen la propiedad." }] },
-      { slug: "safe-rooms", title: { en: "Private safe rooms", es: "Cuartos seguros privados" }, points: [{ en: "Reinforced safe rooms in residences for additional peace of mind.", es: "Cuartos seguros reforzados en las residencias para mayor tranquilidad." }] },
-      { slug: "preparedness", title: { en: "Emergency preparedness", es: "Preparación para emergencias" }, points: [{ en: "On-site emergency shelters equipped with supplies.", es: "Refugios de emergencia en el lugar, equipados con suministros." }, { en: "Clear evacuation routes and resident communication systems.", es: "Rutas de evacuación claras y sistemas de comunicación para residentes." }] },
-      { slug: "training", title: { en: "Community resilience training", es: "Formación comunitaria en resiliencia" }, points: [{ en: "Workshops and resources on emergency protocols and resilience planning.", es: "Talleres y recursos sobre protocolos de emergencia y planificación de resiliencia." }] },
+      {
+        slug: "hurricane",
+        title: { en: "Hurricane-resilient design", es: "Diseño resistente a huracanes" },
+        points: [
+          {
+            en: "Structures engineered to withstand Category 5 hurricanes.",
+            es: "Estructuras diseñadas para resistir huracanes de categoría 5.",
+          },
+          {
+            en: "Impact-resistant windows, reinforced walls, and advanced drainage systems.",
+            es: "Ventanas resistentes a impactos, muros reforzados y sistemas avanzados de drenaje.",
+          },
+        ],
+      },
+      {
+        slug: "seismic",
+        title: { en: "Seismic resilience", es: "Resiliencia sísmica" },
+        points: [
+          {
+            en: "Advanced seismic engineering to ensure safety during earthquakes.",
+            es: "Ingeniería sísmica avanzada para garantizar la seguridad durante terremotos.",
+          },
+          {
+            en: "Materials and techniques that exceed local codes for seismic zones.",
+            es: "Materiales y técnicas que superan los códigos locales para zonas sísmicas.",
+          },
+        ],
+      },
+      {
+        slug: "security",
+        title: { en: "24/7 security", es: "Seguridad 24/7" },
+        points: [
+          {
+            en: "Professionally trained security teams on site.",
+            es: "Equipos de seguridad profesionales en el lugar.",
+          },
+          {
+            en: "Patrols, secure perimeters and monitored access points.",
+            es: "Patrullas, perímetros seguros y accesos monitoreados.",
+          },
+        ],
+      },
+      {
+        slug: "smart",
+        title: { en: "Smart security systems", es: "Sistemas inteligentes de seguridad" },
+        points: [
+          {
+            en: "State-of-the-art surveillance with AI-enhanced monitoring.",
+            es: "Vigilancia de última generación con monitoreo asistido por IA.",
+          },
+          {
+            en: "Smart locks, motion detectors and remote-access controls for residents.",
+            es: "Cerraduras inteligentes, detectores de movimiento y control de acceso remoto para residentes.",
+          },
+        ],
+      },
+      {
+        slug: "power",
+        title: { en: "Backup power", es: "Energía de respaldo" },
+        points: [
+          {
+            en: "High-capacity generators for uninterrupted power during outages.",
+            es: "Generadores de alta capacidad para energía ininterrumpida durante apagones.",
+          },
+          {
+            en: "Solar panels and battery storage for sustainable, reliable backup.",
+            es: "Paneles solares y almacenamiento en baterías para un respaldo sostenible y fiable.",
+          },
+        ],
+      },
+      {
+        slug: "flood",
+        title: { en: "Flood and stormwater management", es: "Gestión de inundaciones y aguas pluviales" },
+        points: [
+          {
+            en: "Elevated foundations and landscape grading to prevent flooding.",
+            es: "Cimientos elevados y nivelación del terreno para prevenir inundaciones.",
+          },
+          {
+            en: "Stormwater systems that reduce runoff and protect the property.",
+            es: "Sistemas pluviales que reducen la escorrentía y protegen la propiedad.",
+          },
+        ],
+      },
+      {
+        slug: "safe-rooms",
+        title: { en: "Private safe rooms", es: "Cuartos seguros privados" },
+        points: [
+          {
+            en: "Reinforced safe rooms in residences for additional peace of mind.",
+            es: "Cuartos seguros reforzados en las residencias para mayor tranquilidad.",
+          },
+        ],
+      },
+      {
+        slug: "preparedness",
+        title: { en: "Emergency preparedness", es: "Preparación para emergencias" },
+        points: [
+          {
+            en: "On-site emergency shelters equipped with supplies.",
+            es: "Refugios de emergencia en el lugar, equipados con suministros.",
+          },
+          {
+            en: "Clear evacuation routes and resident communication systems.",
+            es: "Rutas de evacuación claras y sistemas de comunicación para residentes.",
+          },
+        ],
+      },
+      {
+        slug: "training",
+        title: { en: "Community resilience training", es: "Formación comunitaria en resiliencia" },
+        points: [
+          {
+            en: "Workshops and resources on emergency protocols and resilience planning.",
+            es: "Talleres y recursos sobre protocolos de emergencia y planificación de resiliencia.",
+          },
+        ],
+      },
     ],
   },
   amenities: {
@@ -92,7 +252,10 @@ export const home: HomeContent = {
   },
   family: {
     eyebrow: { en: "Family-Centered Living", es: "Vida centrada en la familia" },
-    title: { en: "A community for *every* member of the family", es: "Una comunidad para *cada* miembro de la familia" },
+    title: {
+      en: "A community for *every* member of the family",
+      es: "Una comunidad para *cada* miembro de la familia",
+    },
     body: {
       en: [
         "ORA World is designed to be much more than a luxurious escape. Kids' adventure camps, family pools and interactive game rooms give children safe, engaging spaces to learn, play and grow.",
@@ -149,7 +312,10 @@ export const home: HomeContent = {
   tour: {
     eyebrow: { en: "ORA World in VR", es: "ORA World en RV" },
     title: { en: "Step *inside*", es: "Entre y *recorra*" },
-    text: { en: "Walk the residences and amenities in an immersive 360° tour.", es: "Recorra las residencias y amenidades en un tour inmersivo de 360°." },
+    text: {
+      en: "Walk the residences and amenities in an immersive 360° tour.",
+      es: "Recorra las residencias y amenidades en un tour inmersivo de 360°.",
+    },
     image: renders.tdmPenthouse,
   },
   team: {

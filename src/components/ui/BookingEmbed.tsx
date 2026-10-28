@@ -13,7 +13,9 @@ export function BookingEmbed({ url, consentText }: { url: string | null; consent
   const [load, setLoad] = useState(false);
   useEffect(() => {
     if (!url || !host.current) return;
-    const io = new IntersectionObserver((e) => e.some((x) => x.isIntersecting) && (setLoad(true), io.disconnect()), { rootMargin: "300px" });
+    const io = new IntersectionObserver((e) => e.some((x) => x.isIntersecting) && (setLoad(true), io.disconnect()), {
+      rootMargin: "300px",
+    });
     io.observe(host.current);
     return () => io.disconnect();
   }, [url]);
@@ -27,8 +29,16 @@ export function BookingEmbed({ url, consentText }: { url: string | null; consent
   }
   const src = `${url}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1&background_color=f7f3ec&text_color=2a2825&primary_color=a8864f&locale=${locale}`;
   return (
-    <div ref={host} className="border border-rule bg-bone" onClick={() => track("booking_click", { source: "contact:embed" })}>
-      {load ? <iframe src={src} title={t("bookTitle")} className="h-[720px] w-full" loading="lazy" /> : <div className="h-[720px] animate-pulse bg-surface" />}
+    <div
+      ref={host}
+      className="border border-rule bg-bone"
+      onClick={() => track("booking_click", { source: "contact:embed" })}
+    >
+      {load ? (
+        <iframe src={src} title={t("bookTitle")} className="h-[720px] w-full" loading="lazy" />
+      ) : (
+        <div className="h-[720px] animate-pulse bg-surface" />
+      )}
     </div>
   );
 }

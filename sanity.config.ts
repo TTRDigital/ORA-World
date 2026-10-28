@@ -28,6 +28,9 @@ export default defineConfig({
     templates: (templates) => templates.filter((t) => !SINGLETONS.has(t.schemaType)),
   },
   document: {
-    actions: (input, context) => (SINGLETONS.has(context.schemaType) ? input.filter(({ action }) => action && ["publish", "discardChanges", "restore"].includes(action)) : input),
+    actions: (input, context) =>
+      SINGLETONS.has(context.schemaType)
+        ? input.filter(({ action }) => action && ["publish", "discardChanges", "restore"].includes(action))
+        : input,
   },
 });

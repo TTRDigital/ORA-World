@@ -20,7 +20,8 @@ export function PageTransition() {
       const a = (e.target as HTMLElement).closest("a");
       if (!a || a.target === "_blank" || a.hasAttribute("download") || a.dataset.noTransition !== undefined) return;
       const url = new URL(a.href, location.href);
-      if (url.origin !== location.origin || url.pathname.startsWith("/studio") || url.pathname.startsWith("/api")) return;
+      if (url.origin !== location.origin || url.pathname.startsWith("/studio") || url.pathname.startsWith("/api"))
+        return;
       if (url.pathname === location.pathname && url.hash) return;
       if (url.pathname === location.pathname && url.search === location.search) return;
       e.preventDefault();

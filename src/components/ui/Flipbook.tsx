@@ -36,19 +36,48 @@ export function Flipbook({ pages, pdfUrl }: { pages: LightboxItem[]; pdfUrl?: st
     <div className="[perspective:2000px]">
       <div className="relative mx-auto flex aspect-[2/1.35] max-w-5xl bg-surface shadow-none md:aspect-[2/1.3]">
         {[left, right].map((p, k) => (
-          <div key={k} className={cn("relative h-full w-1/2 overflow-hidden border-rule bg-bone transition-transform duration-500 ease-[var(--ease-in-out-quart)] [transform-style:preserve-3d]", k === 0 ? "origin-right border-r" : "origin-left", turning === 1 && k === 1 && "[transform:rotateY(-90deg)]", turning === -1 && k === 0 && "[transform:rotateY(90deg)]", k === 1 && "max-md:hidden")}>
-            {p ? <Image src={p.src} alt={p.alt} fill sizes="(min-width: 768px) 45vw, 90vw" className="object-contain" /> : null}
+          <div
+            key={k}
+            className={cn(
+              "relative h-full w-1/2 overflow-hidden border-rule bg-bone transition-transform duration-500 ease-[var(--ease-in-out-quart)] [transform-style:preserve-3d]",
+              k === 0 ? "origin-right border-r" : "origin-left",
+              turning === 1 && k === 1 && "[transform:rotateY(-90deg)]",
+              turning === -1 && k === 0 && "[transform:rotateY(90deg)]",
+              k === 1 && "max-md:hidden",
+            )}
+          >
+            {p ? (
+              <Image src={p.src} alt={p.alt} fill sizes="(min-width: 768px) 45vw, 90vw" className="object-contain" />
+            ) : null}
           </div>
         ))}
       </div>
       <div className="mt-5 flex items-center justify-between">
-        <button type="button" onClick={() => go(-1)} disabled={i === 0} className="eyebrow cursor-pointer py-2 disabled:opacity-30">← {t("previous")}</button>
-        <p className="eyebrow tnum text-fg-muted">{i + 1} / {max + 1}</p>
+        <button
+          type="button"
+          onClick={() => go(-1)}
+          disabled={i === 0}
+          className="cursor-pointer py-2 eyebrow disabled:opacity-30"
+        >
+          ← {t("previous")}
+        </button>
+        <p className="eyebrow text-fg-muted tnum">
+          {i + 1} / {max + 1}
+        </p>
         <div className="flex items-center gap-6">
           {pdfUrl && (
-            <a href={pdfUrl} download className="eyebrow link-underline py-2" data-track="brochure_download">{t("downloadPdf")}</a>
+            <a href={pdfUrl} download className="link-underline py-2 eyebrow" data-track="brochure_download">
+              {t("downloadPdf")}
+            </a>
           )}
-          <button type="button" onClick={() => go(1)} disabled={i === max} className="eyebrow cursor-pointer py-2 disabled:opacity-30">{t("next")} →</button>
+          <button
+            type="button"
+            onClick={() => go(1)}
+            disabled={i === max}
+            className="cursor-pointer py-2 eyebrow disabled:opacity-30"
+          >
+            {t("next")} →
+          </button>
         </div>
       </div>
     </div>

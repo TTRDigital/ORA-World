@@ -3,7 +3,12 @@ import { z } from "zod";
 export const leadVariants = ["short", "full", "broker", "gate"] as const;
 export type LeadVariant = (typeof leadVariants)[number];
 
-const phone = z.string().trim().min(7).max(30).regex(/^[+\d][\d\s().-]{6,}$/);
+const phone = z
+  .string()
+  .trim()
+  .min(7)
+  .max(30)
+  .regex(/^[+\d][\d\s().-]{6,}$/);
 
 /** Shared client + server validation. Honeypot "company" must stay empty. */
 export const leadSchema = z.object({

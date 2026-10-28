@@ -5,10 +5,28 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Modal } from "@/components/ui/Modal";
 
-export type LightboxItem = { src: string; alt: string; width: number; height: number; caption?: string; rendering?: boolean; blurDataURL?: string };
+export type LightboxItem = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+  rendering?: boolean;
+  blurDataURL?: string;
+};
 
 /** Full-screen lightbox: swipe, keyboard arrows, captions, rendering labels. */
-export function Lightbox({ items, index, onClose, onIndex }: { items: LightboxItem[]; index: number | null; onClose: () => void; onIndex: (i: number) => void }) {
+export function Lightbox({
+  items,
+  index,
+  onClose,
+  onIndex,
+}: {
+  items: LightboxItem[];
+  index: number | null;
+  onClose: () => void;
+  onIndex: (i: number) => void;
+}) {
   const t = useTranslations("common");
   const start = useRef<number | null>(null);
   const [dir, setDir] = useState(0);
@@ -46,19 +64,40 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: LightboxIt
           start.current = null;
         }}
       >
-        <figure key={it.src} className="relative flex max-h-[78vh] w-full items-center justify-center" style={{ animation: `lbin 700ms var(--ease-out-expo)` }}>
-          <Image src={it.src} alt={it.alt} width={it.width} height={it.height} sizes="100vw" className="max-h-[78vh] w-auto object-contain" placeholder={it.blurDataURL ? "blur" : "empty"} blurDataURL={it.blurDataURL} priority />
+        <figure
+          key={it.src}
+          className="relative flex max-h-[78vh] w-full items-center justify-center"
+          style={{ animation: `lbin 700ms var(--ease-out-expo)` }}
+        >
+          <Image
+            src={it.src}
+            alt={it.alt}
+            width={it.width}
+            height={it.height}
+            sizes="100vw"
+            className="max-h-[78vh] w-auto object-contain"
+            placeholder={it.blurDataURL ? "blur" : "empty"}
+            blurDataURL={it.blurDataURL}
+            priority
+          />
         </figure>
         <div className="mt-5 flex w-full items-center justify-between gap-6 text-white/80">
-          <button type="button" onClick={() => go(-1)} className="eyebrow cursor-pointer py-2" aria-label={t("previous")}>
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            className="cursor-pointer py-2 eyebrow"
+            aria-label={t("previous")}
+          >
             ← {t("previous")}
           </button>
-          <p className="small text-center">
+          <p className="text-center small">
             {it.caption}
-            {it.rendering && <span className="eyebrow ml-3 text-white/50">{t("rendering")}</span>}
-            <span className="eyebrow ml-3 tnum text-white/50">{index + 1} / {items.length}</span>
+            {it.rendering && <span className="ml-3 eyebrow text-white/50">{t("rendering")}</span>}
+            <span className="ml-3 eyebrow text-white/50 tnum">
+              {index + 1} / {items.length}
+            </span>
           </p>
-          <button type="button" onClick={() => go(1)} className="eyebrow cursor-pointer py-2" aria-label={t("next")}>
+          <button type="button" onClick={() => go(1)} className="cursor-pointer py-2 eyebrow" aria-label={t("next")}>
             {t("next")} →
           </button>
         </div>
