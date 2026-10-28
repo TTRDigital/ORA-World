@@ -18,3 +18,7 @@ public/video/*.webm
 # misc
 .DS_Store
 *.log
+assets-source/images/client/*
+!assets-source/images/client/.gitkeep
+assets-source/images/free/*
+!assets-source/images/free/.gitkeep
