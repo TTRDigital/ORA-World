@@ -18,16 +18,17 @@ export function mapFigure(f: SanityFigure): ImageRef | undefined {
 export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
   phone, whatsapp, email, salesGalleryName, salesGalleryAddress, hours, social, siteLat, siteLng,
   portalUrl, bookingUrl, vrTourUrl, "filmUrl": film.asset->url, "brochureUrl": brochure.asset->url,
-  "brokerKitUrl": brokerKit.asset->url, "mediaKitUrl": mediaKit.asset->url,
+  "brokerKitUrl": brokerKit.asset->url, "mediaKitUrl": mediaKit.asset->url, "brochurePages": brochurePages[] ${figureProjection},
   legalNotice, renderingNotice, sponsor, consentText,
   "menuImages": menuImages[]{ key, "image": image ${figureProjection} }
 }`;
 
-export type SanitySiteSettings = Partial<Omit<SiteSettings, "menuImages">> & { menuImages?: { key: string; image: SanityFigure }[] | null };
+export type SanitySiteSettings = Partial<Omit<SiteSettings, "menuImages" | "brochurePages">> & { menuImages?: { key: string; image: SanityFigure }[] | null; brochurePages?: SanityFigure[] | null };
 
 export function mapSiteSettings(s: SanitySiteSettings): Partial<SiteSettings> {
   const out: Partial<SiteSettings> = {};
-  for (const [k, v] of Object.entries(s)) if (v !== null && v !== undefined && k !== "menuImages") (out as Record<string, unknown>)[k] = v;
+  for (const [k, v] of Object.entries(s)) if (v !== null && v !== undefined && k !== "menuImages" && k !== "brochurePages") (out as Record<string, unknown>)[k] = v;
+  if (s.brochurePages?.length) out.brochurePages = s.brochurePages.map(mapFigure).filter((f): f is NonNullable<typeof f> => !!f);
   if (s.menuImages?.length) {
     out.menuImages = Object.fromEntries(s.menuImages.flatMap((m) => (mapFigure(m.image) ? [[m.key, mapFigure(m.image)!]] : [])));
   }

@@ -40,6 +40,8 @@ export interface SiteSettings {
   vrTourUrl: string | null;
   filmUrl: string | null;
   brochureUrl: string | null;
+  /** Page images for the in-browser flipbook (placeholders until the brochure is supplied). */
+  brochurePages: ImageRef[];
   brokerKitUrl: string | null;
   mediaKitUrl: string | null;
   consentText: L;

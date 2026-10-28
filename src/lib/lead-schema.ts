@@ -22,7 +22,7 @@ export const leadSchema = z.object({
   license: z.string().trim().max(60).optional().or(z.literal("")),
   message: z.string().trim().max(2000).optional().or(z.literal("")),
   consent: z.literal(true),
-  company: z.string().max(0).optional().or(z.literal("")),
+  company: z.string().max(200).optional(), // honeypot: any value means a bot; the route pretends success
   locale: z.enum(["en", "es"]),
   source: z.string().max(300).optional().or(z.literal("")),
   turnstileToken: z.string().max(4000).optional().or(z.literal("")),

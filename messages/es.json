@@ -247,5 +247,180 @@
     "dining": "Gastronomía",
     "culture": "Cultura",
     "nature": "Naturaleza"
+  },
+  "pages": {
+    "residences": {
+      "eyebrow": "Residencias",
+      "title": "Encuentre su *lugar* en el paraíso",
+      "intro": "Apartamentos contemporáneos, villas, penthouses y suites de hotel. Cada residencia enmarca la isla: mar, jardín o montañas."
+    },
+    "floorPlans": {
+      "eyebrow": "Planos",
+      "title": "Planos para cada *forma* de vivir",
+      "intro": "Filtre por colección, habitaciones, tamaño, orientación y edificio. Regístrese una vez para desbloquear planos completos, planos clave y PDF.",
+      "gridView": "Cuadrícula",
+      "listView": "Lista",
+      "sizeAny": "Cualquier tamaño",
+      "sizeUnder": "Menos de {n} pies²",
+      "sizeOver": "Más de {n} pies²",
+      "sizeBetween": "{a}–{b} pies²",
+      "plans": "{n} planos",
+      "plan": "{n} plano",
+      "requestPlan": "Solicitar precio de este plano",
+      "keyplan": "Plano clave",
+      "specs": "Especificaciones",
+      "highlights": "Destacados",
+      "similar": "Otros planos de esta colección",
+      "illustrative": "Plano ilustrativo provisional. Los planos finales serán suministrados por el arquitecto.",
+      "compareTitle": "Comparar *planos*",
+      "compareIntro": "Hasta tres planos lado a lado.",
+      "addMore": "Añada planos desde la biblioteca de planos",
+      "gated": "Regístrese para ver el plano completo, el plano clave y el PDF."
+    },
+    "amenities": {
+      "eyebrow": "Amenidades",
+      "title": "Espacios que inspiran *bienestar*",
+      "intro": "Bienestar, familia, mascotas, resort y eco. Amenidades cuidadosamente seleccionadas que redefinen el lujo moderno."
+    },
+    "lifestyle": {
+      "eyebrow": "Estilo de vida",
+      "title": "*Experiencias* inolvidables para cada estilo de vida",
+      "intro": "Actividades, vida centrada en la familia, hogares felices para todos y un calendario comunitario que une a los vecinos.",
+      "activities": "Actividades",
+      "community": "Eventos comunitarios"
+    },
+    "tesoro": {
+      "eyebrow": "Tesoro Del Mar",
+      "facts": "Datos clave",
+      "gallery": "Galería",
+      "otherProjects": "Más comunidades ORA World",
+      "portfolio": "El portafolio ORA World"
+    },
+    "location": {
+      "eyebrow": "Ubicación",
+      "title": "Dorado, en la costa *norte* de Puerto Rico",
+      "intro": "El lugar: belleza natural, cultura y cercanía. Un mapa interactivo de playas, golf, escuelas, salud, aeropuerto y gastronomía.",
+      "proximity": "Cercanía",
+      "island": "La isla"
+    },
+    "resilience": {
+      "eyebrow": "Resiliente por diseño",
+      "title": "Diseñado para *perdurar*",
+      "intro": "Ingeniería contra huracanes y sismos, seguridad, energía de respaldo y sostenibilidad en cada desarrollo de ORA World."
+    },
+    "incentives": {
+      "eyebrow": "Un entorno próspero",
+      "title": "Los *incentivos* de Puerto Rico, explicados",
+      "intro": "Una visión general de la Ley 60 para personas y empresas. Solo información general; consulte a su asesor fiscal.",
+      "whoBenefits": "Quién podría beneficiarse",
+      "consult": "Hable con un asesor"
+    },
+    "gallery": {
+      "eyebrow": "Galería",
+      "title": "Renders y *momentos*",
+      "intro": "Exteriores, interiores, amenidades, estilo de vida y avance de obra. Todos los renders son vistas conceptuales del artista.",
+      "cats": {
+        "exteriors": "Exteriores",
+        "interiors": "Interiores",
+        "amenities": "Amenidades",
+        "lifestyle": "Estilo de vida",
+        "construction": "Construcción"
+      }
+    },
+    "tour": {
+      "eyebrow": "ORA World en RV",
+      "title": "Entre y *recorra*",
+      "intro": "Un recorrido inmersivo de 360° por las residencias y amenidades, y la película de recorrido.",
+      "film": "Película de recorrido",
+      "noFilm": "La película de recorrido aparecerá aquí cuando se suministre.",
+      "launch": "Iniciar el recorrido 360°"
+    },
+    "team": {
+      "eyebrow": "El Collaboratory",
+      "title": "Las mentes detrás de *ORA*",
+      "intro": "Desarrollador, arquitectura, interiores, paisaje y socios."
+    },
+    "investment": {
+      "eyebrow": "Inversión",
+      "title": "Una *inversión* meditada",
+      "intro": "Visión general de precios, calendario de depósitos y plazos, y un estimador de pagos sencillo.",
+      "pricing": "Precios por colección",
+      "timeline": "Depósitos y plazos",
+      "estimator": "Estimador de pagos",
+      "pricingGated": "Regístrese para ver los rangos de precios por colección.",
+      "notice": "No se puede realizar ninguna oferta ni aceptar depósitos hasta que se presente un plan de oferta ante el Departamento de Justicia del Estado de Nueva York."
+    },
+    "press": {
+      "eyebrow": "Centro de prensa",
+      "title": "En la *prensa*",
+      "intro": "Cobertura, anuncios y el kit de medios.",
+      "mediaKit": "Descargar kit de medios",
+      "mediaKitSoon": "Kit de medios por suministrar",
+      "inquiries": "Consultas de prensa",
+      "readFull": "Leer el artículo completo"
+    },
+    "faq": {
+      "eyebrow": "Preguntas frecuentes",
+      "title": "Preguntas, *respondidas*",
+      "intro": "Busque por palabra clave o explore por tema.",
+      "searchPlaceholder": "Buscar preguntas",
+      "topics": "Temas"
+    },
+    "brokers": {
+      "eyebrow": "Corredores",
+      "title": "Asóciese con *ORA*",
+      "intro": "Información de cooperación, registro de corredores y el kit para corredores.",
+      "coop": "Cooperación y comisión",
+      "coopText": "Los términos de comisión y cooperación se publicarán una vez presentado el plan de oferta. Registre a sus clientes ahora para asegurar su reconocimiento.",
+      "register": "Registrarse como corredor",
+      "kit": "Descargar kit para corredores",
+      "kitSoon": "Kit para corredores por suministrar"
+    },
+    "contact": {
+      "eyebrow": "Contacto",
+      "title": "*Hablemos*",
+      "intro": "Solicite una presentación privada, reserve una hora o comuníquese directamente con el equipo de ventas.",
+      "form": "Enviar un mensaje",
+      "book": "Reservar una presentación privada",
+      "visit": "Visite la galería de ventas"
+    },
+    "hotel": {
+      "eyebrow": "Desarrollo hotelero"
+    },
+    "careers": {
+      "eyebrow": "Carreras"
+    },
+    "legal": {
+      "eyebrow": "Legal"
+    }
+  },
+  "contact": {
+    "bookTitle": "Presentación privada",
+    "bookingFallback": "La reserva en línea estará disponible en breve. Indíquenos su fecha y hora preferidas y lo confirmaremos por correo.",
+    "requestSlot": "Solicitar una hora",
+    "directions": "Cómo llegar",
+    "intentPricing": "Solicitó precios. Comparta sus datos y el equipo de ventas le enviará la visión general de precios actual."
+  },
+  "investment": {
+    "price": "Precio de compra",
+    "down": "Pago inicial",
+    "rate": "Tasa de interés",
+    "term": "Plazo",
+    "years": "años",
+    "monthly": "Pago mensual estimado",
+    "loan": "Monto del préstamo",
+    "downAmount": "Pago inicial"
+  },
+  "plan": {
+    "bed": "{n, plural, =0 {Estudio} one {# habitación} other {# habitaciones}}",
+    "bath": "{n} baños",
+    "floors": "Pisos {f}"
+  },
+  "brochure": {
+    "eyebrow": "Folleto",
+    "title": "El *folleto* de ORA World",
+    "intro": "Léalo en el navegador o descargue el PDF. Regístrese una vez para desbloquearlo.",
+    "placeholder": "Páginas provisionales: los renders sustituyen a las páginas diseñadas del folleto.",
+    "pdfSoon": "PDF por suministrar"
   }
 }

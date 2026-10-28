@@ -1,4 +1,5 @@
 import type { SiteSettings } from "../types";
+import { renders, lifestyle } from "./images";
 
 export const siteSettings: SiteSettings = {
   // [[PLACEHOLDER: not published anywhere public. Pulled from env on the server when provided.]]
@@ -31,6 +32,8 @@ export const siteSettings: SiteSettings = {
   vrTourUrl: "https://kuula.co/share/collection/7Zt7D?logo=1&info=0&fs=1&vr=1&thumbs=2&margin=10&alpha=0.60",
   filmUrl: null, // set by the video pipeline or a Sanity file asset
   brochureUrl: null, // [[PLACEHOLDER: brochure PDF]]
+  // [[PLACEHOLDER: brochure spreads. Renders stand in for the designed pages so the flipbook can be reviewed.]]
+  brochurePages: [renders.tdmExterior, renders.towerDetail, renders.tdmPenthouse, renders.poolTerrace, lifestyle.beach, renders.naguaboWide].map((i) => ({ ...i, placeholder: true })),
   brokerKitUrl: null, // [[PLACEHOLDER: broker kit PDF]]
   mediaKitUrl: null, // [[PLACEHOLDER: media kit]]
   consentText: {

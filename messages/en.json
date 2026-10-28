@@ -247,5 +247,180 @@
     "dining": "Dining",
     "culture": "Culture",
     "nature": "Nature"
+  },
+  "pages": {
+    "residences": {
+      "eyebrow": "Residences",
+      "title": "Find your *place* in paradise",
+      "intro": "Contemporary apartments, villas, penthouses and hotel suites. Every residence frames the island: ocean, garden or mountains."
+    },
+    "floorPlans": {
+      "eyebrow": "Floor plans",
+      "title": "Plans for every *way* of living",
+      "intro": "Filter by collection, bedrooms, size, orientation and building. Register once to unlock full plans, keyplans and PDFs.",
+      "gridView": "Grid",
+      "listView": "List",
+      "sizeAny": "Any size",
+      "sizeUnder": "Under {n} sq ft",
+      "sizeOver": "Over {n} sq ft",
+      "sizeBetween": "{a}–{b} sq ft",
+      "plans": "{n} plans",
+      "plan": "{n} plan",
+      "requestPlan": "Request pricing for this plan",
+      "keyplan": "Keyplan",
+      "specs": "Specifications",
+      "highlights": "Highlights",
+      "similar": "Other plans in this collection",
+      "illustrative": "Illustrative placeholder plan. Final plans will be supplied by the architect.",
+      "compareTitle": "Compare *plans*",
+      "compareIntro": "Up to three plans side by side.",
+      "addMore": "Add plans from the floor plan library",
+      "gated": "Register to view the full plan, keyplan and PDF."
+    },
+    "amenities": {
+      "eyebrow": "Amenities",
+      "title": "Spaces that inspire *well-being*",
+      "intro": "Wellness, family, pets, resort and eco. Thoughtfully curated amenities that redefine modern luxury."
+    },
+    "lifestyle": {
+      "eyebrow": "Lifestyle",
+      "title": "Unforgettable *experiences*, designed for every lifestyle",
+      "intro": "Activities, family-centered living, happy homes for all and a community calendar that brings neighbors together.",
+      "activities": "Activities",
+      "community": "Community events"
+    },
+    "tesoro": {
+      "eyebrow": "Tesoro Del Mar",
+      "facts": "Key facts",
+      "gallery": "Gallery",
+      "otherProjects": "More ORA World communities",
+      "portfolio": "The ORA World portfolio"
+    },
+    "location": {
+      "eyebrow": "Location",
+      "title": "Dorado, on Puerto Rico's *north* coast",
+      "intro": "The Place: natural beauty, culture and proximity. An interactive map of beaches, golf, schools, healthcare, the airport and dining.",
+      "proximity": "Proximity",
+      "island": "The island"
+    },
+    "resilience": {
+      "eyebrow": "Resilient by Design",
+      "title": "Engineered to *endure*",
+      "intro": "Hurricane and seismic engineering, security, backup power and sustainability in every ORA World development."
+    },
+    "incentives": {
+      "eyebrow": "A Prosperous Environment",
+      "title": "Puerto Rico's *incentives*, explained",
+      "intro": "An overview of Act 60 for individuals and businesses. General information only; consult your tax advisor.",
+      "whoBenefits": "Who could benefit",
+      "consult": "Speak with an advisor"
+    },
+    "gallery": {
+      "eyebrow": "Gallery",
+      "title": "Renderings and *moments*",
+      "intro": "Exteriors, interiors, amenities, lifestyle and construction progress. All renderings are artist's conceptual views.",
+      "cats": {
+        "exteriors": "Exteriors",
+        "interiors": "Interiors",
+        "amenities": "Amenities",
+        "lifestyle": "Lifestyle",
+        "construction": "Construction"
+      }
+    },
+    "tour": {
+      "eyebrow": "ORA World in VR",
+      "title": "Step *inside*",
+      "intro": "An immersive 360° tour of the residences and amenities, and the walkthrough film.",
+      "film": "Walkthrough film",
+      "noFilm": "The walkthrough film will appear here when supplied.",
+      "launch": "Launch the 360° tour"
+    },
+    "team": {
+      "eyebrow": "The Collaboratory",
+      "title": "The minds behind *ORA*",
+      "intro": "Developer, architecture, interiors, landscape and partners."
+    },
+    "investment": {
+      "eyebrow": "Investment",
+      "title": "A considered *investment*",
+      "intro": "Pricing overview, deposit schedule and timeline, and a simple payment estimator.",
+      "pricing": "Pricing by collection",
+      "timeline": "Deposits and timeline",
+      "estimator": "Payment estimator",
+      "pricingGated": "Register to view pricing ranges by collection.",
+      "notice": "No offering can be made and no deposits accepted until an offering plan is filed with the New York State Department of Law."
+    },
+    "press": {
+      "eyebrow": "Press Center",
+      "title": "In the *press*",
+      "intro": "Coverage, announcements and the media kit.",
+      "mediaKit": "Download media kit",
+      "mediaKitSoon": "Media kit to be supplied",
+      "inquiries": "Press inquiries",
+      "readFull": "Read the full article"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Questions, *answered*",
+      "intro": "Search by keyword or browse by topic.",
+      "searchPlaceholder": "Search questions",
+      "topics": "Topics"
+    },
+    "brokers": {
+      "eyebrow": "Brokers",
+      "title": "Partner with *ORA*",
+      "intro": "Co-op information, broker registration and the broker kit.",
+      "coop": "Co-op and commission",
+      "coopText": "Commission and co-op terms will be published once the offering plan is filed. Register your clients now to secure recognition.",
+      "register": "Register as a broker",
+      "kit": "Download broker kit",
+      "kitSoon": "Broker kit to be supplied"
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Let's *talk*",
+      "intro": "Request a private presentation, book a time, or reach the sales team directly.",
+      "form": "Send a message",
+      "book": "Book a private presentation",
+      "visit": "Visit the sales gallery"
+    },
+    "hotel": {
+      "eyebrow": "Hotel Development"
+    },
+    "careers": {
+      "eyebrow": "Careers"
+    },
+    "legal": {
+      "eyebrow": "Legal"
+    }
+  },
+  "contact": {
+    "bookTitle": "Private presentation",
+    "bookingFallback": "Online booking will be available shortly. Tell us your preferred date and time and we will confirm by email.",
+    "requestSlot": "Request a time",
+    "directions": "Get directions",
+    "intentPricing": "You asked for pricing. Share your details and the sales team will send the current pricing overview."
+  },
+  "investment": {
+    "price": "Purchase price",
+    "down": "Down payment",
+    "rate": "Interest rate",
+    "term": "Term",
+    "years": "years",
+    "monthly": "Estimated monthly payment",
+    "loan": "Loan amount",
+    "downAmount": "Down payment"
+  },
+  "plan": {
+    "bed": "{n, plural, =0 {Studio} one {# bedroom} other {# bedrooms}}",
+    "bath": "{n} baths",
+    "floors": "Floors {f}"
+  },
+  "brochure": {
+    "eyebrow": "Brochure",
+    "title": "The ORA World *brochure*",
+    "intro": "Read it in the browser or download the PDF. Register once to unlock.",
+    "placeholder": "Placeholder spreads: renders stand in for the designed brochure pages.",
+    "pdfSoon": "PDF to be supplied"
   }
 }
