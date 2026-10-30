@@ -14,7 +14,13 @@ export async function Hero({ hero, site }: Props) {
   const h = await getTranslations("home");
   return (
     <section data-hero className="relative flex min-h-dvh flex-col justify-end text-white">
-      <HeroVideo poster={hero.poster} mp4={hero.videoLoop} webm={hero.videoLoopWebm} mobileMp4={hero.videoMobile} />
+      <HeroVideo
+        poster={hero.poster}
+        mp4={hero.videoLoop}
+        webm={hero.videoLoopWebm}
+        mobileMp4={hero.videoMobile}
+        youtubeId={site.filmYoutubeId}
+      />
       <div className="absolute inset-0 scrim-bottom" />
       <div className="absolute inset-x-0 top-0 h-48 scrim-top" />
 
@@ -32,11 +38,12 @@ export async function Hero({ hero, site }: Props) {
           <ScrollToButton target="#inquire" variant="light">
             {t("requestPresentation")}
           </ScrollToButton>
-          <FilmButton url={site.filmUrl} />
+          <FilmButton url={site.filmUrl} youtubeId={site.filmYoutubeId} />
         </div>
       </div>
 
       <div className="relative border-t border-white/20">
+        <p className="container-x pt-4 eyebrow text-white/55">{h("statsOf")}</p>
         <div className="container-x">
           <dl className="grid grid-cols-2 md:grid-cols-4">
             {hero.stats.map((s, i) => (
@@ -65,9 +72,6 @@ export async function Hero({ hero, site }: Props) {
             ))}
           </dl>
         </div>
-        <p className="pointer-events-none absolute -top-8 right-[var(--gutter)] hidden eyebrow text-white/45 md:block">
-          {h("statsOf")}
-        </p>
       </div>
 
       <div

@@ -189,8 +189,8 @@ export const galleryImages: GalleryImage[] = [
     category: "construction",
     image: renders.towerDetail,
     caption: {
-      en: "Construction updates coming soon [[PLACEHOLDER]]",
-      es: "Actualizaciones de obra próximamente [[PROVISIONAL]]",
+      en: "Construction updates coming soon",
+      es: "Actualizaciones de obra próximamente",
     },
   },
 ];
@@ -215,11 +215,11 @@ export const pages: GenericPage[] = [
         body: {
           en: [
             "Tesoro Del Mar's community hub includes a state-of-the-art clubhouse and a boutique hotel with 42 suites, ensuring exceptional hospitality and recreational facilities. Dorado Waterfalls likewise pairs its clubhouse with a hotel.",
-            "[[PLACEHOLDER: hotel operator, brand partnership and investment structure to be supplied by ORA World.]]",
+            "Hotel operator, brand partnership and investment structure to be supplied by ORA World.",
           ],
           es: [
             "El centro de Tesoro Del Mar incluye un clubhouse de última generación y un hotel boutique con 42 suites, garantizando hospitalidad y espacios recreativos excepcionales. Dorado Waterfalls también combina su clubhouse con un hotel.",
-            "[[PROVISIONAL: operador hotelero, alianza de marca y estructura de inversión por suministrar por ORA World.]]",
+            "Operador hotelero, alianza de marca y estructura de inversión por suministrar por ORA World.",
           ],
         },
         image: lifestyle.toast,
@@ -240,10 +240,10 @@ export const pages: GenericPage[] = [
         title: { en: "Open positions", es: "Posiciones abiertas" },
         body: {
           en: [
-            "[[PLACEHOLDER: no open positions have been supplied. Send your résumé through the contact form and we will keep it on file.]]",
+            "No open positions have been published yet. Send your résumé through the contact form and we will keep it on file.",
           ],
           es: [
-            "[[PROVISIONAL: no se han suministrado posiciones abiertas. Envíe su currículum a través del formulario de contacto y lo mantendremos en archivo.]]",
+            "Aún no se han publicado posiciones abiertas. Envíe su currículum a través del formulario de contacto y lo mantendremos en archivo.",
           ],
         },
       },
@@ -276,11 +276,11 @@ export const pages: GenericPage[] = [
         body: {
           en: [
             "To respond to your inquiry, arrange presentations and send the updates you asked for. Your details are shared with ORA World's sales team and its CRM provider, and never sold.",
-            "[[PLACEHOLDER: full policy to be reviewed by ORA World counsel before launch.]]",
+            "Full policy to be reviewed by ORA World counsel before launch.",
           ],
           es: [
             "Para responder a su consulta, organizar presentaciones y enviarle las novedades que solicitó. Sus datos se comparten con el equipo de ventas de ORA World y su proveedor de CRM, y nunca se venden.",
-            "[[PROVISIONAL: política completa por revisar por los abogados de ORA World antes del lanzamiento.]]",
+            "Política completa por revisar por los abogados de ORA World antes del lanzamiento.",
           ],
         },
       },
@@ -318,10 +318,10 @@ export const pages: GenericPage[] = [
         title: { en: "Use of content", es: "Uso del contenido" },
         body: {
           en: [
-            "All content is the property of ORA World and its licensors and may not be reproduced without permission. [[PLACEHOLDER: full terms to be reviewed by counsel.]]",
+            "All content is the property of ORA World and its licensors and may not be reproduced without permission. Full terms to be reviewed by counsel.",
           ],
           es: [
-            "Todo el contenido es propiedad de ORA World y sus licenciantes y no puede reproducirse sin permiso. [[PROVISIONAL: términos completos por revisar por los abogados.]]",
+            "Todo el contenido es propiedad de ORA World y sus licenciantes y no puede reproducirse sin permiso. Términos completos por revisar por los abogados.",
           ],
         },
       },

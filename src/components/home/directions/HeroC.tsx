@@ -37,7 +37,7 @@ export async function HeroC({
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal data-delay="0.4">
             <ScrollToButton target="#inquire">{t("requestPresentation")}</ScrollToButton>
-            <FilmButton url={site.filmUrl} variant="primary" />
+            <FilmButton url={site.filmUrl} youtubeId={site.filmYoutubeId} variant="primary" />
           </div>
         </div>
         <div className="relative col-span-12 md:col-span-6">

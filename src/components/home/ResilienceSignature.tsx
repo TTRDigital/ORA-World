@@ -112,7 +112,12 @@ export function ResilienceSignature({ block }: { block: Localized<HomeContent["r
                 <line data-draw x1="338" y1="44" x2="560" y2="30" strokeOpacity="0.6" />
                 <line data-draw x1="540" y1="660" x2="560" y2="700" strokeOpacity="0.6" />
               </g>
-              <g className="fill-current text-dark-fg" fontSize="11" letterSpacing="2" fontFamily="var(--font-sans)">
+              <g
+                className="fill-current text-dark-fg max-md:hidden"
+                fontSize="12"
+                letterSpacing="2"
+                fontFamily="var(--font-sans)"
+              >
                 <text x="568" y="34">
                   {block.features
                     .find((f) => f.slug === "power")

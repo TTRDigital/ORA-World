@@ -52,8 +52,8 @@ export const collections: Collection[] = [
       {
         group: { en: "Kitchens and baths", es: "Cocinas y baños" },
         items: [
-          { en: "Custom cabinetry [[PLACEHOLDER: brand]]", es: "Gabinetes a medida [[PROVISIONAL: marca]]" },
-          { en: "Premium appliances [[PLACEHOLDER: brand]]", es: "Electrodomésticos premium [[PROVISIONAL: marca]]" },
+          { en: "Custom cabinetry, brand to be confirmed", es: "Gabinetes a medida, marca por confirmar" },
+          { en: "Premium appliances, brand to be confirmed", es: "Electrodomésticos premium, marca por confirmar" },
           { en: "Natural stone surfaces", es: "Superficies de piedra natural" },
         ],
       },
@@ -103,8 +103,8 @@ export const collections: Collection[] = [
     hoverImage: renders.towerDetail,
     features: [
       {
-        en: "Full-floor and half-floor layouts [[PLACEHOLDER]]",
-        es: "Distribuciones de planta completa y media planta [[PROVISIONAL]]",
+        en: "Full-floor and half-floor layouts, to be confirmed",
+        es: "Distribuciones de planta completa y media planta, por confirmar",
       },
       { en: "Wrap-around terraces", es: "Terrazas envolventes" },
     ],
@@ -133,8 +133,8 @@ export const collections: Collection[] = [
     hoverImage: renders.poolTerrace,
     features: [
       {
-        en: "Ownership model to be confirmed [[PLACEHOLDER]]",
-        es: "Modelo de propiedad por confirmar [[PROVISIONAL]]",
+        en: "Ownership model to be confirmed",
+        es: "Modelo de propiedad por confirmar",
       },
     ],
     finishes: [],
@@ -242,7 +242,7 @@ export const floorPlans: FloorPlan[] = [
     fromPrice: null,
     highlights: [
       { en: "Two terraces", es: "Dos terrazas" },
-      { en: "Private elevator landing [[PLACEHOLDER]]", es: "Vestíbulo privado de ascensor [[PROVISIONAL]]" },
+      { en: "Private elevator landing, to be confirmed", es: "Vestíbulo privado de ascensor, por confirmar" },
     ],
     kp: [8, 56, 40, 34],
   }),

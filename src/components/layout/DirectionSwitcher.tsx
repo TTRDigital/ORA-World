@@ -37,7 +37,7 @@ export function DirectionSwitcher() {
   }
 
   return (
-    <div className="fixed top-[calc(var(--header-h)+0.75rem)] right-6 z-30 hidden opacity-80 hover:opacity-100 md:block print:hidden">
+    <div className="fixed bottom-6 left-1/2 z-30 hidden -translate-x-1/2 opacity-80 hover:opacity-100 md:block print:hidden">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -47,7 +47,7 @@ export function DirectionSwitcher() {
         Direction {current.toUpperCase()}
       </button>
       {open && (
-        <ul className="absolute top-full right-0 mt-2 w-56 border border-rule bg-bg text-fg">
+        <ul className="absolute bottom-full left-1/2 mb-2 w-56 -translate-x-1/2 border border-rule bg-bg text-fg">
           {DIRECTIONS.map((d) => (
             <li key={d}>
               <button

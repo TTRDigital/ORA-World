@@ -12,7 +12,13 @@ export async function HeroB({ hero, site }: { hero: Localized<HomeContent["hero"
   const t = await getTranslations("common");
   return (
     <section data-hero className="relative flex min-h-dvh flex-col justify-center text-white">
-      <HeroVideo poster={hero.poster} mp4={hero.videoLoop} webm={hero.videoLoopWebm} mobileMp4={hero.videoMobile} />
+      <HeroVideo
+        poster={hero.poster}
+        mp4={hero.videoLoop}
+        webm={hero.videoLoopWebm}
+        mobileMp4={hero.videoMobile}
+        youtubeId={site.filmYoutubeId}
+      />
       <div
         className="absolute inset-0"
         style={{ background: "radial-gradient(ellipse at center, transparent 30%, rgb(18 17 16 / .75) 100%)" }}
@@ -31,7 +37,7 @@ export async function HeroB({ hero, site }: { hero: Localized<HomeContent["hero"
           <ScrollToButton target="#inquire" variant="light">
             {t("requestPresentation")}
           </ScrollToButton>
-          <FilmButton url={site.filmUrl} />
+          <FilmButton url={site.filmUrl} youtubeId={site.filmYoutubeId} />
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 border-t border-white/15 bg-basalt/60 backdrop-blur-sm">

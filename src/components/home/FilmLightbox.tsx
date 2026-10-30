@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { track } from "@/lib/analytics";
 
-/** "Watch the film" opens the full film with sound. Hidden until the film asset exists. */
-export function FilmButton({ url, variant = "light" }: { url: string | null; variant?: "light" | "primary" }) {
+type Props = { url: string | null; youtubeId?: string | null; variant?: "light" | "primary" };
+
+/** "Watch the film" opens the full film with sound: self-hosted MP4 when present, otherwise the YouTube film. */
+export function FilmButton({ url, youtubeId, variant = "light" }: Props) {
   const t = useTranslations("common");
   const h = useTranslations("home");
   const [open, setOpen] = useState(false);
-  if (!url) {
+  if (!url && !youtubeId) {
     return (
       <span className="inline-flex items-center gap-3 px-2 py-4 eyebrow text-white/55" title={h("watchFilmSoon")}>
         <PlayGlyph />
@@ -32,7 +34,19 @@ export function FilmButton({ url, variant = "light" }: { url: string | null; var
         {t("watchFilm")}
       </Button>
       <Modal open={open} onClose={() => setOpen(false)} label={t("watchFilm")}>
-        <video src={url} controls autoPlay playsInline className="max-h-[85vh] w-full max-w-6xl bg-black" />
+        {url ? (
+          <video src={url} controls autoPlay playsInline className="max-h-[85vh] w-full max-w-6xl bg-black" />
+        ) : (
+          <div className="aspect-video w-full max-w-6xl bg-black">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+              title={t("watchFilm")}
+              className="h-full w-full border-0"
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              allowFullScreen
+            />
+          </div>
+        )}
       </Modal>
     </>
   );

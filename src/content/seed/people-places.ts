@@ -33,7 +33,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "architect",
-    name: "[[PLACEHOLDER: Architecture firm]]",
+    name: "Design architect · to be announced",
     role: { en: "Design architect", es: "Arquitecto de diseño" },
     discipline: { en: "Architecture", es: "Arquitectura" },
     bio: {
@@ -51,7 +51,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "interiors",
-    name: "[[PLACEHOLDER: Interior design studio]]",
+    name: "Interior design studio · to be announced",
     role: { en: "Interior design", es: "Diseño de interiores" },
     discipline: { en: "Interiors", es: "Interiores" },
     bio: {
@@ -69,7 +69,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "landscape",
-    name: "[[PLACEHOLDER: Landscape architect]]",
+    name: "Landscape architect · to be announced",
     role: { en: "Landscape architecture", es: "Arquitectura del paisaje" },
     discipline: { en: "Landscape", es: "Paisaje" },
     bio: {
@@ -141,7 +141,7 @@ export const pointsOfInterest: PointOfInterest[] = [
     lng: -66.269,
     driveMinutes: 15,
     walkMinutes: null,
-    note: { en: "[[PLACEHOLDER: facility name]]", es: "[[PROVISIONAL: nombre del centro]]" },
+    note: { en: "Facility name to be confirmed", es: "Nombre del centro por confirmar" },
     placeholder: true,
   },
   {
@@ -194,8 +194,8 @@ export const pointsOfInterest: PointOfInterest[] = [
 export const press: PressArticle[] = [
   {
     slug: "placeholder-1",
-    title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" },
-    outlet: "[[Outlet]]",
+    title: { en: "Press headline to be supplied", es: "Titular de prensa por suministrar" },
+    outlet: "Outlet to be confirmed",
     date: "2026-01-15",
     excerpt: {
       en: "Article summary to be supplied by the ORA World press office.",
@@ -211,8 +211,8 @@ export const press: PressArticle[] = [
   },
   {
     slug: "placeholder-2",
-    title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" },
-    outlet: "[[Outlet]]",
+    title: { en: "Press headline to be supplied", es: "Titular de prensa por suministrar" },
+    outlet: "Outlet to be confirmed",
     date: "2025-11-02",
     excerpt: {
       en: "Article summary to be supplied by the ORA World press office.",
@@ -228,8 +228,8 @@ export const press: PressArticle[] = [
   },
   {
     slug: "placeholder-3",
-    title: { en: "[[PLACEHOLDER: Press headline]]", es: "[[PROVISIONAL: Titular de prensa]]" },
-    outlet: "[[Outlet]]",
+    title: { en: "Press headline to be supplied", es: "Titular de prensa por suministrar" },
+    outlet: "Outlet to be confirmed",
     date: "2025-09-20",
     excerpt: {
       en: "Article summary to be supplied by the ORA World press office.",
@@ -261,25 +261,25 @@ export const investmentSteps: InvestmentStep[] = [
   {
     order: 2,
     title: { en: "Contract", es: "Contrato" },
-    detail: { en: "[[PLACEHOLDER: deposit at contract]]", es: "[[PROVISIONAL: depósito al contrato]]" },
+    detail: { en: "Deposit at contract: to be confirmed", es: "Depósito al contrato: por confirmar" },
     percent: null,
-    when: { en: "[[PLACEHOLDER]]", es: "[[PROVISIONAL]]" },
+    when: { en: "Date to be confirmed", es: "Fecha por confirmar" },
     placeholder: true,
   },
   {
     order: 3,
     title: { en: "Construction milestone", es: "Hito de construcción" },
-    detail: { en: "[[PLACEHOLDER: deposit at milestone]]", es: "[[PROVISIONAL: depósito al hito]]" },
+    detail: { en: "Deposit at milestone: to be confirmed", es: "Depósito al hito: por confirmar" },
     percent: null,
-    when: { en: "[[PLACEHOLDER]]", es: "[[PROVISIONAL]]" },
+    when: { en: "Date to be confirmed", es: "Fecha por confirmar" },
     placeholder: true,
   },
   {
     order: 4,
     title: { en: "Closing", es: "Cierre" },
-    detail: { en: "[[PLACEHOLDER: balance at closing]]", es: "[[PROVISIONAL: saldo al cierre]]" },
+    detail: { en: "Balance at closing: to be confirmed", es: "Saldo al cierre: por confirmar" },
     percent: null,
-    when: { en: "[[PLACEHOLDER: estimated delivery]]", es: "[[PROVISIONAL: entrega estimada]]" },
+    when: { en: "Estimated delivery: to be confirmed", es: "Entrega estimada: por confirmar" },
     placeholder: true,
   },
 ];

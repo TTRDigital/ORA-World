@@ -31,6 +31,7 @@ export const siteSettings: SiteSettings = {
   bookingUrl: null, // [[PLACEHOLDER: Calendly / Cal.com URL]]
   vrTourUrl: "https://kuula.co/share/collection/7Zt7D?logo=1&info=0&fs=1&vr=1&thumbs=2&margin=10&alpha=0.60",
   filmUrl: null, // set by the video pipeline or a Sanity file asset
+  filmYoutubeId: "HkIPZ9pGezA", // "Live Beyond Limits | ORA World Puerto Rico" on the ORA World channel
   brochureUrl: null, // [[PLACEHOLDER: brochure PDF]]
   // [[PLACEHOLDER: brochure spreads. Renders stand in for the designed pages so the flipbook can be reviewed.]]
   brochurePages: [

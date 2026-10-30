@@ -14,7 +14,7 @@ export function ShortlistBar({ names }: { names: Record<string, string> }) {
     <div
       aria-live="polite"
       className={cn(
-        "fixed inset-x-0 bottom-16 z-[45] border-t border-rule bg-bg/95 text-fg backdrop-blur-sm transition-transform duration-700 ease-[var(--ease-out-expo)] md:inset-x-auto md:bottom-6 md:left-1/2 md:w-[min(42rem,calc(100%-3rem))] md:-translate-x-1/2 md:border",
+        "fixed inset-x-0 bottom-14 z-[45] border-t border-rule bg-bg/95 text-fg backdrop-blur-sm transition-transform duration-700 ease-[var(--ease-out-expo)] md:inset-x-auto md:bottom-6 md:left-1/2 md:w-[min(42rem,calc(100%-3rem))] md:-translate-x-1/2 md:border",
         visible ? "translate-y-0 md:translate-y-0" : "invisible translate-y-full md:translate-y-[150%]",
       )}
     >

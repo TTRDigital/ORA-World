@@ -42,6 +42,8 @@ export interface SiteSettings {
   bookingUrl: string | null;
   vrTourUrl: string | null;
   filmUrl: string | null;
+  /** YouTube id of the brand film, used as hero background and lightbox until a self-hosted file exists. */
+  filmYoutubeId: string | null;
   brochureUrl: string | null;
   /** Page images for the in-browser flipbook (placeholders until the brochure is supplied). */
   brochurePages: ImageRef[];

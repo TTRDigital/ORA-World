@@ -104,32 +104,33 @@ export function Consent() {
       role="region"
       aria-label={t("title")}
       aria-live="polite"
-      className={cn(
-        "fixed inset-x-4 bottom-4 z-40 border border-rule bg-bg p-5 text-fg md:inset-x-auto md:bottom-6 md:left-6 md:max-w-sm",
-      )}
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-rule bg-bg/97 text-fg backdrop-blur-sm md:inset-x-auto md:bottom-6 md:left-6 md:max-w-sm md:border"
+      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      <p className="eyebrow text-accent-ink">{t("title")}</p>
-      <p className="mt-3 small text-fg-muted">
-        {t("text")}{" "}
-        <Link href="/privacy" className="underline">
-          Privacy
-        </Link>
-      </p>
-      <div className="mt-5 flex flex-wrap gap-3">
-        <button
-          type="button"
-          onClick={() => decide("granted")}
-          className="cursor-pointer border border-accent px-4 py-3 eyebrow text-accent-ink hover:bg-accent hover:text-white"
-        >
-          {t("accept")}
-        </button>
-        <button
-          type="button"
-          onClick={() => decide("denied")}
-          className="cursor-pointer px-4 py-3 eyebrow text-fg-muted hover:text-fg"
-        >
-          {t("reject")}
-        </button>
+      <div className="flex flex-col gap-3 px-4 py-3 md:block md:p-5">
+        <p className="min-w-0 flex-1 small text-fg-muted md:mt-0">
+          <span className="mr-2 hidden eyebrow text-accent-ink md:mb-3 md:block md:inline-block">{t("title")}</span>
+          {t("text")}{" "}
+          <Link href="/privacy" className="underline">
+            Privacy
+          </Link>
+        </p>
+        <div className="flex gap-3 md:mt-5">
+          <button
+            type="button"
+            onClick={() => decide("granted")}
+            className="cursor-pointer border border-accent px-4 py-2.5 eyebrow text-accent-ink hover:bg-accent hover:text-white md:py-3"
+          >
+            {t("accept")}
+          </button>
+          <button
+            type="button"
+            onClick={() => decide("denied")}
+            className="cursor-pointer px-3 py-2.5 eyebrow text-fg-muted hover:text-fg md:py-3"
+          >
+            {t("reject")}
+          </button>
+        </div>
       </div>
     </div>
   );

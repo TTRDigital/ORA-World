@@ -37,7 +37,7 @@ export function mapFigure(f: SanityFigure): ImageRef | undefined {
 /* ---------- site settings ---------- */
 export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
   phone, whatsapp, email, salesGalleryName, salesGalleryAddress, hours, social, siteLat, siteLng,
-  portalUrl, bookingUrl, vrTourUrl, "filmUrl": film.asset->url, "brochureUrl": brochure.asset->url,
+  portalUrl, bookingUrl, vrTourUrl, "filmUrl": film.asset->url, filmYoutubeId, "brochureUrl": brochure.asset->url,
   "brokerKitUrl": brokerKit.asset->url, "mediaKitUrl": mediaKit.asset->url, "brochurePages": brochurePages[] ${figureProjection},
   legalNotice, renderingNotice, sponsor, consentText,
   "menuImages": menuImages[]{ key, "image": image ${figureProjection} }

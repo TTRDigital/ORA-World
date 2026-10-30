@@ -53,6 +53,15 @@ export const siteSettings = defineType({
       group: "links",
     }),
     defineField({
+      name: "filmYoutubeId",
+      title: "Brand film YouTube id",
+      type: "string",
+      group: "links",
+      description:
+        "The 11-character id, e.g. HkIPZ9pGezA. Used as the hero background and the film lightbox when no MP4 is uploaded.",
+      validation: (r) => r.regex(/^[A-Za-z0-9_-]{11}$/, { name: "YouTube id" }),
+    }),
+    defineField({
       name: "brochure",
       title: "Brochure PDF",
       type: "file",
