@@ -74,15 +74,18 @@ export async function initReveals(): Promise<() => void> {
     const image = el.dataset.reveal === "image";
     const inner = image ? el.querySelector<HTMLElement>("img, video, picture, [data-reveal-inner]") : null;
     watch(el, () => {
+      // Set the start state before the class flips opacity back on, so there is no flash.
+      if (image) gsap.set(el, { clipPath: "inset(0 0 100% 0)", opacity: 1 });
+      else gsap.set(el, { opacity: 0, y: 24, yPercent: 0 });
       el.classList.add("is-revealed");
-      gsap.fromTo(el, image ? { clipPath: "inset(0 0 100% 0)", opacity: 1 } : { opacity: 0, y: 24, yPercent: 0 }, {
+      gsap.to(el, {
         opacity: 1,
         y: 0,
         clipPath: "inset(0 0 0% 0)",
         duration: image ? 1.2 : 0.9,
         ease: "expo.out",
         delay: Number(el.dataset.delay || 0),
-        onComplete: () => gsap.set(el, { clearProps: "clipPath,transform" }),
+        onComplete: () => gsap.set(el, { clearProps: "clipPath,transform,opacity" }),
       });
       if (inner)
         gsap.fromTo(inner, { scale: 1.06 }, { scale: 1, duration: 1.6, ease: "expo.out", clearProps: "transform" });

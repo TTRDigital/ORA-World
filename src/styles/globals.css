@@ -366,9 +366,6 @@
 html.js:not(.reduced-motion) [data-reveal]:not(.is-revealed) {
   opacity: 0;
 }
-html.js:not(.reduced-motion) [data-reveal="image"]:not(.is-revealed) {
-  clip-path: inset(0 0 100% 0);
-}
 html.js:not(.reduced-motion) [data-reveal-line]:not(.is-revealed) > span {
   transform: translateY(110%);
 }
