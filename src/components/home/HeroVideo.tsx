@@ -45,31 +45,45 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
   const frame = useRef<HTMLIFrameElement>(null);
 
   // Hide the poster only once YouTube reports the film is actually playing (state 1);
-  // if the embed is blocked or unavailable the poster simply stays.
+  // if the embed is blocked or unavailable the poster simply stays. Captions are switched off
+  // through the player API because the viewer's own YouTube preference would otherwise turn them on.
   useEffect(() => {
     if (!useVideo || selfHosted || !yt) return;
+    const send = (func: string, args: unknown[] = []) =>
+      frame.current?.contentWindow?.postMessage(JSON.stringify({ event: "command", func, args }), "*");
+    const silence = () => {
+      send("unloadModule", ["captions"]);
+      send("unloadModule", ["cc"]);
+      send("setOption", ["captions", "track", {}]);
+      send("setOption", ["cc", "track", {}]);
+      send("mute");
+    };
     const onMessage = (e: MessageEvent) => {
       if (typeof e.data !== "string" || !/youtube/.test(e.origin)) return;
       try {
         const data = JSON.parse(e.data) as { event?: string; info?: { playerState?: number } | number };
         const state = typeof data.info === "object" && data.info ? data.info.playerState : data.info;
-        if (data.event === "infoDelivery" && state === 1) setPlaying(true);
-        if (data.event === "onReady")
-          frame.current?.contentWindow?.postMessage(
-            JSON.stringify({ event: "command", func: "playVideo", args: [] }),
-            "*",
-          );
+        if (data.event === "onReady") {
+          silence();
+          send("playVideo");
+        }
+        if (data.event === "infoDelivery" && state === 1) {
+          silence();
+          setPlaying(true);
+        }
       } catch {}
     };
     window.addEventListener("message", onMessage);
-    // ask the player to start reporting state
-    const id = window.setInterval(
-      () => frame.current?.contentWindow?.postMessage(JSON.stringify({ event: "listening", id: "ora-hero" }), "*"),
-      800,
-    );
+    // Ask the player to report state, and keep captions off while its modules load.
+    const id = window.setInterval(() => {
+      frame.current?.contentWindow?.postMessage(JSON.stringify({ event: "listening", id: "ora-hero" }), "*");
+      silence();
+    }, 1000);
+    const stop = window.setTimeout(() => window.clearInterval(id), 20000);
     return () => {
       window.removeEventListener("message", onMessage);
       window.clearInterval(id);
+      window.clearTimeout(stop);
     };
   }, [useVideo, selfHosted, yt]);
 
@@ -105,7 +119,7 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
       )}
       {useVideo && !selfHosted && yt && (
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          {/* 16:9 frame scaled to cover the viewport in both orientations */}
+          {/* 16:9 frame scaled 30% beyond the viewport so the player's title bar and logo are cropped away */}
           <iframe
             ref={frame}
             src={yt}
@@ -113,7 +127,7 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
             tabIndex={-1}
             allow="autoplay; encrypted-media; picture-in-picture"
             className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0 transition-opacity duration-[1600ms] ${playing ? "opacity-100" : "opacity-0"}`}
-            style={{ width: "max(100vw, 177.78vh)", height: "max(100vh, 56.25vw)" }}
+            style={{ width: "calc(max(100vw, 177.78vh) * 1.3)", height: "calc(max(100vh, 56.25vw) * 1.3)" }}
           />
         </div>
       )}
