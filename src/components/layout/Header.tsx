@@ -6,7 +6,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import type { Localized } from "@/lib/localize";
 import type { SiteSettings } from "@/content/types";
 import { cn } from "@/lib/utils";
-import { Wordmark } from "./Wordmark";
+import { Logo } from "./Logo";
 import { headerNav } from "./nav";
 import { LanguageToggle } from "./LanguageToggle";
 import { OverlayMenu } from "./OverlayMenu";
@@ -71,8 +71,27 @@ export function Header({ site }: Props) {
         )}
       >
         <div className="container-x flex h-full items-center justify-between gap-6">
-          <Link href="/" aria-label="ORA World" className="shrink-0 py-2">
-            <Wordmark className="h-7 w-auto md:h-8" />
+          <Link href="/" aria-label="ORA World, home" className="shrink-0 py-2">
+            <span className="relative block h-11 md:h-14" style={{ aspectRatio: "1.42 / 1" }}>
+              <Logo
+                tone="white"
+                priority
+                sizes="80px"
+                className={cn(
+                  "absolute inset-0 h-full w-full transition-opacity duration-500",
+                  light ? "opacity-100" : "opacity-0",
+                )}
+              />
+              <Logo
+                tone="gold"
+                priority
+                sizes="80px"
+                className={cn(
+                  "absolute inset-0 h-full w-full transition-opacity duration-500",
+                  light ? "opacity-0" : "opacity-100",
+                )}
+              />
+            </span>
           </Link>
 
           <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">

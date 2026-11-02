@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import type { Localized } from "@/lib/localize";
 import type { SiteSettings } from "@/content/types";
 import { telHref, whatsappHref } from "@/lib/utils";
-import { Wordmark } from "./Wordmark";
+import { Logo } from "./Logo";
 import { primaryNav, secondaryNav, legalNav } from "./nav";
 import { LanguageToggle } from "./LanguageToggle";
 import { NewsletterForm } from "@/components/forms/NewsletterForm";
@@ -19,7 +19,7 @@ export async function Footer({ site }: { site: Localized<SiteSettings> }) {
       <div className="container-x pt-20 pb-10 md:pt-28">
         <div className="grid grid-cols-12 gap-x-6 gap-y-12">
           <div className="col-span-12 md:col-span-5 lg:col-span-4">
-            <Wordmark className="h-10 w-auto text-dark-fg" />
+            <Logo tone="gold" sizes="160px" className="h-24 w-auto md:h-28" />
             <address className="mt-10 flex flex-col gap-1 small text-dark-fg/80 not-italic">
               <span className="mb-2 eyebrow text-dark-accent">{f("salesGallery")}</span>
               <span>{site.salesGalleryName}</span>

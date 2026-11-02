@@ -145,11 +145,182 @@ export const lifestyle = {
   }),
 };
 
-/* ---- Free-license placeholders (credits in CONTENT-TODO.md) ---- */
-export const free = {
-  bioBay: img(
-    "free/bio-bay-vieques",
-    { en: "Mosquito Bay, Vieques, at dusk", es: "Bahía Mosquito, Vieques, al anochecer" },
-    { placeholder: true, credit: "Panoramio contributor, CC BY 3.0, via Wikimedia Commons" },
+/* ---- Tesoro Del Mar render set (oraworld.com, July 2025) ---- */
+const R = { rendering: true } as const;
+export const tdm = {
+  aerialTowers: img(
+    "client/tdm-aerial-001-small-scaled",
+    {
+      en: "Aerial view of the Tesoro Del Mar towers set in tropical forest",
+      es: "Vista aérea de las torres de Tesoro Del Mar entre el bosque tropical",
+    },
+    R,
+  ),
+  aerialCoast: img(
+    "client/tdm-aerial-002-small-scaled",
+    {
+      en: "Aerial view of Tesoro Del Mar above a turquoise cove on the north coast",
+      es: "Vista aérea de Tesoro Del Mar sobre una cala turquesa de la costa norte",
+    },
+    R,
+  ),
+  aerialVillas: img(
+    "client/tdm-aerial-003-small-scaled",
+    {
+      en: "Aerial view of the towers and the villa neighbourhood at Tesoro Del Mar",
+      es: "Vista aérea de las torres y el vecindario de villas de Tesoro Del Mar",
+    },
+    R,
+  ),
+  aerialForest: img(
+    "client/tdm-aerial-004-small-scaled",
+    {
+      en: "Tesoro Del Mar towers rising from the forest canopy",
+      es: "Las torres de Tesoro Del Mar emergiendo del dosel del bosque",
+    },
+    R,
+  ),
+  exteriorGolf: img(
+    "client/tdm-exterior-from-golf-scaled",
+    {
+      en: "Tesoro Del Mar seen across the landscaped green",
+      es: "Tesoro Del Mar visto desde las áreas verdes ajardinadas",
+    },
+    R,
+  ),
+  exteriorRoad: img(
+    "client/tdm-exterior-from-road-scaled",
+    {
+      en: "Curved towers of Tesoro Del Mar seen from the palm-lined approach",
+      es: "Las torres curvas de Tesoro Del Mar desde el acceso bordeado de palmeras",
+    },
+    R,
+  ),
+  foyerAtrium: img(
+    "client/tdm-foyer-001-small-scaled",
+    {
+      en: "Double-height lobby with a stone column and gallery level",
+      es: "Vestíbulo de doble altura con columna de piedra y nivel de galería",
+    },
+    R,
+  ),
+  foyerLounge: img(
+    "client/tdm-foyer-002-small-scaled",
+    { en: "Lobby lounge in travertine and warm wood", es: "Salón del vestíbulo en travertino y madera cálida" },
+    R,
+  ),
+  foyerReception: img(
+    "client/tdm-foyer-004-small-scaled",
+    { en: "Reception desk beneath a living green wall", es: "Recepción bajo un muro verde vivo" },
+    R,
+  ),
+  foyerSignage: img(
+    "client/tdm-foyer-005-small-scaled",
+    {
+      en: "The Tesoro Del Mar foyer with its name on the stone wall",
+      es: "El vestíbulo de Tesoro Del Mar con su nombre en el muro de piedra",
+    },
+    R,
+  ),
+  aptLiving: img(
+    "client/tdm-apt-1403-living-room-003-small-scaled",
+    { en: "Open living and dining room in apartment 1403", es: "Sala y comedor abiertos del apartamento 1403" },
+    R,
+  ),
+  aptLiving2: img(
+    "client/tdm-apt-1403-living-room-004-small-scaled",
+    {
+      en: "Living room with floor-to-ceiling glass in apartment 1403",
+      es: "Sala con ventanales de piso a techo en el apartamento 1403",
+    },
+    R,
+  ),
+  aptBedroom: img(
+    "client/tdm-apt-1403-master-bedroom-001-small-scaled",
+    { en: "Primary bedroom in apartment 1403", es: "Dormitorio principal del apartamento 1403" },
+    R,
+  ),
+  aptBedroom2: img(
+    "client/tdm-apt-1403-bedroom-2-001-op2-small-scaled",
+    {
+      en: "Second bedroom with an ocean view in apartment 1403",
+      es: "Segundo dormitorio con vista al mar en el apartamento 1403",
+    },
+    R,
+  ),
+  aptBath: img(
+    "client/tdm-apt-1403-master-bathroom-001-small-scaled",
+    { en: "Primary bathroom in onyx and marble", es: "Baño principal en ónix y mármol" },
+    R,
+  ),
+  aptBath2: img(
+    "client/tdm-apt-1403-master-bathroom-002-small-scaled",
+    { en: "Freestanding bath before an onyx wall", es: "Bañera exenta frente a un muro de ónix" },
+    R,
+  ),
+  aptStudy: img(
+    "client/tdm-apt-1403-study-001-small-scaled",
+    {
+      en: "Study with built-in shelving in apartment 1403",
+      es: "Estudio con estanterías integradas en el apartamento 1403",
+    },
+    R,
+  ),
+  hotelSuite: img(
+    "client/tdm-hotel-210-bedroom-001-small-scaled",
+    { en: "Hotel suite 210 bedroom", es: "Dormitorio de la suite de hotel 210" },
+    R,
+  ),
+  penthouseDining: img(
+    "client/tdm-penthouse-living-001-small-scaled",
+    { en: "Penthouse dining and living room facing the sea", es: "Comedor y sala del penthouse frente al mar" },
+    R,
+  ),
+  penthouseLiving: img(
+    "client/tdm-penthouse-living-002-small-scaled",
+    { en: "Penthouse living room with a floating staircase", es: "Sala del penthouse con escalera flotante" },
+    R,
+  ),
+};
+
+/* ---- Dorado Waterfalls (oraworld.com) ---- */
+export const dw = {
+  masterplan: img(
+    "client/doradowaterfall2",
+    {
+      en: "Dorado Waterfalls master plan beside the river and mountains",
+      es: "Plan maestro de Dorado Waterfalls junto al río y las montañas",
+    },
+    R,
+  ),
+  masterplan2: img(
+    "client/doradowaterfalls3",
+    { en: "Dorado Waterfalls towers along the valley", es: "Torres de Dorado Waterfalls a lo largo del valle" },
+    R,
+  ),
+  lobby: img(
+    "client/doradowaterfallsinterior1",
+    { en: "Dorado Waterfalls lobby with a living wall", es: "Vestíbulo de Dorado Waterfalls con muro vivo" },
+    R,
+  ),
+  lounge: img(
+    "client/doradowaterfallsinterior4",
+    { en: "Dorado Waterfalls residence lounge", es: "Salón de una residencia de Dorado Waterfalls" },
+    R,
+  ),
+  waterWall: img(
+    "client/doradowaterfallsinterior9",
+    { en: "Cascading water wall inside Dorado Waterfalls", es: "Muro de agua en cascada en Dorado Waterfalls" },
+    R,
+  ),
+  bar: img(
+    "client/doradowaterfallsinterior12",
+    { en: "Dorado Waterfalls lounge bar", es: "Bar lounge de Dorado Waterfalls" },
+    R,
+  ),
+  living: img(
+    "client/doradowaterfallsinterior15",
+    { en: "Dorado Waterfalls open-plan living room", es: "Sala de concepto abierto en Dorado Waterfalls" },
+    R,
   ),
 };

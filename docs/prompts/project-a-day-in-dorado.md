@@ -1,9 +1,11 @@
 Build "ORA World: A Day in Dorado", a completely new website for ORA World (luxury eco-conscious residences in Dorado, Puerto Rico) in a NEW private GitHub repository named ora-world-day, deployed to its own Vercel project. Nothing is shared with any existing codebase, and it must not resemble the current ORA World site in structure, navigation, colour, typography or motion. Only the facts and the required features carry over. Work autonomously through every phase without stopping for approval; ask me only for decisions that are hard to undo.
 
 ## 1. The idea
+
 The current site is a classic stack of sections (hero, mission, residences, resilience, amenities, map, team, contact). Throw that structure away.
 
 The new site tells ONE story: a single day at ORA World, from dawn to night. The homepage is that day. Every fact the client needs to communicate is placed at the moment of the day where a resident would feel it:
+
 - the shore in the morning
 - the residence at home
 - wellness and family through the day
@@ -16,9 +18,11 @@ The colour of the whole page follows the sun: pale haze at dawn, bright white at
 Visitors should finish the homepage feeling they have lived there for a day, not read a brochure.
 
 ## 2. Content (never invent facts)
+
 Read every page of https://www.oraworld.com (/, /our-residences/, /our-amenities/, /activities/, /tesoro-del-mar/, /dorado-waterfalls/, /tax-incentive/, /contact-us/) and save plain-text copies in docs/source/. Every factual statement on the new site must trace to that content.
 
 Confirmed facts:
+
 - Positioning: "Beyond expectations." "Thoughtfully crafted communities where longevity, luxury, and nature exist in perfect harmony." Mission: creating luxury living with timeless elegance and comfort; luxurious, eco-friendly developments that blend modern elegance with the island's natural beauty.
 - Tesoro Del Mar (Dorado, Vega Alta, PR 00692):
   - Scale: 10 acres; 335,995 sq ft of land; 129 contemporary apartments; 42 hotel suites; 65,500 sq ft of amenities.
@@ -41,11 +45,12 @@ Confirmed facts:
 - Legal notice, verbatim, in every footer: "This advertisement is not an offering. It is a solicitation of interest in the advertised property. No offering of the advertised units can be made and no deposits can be accepted, or reservations, binding or non - binding, can be made until an offering plan is filed with the New York State Department of Law. This advertisement is made pursuant to Cooperative Policy Statement No. 1, issued by the New York State Department of Law. Attorney General File No.: CP25-0047. Sponsor: TRPbuildco LLC Sponsor’s Address: Tesoro Del Mar Dorado, Vega Alta, Puerto Rico 00692" then "All images on this page are artist renderings."
 
 Unknown, so use calm labelled placeholders and list them in CONTENT-TODO.md:
+
 - prices, unit mix, sizes, floor plans, delivery dates
 - architect and designer names, portraits, press
 - phone, WhatsApp, email, sales gallery address and hours
 - deposit schedule, broker terms, brochure
-Never show bracket codes or lorem ipsum. Do not state sunrise or sunset times or any clock time as fact; the chapters are named by part of day.
+  Never show bracket codes or lorem ipsum. Do not state sunrise or sunset times or any clock time as fact; the chapters are named by part of day.
 
 Headlines: write NEW editorial headlines in English and native Spanish. Do not reuse the current site's headlines, except the brand line "Beyond expectations", which may appear once. Headlines may be evocative, but the copy under each must be factual.
 
@@ -54,7 +59,9 @@ Images: download the client's renders and photos from oraworld.com /wp-content/u
 ## 3. New structure
 
 ### 3a. Navigation by intent, not by building part
+
 Primary menu has five words, each a section of the site:
+
 - **Live**: residences, collections, floor plans, compare, interiors, brochure
 - **Belong**: amenities, family, pets, wellness, activities, community
 - **Place**: Dorado and the island, map, Tesoro Del Mar, Dorado Waterfalls, the portfolio, gallery, VR tour
@@ -64,6 +71,7 @@ Primary menu has five words, each a section of the site:
 Header: wordmark left, the current part of day in small text (Dawn, Morning, Midday, Afternoon, Golden hour, Night) that updates as you scroll the homepage, and on the right "Plan your visit", EN | ES, Log In and Menu.
 
 ### 3b. URL map (all under /en and /es)
+
 ```
 /                                        A Day in Dorado (homepage story)
 /live                                    Residences overview
@@ -89,15 +97,18 @@ Header: wordmark left, the current part of day in small text (Dawn, Morning, Mid
 /privacy  /terms  /accessibility  /legal-disclaimer
 /studio                                  Sanity Studio
 ```
+
 Redirect /residences, /floor-plans, /amenities, /location, /contact and /faq to their new homes.
 
 ### 3c. Two new journeys the current site does not have
+
 1. **Residence Finder** (/live/finder). Three calm questions, one per screen:
    - How many bedrooms?
    - Ocean, garden or mountain view?
    - When are you planning to buy?
 
    It returns the matching collections and plans, then asks for the one-step registration to see full plans and pricing. Answers prefill the lead form and travel to the CRM.
+
 2. **Plan your visit** (/connect). One journey replaces separate contact and booking pages:
    - choose sales gallery or video call
    - pick a time (Calendly or Cal.com embed from the CMS, lazy-loaded; a request form when no URL is set)
@@ -105,7 +116,9 @@ Redirect /residences, /floor-plans, /amenities, /location, /contact and /faq to 
    - see a confirmation panel with what happens next
 
 ## 4. Homepage: A Day in Dorado
+
 One continuous scroll in six chapters. Each chapter has:
+
 - a part-of-day label
 - a new headline
 - one to three short paragraphs of fact
@@ -142,21 +155,24 @@ No chapter repeats another's layout.
    - Close with "Plan your visit": the full lead form on the night ground, with the legal notice in the footer below.
 
 ## 5. Design system "Daylight"
+
 Concept: Dorado's light through one day. The interface itself is quiet; the colour of the light is the design.
 
 ### Palette
+
 Every text pair is WCAG-checked.
 
 Chapter grounds, interpolated by scroll on the homepage:
 
-| Chapter | Ground | Text | Muted |
-|---|---|---|---|
-| Dawn | #ECE7EE haze | #221D33 (13.3:1) | #5C5670 (5.7:1) |
-| Day | #FBFAF6 | #13212B (15.7:1) | #4D5B63 (6.7:1) |
-| Golden hour | #F0D2A4 amber | #2E1B0C (11.3:1) | #6A4724 (5.7:1) |
-| Night | #0D1324 indigo | #E9ECF4 (15.7:1) | #9AA3BB (7.3:1) |
+| Chapter     | Ground         | Text             | Muted           |
+| ----------- | -------------- | ---------------- | --------------- |
+| Dawn        | #ECE7EE haze   | #221D33 (13.3:1) | #5C5670 (5.7:1) |
+| Day         | #FBFAF6        | #13212B (15.7:1) | #4D5B63 (6.7:1) |
+| Golden hour | #F0D2A4 amber  | #2E1B0C (11.3:1) | #6A4724 (5.7:1) |
+| Night       | #0D1324 indigo | #E9ECF4 (15.7:1) | #9AA3BB (7.3:1) |
 
 Accents:
+
 - sun #D9772B: the single brand accent for the sun arc, numerals and hairlines; 3.0:1 on day, so large text and graphics only; 5.8:1 on night.
 - sun-ink #9A4510: small accent text on dawn and day only; 4.47:1 on golden hour, so large only there.
 - sea #0B6680: links and the map on day (6.2:1).
@@ -165,6 +181,7 @@ Accents:
 Inner pages use the day ground. The Assurance page closes on night.
 
 ### Typography
+
 - Display: Instrument Serif, regular and italic. Tall, condensed, editorial, set very large (up to 150px) with tight leading.
 - Body: Hanken Grotesk 400/500, 17px, line-height 1.6.
 - Labels: Hanken Grotesk 500 in true small caps (font-variant-caps: all-small-caps, tracking 0.08em).
@@ -172,6 +189,7 @@ Inner pages use the day ground. The Assurance page closes on night.
 - No uppercase eyebrows with rules, no Didone, no all-caps headlines.
 
 ### Layout grammar
+
 - Generous single-column storytelling on mobile.
 - Wide editorial spreads on desktop: one large image, one narrow text column, plenty of air.
 - Each chapter has its own composition: full bleed, drag row, timeline, map, warm split, dark diagram.
@@ -179,6 +197,7 @@ Inner pages use the day ground. The Assurance page closes on night.
 - Thin sun-coloured hairlines are the only ornament.
 
 ### Signature: the sun arc
+
 - A thin arc along the top of the viewport on the homepage traces the sun's path. A small sun dot moves along it with scroll progress, from the left horizon at dawn to the right at night, then becomes a moon.
 - The page ground and text interpolate between the chapter palettes over 30vh as each chapter enters.
 - The header's part-of-day label changes with it.
@@ -188,12 +207,15 @@ Inner pages use the day ground. The Assurance page closes on night.
 - Reduced motion: no arc animation (the dot jumps per chapter), colours switch without interpolation, no pinning or parallax.
 
 ### Persistent elements
+
 - **Menu:** full screen in the current chapter's colour. The five intent words huge in Instrument Serif, each revealing its sub-links on hover or tap. A small image per word. Contact and language at the foot.
 - **Floating bar:** a pill with Call · Plan your visit · WhatsApp. Hidden until numbers exist.
 - **Footer:** a night band with newsletter, the five sections, contact, language, legal notice in 11px, Equal Housing Opportunity and sponsor line.
 
 ## 6. Hero film (YouTube id HkIPZ9pGezA)
+
 Store the id in the CMS.
+
 - Show the poster render instantly and mount the player after first paint.
 - Embed https://www.youtube-nocookie.com/embed/HkIPZ9pGezA?autoplay=1&mute=1&loop=1&playlist=HkIPZ9pGezA&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3&fs=0&enablejsapi=1&origin={origin}.
 - Fade the poster out only when the IFrame API reports playerState 1 (postMessage "listening" handshake). If YouTube is blocked, the poster stays.
@@ -203,6 +225,7 @@ Store the id in the CMS.
 - Show the poster only under reduced motion or Save-Data.
 
 ## 7. Features (all required, placed in the new structure)
+
 - Floor plan library with filters (collection, bedrooms, size, orientation, building), grid and list, zoomable plan, keyplan with the unit highlighted, PDF, and request pricing. Full detail sits behind a one-step registration gate remembered by cookie for a year; show the blurred preview while it decides.
 - Shortlist up to 3 plans and compare.
 - Masonry gallery with filters and lightbox.
@@ -218,6 +241,7 @@ Store the id in the CMS.
 - Skip link and accessibility statement.
 
 ## 8. Tech
+
 - Next.js 16 App Router, TypeScript strict; src/proxy.ts (not middleware) for locale routing, redirects and a first-touch attribution cookie.
 - Sanity with embedded Studio at /studio, Presentation and draft mode.
   - Prefix Sanity env vars with DAY_; the build environment already has NEXT_PUBLIC_SANITY_* for another site.
@@ -226,6 +250,7 @@ Store the id in the CMS.
 - GSAP + Lenis (off on touch and reduced motion); next-intl EN/ES with localized CMS fields; MapLibre with OpenFreeMap tiles restyled to the day palette; React Hook Form + Zod; Vercel staging with noindex.
 
 Lead capture:
+
 - One form with variants short, full, broker, gate and finder.
 - Zod on both sides; honeypot with silent success; Turnstile when keys exist; rate limiting.
 - The attribution cookie carries UTM, gclid, gbraid, wbraid, referrer and landing page.
@@ -233,12 +258,14 @@ Lead capture:
 - In-page success panel; lazy-load the form libraries.
 
 Sanity documents:
+
 - siteSettings (including filmYoutubeId), homePage (six chapters, each with part of day, headline, body, image, link)
 - project, collection, floorPlan, amenity, galleryImage, teamMember, pointOfInterest, faq, pressArticle, investmentStep, incentive, page
 - lead (read-only), redirect
 - Localized fields, both languages required; images need alt text and carry rendering and placeholder flags; a pnpm seed script.
 
 Hard lessons, follow exactly:
+
 - Start reveals with IntersectionObserver plus a 2.5s safety net. Never pre-hide with clip-path: clipped elements never intersect and stay invisible. Pre-hide with opacity only.
 - Load the map only after its section is near and the visitor has interacted, or after 6s idle.
 - Read useSearchParams only after mount or inside Suspense.
@@ -247,12 +274,14 @@ Hard lessons, follow exactly:
 - No staging-only widgets visible on the page.
 
 ## 9. Targets
+
 - Lighthouse mobile on a production build: Performance 90+, Accessibility 100, Best Practices 100, SEO 100. CLS 0, LCP under 2.5s.
 - WCAG 2.2 AA in every chapter colour: visible focus, full keyboard support, focus traps in modals.
 - GTM/GA4 only after consent (Consent Mode v2).
 - hreflang, sitemap, canonical URLs, Organization, Breadcrumb and FAQ JSON-LD, dynamic OG images.
 
 ## 10. Process and report
+
 1. Create the repo and the Vercel project.
 2. Discovery: write DESIGN.md with the palette, type and contrast table, and docs/STRUCTURE.md with the new sitemap and how every piece of old-site content maps into it.
 3. Foundation.
@@ -269,6 +298,7 @@ Hard lessons, follow exactly:
 Commit per feature and push per phase. Write README.md and CONTENT-TODO.md.
 
 Final report:
+
 - the staging URL
 - a scores table
 - screenshots of every homepage chapter and every page at 1440 and 390, saved in reports/screenshots/

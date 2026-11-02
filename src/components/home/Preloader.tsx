@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Wordmark } from "@/components/layout/Wordmark";
+import { Logo } from "@/components/layout/Logo";
 
 const KEY = "ora_intro_seen";
 
@@ -42,15 +42,15 @@ export function Preloader() {
       className="pointer-events-none fixed inset-0 z-[60] flex items-center justify-center bg-basalt transition-[clip-path] duration-[550ms] ease-[var(--ease-in-out-quart)]"
       style={{ clipPath: state === "leaving" ? "inset(0 0 100% 0)" : "inset(0 0 0 0)" }}
     >
-      <div className="relative w-[56vw] max-w-[420px] text-brass-light">
-        <Wordmark className="w-full opacity-20" />
+      <div className="relative w-[46vw] max-w-[300px]">
+        <Logo tone="gold" priority sizes="300px" className="w-full opacity-15" />
         <div
           className="absolute inset-0 overflow-hidden motion-safe:animate-[wmdraw_900ms_var(--ease-out-expo)_forwards]"
-          style={{ clipPath: "inset(0 100% 0 0)" }}
+          style={{ clipPath: "inset(100% 0 0 0)" }}
         >
-          <Wordmark className="w-full" />
+          <Logo tone="gold" priority sizes="300px" className="w-full" />
         </div>
-        <style>{`@keyframes wmdraw{to{clip-path:inset(0 0% 0 0)}}`}</style>
+        <style>{`@keyframes wmdraw{to{clip-path:inset(0% 0 0 0)}}`}</style>
       </div>
       <button
         type="button"

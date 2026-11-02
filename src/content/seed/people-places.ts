@@ -1,5 +1,5 @@
 import type { TeamMember, PointOfInterest, PressArticle, InvestmentStep, Incentive } from "../types";
-import { renders } from "./images";
+import { renders, tdm } from "./images";
 
 const portrait = (name: string) => ({
   src: "/images/placeholder-portrait.svg",
@@ -28,7 +28,7 @@ export const team: TeamMember[] = [
       en: "Creating luxury living with timeless elegance and comfort.",
       es: "Creando una vida de lujo con elegancia y confort atemporales.",
     },
-    portrait: renders.towerDetail,
+    portrait: tdm.foyerSignage,
     website: "https://www.oraworld.com",
   },
   {

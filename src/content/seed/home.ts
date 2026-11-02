@@ -1,5 +1,5 @@
 import type { HomeContent } from "../types";
-import { renders, lifestyle, free } from "./images";
+import { renders, lifestyle, tdm } from "./images";
 
 export const home: HomeContent = {
   hero: {
@@ -29,7 +29,7 @@ export const home: HomeContent = {
     signature: { en: "ORA World · Dorado, Puerto Rico", es: "ORA World · Dorado, Puerto Rico" },
   },
   context: {
-    image: renders.naguaboWide,
+    image: tdm.aerialCoast,
     captions: [
       {
         en: "Curved facades inspired by the flight of birds, cantilevered terraces extending like wings.",
@@ -74,7 +74,7 @@ export const home: HomeContent = {
           en: "Paddle through bioluminescent bays or sail into the sunset.",
           es: "Reme por bahías bioluminiscentes o navegue hacia el atardecer.",
         },
-        image: free.bioBay,
+        image: lifestyle.sailing,
       },
       {
         number: "04",
@@ -316,7 +316,7 @@ export const home: HomeContent = {
       en: "Walk the residences and amenities in an immersive 360° tour.",
       es: "Recorra las residencias y amenidades en un tour inmersivo de 360°.",
     },
-    image: renders.tdmPenthouse,
+    image: tdm.penthouseDining,
   },
   team: {
     eyebrow: { en: "The Collaboratory", es: "El Collaboratory" },

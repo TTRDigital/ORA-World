@@ -1,5 +1,5 @@
 import type { Collection, FloorPlan } from "../types";
-import { renders, lifestyle } from "./images";
+import { renders, tdm } from "./images";
 
 /**
  * Residence collections. Tesoro Del Mar publishes "contemporary apartments and luxurious villas"
@@ -27,8 +27,8 @@ export const collections: Collection[] = [
     bedrooms: null,
     sizeRange: null,
     fromPrice: null,
-    image: renders.tdmExterior,
-    hoverImage: renders.towerDetail,
+    image: tdm.aptLiving,
+    hoverImage: tdm.aptBedroom2,
     features: [
       {
         en: "Private terraces that become daily sanctuaries",
@@ -75,8 +75,8 @@ export const collections: Collection[] = [
     bedrooms: null,
     sizeRange: null,
     fromPrice: null,
-    image: renders.poolTerrace,
-    hoverImage: renders.naguabo,
+    image: tdm.aerialVillas,
+    hoverImage: renders.poolTerrace,
     features: [
       { en: "Private pool and garden", es: "Piscina y jardín privados" },
       { en: "Natural ventilation and daylight by design", es: "Ventilación natural y luz de día por diseño" },
@@ -99,8 +99,8 @@ export const collections: Collection[] = [
     bedrooms: null,
     sizeRange: null,
     fromPrice: null,
-    image: renders.tdmPenthouse,
-    hoverImage: renders.towerDetail,
+    image: tdm.penthouseDining,
+    hoverImage: tdm.penthouseLiving,
     features: [
       {
         en: "Full-floor and half-floor layouts, to be confirmed",
@@ -129,8 +129,8 @@ export const collections: Collection[] = [
     bedrooms: null,
     sizeRange: null,
     fromPrice: null,
-    image: lifestyle.toast,
-    hoverImage: renders.poolTerrace,
+    image: tdm.hotelSuite,
+    hoverImage: tdm.foyerSignage,
     features: [
       {
         en: "Ownership model to be confirmed",

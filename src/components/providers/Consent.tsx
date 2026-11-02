@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
 
 const KEY = "ora_consent"; // "granted" | "denied"
 type Choice = "granted" | "denied";

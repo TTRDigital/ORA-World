@@ -37,6 +37,7 @@ Facts already confirmed on oraworld.com (safe to publish):
 **Imagery:** the client's own renders and photography are on oraworld.com under `/wp-content/uploads/`. Key renders: `2025/07/TDM-EXTERIOR-FROM-PULL-scaled.jpg`, `TDM-PENTHOUSE-LIVING-003-SMALL-scaled.jpg`, `2025/01/049discover.png` (pool terrace), `2024/06/DoradoWaterfalls1.png`, `2024/07/NAGUABO-003.jpg`, `n03--scaled.jpg`, `R_006.jpg`, `2025/01/05theplace-1.png` (beach). Download them into `assets-source/images/client/` (gitignored), optimise with a `sharp` script into `public/images/` with blur placeholders and a JSON manifest. Several lifestyle photos on the live site are stock (one file is literally `iStock-…`): use them, but list them in `CONTENT-TODO.md` for licence confirmation. Any free-licence placeholder you add must have its source and licence recorded there too.
 
 **Hero film:** the client's brand film is on YouTube: id `HkIPZ9pGezA` ("Live Beyond Limits | ORA World Puerto Rico", channel @ORAworldpr). Store the id in the CMS (`siteSettings.filmYoutubeId`). Requirements, all learned on the first build:
+
 - Show the poster render instantly; mount the player after first paint; fade the poster out **only when the player reports state 1 (playing)** via the IFrame API `postMessage` handshake (`{"event":"listening"}`, then read `infoDelivery`). If YouTube is blocked, the poster simply stays.
 - Embed `https://www.youtube-nocookie.com/embed/{id}?autoplay=1&mute=1&loop=1&playlist={id}&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3&fs=0&enablejsapi=1&origin={origin}`.
 - **Captions:** YouTube turns on auto captions for viewers whose account prefers them, and `cc_load_policy` is not reliable. Send `unloadModule` for `captions` and `cc` and `setOption("captions","track",{})` on `onReady` and on first play, repeating every second for the first 20 seconds.
@@ -47,25 +48,28 @@ Facts already confirmed on oraworld.com (safe to publish):
 ## 2. Design system: "Monolith" (mineral modernism)
 
 ### Concept
+
 Source everything from the building itself: the vertical travertine fins, the bronze perforated lattice screens, the slim dark mullions, the monolithic stone portal over the pool, and the terrazzo floor seen in the client's film. The references are architectural monographs (Tadao Ando, Peter Zumthor), Swiss modernist catalogues and the restraint of brands like Aesop. Study, never copy.
 
 ### Palette (contrast already measured)
-| Token | Hex | Role | Contrast |
-|---|---|---|---|
-| `--stone` | `#111613` | Page ground: green-black, like verde stone | n/a |
-| `--stone-2` | `#1A211D` | Alternate dark band, panels, menu | n/a |
-| `--chalk` | `#ECE7DC` | Text on dark | 14.8:1 on stone |
-| `--chalk-muted` | `#A3AA9F` | Secondary text on dark | 7.7:1 on stone, 6.9:1 on stone-2 |
-| `--bronze` | `#C49A5E` | Accent on dark: accent word, numerals, rules, focus ring | 7.1:1 on stone |
-| `--verdigris` | `#8FB5A2` | Rare secondary: map water and eco moments only | 8.1:1 on stone |
-| `--ground` | `#E6E2D8` | Light "drawing paper" bands, at most two per page | n/a |
-| `--ink` | `#111613` | Text on ground | 14.1:1 |
-| `--ink-muted` | `#4F5650` | Secondary text on ground | 5.8:1 |
-| `--bronze-ink` | `#7A5A2C` | Bronze for text on ground | 4.9:1 |
+
+| Token           | Hex       | Role                                                     | Contrast                         |
+| --------------- | --------- | -------------------------------------------------------- | -------------------------------- |
+| `--stone`       | `#111613` | Page ground: green-black, like verde stone               | n/a                              |
+| `--stone-2`     | `#1A211D` | Alternate dark band, panels, menu                        | n/a                              |
+| `--chalk`       | `#ECE7DC` | Text on dark                                             | 14.8:1 on stone                  |
+| `--chalk-muted` | `#A3AA9F` | Secondary text on dark                                   | 7.7:1 on stone, 6.9:1 on stone-2 |
+| `--bronze`      | `#C49A5E` | Accent on dark: accent word, numerals, rules, focus ring | 7.1:1 on stone                   |
+| `--verdigris`   | `#8FB5A2` | Rare secondary: map water and eco moments only           | 8.1:1 on stone                   |
+| `--ground`      | `#E6E2D8` | Light "drawing paper" bands, at most two per page        | n/a                              |
+| `--ink`         | `#111613` | Text on ground                                           | 14.1:1                           |
+| `--ink-muted`   | `#4F5650` | Secondary text on ground                                 | 5.8:1                            |
+| `--bronze-ink`  | `#7A5A2C` | Bronze for text on ground                                | 4.9:1                            |
 
 Rules: `--bronze` on `--ground` is 2.0:1, so on light bands bronze is for hairlines and drawings only, never text. The site is dark-first (`color-scheme: dark`). No gradients except a bottom scrim on full-bleed images.
 
 ### Typography
+
 - **Display: Archivo, variable, `wdth` 125 (expanded), weight 200 to 300, uppercase, tracking 0.04 to 0.08em.** Wide, light, engraved-feeling capitals. Never bold. Load through `next/font/google` with `axes: ["wdth"]`.
 - **Body: Archivo at `wdth` 100, weight 400**, 16 to 17px, line-height 1.65, sentence case, measure 60 to 66 characters.
 - **Utility: IBM Plex Mono 400** for sheet numbers, title blocks, specs, prices, coordinates, stat labels and form labels. Tabular numerals everywhere.
@@ -73,6 +77,7 @@ Rules: `--bronze` on `--ground` is 2.0:1, so on light bands bronze is for hairli
 - Fluid scale (390 to 1440px): display-xl 44 to 112px, display-l 32 to 72px, display-m 24 to 40px, display-s 18 to 24px, body 16 to 17px, label 11px mono uppercase with 0.12em tracking.
 
 ### Layout grammar: the drawing set
+
 - **Every homepage section is a sheet.** Each carries a title block (bottom-right on desktop, top on mobile): sheet number in mono, section title, `NTS` (not to scale) and a small north arrow. Sheet numbers follow the real order of the page: `A-001` Site, `A-002` Statement, `A-101` Residences, `S-201` Structure, `L-301` Amenities, `L-302` Family, `E-401` Incentives, `G-501` Location, `V-601` Tour, `T-701` Team, `P-801` Press, `C-901` Presentation.
 - A 12-column grid drawn faintly as 1px lines at 6% opacity behind content on desktop. Content snaps to it. Text columns span 4 to 5 columns, imagery 7 to 8.
 - **Spec tables replace cards.** Mono labels, hairline rows, tabular figures. Unknown values read "TO BE CONFIRMED".
@@ -81,15 +86,18 @@ Rules: `--bronze` on `--ground` is 2.0:1, so on light bands bronze is for hairli
 - Radius 0 everywhere. No shadows. Spacing scale 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192px; sections 96px on mobile, 160 to 192px on desktop.
 
 ### Signature motion: fins and aperture
+
 One orchestrated moment, then silence.
+
 1. **On load,** after the poster paints, the hero is covered by 7 vertical stone fins (5 on mobile) with hairline gaps. They rotate open on their Y axis like louvres (900ms each, 60ms stagger, `cubic-bezier(0.76, 0, 0.24, 1)`), revealing the film.
-2. **Scroll, first 120vh, pinned:** the word **BEYOND** in Archivo Expanded spans the full width with the film playing *inside the letterforms* (an SVG `<mask>` of the text over the video container, or the video under a stone layer with the text knocked out). As you scroll, the word scales from its centre until the letter counters open into a full-screen film. Then the tagline and the two CTAs fade in over a bottom scrim.
+2. **Scroll, first 120vh, pinned:** the word **BEYOND** in Archivo Expanded spans the full width with the film playing _inside the letterforms_ (an SVG `<mask>` of the text over the video container, or the video under a stone layer with the text knocked out). As you scroll, the word scales from its centre until the letter counters open into a full-screen film. Then the tagline and the two CTAs fade in over a bottom scrim.
 3. **Elsewhere:** drawings stroke themselves in on scroll, spec rows slide 8px with a 40ms stagger, and images reveal with a **louvre wipe** (7 vertical strips opening), not a fade.
 4. **Page transitions:** the fins close across the screen (500ms) and open on the new page.
 5. **Preloader** (first visit only, under 1.5s): a single bronze line draws the building's elevation, then the fins open.
 6. **Reduced motion:** fins start open, BEYOND sits static over the poster, no pinning, no transitions.
 
 ### Persistent elements
+
 - **Header:** a thin title-block bar. Wordmark left; centre: current sheet number and title in mono, updating as you scroll; right: Log In, EN | ES, Inquire (bronze hairline), Menu. Transparent over the hero, `--stone-2` after 40px, hides on scroll down and returns on scroll up.
 - **Menu:** a full-screen **drawing index**. Left: the sheet list (number, title) in Archivo Expanded; right: a simplified site plan in line work where the area linked to the hovered item fills with bronze. Secondary links and contact in mono below. Focus trap, Escape to close.
 - **Floating bar:** a rectangular mono tab, Call · Get Pricing · WhatsApp, full-width on mobile after the hero, bottom-right on desktop.
@@ -97,6 +105,7 @@ One orchestrated moment, then silence.
 - **Cursor (desktop only):** over drawings and plans, a thin crosshair. Nowhere else.
 
 ## 3. Homepage, section by section
+
 1. **A-001 Hero:** fins, then the BEYOND aperture over the YouTube film. Title block: "Dorado · Puerto Rico", coordinates (approx.), sheet number. CTAs: "Request private presentation" and "Watch the film". Under the fold, a mono spec strip: ACRES 10 · RESIDENCES 129 · HOTEL SUITES 42 · AMENITIES 65,500 SQ FT, labelled "Tesoro Del Mar".
 2. **A-002 Statement:** the mission in display-m expanded caps on stone, at most 22 characters per line, the accent word in bronze.
 3. **A-101 Residences:** collections as a spec table (name · bedrooms · interior · from price); empty values read "TO BE CONFIRMED". Hovering or focusing a row swaps a large crop-marked render beside it.
@@ -112,6 +121,7 @@ One orchestrated moment, then silence.
 13. **Footer.**
 
 ## 4. Inner pages
+
 - **Page hero:** no image by default. A title block layout: sheet number derived from the route, title in expanded caps, intro in a four-column text block, faint grid. Project pages may open with a full-bleed crop-marked render.
 - **Floor plans** live naturally in this design: plan on `--ground` with crop marks and a crosshair cursor, specs in mono, keyplan as a small drawing with the unit filled in bronze.
 - **Gallery:** strict masonry with hairline gutters; lightbox on stone with mono captions.

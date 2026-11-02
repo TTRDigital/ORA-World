@@ -25,25 +25,28 @@ Read these first: `DESIGN.md`, `README.md`, `CONTENT-TODO.md`, `src/styles/globa
 ## 2. Direction D · "Monolith" (mineral modernism)
 
 ### Concept
+
 The building as an object of architecture, presented the way an architect presents it: a drawing set. Cool, rational, quiet, expensive, in the lineage of Tadao Ando monographs, Aesop interiors and Swiss modernist catalogues. The source is in the film: vertical travertine fins, bronze perforated lattice, slim dark mullions, the monolithic stone portal over the pool.
 
 ### Palette (tokens; contrast measured)
-| Token | Hex | Role | Contrast |
-|---|---|---|---|
-| `--d-stone` | `#111613` | Page ground (green-black, like verde stone) | n/a |
-| `--d-stone-2` | `#1A211D` | Alternate dark band, panels | n/a |
-| `--d-chalk` | `#ECE7DC` | Text on dark | 14.8:1 on stone |
-| `--d-chalk-muted` | `#A3AA9F` | Secondary text on dark | 7.7:1 on stone, 6.9:1 on stone-2 |
-| `--d-bronze` | `#C49A5E` | Accent on dark: accent word, numerals, rules, focus ring | 7.1:1 on stone |
-| `--d-verdigris` | `#8FB5A2` | Rare secondary: map water, eco moments only | 8.1:1 on stone |
-| `--d-ground` | `#E6E2D8` | Light "drawing paper" bands (at most 2 per page) | n/a |
-| `--d-ink` | `#111613` | Text on ground | 14.1:1 |
-| `--d-ink-muted` | `#4F5650` | Secondary text on ground | 5.8:1 |
-| `--d-bronze-ink` | `#7A5A2C` | Bronze for text on ground | 4.9:1 |
+
+| Token             | Hex       | Role                                                     | Contrast                         |
+| ----------------- | --------- | -------------------------------------------------------- | -------------------------------- |
+| `--d-stone`       | `#111613` | Page ground (green-black, like verde stone)              | n/a                              |
+| `--d-stone-2`     | `#1A211D` | Alternate dark band, panels                              | n/a                              |
+| `--d-chalk`       | `#ECE7DC` | Text on dark                                             | 14.8:1 on stone                  |
+| `--d-chalk-muted` | `#A3AA9F` | Secondary text on dark                                   | 7.7:1 on stone, 6.9:1 on stone-2 |
+| `--d-bronze`      | `#C49A5E` | Accent on dark: accent word, numerals, rules, focus ring | 7.1:1 on stone                   |
+| `--d-verdigris`   | `#8FB5A2` | Rare secondary: map water, eco moments only              | 8.1:1 on stone                   |
+| `--d-ground`      | `#E6E2D8` | Light "drawing paper" bands (at most 2 per page)         | n/a                              |
+| `--d-ink`         | `#111613` | Text on ground                                           | 14.1:1                           |
+| `--d-ink-muted`   | `#4F5650` | Secondary text on ground                                 | 5.8:1                            |
+| `--d-bronze-ink`  | `#7A5A2C` | Bronze for text on ground                                | 4.9:1                            |
 
 Rule: `--d-bronze` on `--d-ground` is 2.0:1, so on light bands it is hairlines and drawings only, never text. Map the semantic aliases (`--bg`, `--fg`, `--accent`, `--rule`, `--focus`, `--dark-*`) for `[data-direction="d"]`; `color-scheme: dark`.
 
 ### Typography
+
 - **Display: Archivo, variable, `wdth` 125 (expanded), weight 200 to 300, uppercase, tracking 0.04 to 0.08em.** The architecture of the letters is the luxury: wide, light, engraved-feeling caps. Never bold. Use `font-variation-settings` through `next/font` axes `["wdth"]`.
 - **Body: Archivo at `wdth` 100, weight 400**, 16 to 17px, line-height 1.65, sentence case.
 - **Utility: IBM Plex Mono 400** for spec tables, sheet numbers, coordinates, prices, stat labels, form labels. Tabular numerals everywhere.
@@ -51,6 +54,7 @@ Rule: `--d-bronze` on `--d-ground` is 2.0:1, so on light bands it is hairlines a
 - Scale (fluid 390 to 1440): display-xl 44 to 112px, display-l 32 to 72px, display-m 24 to 40px, label 11px mono uppercase 0.12em.
 
 ### Layout grammar: the drawing set
+
 - Every homepage section is a **sheet**. Each has a title block in its bottom-right (top on mobile): sheet number in mono (`A-001` Site, `A-101` Residences, `S-201` Structure, `L-301` Landscape and amenities, `G-401` Location, and so on), the section title, `NTS` (not to scale) and a small north arrow. Sheet numbers encode the real sequence of the page; they are not decoration.
 - 12-column grid drawn faintly as 1px hairlines at 6% opacity behind content on desktop; content snaps to it. Generous margins, text columns of 4 to 5 columns, images on 7 to 8.
 - Spec tables in mono with hairline rows replace cards (collections, stats, resilience features).
@@ -58,12 +62,14 @@ Rule: `--d-bronze` on `--d-ground` is 2.0:1, so on light bands it is hairlines a
 - Coordinates appear once, in the hero title block: the site's approximate coordinates from `NEXT_PUBLIC_SITE_LAT/LNG`, labelled "approx." until confirmed.
 
 ### Signature motion: fins and aperture (one orchestrated moment)
+
 1. **Load:** the hero is covered by 7 vertical stone-coloured fins (full height, equal widths, hairline gaps). After the poster paints, the fins rotate open on their Y axis like louvres (900ms, 60ms stagger, `cubic-bezier(0.76,0,0.24,1)`), revealing the film behind. On mobile use 5 fins.
-2. **Scroll, first 120vh (pinned):** the word **BEYOND** in Archivo Expanded spans the full width with the film playing *inside the letters* (SVG mask or `mix-blend-mode: multiply` over a stone field). As you scroll the type scales up from its centre until the counters of the letters open into the full-screen film, then the tagline and CTAs fade in over a bottom scrim. This replaces the split-line headline used in A.
+2. **Scroll, first 120vh (pinned):** the word **BEYOND** in Archivo Expanded spans the full width with the film playing _inside the letters_ (SVG mask or `mix-blend-mode: multiply` over a stone field). As you scroll the type scales up from its centre until the counters of the letters open into the full-screen film, then the tagline and CTAs fade in over a bottom scrim. This replaces the split-line headline used in A.
 3. Elsewhere motion is minimal: drawings stroke themselves in, spec rows slide 8px with 40ms stagger, images reveal with a vertical louvre wipe (7 strips) instead of A's clip-path wipe.
 4. **Reduced motion:** fins start open, BEYOND renders statically over the poster, no pinning.
 
 ### Homepage D, section by section
+
 1. **A-001 Hero:** fins → film; BEYOND aperture; title block with "Dorado · Puerto Rico", coordinates (approx.), sheet number. CTAs: "Request private presentation" (bronze hairline) and "Watch the film". Stats as a mono spec strip under the fold: ACRES 10 · RESIDENCES 129 · HOTEL SUITES 42 · AMENITIES 65,500 SQ FT (source: Tesoro Del Mar facts).
 2. **A-002 Manifesto:** the mission set in display-m expanded caps on stone, max 22 characters per line, the accent word in bronze.
 3. **A-101 Residences:** collections as a spec table (name · bedrooms · interior · from) where empty values read "TO BE CONFIRMED" in mono; hovering a row swaps a large render on the right inside crop-marked frame.
@@ -79,48 +85,55 @@ Rule: `--d-bronze` on `--d-ground` is 2.0:1, so on light bands it is hairlines a
 13. Footer: stone, the legal notice in mono 11px, sheet index of the whole site.
 
 ### Inner pages in D
+
 Shared components follow the tokens. Add a `PageHero` variant for D: no background image; a title block layout (sheet number derived from the route, title in expanded caps, intro in a 4-column text block, a hairline grid). Floor plan pages lean into the drawing language: plan on `--d-ground` with crop marks, specs in mono.
 
 ## 3. Direction E · "Adoquín" (the Old San Juan salon)
 
 ### Concept
+
 Puerto Rican heritage made couture: the arcades of Old San Juan, limewash plaster walls, hand-painted azulejo tile, and the blue adoquín cobblestones of the old city. Warm, generous, light-filled and confident with colour, in the spirit of a Belmond or Aman hotel journal, not a resort brochure. It answers C's brightness with heritage and saturation instead of sea-glass.
 
 ### Palette (tokens; contrast measured)
-| Token | Hex | Role | Contrast |
-|---|---|---|---|
-| `--e-plaster` | `#FAF7F3` | Main ground (cool limewash white) | n/a |
-| `--e-rose` | `#EED8CF` | Sun-faded rose limewash colour field | n/a |
-| `--e-cobalt` | `#1D3B8C` | Azulejo cobalt: colour-field sections, primary accent on light | 9.6:1 on plaster, 7.5:1 on rose |
-| `--e-adoquin` | `#55657F` | Cobblestone blue-grey: secondary text and rules | 5.5:1 on plaster |
-| `--e-ink` | `#18203A` | Text | 15.1:1 on plaster, 11.8:1 on rose |
-| `--e-ink-muted` | `#4A5168` | Secondary text | 7.4:1 on plaster, 5.8:1 on rose |
-| `--e-gold-ink` | `#7D5F22` | Gold for small text on plaster only | 5.6:1 on plaster |
-| `--e-gold` | `#B08A3E` | Gilded hairlines, numerals 32px and above | 3.0:1 (large only) |
-| `--e-gold-light` | `#E2C27E` | Gold on cobalt | 6.0:1 on cobalt |
-| `--e-white` | `#FFFFFF` | Text on cobalt | 10.2:1 |
+
+| Token            | Hex       | Role                                                           | Contrast                          |
+| ---------------- | --------- | -------------------------------------------------------------- | --------------------------------- |
+| `--e-plaster`    | `#FAF7F3` | Main ground (cool limewash white)                              | n/a                               |
+| `--e-rose`       | `#EED8CF` | Sun-faded rose limewash colour field                           | n/a                               |
+| `--e-cobalt`     | `#1D3B8C` | Azulejo cobalt: colour-field sections, primary accent on light | 9.6:1 on plaster, 7.5:1 on rose   |
+| `--e-adoquin`    | `#55657F` | Cobblestone blue-grey: secondary text and rules                | 5.5:1 on plaster                  |
+| `--e-ink`        | `#18203A` | Text                                                           | 15.1:1 on plaster, 11.8:1 on rose |
+| `--e-ink-muted`  | `#4A5168` | Secondary text                                                 | 7.4:1 on plaster, 5.8:1 on rose   |
+| `--e-gold-ink`   | `#7D5F22` | Gold for small text on plaster only                            | 5.6:1 on plaster                  |
+| `--e-gold`       | `#B08A3E` | Gilded hairlines, numerals 32px and above                      | 3.0:1 (large only)                |
+| `--e-gold-light` | `#E2C27E` | Gold on cobalt                                                 | 6.0:1 on cobalt                   |
+| `--e-white`      | `#FFFFFF` | Text on cobalt                                                 | 10.2:1                            |
 
 Rules: small text on rose uses ink or cobalt, never gold-ink (4.35:1). White and gold-light only on cobalt. `color-scheme: light`.
 
 ### Typography
-- **Display: Instrument Serif, regular and italic.** Condensed, tall, editorial, the opposite of A's wide Didone. Set large (up to 160px) with tight leading (0.9) and the italic for the accent word. Lowercase-first headlines where it reads naturally ("beyond *expectations*").
+
+- **Display: Instrument Serif, regular and italic.** Condensed, tall, editorial, the opposite of A's wide Didone. Set large (up to 160px) with tight leading (0.9) and the italic for the accent word. Lowercase-first headlines where it reads naturally ("beyond _expectations_").
 - **Body: Hanken Grotesk 400/500**, 17px, line-height 1.6.
 - **Labels: Hanken Grotesk 500 small caps** (`font-variant-caps: all-small-caps`, tracking 0.08em) instead of uppercase eyebrows. A visible difference from A to D.
 - Numerals in Instrument Serif oldstyle for stats; tabular lining in tables and forms.
 
 ### Layout grammar: arcades and colour fields
+
 - **Arches.** The key image of each section sits in an arch (semicircular top, `border-radius: 50% 50% 0 0 / 30% 30% 0 0` or an SVG `clipPath`), echoing the arcades of Calle Fortaleza and the film's stone portal. Use arches for at most one image per section; the rest are straight-edged.
 - **Colour-field scrolling.** The page ground transitions between plaster, rose and cobalt as sections enter (GSAP ScrollTrigger interpolating `--bg` and `--fg` on the `main` element over 30vh). Sequence: plaster (hero) → rose (manifesto) → plaster → cobalt (resilience) → plaster → rose (family) → cobalt (CTA).
 - **Azulejo ornament.** Draw one original 8-fold tile motif as an inline SVG in cobalt line work. Use it at most three times: as a 1-tile divider between chapters, as the map pin, and as a faint 4% watermark behind the CTA. Never as a full-page pattern.
 - **Asymmetric two-column rhythm** with wide gutters; images bleed off one edge, text sits in 5 columns.
 
 ### Signature motion: the arcade
-1. **Hero:** split layout. Headline left ("beyond *expectations*", Instrument Serif, up to 160px). On the right, the YouTube film plays inside a tall arch (70vh). On scroll (pinned 100vh) the arch widens and its top flattens until the film is full bleed, while the headline slides left and fades. On mobile the arch sits under the headline at full width and widens to full screen.
+
+1. **Hero:** split layout. Headline left ("beyond _expectations_", Instrument Serif, up to 160px). On the right, the YouTube film plays inside a tall arch (70vh). On scroll (pinned 100vh) the arch widens and its top flattens until the film is full bleed, while the headline slides left and fades. On mobile the arch sits under the headline at full width and widens to full screen.
 2. Section transitions are the colour fields. Images reveal by **rising from inside their arch** (the arch mask stays still and the image translates up 8% with a 1.1s ease-out), not by wipes.
 3. Softer timing than A: 700 to 1000ms, `cubic-bezier(0.22, 1, 0.36, 1)`.
 4. **Reduced motion:** arch full-width, colours switch without interpolation, no pin.
 
 ### Homepage E, section by section
+
 1. **Hero:** arcade film (above), small-caps eyebrow "Dorado · Puerto Rico", tagline, CTAs, stats in a row of four with Instrument Serif oldstyle figures and small-caps labels.
 2. **Manifesto (rose):** the mission in display-l italic Instrument Serif, centred column of 18ch, with one azulejo tile above it.
 3. **The Place (plaster):** a horizontal "promenade" rail of five arched portraits (beach, rainforest, sea, table, horizon) with numbers in gold oldstyle and one sentence each; drag on touch.
@@ -137,6 +150,7 @@ Rules: small text on rose uses ink or cobalt, never gold-ink (4.35:1). White and
 14. **Footer:** ink on plaster, legal notice in 11px Hanken.
 
 ### Inner pages in E
+
 Tokens restyle every page. Add a `PageHero` variant for E: headline left in Instrument Serif, arched image right (or a colour field when there is no image). Floor plans sit on plaster with cobalt line work; the gallery uses a mix of arched and straight frames (every fourth item arched).
 
 ## 4. Implementation

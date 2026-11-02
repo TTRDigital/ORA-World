@@ -37,6 +37,7 @@ Facts already confirmed on oraworld.com (safe to publish):
 **Imagery:** the client's own renders and photography are on oraworld.com under `/wp-content/uploads/`. Key renders: `2025/07/TDM-EXTERIOR-FROM-PULL-scaled.jpg`, `TDM-PENTHOUSE-LIVING-003-SMALL-scaled.jpg`, `2025/01/049discover.png` (pool terrace), `2024/06/DoradoWaterfalls1.png`, `2024/07/NAGUABO-003.jpg`, `n03--scaled.jpg`, `R_006.jpg`, `2025/01/05theplace-1.png` (beach). Download them into `assets-source/images/client/` (gitignored), optimise with a `sharp` script into `public/images/` with blur placeholders and a JSON manifest. Several lifestyle photos on the live site are stock (one file is literally `iStock-…`): use them, but list them in `CONTENT-TODO.md` for licence confirmation. Any free-licence placeholder you add must have its source and licence recorded there too.
 
 **Hero film:** the client's brand film is on YouTube: id `HkIPZ9pGezA` ("Live Beyond Limits | ORA World Puerto Rico", channel @ORAworldpr). Store the id in the CMS (`siteSettings.filmYoutubeId`). Requirements, all learned on the first build:
+
 - Show the poster render instantly; mount the player after first paint; fade the poster out **only when the player reports state 1 (playing)** via the IFrame API `postMessage` handshake (`{"event":"listening"}`, then read `infoDelivery`). If YouTube is blocked, the poster simply stays.
 - Embed `https://www.youtube-nocookie.com/embed/{id}?autoplay=1&mute=1&loop=1&playlist={id}&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3&fs=0&enablejsapi=1&origin={origin}`.
 - **Captions:** YouTube turns on auto captions for viewers whose account prefers them, and `cc_load_policy` is not reliable. Send `unloadModule` for `captions` and `cc` and `setOption("captions","track",{})` on `onReady` and on first play, repeating every second for the first 20 seconds.
@@ -47,32 +48,36 @@ Facts already confirmed on oraworld.com (safe to publish):
 ## 2. Design system: "Adoquín" (the Old San Juan salon)
 
 ### Concept
+
 Puerto Rican heritage made couture: the arcades of Old San Juan, limewash plaster walls, hand-painted azulejo tile, and the blue **adoquines**, the cobblestones of the old city. Pair them with the film's stone portal and the warm light of Dorado. Generous, sunlit, unhurried. References to study, never copy: Belmond and Aman journals, Mediterranean and Caribbean colonial architecture, mid-century hotel graphics.
 
 ### Palette (contrast already measured)
-| Token | Hex | Role | Contrast |
-|---|---|---|---|
-| `--plaster` | `#FAF7F3` | Main ground: cool limewash white | n/a |
-| `--rose` | `#EED8CF` | Sun-faded rose limewash colour field | n/a |
-| `--cobalt` | `#1D3B8C` | Azulejo cobalt: colour fields, primary accent on light | 9.6:1 on plaster, 7.5:1 on rose |
-| `--adoquin` | `#55657F` | Cobblestone blue-grey: secondary text, rules, map water | 5.5:1 on plaster |
-| `--ink` | `#18203A` | Text | 15.1:1 on plaster, 11.8:1 on rose |
-| `--ink-muted` | `#4A5168` | Secondary text | 7.4:1 on plaster, 5.8:1 on rose |
-| `--gold-ink` | `#7D5F22` | Gold for small text, on plaster only | 5.6:1 on plaster |
-| `--gold` | `#B08A3E` | Gilded hairlines, numerals 32px and above | 3.0:1, large only |
-| `--gold-light` | `#E2C27E` | Gold on cobalt | 6.0:1 on cobalt |
-| `--white` | `#FFFFFF` | Text on cobalt | 10.2:1 |
+
+| Token          | Hex       | Role                                                    | Contrast                          |
+| -------------- | --------- | ------------------------------------------------------- | --------------------------------- |
+| `--plaster`    | `#FAF7F3` | Main ground: cool limewash white                        | n/a                               |
+| `--rose`       | `#EED8CF` | Sun-faded rose limewash colour field                    | n/a                               |
+| `--cobalt`     | `#1D3B8C` | Azulejo cobalt: colour fields, primary accent on light  | 9.6:1 on plaster, 7.5:1 on rose   |
+| `--adoquin`    | `#55657F` | Cobblestone blue-grey: secondary text, rules, map water | 5.5:1 on plaster                  |
+| `--ink`        | `#18203A` | Text                                                    | 15.1:1 on plaster, 11.8:1 on rose |
+| `--ink-muted`  | `#4A5168` | Secondary text                                          | 7.4:1 on plaster, 5.8:1 on rose   |
+| `--gold-ink`   | `#7D5F22` | Gold for small text, on plaster only                    | 5.6:1 on plaster                  |
+| `--gold`       | `#B08A3E` | Gilded hairlines, numerals 32px and above               | 3.0:1, large only                 |
+| `--gold-light` | `#E2C27E` | Gold on cobalt                                          | 6.0:1 on cobalt                   |
+| `--white`      | `#FFFFFF` | Text on cobalt                                          | 10.2:1                            |
 
 Rules: small text on rose uses ink or cobalt, never gold-ink (4.35:1). White and gold-light only on cobalt. Light-first (`color-scheme: light`). No gradients except a soft scrim on full-bleed images.
 
 ### Typography
-- **Display: Instrument Serif, regular and italic.** Tall, condensed, editorial. Set large (up to 160px on desktop) with tight leading (0.9). Headlines are lowercase-first where it reads naturally ("beyond *expectations*"). The accent word (`*word*` in CMS headlines) is the italic.
+
+- **Display: Instrument Serif, regular and italic.** Tall, condensed, editorial. Set large (up to 160px on desktop) with tight leading (0.9). Headlines are lowercase-first where it reads naturally ("beyond _expectations_"). The accent word (`*word*` in CMS headlines) is the italic.
 - **Body: Hanken Grotesk 400 and 500**, 17px, line-height 1.6, measure 60 to 66 characters.
 - **Labels: Hanken Grotesk 500 in true small caps** (`font-variant-caps: all-small-caps`, tracking 0.08em), never shouty uppercase eyebrows.
 - Stats and prices in Instrument Serif oldstyle figures; tables and forms in Hanken tabular lining figures.
 - Fluid scale (390 to 1440px): display-xl 56 to 160px, display-l 40 to 96px, display-m 30 to 56px, display-s 22 to 30px, body 16 to 17px, label 13px small caps.
 
 ### Layout grammar: arcades and colour fields
+
 - **Arches.** The key image of each section sits in an arch (an SVG `clipPath` with a semicircular top), echoing the arcades of Calle Fortaleza and the film's stone portal. At most one arched image per section; the rest are straight-edged.
 - **Colour-field scrolling.** The page ground moves between plaster, rose and cobalt as sections enter, by interpolating the `--bg` and `--fg` tokens on `main` over 30vh with ScrollTrigger. Sequence: plaster (hero) → rose (manifesto) → plaster → cobalt (resilience) → plaster → rose (family) → plaster → cobalt (presentation).
 - **Azulejo ornament.** Draw one original eight-fold tile motif as an inline SVG in cobalt line work. Use it at most three times on the homepage: a single-tile divider between chapters, the map pin, and a 4% watermark behind the final form. Never a full-page pattern.
@@ -80,7 +85,9 @@ Rules: small text on rose uses ink or cobalt, never gold-ink (4.35:1). White and
 - Spacing scale 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192px; sections 96px on mobile, 160 to 200px on desktop.
 
 ### Signature motion: the arcade
+
 One orchestrated moment, then calm.
+
 1. **Hero:** split composition. The headline sits on the left on plaster. On the right the YouTube film plays inside a tall arch (70vh). **Scroll, pinned 100vh:** the arch widens and its crown flattens until the film fills the screen, while the headline slides left and fades; then the tagline and CTAs settle over a soft bottom scrim. On mobile the arch sits under the headline at full width and widens to full screen.
 2. **Section transitions** are the colour fields.
 3. **Image reveals:** the arch or frame stays still while the image rises 8% inside it (1.1s, `cubic-bezier(0.22, 1, 0.36, 1)`). No wipes.
@@ -90,13 +97,15 @@ One orchestrated moment, then calm.
 7. **Reduced motion:** the arch shows full width, colours switch without interpolation, no pinning, no transitions.
 
 ### Persistent elements
+
 - **Header:** the classic hotel arrangement. Wordmark centred; navigation split left (Residences, Amenities, Location) and right (Log In, EN | ES, Inquire, Menu). Transparent over the hero, plaster after 40px, hides on scroll down and returns on scroll up.
 - **Menu:** a full-screen cobalt field. Large Instrument Serif links in white with italic hover; an arched image on the right changes per link; secondary links in small caps; contact and the azulejo tile at the foot. Focus trap, Escape to close.
 - **Floating bar:** a rose pill with Call · Get Pricing · WhatsApp, full-width on mobile after the hero, bottom-right on desktop.
 - **Footer:** plaster, a cobalt band with the newsletter, nav columns in Hanken, contact in small caps, language toggle, the legal notice in 11px Hanken, Equal Housing Opportunity, sponsor line.
 
 ## 3. Homepage, section by section
-1. **Hero:** the arcade film; small-caps eyebrow "Dorado · Puerto Rico"; headline "beyond *expectations*"; tagline; CTAs "Request a private presentation" (cobalt underline) and "Watch the film". Below the fold, four stats with Instrument Serif oldstyle figures and small-caps labels: 10 acres · 129 residences · 42 hotel suites · 65,500 sq ft of amenities, labelled "Tesoro Del Mar".
+
+1. **Hero:** the arcade film; small-caps eyebrow "Dorado · Puerto Rico"; headline "beyond _expectations_"; tagline; CTAs "Request a private presentation" (cobalt underline) and "Watch the film". Below the fold, four stats with Instrument Serif oldstyle figures and small-caps labels: 10 acres · 129 residences · 42 hotel suites · 65,500 sq ft of amenities, labelled "Tesoro Del Mar".
 2. **Manifesto (rose):** the mission in display-l Instrument Serif italic, a centred column of 18 characters, one azulejo tile above it, a small-caps signature line.
 3. **The Place (plaster):** a horizontal "promenade" rail of five arched portraits (beach, rainforest, sea, table, horizon) with gold oldstyle numbers and one sentence each, drag on touch, pinned horizontal scroll on desktop.
 4. **Residences (plaster):** each collection as an alternating pair: an arched or straight image on one side, an editorial text block with bedrooms, interior size and from-price (or "Details to be confirmed", "Pricing on request") on the other.
@@ -112,6 +121,7 @@ One orchestrated moment, then calm.
 14. **Footer.**
 
 ## 4. Inner pages
+
 - **Page hero:** headline left in Instrument Serif with the italic accent word, an arched image right; when a page has no image, a rose or cobalt colour field instead.
 - **Floor plans** sit on plaster with cobalt line work; specs in Hanken tabular figures; the keyplan with the unit filled in rose and outlined in cobalt.
 - **Gallery:** masonry mixing arched and straight frames (every fourth item arched); lightbox on cobalt with italic captions.
