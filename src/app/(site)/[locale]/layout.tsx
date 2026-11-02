@@ -16,7 +16,6 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingBar } from "@/components/layout/FloatingBar";
-import { DirectionSwitcher } from "@/components/layout/DirectionSwitcher";
 import "@/styles/globals.css";
 
 export function generateStaticParams() {
@@ -81,7 +80,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           <Consent />
           <ExitIntent />
           <TrackClicks />
-          {!isProd && <DirectionSwitcher />}
         </NextIntlClientProvider>
       </body>
     </html>
