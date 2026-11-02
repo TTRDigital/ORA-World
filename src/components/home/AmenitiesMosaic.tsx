@@ -140,6 +140,7 @@ export function AmenitiesMosaic({
                       fill
                       sizes="(min-width: 768px) 50vw, 100vw"
                       className="object-cover transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
+                      style={{ objectPosition: a.image.position }}
                       placeholder={a.image.blurDataURL ? "blur" : "empty"}
                       blurDataURL={a.image.blurDataURL}
                     />

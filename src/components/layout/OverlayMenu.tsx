@@ -127,6 +127,7 @@ export function OverlayMenu({ open, onClose, site }: Props) {
                   fill
                   sizes="50vw"
                   className="animate-[menufade_1.2s_var(--ease-out-expo)] object-cover"
+                  style={{ objectPosition: image.position }}
                   priority={false}
                 />
               ) : (

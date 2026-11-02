@@ -241,6 +241,7 @@ export const home: HomeContent = {
         ],
       },
     ],
+    image: tdm.aerialTowers,
   },
   amenities: {
     eyebrow: { en: "Amenities", es: "Amenidades" },
@@ -334,5 +335,158 @@ export const home: HomeContent = {
       en: "Share a few details and a member of the sales team will arrange a private presentation at the sales gallery or by video call.",
       es: "Comparta algunos datos y un miembro del equipo de ventas organizará una presentación privada en la galería de ventas o por videollamada.",
     },
+    image: tdm.exteriorGolf,
+  },
+  journey: {
+    eyebrow: { en: "Your path to ORA", es: "Su camino a ORA" },
+    title: { en: "Discover. Choose. *Arrive.*", es: "Descubra. Elija. *Llegue.*" },
+    steps: [
+      {
+        title: { en: "Discover the island", es: "Descubra la isla" },
+        text: {
+          en: "From turquoise shores to the trails of El Yunque, explore the Puerto Rico that frames every ORA World community.",
+          es: "De las costas turquesa a los senderos de El Yunque, explore el Puerto Rico que enmarca cada comunidad de ORA World.",
+        },
+        image: lifestyle.beach,
+        href: "/lifestyle",
+        cta: { en: "The lifestyle", es: "El estilo de vida" },
+      },
+      {
+        title: { en: "Choose your residence", es: "Elija su residencia" },
+        text: {
+          en: "Contemporary apartments, villas, penthouses and hotel suites, each positioned to take full advantage of the views.",
+          es: "Apartamentos contemporáneos, villas, penthouses y suites de hotel, cada uno ubicado para aprovechar al máximo las vistas.",
+        },
+        image: tdm.aptLiving,
+        href: "/residences",
+        cta: { en: "The residences", es: "Las residencias" },
+      },
+      {
+        title: { en: "Arrive in Dorado", es: "Llegue a Dorado" },
+        text: {
+          en: "Book a private presentation at the sales gallery or by video call, and the sales team will walk you through every detail.",
+          es: "Reserve una presentación privada en la galería de ventas o por videollamada, y el equipo de ventas le mostrará cada detalle.",
+        },
+        image: tdm.foyerReception,
+        href: "#inquire",
+        cta: { en: "Request a presentation", es: "Solicitar presentación" },
+      },
+    ],
+  },
+  glance: {
+    eyebrow: { en: "Tesoro Del Mar", es: "Tesoro Del Mar" },
+    title: { en: "Harmony in modernity *and nature*", es: "Armonía entre modernidad *y naturaleza*" },
+    body: {
+      en: "An ambitious 10-acre development near a national park with panoramic ocean views, designed around the themes of rejuvenation and community.",
+      es: "Un ambicioso desarrollo de 10 acres junto a un parque nacional con vistas panorámicas al océano, concebido en torno a la renovación y la comunidad.",
+    },
+    checklist: [
+      { en: "335,995 sq ft of land across 10 acres", es: "335,995 pies² de terreno en 10 acres" },
+      {
+        en: "129 contemporary apartments and 42 hotel suites",
+        es: "129 apartamentos contemporáneos y 42 suites de hotel",
+      },
+      {
+        en: "65,500 sq ft of amenities: sports courts, fitness center, jogging paths",
+        es: "65,500 pies² de amenidades: canchas, gimnasio y senderos para correr",
+      },
+      { en: "Walking distance to Balneario Cerro Gordo beach", es: "A pasos de la playa Balneario Cerro Gordo" },
+      {
+        en: "Thirty minutes from the airport, beside a national park",
+        es: "A treinta minutos del aeropuerto, junto a un parque nacional",
+      },
+      {
+        en: "A clubhouse and boutique hotel at the heart of the community",
+        es: "Un club social y un hotel boutique en el corazón de la comunidad",
+      },
+    ],
+    image: tdm.aerialCoast,
+    inset: renders.tdmExterior,
+  },
+  walkthrough: {
+    eyebrow: { en: "Step inside", es: "Pase adelante" },
+    title: { en: "A walk *through* Tesoro Del Mar", es: "Un recorrido *por* Tesoro Del Mar" },
+    intro: {
+      en: "From the palm-lined approach to the penthouse, follow the renderings room by room.",
+      es: "Desde la llegada entre palmeras hasta el penthouse, recorra los renderings espacio por espacio.",
+    },
+    steps: [
+      {
+        label: { en: "Arrival", es: "Llegada" },
+        title: { en: "Shaped by the flight of birds", es: "Inspirado en el vuelo de las aves" },
+        text: {
+          en: "Sleek, aerodynamic forms with curved facades and expansive glass appear to soar above the landscape.",
+          es: "Formas aerodinámicas con fachadas curvas y amplias superficies de cristal que parecen elevarse sobre el paisaje.",
+        },
+        image: tdm.exteriorRoad,
+      },
+      {
+        label: { en: "The foyer", es: "El vestíbulo" },
+        title: { en: "Stone, wood and brushed metal", es: "Piedra, madera y metal cepillado" },
+        text: {
+          en: "Premium materials and a palette inspired by the natural surroundings set the tone from the first step inside.",
+          es: "Materiales de primera y una paleta inspirada en el entorno natural marcan el tono desde el primer paso.",
+        },
+        image: tdm.foyerAtrium,
+      },
+      {
+        label: { en: "The residence", es: "La residencia" },
+        title: { en: "Open plans, framed by the view", es: "Planos abiertos, enmarcados por la vista" },
+        text: {
+          en: "Open-concept layouts encourage flow and connection, while floor-to-ceiling windows fill each space with light.",
+          es: "Los planos abiertos favorecen la fluidez y la conexión, y los ventanales de piso a techo llenan cada espacio de luz.",
+        },
+        image: tdm.aptLiving2,
+      },
+      {
+        label: { en: "The private suite", es: "La suite privada" },
+        title: { en: "A personal sanctuary", es: "Un santuario personal" },
+        text: {
+          en: "Retreat to a private suite with ocean or garden views, designed to nurture both luxury and ease.",
+          es: "Retírese a una suite privada con vista al mar o al jardín, pensada para el lujo y la serenidad.",
+        },
+        image: tdm.aptBedroom,
+      },
+      {
+        label: { en: "The terraces", es: "Las terrazas" },
+        title: { en: "Terraces that extend like wings", es: "Terrazas que se extienden como alas" },
+        text: {
+          en: "Cantilevered balconies, reflecting pools and gentle cascades foster tranquility and social connection.",
+          es: "Balcones en voladizo, espejos de agua y cascadas suaves fomentan la tranquilidad y la vida en comunidad.",
+        },
+        image: renders.tdmExterior,
+      },
+      {
+        label: { en: "The penthouse", es: "El penthouse" },
+        title: { en: "Generous rooms for entertaining", es: "Espacios amplios para recibir" },
+        text: {
+          en: "A floating staircase, sweeping views and curated finishes for life's finest moments.",
+          es: "Una escalera flotante, vistas amplias y acabados selectos para los mejores momentos.",
+        },
+        image: tdm.penthouseLiving,
+      },
+    ],
+  },
+  portfolio: {
+    eyebrow: { en: "The portfolio", es: "El portafolio" },
+    title: { en: "Twelve places, *one* philosophy", es: "Doce lugares, *una* filosofía" },
+    intro: {
+      en: "From Dorado to Guayama, every ORA World community blends modern living with the nature around it.",
+      es: "De Dorado a Guayama, cada comunidad de ORA World integra la vida moderna con la naturaleza que la rodea.",
+    },
+  },
+  faq: {
+    eyebrow: { en: "Common questions", es: "Preguntas frecuentes" },
+    title: { en: "Before you *visit*", es: "Antes de su *visita*" },
+    slugs: [
+      "what-is-ora-world",
+      "where-is-tesoro",
+      "what-is-tesoro",
+      "pricing",
+      "hurricanes",
+      "act-60",
+      "pets",
+      "brokers",
+    ],
   },
 };

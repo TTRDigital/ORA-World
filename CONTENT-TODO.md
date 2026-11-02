@@ -53,13 +53,15 @@ Every item below is either marked `[[PLACEHOLDER]]` in the CMS/seed, flagged wit
 
 Client-owned renders and photography were taken from oraworld.com (`docs/source/oraworld-com/image-urls.txt`) and optimised into `public/images/client/`. Several of the lifestyle photographs on the live site appear to be stock imagery (one file is literally `iStock-2231329012.jpg`); **confirm the client's licenses cover reuse on the new site**: `010pet-1`, `015discover`, `027entertaiment`, `030transportation`, `031cultural`, `032family`, `033sustainability`, `035sport`, `042spa`, `055fitness`, `056watersport`, `057culinary`, `058entertainment`, `059adventure`, `060family`, `062educational`, `063shopping`, `064additional`, `istock-2231329012`, `05theplace-1`.
 
-Free-license placeholder (replace before launch):
+Portfolio renders (one per location, from oraworld.com/our-residences): `thetop1`, `naguabo2`, `loizaocean1`, `loizarivercity1`, `loizacountryside2`, `ceiba-001` (a massing study, not a finished render) and `guayama-50` (a site plan). Dorado Ocean View Estates and AquaMaria have no published render yet, so their cards show the gold-ring thumbnail. **Supply a finished render for each before launch.**
 
-| File                                                         | Source                                                                         | License / credit                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------ | -------------------------------- |
-| `public/images/free/bio-bay-vieques.jpg` ("The sea" chapter) | Wikimedia Commons, "Mosquito bay, Bioluminescent bay, Vieques - panoramio.jpg" | CC BY 3.0, Panoramio contributor |
+No free-license placeholder imagery is in use. The former Commons bio-bay photo was replaced by the client's sailing photograph.
 
-Wikimedia Commons searches for El Yunque, Old San Juan, Dorado beach and TPC Dorado golf were rate-limited during the build; candidates (all CC BY / CC BY-SA) are listed in the session notes and can be fetched later with `scripts/images-build.mjs`.
+Focal points: architecture renders carry a `position` (CSS object-position) in `src/content/seed/images.ts` so tower tops stay in frame at every crop. Set the same field on any new render whose subject sits near the top edge.
+
+### Homepage story sections
+
+The journey cards, Tesoro Del Mar checklist, walkthrough, portfolio and FAQ blocks live in `src/content/seed/home.ts`. Every fact is quoted from oraworld.com/tesoro-del-mar (10 acres, 335,995 sq ft of land, 129 apartments, 42 hotel suites, 65,500 sq ft of amenities, walking distance to Balneario Cerro Gordo, 30 minutes from the airport). The walkthrough captions describe what each render shows. **Ask the client to review the captions.**
 
 ## 5. Copy to review
 

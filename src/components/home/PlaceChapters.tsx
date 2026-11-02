@@ -88,6 +88,7 @@ export function PlaceChapters({ place }: { place: Localized<HomeContent["place"]
                   fill
                   sizes="(min-width:1024px) 44vw, 78vw"
                   className="object-cover"
+                  style={{ objectPosition: c.image.position }}
                   placeholder={c.image.blurDataURL ? "blur" : "empty"}
                   blurDataURL={c.image.blurDataURL}
                   data-reveal-inner

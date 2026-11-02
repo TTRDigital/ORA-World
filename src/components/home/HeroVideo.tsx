@@ -31,8 +31,27 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
     const nav = navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } };
     const slow = nav.connection?.saveData || /2g/.test(nav.connection?.effectiveType || "");
     if (reduced || slow) return;
-    const id = window.setTimeout(() => setUseVideo(true), 400);
-    return () => window.clearTimeout(id);
+    // Mount the film once the page has loaded and the main thread is idle, so the player's
+    // script never competes with hydration; the poster carries the first paint meanwhile.
+    let timer = 0;
+    let idle = 0;
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const start = () => {
+      timer = window.setTimeout(() => {
+        if (w.requestIdleCallback) idle = w.requestIdleCallback(() => setUseVideo(true), { timeout: 1500 });
+        else setUseVideo(true);
+      }, 600);
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      window.removeEventListener("load", start);
+      window.clearTimeout(timer);
+      if (idle) w.cancelIdleCallback?.(idle);
+    };
   }, [hasSource]);
 
   const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
@@ -99,6 +118,7 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
         placeholder={poster.blurDataURL ? "blur" : "empty"}
         blurDataURL={poster.blurDataURL}
         className={`object-cover transition-opacity duration-[1600ms] ease-[var(--ease-out-expo)] ${playing ? "opacity-0" : "opacity-100"}`}
+        style={{ objectPosition: poster.position }}
       />
       {useVideo && selfHosted && (
         <video

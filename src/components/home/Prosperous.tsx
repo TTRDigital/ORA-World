@@ -1,42 +1,112 @@
-import { getTranslations } from "next-intl/server";
-import type { HomeContent } from "@/content/types";
+"use client";
+
+import { useId, useState } from "react";
+import { useTranslations } from "next-intl";
+import type { HomeContent, Incentive } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { Link } from "@/i18n/navigation";
 import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
-import { SplitLines } from "@/components/ui/SplitLines";
+import { cn } from "@/lib/utils";
 
-/** Calm, typographic. No numbers unless the CMS supplies them. */
-export async function Prosperous({ block }: { block: Localized<HomeContent["prosperous"]> }) {
-  const t = await getTranslations("common");
+type Props = { block: Localized<HomeContent["prosperous"]>; incentives: Localized<Incentive>[] };
+
+/** Incentives as a tabbed reader: a topic list on the left, the published summary and detail on the right. */
+export function Prosperous({ block, incentives }: Props) {
+  const t = useTranslations("common");
+  const base = useId();
+  const [active, setActive] = useState(0);
+  const item = incentives[active];
   return (
-    <section className="bg-surface py-section">
-      <div className="container-x grid grid-cols-12 gap-x-6">
-        <div className="col-span-12 md:col-span-4">
-          <Eyebrow>{block.eyebrow}</Eyebrow>
-        </div>
-        <div className="col-span-12 mt-6 md:col-span-7 md:col-start-6 md:mt-0">
-          <SplitLines as="h2" className="display-l">
-            <Accent text={block.title} />
-          </SplitLines>
-          <div className="mt-10 max-w-[56ch] space-y-5 text-fg-muted">
-            {block.body.map((p, i) => (
-              <p key={i} className="lead" data-reveal>
-                {p}
-              </p>
-            ))}
+    <section className="bg-surface py-section" aria-labelledby="prosper-title">
+      <div className="container-x">
+        <div className="grid grid-cols-12 gap-x-6">
+          <div className="col-span-12 md:col-span-7">
+            <Eyebrow>{block.eyebrow}</Eyebrow>
+            <h2 id="prosper-title" className="mt-6 display-l" data-reveal>
+              <Accent text={block.title} />
+            </h2>
           </div>
-          <div className="mt-10 flex flex-wrap items-center gap-6" data-reveal>
-            <Button as={Link} href="/incentives">
-              {t("learnMore")}
-              <span className="sr-only"> · {block.eyebrow}</span>
-            </Button>
-          </div>
-          <p className="mt-10 max-w-[64ch] border-t border-rule pt-5 small text-fg-muted" data-reveal>
-            {block.disclaimer}
+          <p
+            className="col-span-12 mt-6 max-w-[46ch] lead text-fg-muted md:col-span-4 md:col-start-9 md:mt-16"
+            data-reveal
+          >
+            {block.body[0]}
           </p>
         </div>
+
+        {item && (
+          <div className="mt-14 grid grid-cols-12 gap-x-6 gap-y-8 md:mt-20">
+            <div
+              role="tablist"
+              aria-orientation="vertical"
+              aria-label={block.eyebrow}
+              className="col-span-12 flex flex-col md:col-span-5"
+            >
+              {incentives.map((inc, i) => (
+                <button
+                  key={inc.slug}
+                  id={`${base}-t${i}`}
+                  role="tab"
+                  type="button"
+                  aria-selected={i === active}
+                  aria-controls={`${base}-p`}
+                  tabIndex={i === active ? 0 : -1}
+                  onClick={() => setActive(i)}
+                  onKeyDown={(e) => {
+                    const d = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
+                    if (!d) return;
+                    e.preventDefault();
+                    const next = (active + d + incentives.length) % incentives.length;
+                    setActive(next);
+                    document.getElementById(`${base}-t${next}`)?.focus();
+                  }}
+                  className={cn(
+                    "group flex cursor-pointer items-center gap-5 border-t border-rule py-5 text-left transition-colors last:border-b",
+                    i === active ? "text-fg" : "text-fg-muted hover:text-fg",
+                  )}
+                >
+                  <span className={cn("eyebrow tnum", i === active ? "text-accent-ink" : "")}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex-1 display-s">{inc.title}</span>
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "h-px bg-accent transition-[width] duration-700 ease-[var(--ease-out-expo)]",
+                      i === active ? "w-10" : "w-0",
+                    )}
+                  />
+                </button>
+              ))}
+            </div>
+            <div
+              id={`${base}-p`}
+              role="tabpanel"
+              aria-labelledby={`${base}-t${active}`}
+              className="col-span-12 border border-rule bg-bg p-6 md:col-span-6 md:col-start-7 md:p-10"
+            >
+              <p className="eyebrow text-accent-ink tnum">
+                {String(active + 1).padStart(2, "0")} / {String(incentives.length).padStart(2, "0")}
+              </p>
+              <h3 className="mt-4 display-m">{item.title}</h3>
+              <p className="mt-5 lead">{item.summary}</p>
+              <div className="mt-5 space-y-4 text-fg-muted">
+                {item.body.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+              <div className="mt-8">
+                <Button as={Link} href="/incentives">
+                  {t("learnMore")}
+                  <span className="sr-only"> · {block.eyebrow}</span>
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+        <p className="mt-10 max-w-[70ch] border-t border-rule pt-5 small text-fg-muted">{block.disclaimer}</p>
       </div>
     </section>
   );

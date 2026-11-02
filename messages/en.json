@@ -229,7 +229,19 @@
     "scrollToExplore": "Scroll to explore",
     "skipPreloader": "Skip intro",
     "watchFilmSoon": "Film coming soon",
-    "statsOf": "Tesoro Del Mar"
+    "statsOf": "Tesoro Del Mar",
+    "discoverTesoro": "Discover Tesoro Del Mar",
+    "walkSteps": "Walkthrough steps",
+    "size": "Size",
+    "viewMain": "View 01",
+    "viewAlt": "View 02",
+    "viewCollection": "View the collection",
+    "systemsInPlace": "Systems in place",
+    "howWeBuild": "How we build",
+    "explore": "Explore",
+    "stillQuestions": "Still have questions?",
+    "allQuestions": "All questions",
+    "toBeAnnounced": "To be announced"
   },
   "amenityCat": {
     "wellness": "Wellness",

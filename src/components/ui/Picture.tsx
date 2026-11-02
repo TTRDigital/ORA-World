@@ -41,7 +41,7 @@ export function Picture({
       style={aspect ? { aspectRatio: aspect } : undefined}
       data-reveal={reveal ? "image" : undefined}
     >
-      <div className={cn("absolute inset-0", parallax && "-inset-y-[8%]")} data-parallax={parallax || undefined}>
+      <div className={cn("absolute inset-0", parallax && "-inset-y-[4%]")} data-parallax={parallax || undefined}>
         <Image
           src={image.src}
           alt={image.alt}
@@ -51,6 +51,7 @@ export function Picture({
           placeholder={image.blurDataURL ? "blur" : "empty"}
           blurDataURL={image.blurDataURL}
           className={cn("object-cover", imgClassName)}
+          style={{ objectPosition: image.position }}
           data-reveal-inner
         />
       </div>

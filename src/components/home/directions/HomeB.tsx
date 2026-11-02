@@ -5,6 +5,7 @@ import {
   getHome,
   getPointsOfInterest,
   getPress,
+  getIncentives,
   getSiteSettings,
   getTeam,
 } from "@/lib/content";
@@ -25,7 +26,7 @@ import { PresentationCta } from "@/components/home/PresentationCta";
 
 /** Direction B · Basalt Cinema: dark base, brass accents, full-screen pinned chapters, longer motion. */
 export async function HomeB({ locale }: { locale: Locale }) {
-  const [site, home, collections, amenities, pois, team, press] = await Promise.all([
+  const [site, home, collections, amenities, pois, team, press, incentives] = await Promise.all([
     getSiteSettings(locale),
     getHome(locale),
     getCollections(locale),
@@ -33,6 +34,7 @@ export async function HomeB({ locale }: { locale: Locale }) {
     getPointsOfInterest(locale),
     getTeam(locale),
     getPress(locale),
+    getIncentives(locale),
   ]);
   return (
     <main id="main">
@@ -43,8 +45,15 @@ export async function HomeB({ locale }: { locale: Locale }) {
       <ResidencesCinema block={home.residences} collections={collections} />
       <ResilienceSignature block={home.resilience} />
       <AmenitiesMosaic block={home.amenities} amenities={amenities} />
-      <FamilyPets family={home.family} pets={home.pets} />
-      <Prosperous block={home.prosperous} />
+      <FamilyPets
+        family={home.family}
+        pets={home.pets}
+        related={{
+          family: amenities.filter((a) => a.category === "family").map((a) => a.name),
+          pets: amenities.filter((a) => a.category === "pets").map((a) => a.name),
+        }}
+      />
+      <Prosperous block={home.prosperous} incentives={incentives} />
       <LocationSection block={home.location} pois={pois} site={site} />
       <TourTeaser block={home.tour} url={site.vrTourUrl} />
       <Collaboratory block={home.team} team={team} />

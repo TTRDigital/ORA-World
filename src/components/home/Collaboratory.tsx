@@ -15,7 +15,6 @@ export async function Collaboratory({
   team: Localized<TeamMember>[];
 }) {
   const h = await getTranslations("home");
-  const c = await getTranslations("common");
   return (
     <section className="py-section" aria-labelledby="team-title">
       <div className="container-x">
@@ -33,26 +32,58 @@ export async function Collaboratory({
             {block.intro}
           </p>
         </div>
-        <ul className="mt-16 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
-          {team.slice(0, 4).map((m, i) => (
-            <li key={m.slug} className={i % 2 === 1 ? "md:mt-16" : ""} data-reveal data-delay={i * 0.08}>
-              <figure className="relative aspect-[4/5] overflow-hidden bg-surface">
-                <Image
-                  src={m.portrait.src}
-                  alt={m.portrait.alt}
-                  fill
-                  sizes="(min-width: 768px) 25vw, 50vw"
-                  className="object-cover"
-                />
-              </figure>
-              <p className="mt-5 eyebrow text-accent-ink">{m.discipline}</p>
-              <h3 className="mt-2 display-s">{m.name}</h3>
-              <p className="mt-1 small text-fg-muted">{m.role}</p>
-              {m.quote && <blockquote className="mt-4 font-display text-lg text-fg/80 italic">“{m.quote}”</blockquote>}
-              {m.placeholder && <p className="mt-3 eyebrow text-fg-muted">{c("placeholder")}</p>}
-            </li>
-          ))}
-        </ul>
+        {/* Confirmed members get a portrait card; disciplines still being appointed read as a numbered roster
+            instead of empty silhouettes. */}
+        <div className="mt-16 grid grid-cols-12 gap-x-6 gap-y-10">
+          {team
+            .filter((m) => !m.placeholder)
+            .slice(0, 1)
+            .map((m) => (
+              <article key={m.slug} className="col-span-12 grid gap-6 sm:grid-cols-2 lg:col-span-7" data-reveal>
+                <figure className="relative aspect-[4/5] overflow-hidden bg-surface">
+                  <Image
+                    src={m.portrait.src}
+                    alt={m.portrait.alt}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                    style={{ objectPosition: m.portrait.position }}
+                  />
+                </figure>
+                <div className="flex flex-col justify-end">
+                  <p className="eyebrow text-accent-ink">{m.discipline}</p>
+                  <h3 className="mt-3 display-m">{m.name}</h3>
+                  <p className="mt-2 small text-fg-muted">{m.role}</p>
+                  {m.quote && (
+                    <blockquote className="mt-6 border-l border-accent pl-5 font-display text-xl text-fg/85 italic">
+                      “{m.quote}”
+                    </blockquote>
+                  )}
+                </div>
+              </article>
+            ))}
+          <ol className="col-span-12 self-end border-t border-rule lg:col-span-4 lg:col-start-9">
+            {team
+              .filter((m) => m.placeholder)
+              .map((m, i) => (
+                <li
+                  key={m.slug}
+                  className="flex items-baseline gap-5 border-b border-rule py-5"
+                  data-reveal
+                  data-delay={i * 0.06}
+                >
+                  <span className="eyebrow text-accent-ink tnum">{String(i + 2).padStart(2, "0")}</span>
+                  <span className="flex-1">
+                    <span className="block display-s">{m.discipline}</span>
+                    <span className="mt-1 block small text-fg-muted">{m.role}</span>
+                  </span>
+                  <span className="shrink-0 rounded-full border border-rule px-3 py-1 text-[11px] tracking-[0.12em] text-fg-muted uppercase">
+                    {h("toBeAnnounced")}
+                  </span>
+                </li>
+              ))}
+          </ol>
+        </div>
         <div className="mt-14" data-reveal>
           <Button as={Link} href="/the-team" variant="text">
             {h("meetTeam")}

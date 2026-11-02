@@ -27,7 +27,7 @@ export function PageHero({ eyebrow, title, intro, image, compact, children }: Pr
         className={cn("relative flex flex-col justify-end text-white", compact ? "min-h-[60vh]" : "min-h-[82vh]")}
       >
         <div className="absolute inset-0 overflow-hidden bg-basalt">
-          <div className="absolute inset-x-0 -inset-y-[6%]" data-parallax="0.05">
+          <div className="absolute inset-x-0 -inset-y-[3%]" data-parallax="0.03">
             <Image
               src={image.src}
               alt={image.alt}
@@ -36,6 +36,7 @@ export function PageHero({ eyebrow, title, intro, image, compact, children }: Pr
               fetchPriority="high"
               sizes="100vw"
               className="object-cover"
+              style={{ objectPosition: image.position }}
               placeholder={image.blurDataURL ? "blur" : "empty"}
               blurDataURL={image.blurDataURL}
             />

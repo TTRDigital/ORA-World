@@ -2,7 +2,7 @@ import manifest from "../images.json";
 import type { ImageRef, L } from "../types";
 
 type Key = keyof typeof manifest;
-type Opts = { caption?: L; rendering?: boolean; placeholder?: boolean; credit?: string };
+type Opts = { caption?: L; rendering?: boolean; placeholder?: boolean; credit?: string; position?: string };
 
 /** Build an ImageRef from the optimised-image manifest. */
 export function img(key: Key, alt: L, opts: Opts = {}): ImageRef {
@@ -18,7 +18,7 @@ export const renders = {
       en: "Tesoro Del Mar: curved residential towers above a resort pool, framed by palms",
       es: "Tesoro Del Mar: torres residenciales curvas sobre una piscina resort, enmarcadas por palmeras",
     },
-    { rendering: true },
+    { rendering: true, position: "50% 12%" },
   ),
   tdmPenthouse: img(
     "client/tdm-penthouse-living-003-small-scaled",
@@ -34,7 +34,7 @@ export const renders = {
       en: "Detail of the curved balconies against the Caribbean sky",
       es: "Detalle de los balcones curvos contra el cielo caribeño",
     },
-    { rendering: true },
+    { rendering: true, position: "30% 35%" },
   ),
   poolTerrace: img(
     "client/049discover",
@@ -42,7 +42,7 @@ export const renders = {
       en: "Pool terrace beneath a cantilevered glass pavilion",
       es: "Terraza de piscina bajo un pabellón de cristal en voladizo",
     },
-    { rendering: true },
+    { rendering: true, position: "50% 25%" },
   ),
   doradoWaterfalls: img(
     "client/doradowaterfalls1",
@@ -50,7 +50,7 @@ export const renders = {
       en: "Dorado Waterfalls: tiered towers along a palm-lined avenue",
       es: "Dorado Waterfalls: torres escalonadas a lo largo de una avenida de palmeras",
     },
-    { rendering: true },
+    { rendering: true, position: "50% 20%" },
   ),
   naguabo: img(
     "client/naguabo-003",
@@ -58,7 +58,7 @@ export const renders = {
       en: "Naguabo: residential towers set into a green hillside bay",
       es: "Naguabo: torres residenciales en una bahía de laderas verdes",
     },
-    { rendering: true },
+    { rendering: true, position: "50% 40%" },
   ),
   naguaboWide: img(
     "client/n03-scaled",
@@ -154,7 +154,7 @@ export const tdm = {
       en: "Aerial view of the Tesoro Del Mar towers set in tropical forest",
       es: "Vista aérea de las torres de Tesoro Del Mar entre el bosque tropical",
     },
-    R,
+    { ...R, position: "50% 45%" },
   ),
   aerialCoast: img(
     "client/tdm-aerial-002-small-scaled",
@@ -162,7 +162,7 @@ export const tdm = {
       en: "Aerial view of Tesoro Del Mar above a turquoise cove on the north coast",
       es: "Vista aérea de Tesoro Del Mar sobre una cala turquesa de la costa norte",
     },
-    R,
+    { ...R, position: "50% 40%" },
   ),
   aerialVillas: img(
     "client/tdm-aerial-003-small-scaled",
@@ -170,7 +170,7 @@ export const tdm = {
       en: "Aerial view of the towers and the villa neighbourhood at Tesoro Del Mar",
       es: "Vista aérea de las torres y el vecindario de villas de Tesoro Del Mar",
     },
-    R,
+    { ...R, position: "50% 40%" },
   ),
   aerialForest: img(
     "client/tdm-aerial-004-small-scaled",
@@ -178,7 +178,7 @@ export const tdm = {
       en: "Tesoro Del Mar towers rising from the forest canopy",
       es: "Las torres de Tesoro Del Mar emergiendo del dosel del bosque",
     },
-    R,
+    { ...R, position: "60% 40%" },
   ),
   exteriorGolf: img(
     "client/tdm-exterior-from-golf-scaled",
@@ -186,7 +186,7 @@ export const tdm = {
       en: "Tesoro Del Mar seen across the landscaped green",
       es: "Tesoro Del Mar visto desde las áreas verdes ajardinadas",
     },
-    R,
+    { ...R, position: "50% 25%" },
   ),
   exteriorRoad: img(
     "client/tdm-exterior-from-road-scaled",
@@ -194,7 +194,7 @@ export const tdm = {
       en: "Curved towers of Tesoro Del Mar seen from the palm-lined approach",
       es: "Las torres curvas de Tesoro Del Mar desde el acceso bordeado de palmeras",
     },
-    R,
+    { ...R, position: "50% 15%" },
   ),
   foyerAtrium: img(
     "client/tdm-foyer-001-small-scaled",
@@ -322,5 +322,59 @@ export const dw = {
     "client/doradowaterfallsinterior15",
     { en: "Dorado Waterfalls open-plan living room", es: "Sala de concepto abierto en Dorado Waterfalls" },
     R,
+  ),
+};
+
+/* ---- Portfolio renders, one per location (oraworld.com/our-residences, artist's conceptual renderings) ---- */
+export const places = {
+  theTop: img(
+    "client/thetop1",
+    {
+      en: "The Top: curved towers and terraced villas above the treeline",
+      es: "The Top: torres curvas y villas escalonadas sobre la arboleda",
+    },
+    { rendering: true, position: "50% 20%" },
+  ),
+  naguabo: img(
+    "client/naguabo2",
+    {
+      en: "Naguabo: towers and a marina around a hidden bay",
+      es: "Naguabo: torres y una marina alrededor de una bahía escondida",
+    },
+    { rendering: true, position: "50% 40%" },
+  ),
+  loizaOcean: img(
+    "client/loizaocean1",
+    { en: "Loíza Ocean: glass towers on the shoreline", es: "Loíza Ocean: torres de cristal frente al mar" },
+    { rendering: true, position: "50% 35%" },
+  ),
+  loizaRiverCity: img(
+    "client/loizarivercity1",
+    {
+      en: "Loíza River City: towers above a palm-lined beach",
+      es: "Loíza River City: torres sobre una playa bordeada de palmeras",
+    },
+    { rendering: true, position: "50% 35%" },
+  ),
+  loizaCountryside: img(
+    "client/loizacountryside2",
+    {
+      en: "Loíza Countryside Estates: aerial view of the lagoon community",
+      es: "Loíza Countryside Estates: vista aérea de la comunidad de la laguna",
+    },
+    { rendering: true },
+  ),
+  ceiba: img(
+    "client/ceiba-001",
+    {
+      en: "Costa del Este, Ceiba: architectural massing study of the towers",
+      es: "Costa del Este, Ceiba: estudio volumétrico de las torres",
+    },
+    { rendering: true },
+  ),
+  guayama: img(
+    "client/guayama-50",
+    { en: "Guayama: site plan along the coast", es: "Guayama: plano del sitio a lo largo de la costa" },
+    { rendering: true },
   ),
 };

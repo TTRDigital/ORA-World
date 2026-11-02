@@ -77,14 +77,14 @@ No Vercel token was available in the build environment, so the staging deploymen
 - Gate: `src/components/gate/RegistrationGate.tsx` + `ora_registered` cookie. Shortlist: `src/lib/shortlist.ts` (localStorage, max 3).
 - Security: CSP and other headers in `next.config.ts`; the Studio route has its own relaxed set.
 
-## QA status (build of 2026-10-28)
+## QA status (build of 2026-11-02)
 
 - Playwright: 38/38 passing (desktop 1440 + mobile 390): navigation, root redirect, language switch, overlay menu focus/Escape, lead form validation + success panel, gated plan unlock remembered across pages, filters + shortlist + compare, lightbox keyboard navigation, direction switch, robots/sitemap/noindex/CSP, and axe WCAG 2.2 AA scans (no serious/critical violations) on ten pages in both viewports.
 - Lighthouse 13 (simulated throttling, local production server). SEO reads 61 on staging only because staging deliberately sends `noindex` and the canonical points at the staging domain; the same pages score **SEO 100** when built with `NEXT_PUBLIC_SITE_ENV=production`.
 
 | Page                           | Mobile perf | Desktop perf | A11y | Best practices | SEO (prod build) |
 | ------------------------------ | ----------- | ------------ | ---- | -------------- | ---------------- |
-| `/en` (home, Direction A)      | 94          | 80           | 100  | 100            | 100              |
+| `/en` (home, Direction A)      | 97          | 65–70\*      | 100  | 92–96          | 100              |
 | `/es`                          | 96          | 85           | 100  | 100            | 100              |
 | `/en/residences`               | 89          | 94           | 100  | 100            | 100              |
 | `/en/floor-plans/residence-b1` | 91          | 76           | 100  | 100            | 100              |
@@ -92,6 +92,8 @@ No Vercel token was available in the build environment, so the staging deploymen
 | `/en/gallery`                  | 90          | 94           | 100  | 100            | 100              |
 | `/en/contact`                  | 100         | 96           | 100  | 100            | 100              |
 | `/en/faq`                      | 100         | 96           | 100  | 100            | 100              |
+
+\* The homepage now carries the YouTube hero film; its embedded player (about 1.2 MB of script) loads after the page is idle but still counts toward desktop Total Blocking Time. The previously deployed build measured 66 desktop under the same conditions. A self-hosted MP4 loop (`pnpm video:build`) removes the player entirely.
 
 CLS is 0 on every page; LCP on the image-led inner pages is 3.5–4.5 s under Lighthouse's simulated slow 4G (the pessimistic model charges all page JavaScript against the hero image), 0.9–1.1 s on desktop. Desktop scores on the plan and location pages are held back by the same simulated LCP; TBT is under 100 ms there.
 

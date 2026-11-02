@@ -135,13 +135,26 @@ export async function initReveals(): Promise<() => void> {
   document.querySelectorAll<HTMLElement>("[data-parallax]").forEach((el) => {
     if (!bind(el)) return;
     const ratio = Number(el.dataset.parallax || 0.06);
+    // Travel never exceeds the wrapper's overscan, so the image edge (and the top of a tower) never shows a gap
+    // and the crop stays where the focal point puts it.
+    const travel = () => {
+      const parent = el.parentElement;
+      const overscan = parent ? Math.max(0, (el.offsetHeight - parent.offsetHeight) / 2) : 0;
+      return Math.min(overscan, ratio * (parent?.offsetHeight ?? el.offsetHeight));
+    };
     const tween = gsap.fromTo(
       el,
-      { yPercent: -ratio * 100 },
+      { y: () => -travel() },
       {
-        yPercent: ratio * 100,
+        y: () => travel(),
         ease: "none",
-        scrollTrigger: { trigger: el.parentElement ?? el, start: "top bottom", end: "bottom top", scrub: 0.8 },
+        scrollTrigger: {
+          trigger: el.parentElement ?? el,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.8,
+          invalidateOnRefresh: true,
+        },
       },
     );
     if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);

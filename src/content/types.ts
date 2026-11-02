@@ -20,6 +20,8 @@ export interface ImageRef {
   placeholder?: boolean;
   credit?: string;
   blurDataURL?: string;
+  /** CSS object-position focal point, e.g. "50% 15%" keeps tower tops in frame when cropped. */
+  position?: string;
 }
 
 export interface Social {
@@ -233,7 +235,7 @@ export interface HomeContent {
   context: { image: ImageRef; captions: L[] };
   place: { eyebrow: L; title: L; intro: L; chapters: Chapter[] };
   residences: { eyebrow: L; title: L; intro: L };
-  resilience: { eyebrow: L; title: L; intro: L; counters: Stat[]; features: ResilienceFeature[] };
+  resilience: { eyebrow: L; title: L; intro: L; counters: Stat[]; features: ResilienceFeature[]; image: ImageRef };
   amenities: { eyebrow: L; title: L; intro: L };
   family: { eyebrow: L; title: L; body: LP; image: ImageRef };
   pets: { eyebrow: L; title: L; body: LP; image: ImageRef };
@@ -242,7 +244,27 @@ export interface HomeContent {
   tour: { eyebrow: L; title: L; text: L; image: ImageRef };
   team: { eyebrow: L; title: L; intro: L };
   press: { eyebrow: L };
-  cta: { eyebrow: L; title: L; text: L };
+  cta: { eyebrow: L; title: L; text: L; image: ImageRef };
+  journey: { eyebrow: L; title: L; steps: JourneyStep[] };
+  glance: { eyebrow: L; title: L; body: L; checklist: L[]; image: ImageRef; inset: ImageRef };
+  walkthrough: { eyebrow: L; title: L; intro: L; steps: WalkStep[] };
+  portfolio: { eyebrow: L; title: L; intro: L };
+  faq: { eyebrow: L; title: L; slugs: string[] };
+}
+
+export interface JourneyStep {
+  title: L;
+  text: L;
+  image: ImageRef;
+  href: string;
+  cta: L;
+}
+
+export interface WalkStep {
+  label: L;
+  title: L;
+  text: L;
+  image: ImageRef;
 }
 
 export interface GenericPage {

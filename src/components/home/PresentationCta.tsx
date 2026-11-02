@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { HomeContent, SiteSettings } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { Accent } from "@/components/ui/Accent";
@@ -15,8 +16,23 @@ export function PresentationCta({
   residenceOptions: string[];
 }) {
   return (
-    <section id="inquire" className="py-section dark-section" aria-labelledby="cta-title">
-      <div className="container-x grid grid-cols-12 gap-x-6 gap-y-12">
+    <section
+      id="inquire"
+      className="relative isolate overflow-hidden py-section dark-section"
+      aria-labelledby="cta-title"
+    >
+      <Image
+        src={block.image.src}
+        alt=""
+        fill
+        sizes="100vw"
+        placeholder={block.image.blurDataURL ? "blur" : "empty"}
+        blurDataURL={block.image.blurDataURL}
+        className="-z-10 object-cover"
+        style={{ objectPosition: block.image.position }}
+      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-basalt/95 via-basalt/80 to-basalt/55" />
+      <div className="relative container-x grid grid-cols-12 gap-x-6 gap-y-12">
         <div className="col-span-12 lg:col-span-5">
           <Eyebrow className="text-dark-accent">{block.eyebrow}</Eyebrow>
           <h2 id="cta-title" className="mt-6 display-l" data-reveal>
@@ -62,7 +78,7 @@ export function PresentationCta({
             </div>
           </dl>
         </div>
-        <div className="col-span-12 lg:col-span-6 lg:col-start-7">
+        <div className="col-span-12 border border-white/15 bg-basalt/70 p-6 backdrop-blur-md md:p-10 lg:col-span-6 lg:col-start-7">
           <LeadForm
             variant="full"
             tone="dark"

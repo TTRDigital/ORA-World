@@ -229,7 +229,19 @@
     "scrollToExplore": "Desplácese para explorar",
     "skipPreloader": "Saltar intro",
     "watchFilmSoon": "Película próximamente",
-    "statsOf": "Tesoro Del Mar"
+    "statsOf": "Tesoro Del Mar",
+    "discoverTesoro": "Descubra Tesoro Del Mar",
+    "walkSteps": "Pasos del recorrido",
+    "size": "Tamaño",
+    "viewMain": "Vista 01",
+    "viewAlt": "Vista 02",
+    "viewCollection": "Ver la colección",
+    "systemsInPlace": "Sistemas listos",
+    "howWeBuild": "Cómo construimos",
+    "explore": "Explorar",
+    "stillQuestions": "¿Tiene más preguntas?",
+    "allQuestions": "Todas las preguntas",
+    "toBeAnnounced": "Por anunciar"
   },
   "amenityCat": {
     "wellness": "Bienestar",

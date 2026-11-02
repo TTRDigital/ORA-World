@@ -33,6 +33,7 @@ export async function CollectionCard({
           placeholder={c.image.blurDataURL ? "blur" : "empty"}
           blurDataURL={c.image.blurDataURL}
           className="object-cover transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
+          style={{ objectPosition: c.image.position }}
           data-reveal-inner
         />
         {c.hoverImage && (
@@ -42,6 +43,7 @@ export async function CollectionCard({
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover opacity-0 transition-opacity duration-[900ms] ease-[var(--ease-out-expo)] group-hover:opacity-100 group-focus-visible:opacity-100"
+            style={{ objectPosition: c.hoverImage.position }}
             aria-hidden="true"
           />
         )}

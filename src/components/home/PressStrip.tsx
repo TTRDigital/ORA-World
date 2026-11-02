@@ -6,7 +6,10 @@ import { Link } from "@/i18n/navigation";
 /** Slow marquee of headlines from the Press Center. Pauses on hover and under reduced motion. */
 export async function PressStrip({ eyebrow, press }: { eyebrow: string; press: Localized<PressArticle>[] }) {
   const h = await getTranslations("home");
-  const items = [...press, ...press];
+  // Until real coverage exists the strip would only repeat "to be supplied", so it stays hidden.
+  const real = press.filter((p) => !p.placeholder);
+  if (!real.length) return null;
+  const items = [...real, ...real];
   return (
     <section aria-label={eyebrow} className="border-y border-rule bg-bg-alt py-8">
       <div className="container-x flex items-center justify-between">
@@ -21,12 +24,12 @@ export async function PressStrip({ eyebrow, press }: { eyebrow: string; press: L
           aria-hidden={false}
         >
           {items.map((p, i) => (
-            <li key={`${p.slug}-${i}`} className="flex items-baseline gap-4" aria-hidden={i >= press.length}>
+            <li key={`${p.slug}-${i}`} className="flex items-baseline gap-4" aria-hidden={i >= real.length}>
               <span className="eyebrow text-fg-muted">{p.outlet}</span>
               <Link
                 href={`/press/${p.slug}`}
                 className="font-display text-2xl italic hover:text-accent-ink"
-                tabIndex={i >= press.length ? -1 : 0}
+                tabIndex={i >= real.length ? -1 : 0}
               >
                 {p.title}
               </Link>

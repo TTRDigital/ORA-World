@@ -1,4 +1,5 @@
-import type { L } from "../types";
+import type { ImageRef, L } from "../types";
+import { places, renders } from "./images";
 
 export interface PortfolioItem {
   slug: string;
@@ -8,6 +9,8 @@ export interface PortfolioItem {
   thumb: string | null;
   /** Internal page when one exists. */
   href: string | null;
+  /** Full rendering for the image-card grid; falls back to the thumbnail. */
+  image?: ImageRef;
 }
 
 /** The ORA World portfolio exactly as listed on oraworld.com/our-residences/. */
@@ -18,6 +21,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Harmony in modernity and nature", es: "Armonía entre modernidad y naturaleza" },
     thumb: "/images/portfolio/treasurepoint.webp",
     href: "/tesoro-del-mar",
+    image: renders.tdmExterior,
   },
   {
     slug: "dorado-waterfalls",
@@ -28,6 +32,7 @@ export const portfolio: PortfolioItem[] = [
     },
     thumb: "/images/portfolio/doradowaterfalls.webp",
     href: "/projects/dorado-waterfalls",
+    image: renders.doradoWaterfalls,
   },
   {
     slug: "the-top",
@@ -35,6 +40,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Elevated elegance in harmony with nature", es: "Elegancia elevada en armonía con la naturaleza" },
     thumb: "/images/portfolio/thetop.webp",
     href: null,
+    image: places.theTop,
   },
   {
     slug: "dorado-ocean-view-estates",
@@ -52,6 +58,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Futuristic living in a hidden bay", es: "Vida futurista en una bahía escondida" },
     thumb: "/images/portfolio/naguabo.webp",
     href: null,
+    image: places.naguabo,
   },
   {
     slug: "loiza-river-city",
@@ -59,6 +66,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Cultural harmony in modern living", es: "Armonía cultural en la vida moderna" },
     thumb: "/images/portfolio/loizarivercity.webp",
     href: null,
+    image: places.loizaRiverCity,
   },
   {
     slug: "loiza-ocean",
@@ -69,6 +77,7 @@ export const portfolio: PortfolioItem[] = [
     },
     thumb: "/images/portfolio/loizaocean.webp",
     href: null,
+    image: places.loizaOcean,
   },
   {
     slug: "loiza-countryside-estates",
@@ -76,6 +85,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Sustainable living in harmony with nature", es: "Vida sostenible en armonía con la naturaleza" },
     thumb: "/images/portfolio/loizacountrysideestates.webp",
     href: null,
+    image: places.loizaCountryside,
   },
   {
     slug: "guayama",
@@ -83,6 +93,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Healthy living for optimal potential", es: "Vida saludable para un potencial óptimo" },
     thumb: "/images/portfolio/guayama.webp",
     href: null,
+    image: places.guayama,
   },
   {
     slug: "costa-del-este-ceiba",
@@ -90,6 +101,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Anchored in coastal living", es: "Anclado en la vida costera" },
     thumb: "/images/portfolio/costadelesteceiba.webp",
     href: null,
+    image: places.ceiba,
   },
   {
     slug: "aquamaria",

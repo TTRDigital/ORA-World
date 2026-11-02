@@ -5,6 +5,7 @@ import {
   getHome,
   getPointsOfInterest,
   getPress,
+  getIncentives,
   getSiteSettings,
   getTeam,
 } from "@/lib/content";
@@ -24,7 +25,7 @@ import { PresentationCta } from "@/components/home/PresentationCta";
 
 /** Direction C · Caribbean Light: lifestyle first (people, ocean, family), sea-glass accent, softer motion. */
 export async function HomeC({ locale }: { locale: Locale }) {
-  const [site, home, collections, amenities, pois, team, press] = await Promise.all([
+  const [site, home, collections, amenities, pois, team, press, incentives] = await Promise.all([
     getSiteSettings(locale),
     getHome(locale),
     getCollections(locale),
@@ -32,18 +33,26 @@ export async function HomeC({ locale }: { locale: Locale }) {
     getPointsOfInterest(locale),
     getTeam(locale),
     getPress(locale),
+    getIncentives(locale),
   ]);
   return (
     <main id="main">
       <HeroC hero={home.hero} site={site} locale={locale} />
-      <FamilyPets family={home.family} pets={home.pets} />
+      <FamilyPets
+        family={home.family}
+        pets={home.pets}
+        related={{
+          family: amenities.filter((a) => a.category === "family").map((a) => a.name),
+          pets: amenities.filter((a) => a.category === "pets").map((a) => a.name),
+        }}
+      />
       <PlaceChapters place={home.place} />
       <Manifesto manifesto={home.manifesto} />
       <AmenitiesMosaic block={home.amenities} amenities={amenities} />
       <ResidencesPreview block={home.residences} collections={collections} />
       <LocationSection block={home.location} pois={pois} site={site} />
       <ResilienceSignature block={home.resilience} />
-      <Prosperous block={home.prosperous} />
+      <Prosperous block={home.prosperous} incentives={incentives} />
       <TourTeaser block={home.tour} url={site.vrTourUrl} />
       <Collaboratory block={home.team} team={team} />
       <PressStrip eyebrow={home.press.eyebrow} press={press} />
