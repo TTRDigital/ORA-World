@@ -25,7 +25,6 @@ export function mapFigure(f: SanityFigure): ImageRef | undefined {
     src: f.src,
     width: f.width,
     height: f.height,
-    blurDataURL: f.blurDataURL,
     alt: f.alt,
     caption: f.caption,
     rendering: f.rendering,

@@ -231,7 +231,15 @@ export interface HomeContent {
     videoLoopWebm: string | null;
     videoMobile: string | null;
   };
-  manifesto: { text: L; signature: L };
+  manifesto: {
+    eyebrow: L;
+    title: L;
+    text: L;
+    signature: L;
+    pillars: { title: L; text: L }[];
+    image: ImageRef;
+    inset: ImageRef;
+  };
   context: { image: ImageRef; captions: L[] };
   place: { eyebrow: L; title: L; intro: L; chapters: Chapter[] };
   residences: { eyebrow: L; title: L; intro: L };

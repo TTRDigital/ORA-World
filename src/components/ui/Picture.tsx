@@ -37,7 +37,7 @@ export function Picture({
   const label = image.rendering ? t("rendering") : image.placeholder ? t("placeholderImage") : image.caption;
   return (
     <figure
-      className={cn("relative overflow-hidden", className)}
+      className={cn("relative overflow-hidden bg-travertine/50", className)}
       style={aspect ? { aspectRatio: aspect } : undefined}
       data-reveal={reveal ? "image" : undefined}
     >

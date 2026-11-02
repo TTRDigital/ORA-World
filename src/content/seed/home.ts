@@ -22,11 +22,48 @@ export const home: HomeContent = {
     videoMobile: null,
   },
   manifesto: {
+    eyebrow: { en: "Our mission", es: "Nuestra misión" },
+    title: {
+      en: "Luxury living with timeless *elegance* and comfort",
+      es: "Vida de lujo con *elegancia* y confort atemporales",
+    },
     text: {
-      en: "Our mission is to revolutionize Puerto Rico's real estate landscape by creating luxurious, eco-friendly developments that seamlessly blend modern elegance with the island's *natural* beauty.",
-      es: "Nuestra misión es revolucionar el panorama inmobiliario de Puerto Rico creando desarrollos de lujo y ecológicos que integran la elegancia moderna con la belleza *natural* de la isla.",
+      en: "Our mission is to revolutionize Puerto Rico's real estate landscape by creating luxurious, eco-friendly developments that seamlessly blend modern elegance with the island's natural beauty. We aim to enhance the lives of our residents and contribute positively to the island's vibrant culture and economy.",
+      es: "Nuestra misión es revolucionar el panorama inmobiliario de Puerto Rico creando desarrollos de lujo y ecológicos que integran la elegancia moderna con la belleza natural de la isla. Buscamos mejorar la vida de nuestros residentes y contribuir positivamente a la cultura y la economía de la isla.",
     },
     signature: { en: "ORA World · Dorado, Puerto Rico", es: "ORA World · Dorado, Puerto Rico" },
+    pillars: [
+      {
+        title: { en: "Exceptional quality", es: "Calidad excepcional" },
+        text: {
+          en: "High-quality materials, eco-friendly finishes and carefully selected furnishings.",
+          es: "Materiales de alta calidad, acabados ecológicos y mobiliario cuidadosamente seleccionado.",
+        },
+      },
+      {
+        title: { en: "Innovative design", es: "Diseño innovador" },
+        text: {
+          en: "Curved, aerodynamic architecture inspired by the graceful flight of birds.",
+          es: "Arquitectura curva y aerodinámica inspirada en el vuelo de las aves.",
+        },
+      },
+      {
+        title: { en: "Unparalleled comfort", es: "Confort incomparable" },
+        text: {
+          en: "Open-concept layouts that promote a sense of calm and flow.",
+          es: "Espacios abiertos que transmiten calma y fluidez.",
+        },
+      },
+      {
+        title: { en: "Rooted in the island", es: "Arraigado en la isla" },
+        text: {
+          en: "Contributing positively to Puerto Rico's vibrant culture and economy.",
+          es: "Una contribución positiva a la cultura y la economía de Puerto Rico.",
+        },
+      },
+    ],
+    image: tdm.foyerLounge,
+    inset: renders.towerDetail,
   },
   context: {
     image: tdm.aerialCoast,

@@ -4,10 +4,14 @@ import type { ImageRef, L } from "../types";
 type Key = keyof typeof manifest;
 type Opts = { caption?: L; rendering?: boolean; placeholder?: boolean; credit?: string; position?: string };
 
-/** Build an ImageRef from the optimised-image manifest. */
+/**
+ * Build an ImageRef from the optimised-image manifest. Blur placeholders are deliberately left out:
+ * the client does not want blurry previews, so images appear only once they are sharp, over a
+ * travertine ground.
+ */
 export function img(key: Key, alt: L, opts: Opts = {}): ImageRef {
   const m = manifest[key];
-  return { src: m.src, width: m.width, height: m.height, blurDataURL: m.blurDataURL, alt, ...opts };
+  return { src: m.src, width: m.width, height: m.height, alt, ...opts };
 }
 
 /* ---- Client renders (artist's conceptual renderings) ---- */
