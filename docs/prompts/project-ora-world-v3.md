@@ -46,6 +46,7 @@ v3 presents ORA World the way an architecture monograph presents a building: pla
    - WebP only, quality 80, correct `sizes`.
    - No source below 1.5× its displayed width.
    - The stage (50vw by 100vh) needs 2400px sources: use the client's full-size renders.
+   - Cover crops need more pixels than the frame's width. A 16:9 render in a portrait or full-height frame needs frame height × image aspect. Compute `sizes` from the image's aspect and the frame's aspect with a helper; never write a bare `100vw` on a cropped image. This was the cause of every "blurry" complaint on v1.
 4. Only the official logo and the client's renders.
 5. No walls of giant type.
    - Display is at most 64px on the page side.
@@ -56,6 +57,16 @@ v3 presents ORA World the way an architecture monograph presents a building: pla
    - Placeholder-only modules stay hidden.
    - Unknown values inside real modules read "To be confirmed".
    - No staging widgets.
+   - No silhouette portraits: unnamed roles appear as a text list.
+8. **Mobile must be as amazing as desktop.** The client rejected a v1 build whose mobile view was the desktop layout stacked. Design each chapter's phone choreography on its own terms:
+   - a sticky stage that shrinks
+   - swipe rails with a progress line and counter
+   - pinned mini boards and story-style progress bars
+   - tap targets of at least 44px
+     Review every chapter at 390px before calling it done.
+9. **Every chapter is a "wow" whether you are scrolling through it, looking at it, or resting on it.** Each needs a moment of motion or interaction that rewards attention, with no static resting state that reads as a template.
+10. **No pop-ups.** No exit-intent modals, interstitials, timed overlays or newsletter pop-ups. The client asked for v1's exit-intent brochure modal to be removed. Offers live inside chapters.
+11. **Do not reuse v1's signature moves.** Avoid its hero "curtain" sheet, expanding-frame interludes, brand-word marquee, "Discover. Choose. Arrive." shutter, resilience 3×3 board and walkthrough story bars. v3's signatures are the split stage, drawings, plates and schedules.
 
 ## 1. Brand
 
@@ -181,6 +192,7 @@ Read every page of https://www.oraworld.com and save plain-text copies in docs/s
 - On site: clubhouse and boutique hotel; tennis and basketball courts; fitness center; jogging paths; playgrounds; sensory gardens.
 - Architecture inspired by the flight of birds: curved facades, cantilevered terraces "like wings", reflecting pools and cascades.
 - Interiors: open-concept layouts, floor-to-ceiling windows, stone, wood and brushed metals.
+- From the client's presentation PDF ("Treasure Point / PR2030", Tesoro Del Mar's working name): total floor area 498,150 sq ft.
 
 **Dorado Waterfalls:** use the facts on its page.
 
@@ -193,6 +205,31 @@ Read every page of https://www.oraworld.com and save plain-text copies in docs/s
 - Private safe rooms; emergency preparedness; community resilience training.
 
 **Family, pets, amenities, activities:** as published.
+
+- Amenity groups (oraworld.com/our-amenities): Wellness & Relaxation; Entertainment & Recreation; Dining & Social Spaces; Business Center; Transportation; Adventure Experiences; Family-Oriented Amenities; Sustainability & Nature; Sport & Fitness.
+- Activity groups (oraworld.com/activities): Sport & Fitness; Water Sport & Adventures; Culinary & Cultural; Entertainment & Leisure; Adventure & Exploration; Family-Friendly; Medical Services; Educational Services; High-End Shopping; Additional Services.
+- Use each group's published items. Do not name third-party luxury brands, even though the source lists some.
+
+**People:** Reza Sabaii, ESQ., Principal Broker at Ora World. Use the bio published under his articles: a commercial real estate company founded ten years ago with twenty associates and offices in Washington DC, Tysons VA, Bethesda MD and Miami FL; Juris Doctor from the George Washington University Law School.
+
+- His published portrait is only 150 × 150 px. Show it as a small avatar of 72px at most, never in a large frame.
+- Every other team role is "to be announced".
+
+**Articles** (ORA World Journal): bring all three across with the text verbatim, keeping their headings and lists. Two are by Reza Sabaii, ESQ.
+
+- https://www.oraworld.com/what-is-act-60/
+- https://www.oraworld.com/puerto-rico-luxury-living-act-60-wellness/
+- https://www.oraworld.com/exploring-general-luxury-and-act-60-a-guide-for-high-net-worth-individuals/
+
+In Spanish, translate the title and summary, and note that the body is available in English.
+
+**Documents**
+
+- Tesoro Del Mar presentation: https://www.oraworld.com/wp-content/uploads/2023/09/004-PR2030-TREASURE-POINT.pdf (9 landscape pages)
+  - Render the pages to images for an in-browser viewer that shows one slide at a time, with thumbnails, swipe and keys. Every page must be reachable on mobile.
+  - Link the PDF on the client's server.
+  - It has no floor plans, so never promise them.
+- Guayama site plan: https://www.oraworld.com/wp-content/uploads/2024/07/GUAYAMA-50-07-03-2024.pdf
 
 **Other published material**
 
@@ -215,21 +252,47 @@ No lorem ipsum, no bracket codes, no invented testimonials, ratings or awards.
 
 Write new headlines in English and native Spanish; do not reuse v1's headlines. Copy under each headline must be factual.
 
-### Images: the client's renders only
+### Images: everything real, from oraworld.com
 
-Download from https://www.oraworld.com/wp-content/uploads/ and process with sharp into public/images. No blur placeholders. Write a manifest with width, height and focal point.
+**Pull the whole media library, not a hand-picked list.**
 
-**Tesoro Del Mar** (folder 2025/07): TDM-EXTERIOR-FROM-PULL, TDM-EXTERIOR-FROM-ROAD, TDM-EXTERIOR-FROM-GOLF, TDM-AERIAL-001…004, TDM-FOYER-001/002/004/005, TDM-APT-1403 (living rooms 003/004, master bedroom, bedroom 2, master bathrooms 001/002, study), TDM-HOTEL-210-BEDROOM-001, TDM-PENTHOUSE-LIVING-001/002/003. All end in "-SMALL-scaled.jpg" or "-scaled.jpg"; find the exact URLs in the page HTML.
+- Call `https://www.oraworld.com/wp-json/wp/v2/media?per_page=100&page=1…6` (568 items, with source URLs, sizes and titles).
+- Crawl every public page in `/page-sitemap.xml` and `/post-sitemap.xml`.
+- List the images the pages actually show. YOOtheme serves them as `/wp-content/themes/yootheme/cache/xx/<name>-<hash>.webp`; strip the hash to get the name.
+- Match each name to its library original and download it at full size.
+- Save the inventory (file, size, title, page it appears on) to `docs/source/oraworld-com/media-library.md`.
 
-**Dorado Waterfalls:** DoradoWaterfalls1 and 2/3/4, plus the interior renders on its page.
+**What you will find (about 120 images in use)**
 
-**Portfolio** (2024/07): TheTop1.png, Naguabo2.png, LoizaOcean1.png, LoizaRiverCity1.png, LoizaCountryside2.png, CEIBA-001.png, GUAYAMA-50.jpg.
+- **Tesoro Del Mar** (2025/07): exteriors from the pool, road and golf course; aerials 001–004; foyer 001/002/004/005; apartment 1403 (living rooms, bedrooms, bathrooms, study); hotel suite 210; penthouse living 001–003. Also R_006 (balcony detail) and the dining room under a skylight (file named `vertical-placeholder-image-2.png`, but a real render).
+- **Dorado Waterfalls** (2024/06–07): DoradoWaterfalls1, 2, 3, 4, 5, 8, 10, 11, 12-1, 14-1, 15, 15-1, plus `026.jpg` and `028.jpg` (pools) and DoradoWaterfallsInterior1–20 (lobbies, restaurants, living rooms, bedroom, dressing room, bath).
+- **Portfolio cards:** use exactly the pairing on oraworld.com/our-residences:
 
-**Lifestyle photography** from the live site: list it in CONTENT-TODO.md for licence confirmation; one file is an iStock image.
+  | Location                  | Image                           |
+  | ------------------------- | ------------------------------- |
+  | Dorado Waterfalls         | DoradoWaterfalls1               |
+  | Tesoro Del Mar            | R_006 or TDM-EXTERIOR-FROM-PULL |
+  | The Top                   | home5                           |
+  | Dorado Ocean View Estates | VegaAlta1                       |
+  | Naguabo                   | Naguabo2                        |
+  | Loíza River City          | LoizaRiverCity1                 |
+  | Loíza Ocean               | LOIZA-57-003                    |
+  | Loíza Countryside Estates | LoizaCountryside1cropped        |
+  | Guayama                   | guayama-cropped-for-home        |
+  | Costa del Este Ceiba      | Screenshot_136                  |
+  | AquaMaria                 | PL-Screenshot_140               |
+  | To Be Revealed            | ora-group-112                   |
 
-**Full resolution:** keep the full-size originals (2400px+) for the stage and the plate viewer; generate WebP sizes from them.
+  Also use the Puerto Rico locations map (`pr-island-picture-narrow`) and the "ORA World Gallery" series g2-01…06. MWC-0122 and TP_0082 appear in the residences slider.
 
-**Focal points:** set them per image. Tower exteriors 50% 10–20%; aerials 50% 40%; interiors center.
+- **Lifestyle, amenity and activity photography:** use each image on the same group it illustrates on oraworld.com, for example 042spa (Wellness), 029technology (Business Center), 061medical (Medical Services) and 06tax-1 (A Prosperous Environment). List the stock-looking ones (iStock files and the rest) in CONTENT-TODO.md for licence confirmation.
+- **Do not use:** the `AdobeStock_*_Video_HD_Preview.mov` and `AdobeStock_720_medq.mp4` files (watermarked previews), screenshots of forms, or user uploads.
+
+**Processing**
+
+- Keep originals up to 2560px and serve WebP.
+- Some lifestyle photos are only about 976px wide: never place those in frames wider than about 600 CSS px.
+- Set a focal point per image: tower exteriors 50% 10–20%; aerials 50% 40%; interiors center.
 
 ## 4. Homepage: twelve chapters and a colophon
 
@@ -466,6 +529,9 @@ Each chapter sets the stage, then fills the page. Each has an interaction. No tw
   - any data:image placeholder in the HTML
   - any stage image narrower than 2000px
 - A fast-scroll visibility check on every page.
+- An image audit run on every page at 390px wide (DPR 3) and 1440px (DPR 2). Fail when an image's downloaded width is below 80% of the pixels it covers, counting the cover crop as max(frame width, frame height × image aspect).
+- A no-pop-up test: move the pointer out of the window top, wait 30 seconds, and assert that no dialog opened.
+- A mobile walk: screenshots every 0.6 screens at 390px, reviewed chapter by chapter before sign-off.
 - axe with zero serious violations on twelve pages.
 - Lighthouse on six pages.
 
