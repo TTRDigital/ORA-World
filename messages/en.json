@@ -197,12 +197,6 @@
     "reject": "Essential only",
     "manage": "Preferences"
   },
-  "exit": {
-    "title": "Before you go",
-    "text": "Take the ORA World brochure with you. Floor plans, finishes and the story of Dorado.",
-    "cta": "Get the brochure",
-    "dismiss": "No, thank you"
-  },
   "notFound": {
     "title": "This page does not exist",
     "text": "The page may have moved. Return to the homepage or explore the residences.",
@@ -245,7 +239,8 @@
     "allQuestions": "All questions",
     "toBeAnnounced": "To be announced",
     "tabFamily": "Family",
-    "tabPets": "Pets"
+    "tabPets": "Pets",
+    "stepOf": "Step {n} of {total}"
   },
   "amenityCat": {
     "wellness": "Wellness",

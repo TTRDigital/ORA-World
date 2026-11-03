@@ -197,12 +197,6 @@
     "reject": "Solo esenciales",
     "manage": "Preferencias"
   },
-  "exit": {
-    "title": "Antes de irse",
-    "text": "Llévese el folleto de ORA World. Planos, acabados y la historia de Dorado.",
-    "cta": "Obtener el folleto",
-    "dismiss": "No, gracias"
-  },
   "notFound": {
     "title": "Esta página no existe",
     "text": "Puede que la página se haya movido. Vuelva al inicio o explore las residencias.",
@@ -245,7 +239,8 @@
     "allQuestions": "Todas las preguntas",
     "toBeAnnounced": "Por anunciar",
     "tabFamily": "Familia",
-    "tabPets": "Mascotas"
+    "tabPets": "Mascotas",
+    "stepOf": "Paso {n} de {total}"
   },
   "amenityCat": {
     "wellness": "Bienestar",

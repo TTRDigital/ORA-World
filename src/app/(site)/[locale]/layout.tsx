@@ -11,7 +11,6 @@ import { Cursor } from "@/components/providers/Cursor";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { PageTransition } from "@/components/providers/PageTransition";
 import { Consent } from "@/components/providers/Consent";
-import { ExitIntent } from "@/components/providers/ExitIntent";
 import { TrackClicks } from "@/components/providers/TrackClicks";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Header } from "@/components/layout/Header";
@@ -80,7 +79,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           <Footer site={site} />
           <FloatingBar site={site} />
           <Consent />
-          <ExitIntent />
           <TrackClicks />
         </NextIntlClientProvider>
       </body>
