@@ -30,6 +30,8 @@ import { Collaboratory } from "./Collaboratory";
 import { PressStrip } from "./PressStrip";
 import { HomeFaq } from "./HomeFaq";
 import { PresentationCta } from "./PresentationCta";
+import { Interlude } from "./Interlude";
+import { Marquee } from "./Marquee";
 
 /**
  * Direction A · Travertine Editorial. Every section is a small story: numbered journey cards,
@@ -57,34 +59,40 @@ export async function HomePage({ locale }: { locale: Locale }) {
     <main id="main">
       <Preloader />
       <Hero hero={home.hero} site={site} />
-      <Journey block={home.journey} />
-      <Manifesto manifesto={home.manifesto} />
-      <Glance block={home.glance} stats={home.hero.stats} />
-      <Walkthrough block={home.walkthrough} />
-      <PlaceChapters place={home.place} />
-      <CollectionTabs
-        block={home.residences}
-        collections={collections.map((c) => ({ ...c, finishes: [], description: c.description.slice(0, 1) }))}
-        planCounts={planCounts}
-      />
-      <ResilienceChecklist block={home.resilience} />
-      <AmenitiesMosaic block={home.amenities} amenities={amenities} />
-      <FamilyPets
-        family={home.family}
-        pets={home.pets}
-        related={{
-          family: amenities.filter((a) => a.category === "family").map((a) => a.name),
-          pets: amenities.filter((a) => a.category === "pets").map((a) => a.name),
-        }}
-      />
-      <Prosperous block={home.prosperous} incentives={incentives} />
-      <LocationSection block={home.location} pois={pois} site={site} />
-      <PortfolioGrid block={home.portfolio} locale={locale} />
-      <TourTeaser block={home.tour} url={site.vrTourUrl} />
-      <Collaboratory block={home.team} team={team} />
-      <PressStrip eyebrow={home.press.eyebrow} press={press} />
-      <HomeFaq block={home.faq} faqs={faqs} site={site} />
-      <PresentationCta block={home.cta} site={site} residenceOptions={collections.map((c) => c.name)} />
+      {/* The rest of the page is a sheet that slides over the pinned hero. */}
+      <div className="relative z-[1] bg-bg shadow-[0_-40px_80px_-30px_rgba(0,0,0,.45)]">
+        <Journey block={home.journey} />
+        <Manifesto manifesto={home.manifesto} />
+        <Interlude image={home.interludes[0].image} lines={home.interludes[0].lines} />
+        <Glance block={home.glance} stats={home.hero.stats} />
+        <Marquee words={home.marquee} />
+        <Walkthrough block={home.walkthrough} />
+        <PlaceChapters place={home.place} />
+        <CollectionTabs
+          block={home.residences}
+          collections={collections.map((c) => ({ ...c, finishes: [], description: c.description.slice(0, 1) }))}
+          planCounts={planCounts}
+        />
+        <ResilienceChecklist block={home.resilience} />
+        <AmenitiesMosaic block={home.amenities} amenities={amenities} />
+        <FamilyPets
+          family={home.family}
+          pets={home.pets}
+          related={{
+            family: amenities.filter((a) => a.category === "family").map((a) => a.name),
+            pets: amenities.filter((a) => a.category === "pets").map((a) => a.name),
+          }}
+        />
+        <Prosperous block={home.prosperous} incentives={incentives} />
+        <LocationSection block={home.location} pois={pois} site={site} />
+        <Interlude image={home.interludes[1].image} lines={home.interludes[1].lines} />
+        <PortfolioGrid block={home.portfolio} locale={locale} />
+        <TourTeaser block={home.tour} url={site.vrTourUrl} />
+        <Collaboratory block={home.team} team={team} />
+        <PressStrip eyebrow={home.press.eyebrow} press={press} />
+        <HomeFaq block={home.faq} faqs={faqs} site={site} />
+        <PresentationCta block={home.cta} site={site} residenceOptions={collections.map((c) => c.name)} />
+      </div>
     </main>
   );
 }

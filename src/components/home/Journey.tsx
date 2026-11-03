@@ -5,6 +5,8 @@ import { Link } from "@/i18n/navigation";
 import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ArrowIcon } from "@/components/ui/Icons";
+import { SwipeRail } from "@/components/ui/Rail";
+import { coverSizes } from "@/lib/sizes";
 
 /** Three-step path (discover, choose, arrive): numbered image cards that lead into the site. */
 export function Journey({ block }: { block: Localized<HomeContent["journey"]> }) {
@@ -30,57 +32,62 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
           </ol>
         </div>
 
-        <ol className="mt-14 grid gap-6 md:mt-20 md:grid-cols-3 md:gap-8">
-          {block.steps.map((s, i) => {
-            const external = s.href.startsWith("#");
-            const inner = (
-              <>
-                <span className="relative block aspect-[4/5] overflow-hidden bg-bg-alt">
-                  <Image
-                    src={s.image.src}
-                    alt={s.image.alt}
-                    fill
-                    sizes="(min-width: 768px) 33vw, 100vw"
-                    placeholder={s.image.blurDataURL ? "blur" : "empty"}
-                    blurDataURL={s.image.blurDataURL}
-                    className="object-cover transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
-                    style={{ objectPosition: s.image.position }}
-                  />
-                  <span className="absolute inset-0 bg-gradient-to-t from-basalt/70 via-basalt/0 to-basalt/0" />
-                  <span className="absolute top-4 left-4 rounded-full bg-bone/95 px-3 py-1.5 eyebrow text-basalt tnum">
-                    {`0${i + 1}`}
-                  </span>
-                  <span className="absolute right-5 bottom-5 left-5 flex items-end justify-between gap-4 text-white">
-                    <span className="display-s">{s.title}</span>
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/60 transition-colors duration-500 group-hover:border-white group-hover:bg-white group-hover:text-basalt">
-                      <ArrowIcon />
+        <div className="mt-12 md:mt-20">
+          <SwipeRail count={block.steps.length} className="md:grid md:grid-cols-3 md:gap-8">
+            {block.steps.map((s, i) => {
+              const external = s.href.startsWith("#");
+              const inner = (
+                <>
+                  <span className="relative block aspect-[4/5] overflow-hidden bg-bg-alt">
+                    <Image
+                      src={s.image.src}
+                      alt={s.image.alt}
+                      fill
+                      sizes={coverSizes(s.image, [
+                        [768, 33, 4 / 5],
+                        [0, 80, 4 / 5],
+                      ])}
+                      placeholder={s.image.blurDataURL ? "blur" : "empty"}
+                      blurDataURL={s.image.blurDataURL}
+                      className="object-cover transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
+                      style={{ objectPosition: s.image.position }}
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-basalt/70 via-basalt/0 to-basalt/0" />
+                    <span className="absolute top-4 left-4 rounded-full bg-bone/95 px-3 py-1.5 eyebrow text-basalt tnum">
+                      {`0${i + 1}`}
+                    </span>
+                    <span className="absolute right-5 bottom-5 left-5 flex items-end justify-between gap-4 text-white">
+                      <span className="display-s">{s.title}</span>
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/60 transition-colors duration-500 group-hover:border-white group-hover:bg-white group-hover:text-basalt">
+                        <ArrowIcon />
+                      </span>
                     </span>
                   </span>
-                </span>
-                <span className="mt-5 block max-w-[38ch] text-fg-muted">{s.text}</span>
-                <span className="mt-4 inline-block link-underline eyebrow text-accent-ink">{s.cta}</span>
-              </>
-            );
-            return (
-              <li
-                key={i}
-                className={i === 1 ? "md:mt-16" : i === 2 ? "md:mt-32" : ""}
-                data-reveal
-                data-delay={i * 0.12}
-              >
-                {external ? (
-                  <a href={s.href} className="group block">
-                    {inner}
-                  </a>
-                ) : (
-                  <Link href={s.href} className="group block">
-                    {inner}
-                  </Link>
-                )}
-              </li>
-            );
-          })}
-        </ol>
+                  <span className="mt-5 block max-w-[38ch] text-fg-muted">{s.text}</span>
+                  <span className="mt-4 inline-block link-underline eyebrow text-accent-ink">{s.cta}</span>
+                </>
+              );
+              return (
+                <li
+                  key={i}
+                  className={`max-md:w-[80vw] max-md:shrink-0 max-md:snap-start ${i === 1 ? "md:mt-16" : i === 2 ? "md:mt-32" : ""}`}
+                  data-reveal
+                  data-delay={i * 0.12}
+                >
+                  {external ? (
+                    <a href={s.href} className="group block" data-cursor="view">
+                      {inner}
+                    </a>
+                  ) : (
+                    <Link href={s.href} className="group block" data-cursor="view">
+                      {inner}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </SwipeRail>
+        </div>
       </div>
     </section>
   );

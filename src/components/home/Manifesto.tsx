@@ -5,6 +5,7 @@ import type { Localized } from "@/lib/localize";
 import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ScrollHighlight } from "@/components/ui/ScrollHighlight";
+import { coverSizes } from "@/lib/sizes";
 
 /**
  * Mission: a layered render collage with a rotating seal on one side; on the other the headline,
@@ -27,7 +28,11 @@ export async function Manifesto({ manifesto: m }: { manifesto: Localized<HomeCon
                 src={m.image.src}
                 alt={m.image.alt}
                 fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                sizes={coverSizes(m.image, [
+                  [1024, 40, 4 / 5],
+                  [640, 100, 5 / 4],
+                  [0, 100, 4 / 3],
+                ])}
                 placeholder={m.image.blurDataURL ? "blur" : "empty"}
                 blurDataURL={m.image.blurDataURL}
                 className="object-cover"
@@ -48,7 +53,10 @@ export async function Manifesto({ manifesto: m }: { manifesto: Localized<HomeCon
                   src={m.inset.src}
                   alt={m.inset.alt}
                   fill
-                  sizes="220px"
+                  sizes={coverSizes(m.inset, [
+                    [1024, 17, 3 / 4],
+                    [0, 38, 3 / 4],
+                  ])}
                   className="object-cover"
                   style={{ objectPosition: m.inset.position }}
                 />

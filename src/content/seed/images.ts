@@ -66,7 +66,10 @@ export const renders = {
   ),
   naguaboWide: img(
     "client/n03-scaled",
-    { en: "Aerial view of a coastal ORA World community", es: "Vista aérea de una comunidad costera de ORA World" },
+    {
+      en: "Curved residential towers rising above a lagoon at dusk",
+      es: "Torres residenciales curvas sobre una laguna al atardecer",
+    },
     { rendering: true },
   ),
 };

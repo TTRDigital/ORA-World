@@ -25,7 +25,7 @@ export function PresentationCta({
         src={block.image.src}
         alt=""
         fill
-        sizes="100vw"
+        sizes="(min-width: 1024px) 130vw, 400vw"
         placeholder={block.image.blurDataURL ? "blur" : "empty"}
         blurDataURL={block.image.blurDataURL}
         className="-z-10 object-cover"

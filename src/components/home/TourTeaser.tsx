@@ -30,6 +30,7 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
         <div className="col-span-12 md:col-span-8">
           <button
             type="button"
+            data-cursor="play"
             disabled={!url}
             onClick={() => {
               setOpen(true);

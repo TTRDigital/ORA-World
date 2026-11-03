@@ -11,6 +11,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
+import { coverSizes } from "@/lib/sizes";
 
 type Block = Localized<HomeContent["family"]>;
 /** Amenity names per tab, resolved on the server so the client bundle carries names, not whole records. */
@@ -22,6 +23,7 @@ type Props = { family: Block; pets: Block; related: { family: string[]; pets: st
  */
 export function FamilyPets({ family, pets, related: names }: Props) {
   const t = useTranslations("common");
+  const t2 = useTranslations("home");
   const base = useId();
   const tabs = [
     { b: family, names: names.family },
@@ -43,7 +45,10 @@ export function FamilyPets({ family, pets, related: names }: Props) {
                 alt={i === active ? tb.image.alt : ""}
                 aria-hidden={i !== active}
                 fill
-                sizes="(min-width: 1024px) 58vw, 100vw"
+                sizes={coverSizes(tb.image, [
+                  [1024, 58, 4 / 3],
+                  [0, 100, 4 / 3],
+                ])}
                 placeholder={tb.image.blurDataURL ? "blur" : "empty"}
                 blurDataURL={tb.image.blurDataURL}
                 className={cn(
@@ -81,7 +86,7 @@ export function FamilyPets({ family, pets, related: names }: Props) {
                   i === active ? "bg-basalt text-white" : "hover:bg-travertine",
                 )}
               >
-                {tb.eyebrow}
+                {i === 0 ? t2("tabFamily") : t2("tabPets")}
               </button>
             ))}
           </div>

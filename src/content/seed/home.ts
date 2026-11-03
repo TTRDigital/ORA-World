@@ -526,4 +526,29 @@ export const home: HomeContent = {
       "brokers",
     ],
   },
+  interludes: [
+    {
+      image: tdm.aerialForest,
+      lines: [
+        { en: "Ten acres on the north coast", es: "Diez acres en la costa norte" },
+        { en: "Beside a national park", es: "Junto a un parque nacional" },
+        { en: "A walk from Balneario Cerro Gordo", es: "A pasos del Balneario Cerro Gordo" },
+      ],
+    },
+    {
+      image: renders.naguaboWide,
+      lines: [
+        { en: "Tesoro Del Mar", es: "Tesoro Del Mar" },
+        { en: "Dorado Waterfalls", es: "Dorado Waterfalls" },
+        { en: "Ten more places across the island", es: "Diez lugares más en toda la isla" },
+      ],
+    },
+  ],
+  marquee: [
+    { en: "Beyond expectations", es: "Más allá de lo esperado" },
+    { en: "Longevity", es: "Longevidad" },
+    { en: "Luxury", es: "Lujo" },
+    { en: "Nature", es: "Naturaleza" },
+    { en: "Dorado, Puerto Rico", es: "Dorado, Puerto Rico" },
+  ],
 };

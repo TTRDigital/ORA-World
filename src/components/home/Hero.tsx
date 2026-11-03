@@ -6,6 +6,7 @@ import { SplitLines } from "@/components/ui/SplitLines";
 import { HeroVideo } from "./HeroVideo";
 import { FilmButton } from "./FilmLightbox";
 import { ScrollToButton } from "@/components/ui/ScrollToButton";
+import { HeroFx } from "./HeroFx";
 
 type Props = { hero: Localized<HomeContent["hero"]>; site: Localized<SiteSettings> };
 
@@ -13,18 +14,22 @@ export async function Hero({ hero, site }: Props) {
   const t = await getTranslations("common");
   const h = await getTranslations("home");
   return (
-    <section data-hero className="relative flex min-h-dvh flex-col justify-end text-white">
-      <HeroVideo
-        poster={hero.poster}
-        mp4={hero.videoLoop}
-        webm={hero.videoLoopWebm}
-        mobileMp4={hero.videoMobile}
-        youtubeId={site.filmYoutubeId}
-      />
+    <section data-hero className="sticky top-0 z-0 flex min-h-dvh flex-col justify-end overflow-hidden text-white">
+      <HeroFx />
+      <div data-hero-media className="absolute inset-0 will-change-transform">
+        <HeroVideo
+          poster={hero.poster}
+          mp4={hero.videoLoop}
+          webm={hero.videoLoopWebm}
+          mobileMp4={hero.videoMobile}
+          youtubeId={site.filmYoutubeId}
+        />
+      </div>
       <div className="absolute inset-0 scrim-bottom" />
       <div className="absolute inset-x-0 top-0 h-48 scrim-top" />
+      <div data-hero-shade className="pointer-events-none absolute inset-0 bg-basalt opacity-0" />
 
-      <div className="relative container-x pt-[calc(var(--header-h)+4rem)] pb-14 md:pb-20">
+      <div data-hero-content className="relative container-x pt-[calc(var(--header-h)+4rem)] pb-14 md:pb-20">
         <p className="mb-6 eyebrow text-brass-light" data-reveal>
           {hero.eyebrow}
         </p>

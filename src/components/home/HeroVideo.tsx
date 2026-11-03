@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { ImageRef } from "@/content/types";
 import type { Localized } from "@/lib/localize";
+import { fullBleedSizes } from "@/lib/sizes";
 
 type Props = {
   poster: Localized<ImageRef>;
@@ -114,7 +115,7 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
         fill
         priority
         fetchPriority="high"
-        sizes="100vw"
+        sizes={fullBleedSizes(poster, 1.12)}
         placeholder={poster.blurDataURL ? "blur" : "empty"}
         blurDataURL={poster.blurDataURL}
         className={`object-cover transition-opacity duration-[1600ms] ease-[var(--ease-out-expo)] ${playing ? "opacity-0" : "opacity-100"}`}

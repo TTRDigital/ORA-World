@@ -35,6 +35,22 @@ export function CollectionTabs({ block, collections, planCounts }: Props) {
   const select = (i: number) => {
     setActive(i);
     setAlt(false);
+    tabs.current[i]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  };
+  // Swipe the image left or right to move between collections (touch).
+  const touch = useRef<{ x: number; y: number } | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touch.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touch.current;
+    touch.current = null;
+    if (!start) return;
+    const dx = e.changedTouches[0].clientX - start.x;
+    const dy = e.changedTouches[0].clientY - start.y;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+    const last = collections.length - 1;
+    select(dx < 0 ? (active === last ? 0 : active + 1) : active === 0 ? last : active - 1);
   };
   const onKey = (e: KeyboardEvent<HTMLButtonElement>) => {
     const last = collections.length - 1;
@@ -113,7 +129,11 @@ export function CollectionTabs({ block, collections, planCounts }: Props) {
           className="mt-8 grid grid-cols-12 gap-x-6 gap-y-10 border-t border-rule pt-8"
         >
           <div className="col-span-12 lg:col-span-7">
-            <div className="relative aspect-[16/10] overflow-hidden bg-bg-alt">
+            <div
+              className="relative aspect-[16/10] touch-pan-y overflow-hidden bg-bg-alt"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               {/* Only the active collection's two views are mounted: less DOM and decoding on load. */}
               {[c.image, c.hoverImage].map((im, j) =>
                 im ? (
@@ -156,6 +176,17 @@ export function CollectionTabs({ block, collections, planCounts }: Props) {
               <p className="absolute right-3 bottom-3 text-[10px] tracking-[0.14em] text-white/85 uppercase">
                 {t("rendering")}
               </p>
+            </div>
+            <div aria-hidden className="mt-4 flex items-center justify-center gap-2 lg:hidden">
+              {collections.map((col, i) => (
+                <span
+                  key={col.slug}
+                  className={cn(
+                    "h-1.5 rounded-full transition-all duration-500",
+                    i === active ? "w-6 bg-accent" : "w-1.5 bg-rule-strong",
+                  )}
+                />
+              ))}
             </div>
           </div>
 

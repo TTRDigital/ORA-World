@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
+import { coverSizes } from "@/lib/sizes";
 
 export async function Collaboratory({
   block,
@@ -45,7 +46,11 @@ export async function Collaboratory({
                     src={m.portrait.src}
                     alt={m.portrait.alt}
                     fill
-                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+                    sizes={coverSizes(m.portrait, [
+                      [1024, 30, 4 / 5],
+                      [640, 50, 4 / 5],
+                      [0, 100, 4 / 5],
+                    ])}
                     className="object-cover"
                     style={{ objectPosition: m.portrait.position }}
                   />

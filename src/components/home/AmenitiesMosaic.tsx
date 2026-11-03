@@ -10,6 +10,8 @@ import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { RailProgress } from "@/components/ui/Rail";
+import { coverSizes } from "@/lib/sizes";
 
 const CATS: AmenityCategory[] = ["wellness", "family", "pets", "resort", "eco"];
 const SHAPES = [
@@ -99,7 +101,7 @@ export function AmenitiesMosaic({
         <div
           role="tablist"
           aria-label={block.eyebrow}
-          className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-b border-rule"
+          className="-mx-[var(--gutter)] mt-12 flex [scrollbar-width:none] gap-x-8 gap-y-3 overflow-x-auto border-b border-rule px-[var(--gutter)] md:mx-0 md:flex-wrap md:px-0 [&::-webkit-scrollbar]:hidden"
         >
           {(["all", ...CATS] as const).map((cat) => (
             <button
@@ -108,7 +110,7 @@ export function AmenitiesMosaic({
               aria-selected={active === cat}
               onClick={() => select(cat)}
               className={cn(
-                "relative cursor-pointer py-4 eyebrow transition-colors",
+                "relative shrink-0 cursor-pointer py-4 eyebrow transition-colors",
                 active === cat ? "text-accent-ink" : "text-fg-muted hover:text-fg",
               )}
             >
@@ -125,20 +127,33 @@ export function AmenitiesMosaic({
         </div>
 
         <div role="tabpanel" aria-label={active === "all" ? h("filterAll") : t(active)}>
-          <ul ref={grid} className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-12">
+          <ul
+            ref={grid}
+            className="mt-8 grid grid-cols-1 gap-5 max-md:-mx-[var(--gutter)] max-md:flex max-md:snap-x max-md:snap-mandatory max-md:scroll-px-[var(--gutter)] max-md:[scrollbar-width:none] max-md:gap-3 max-md:overflow-x-auto max-md:px-[var(--gutter)] md:mt-10 md:grid-cols-12 max-md:[&::-webkit-scrollbar]:hidden"
+          >
             {items.map((a, i) => (
               <li
                 key={a.slug}
                 data-flip-id={a.slug}
-                className={cn("group relative overflow-hidden bg-surface", SHAPES[i])}
+                className={cn(
+                  "group relative overflow-hidden bg-surface max-md:h-[27rem] max-md:w-[78vw] max-md:shrink-0 max-md:snap-start",
+                  SHAPES[i],
+                )}
               >
-                <Link href={{ pathname: "/amenities", hash: a.slug }} className="block h-full w-full">
+                <Link
+                  href={{ pathname: "/amenities", hash: a.slug }}
+                  className="block h-full w-full"
+                  data-cursor="view"
+                >
                   <div className="absolute inset-0">
                     <Image
                       src={a.image.src}
                       alt={a.image.alt}
                       fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
+                      sizes={coverSizes(a.image, [
+                        [768, 50, 1],
+                        [0, 78, 0.7],
+                      ])}
                       className="object-cover transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
                       style={{ objectPosition: a.image.position }}
                       placeholder={a.image.blurDataURL ? "blur" : "empty"}
@@ -149,7 +164,7 @@ export function AmenitiesMosaic({
                   <div className="relative flex h-full min-h-[14rem] flex-col justify-end p-5 text-white md:p-6">
                     <span className="eyebrow text-brass-light">{t(a.category)}</span>
                     <h3 className="mt-2 display-s">{a.name}</h3>
-                    <p className="mt-2 max-w-[36ch] small text-white/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 md:block">
+                    <p className="mt-2 max-w-[36ch] small text-white/80 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 md:opacity-0">
                       {a.description}
                     </p>
                   </div>
@@ -157,6 +172,7 @@ export function AmenitiesMosaic({
               </li>
             ))}
           </ul>
+          <RailProgress target={grid} count={items.length} />
         </div>
         <div className="mt-12" data-reveal>
           <Button as={Link} href="/amenities">

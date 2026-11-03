@@ -7,6 +7,7 @@ import { display, sans } from "@/lib/fonts";
 import { getSiteSettings } from "@/lib/content";
 import { siteUrl, isProd } from "@/lib/utils";
 import { MotionInit } from "@/components/providers/MotionInit";
+import { Cursor } from "@/components/providers/Cursor";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { PageTransition } from "@/components/providers/PageTransition";
 import { Consent } from "@/components/providers/Consent";
@@ -68,6 +69,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       <body className="flex min-h-dvh flex-col bg-bg text-fg">
         <NextIntlClientProvider>
           <MotionInit />
+          <Cursor />
           <SmoothScroll />
           <PageTransition />
           <SkipLink />

@@ -7,6 +7,7 @@ import type { HomeContent } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { coverSizes } from "@/lib/sizes";
 
 /**
  * "The Place": a pinned horizontal rail on desktop (GSAP scrub), a snap-scroll rail on touch.
@@ -71,6 +72,7 @@ export function PlaceChapters({ place }: { place: Localized<HomeContent["place"]
       <div ref={pin} className="relative mt-16 lg:h-dvh lg:overflow-hidden">
         <div
           ref={track}
+          data-cursor="drag"
           role="region"
           aria-label={place.eyebrow}
           tabIndex={0}
@@ -86,7 +88,11 @@ export function PlaceChapters({ place }: { place: Localized<HomeContent["place"]
                   src={c.image.src}
                   alt={c.image.alt}
                   fill
-                  sizes="(min-width:1024px) 44vw, 78vw"
+                  sizes={coverSizes(c.image, [
+                    [1024, 44, 4 / 3],
+                    [768, 52, 4 / 3],
+                    [0, 78, 4 / 5],
+                  ])}
                   className="object-cover"
                   style={{ objectPosition: c.image.position }}
                   placeholder={c.image.blurDataURL ? "blur" : "empty"}

@@ -11,6 +11,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
+import { coverSizes } from "@/lib/sizes";
 
 /**
  * Resilience as a checklist that completes as you scroll. A pinned rendering carries a 3×3 board of
@@ -90,7 +91,7 @@ export function ResilienceChecklist({ block }: { block: Localized<HomeContent["r
                   src={block.image.src}
                   alt={block.image.alt}
                   fill
-                  sizes="50vw"
+                  sizes={coverSizes(block.image, [[1024, 46, 5 / 6]])}
                   className="object-cover"
                   style={{ objectPosition: block.image.position }}
                 />
@@ -134,19 +135,36 @@ export function ResilienceChecklist({ block }: { block: Localized<HomeContent["r
 
           {/* Feature cards */}
           <div className="col-span-12 lg:col-span-5 lg:col-start-8">
-            <div className="sticky top-[var(--header-h)] z-[1] -mx-[var(--gutter)] mb-6 bg-dark-bg/95 px-[var(--gutter)] py-3 backdrop-blur lg:hidden">
-              <div className="flex items-center justify-between eyebrow text-dark-fg/80">
-                <span>{h("systemsInPlace")}</span>
-                <span className="tnum">
-                  {pad(done)} / {pad(total)}
+            {/* Mobile: a compact board that rides along while the cards scroll */}
+            <div
+              className="sticky top-[var(--header-h)] z-[2] -mx-[var(--gutter)] mb-6 border-b border-dark-rule bg-dark-bg/95 px-[var(--gutter)] py-4 backdrop-blur lg:hidden"
+              aria-hidden
+            >
+              <div className="flex items-baseline justify-between">
+                <span className="eyebrow text-dark-fg/80">{h("systemsInPlace")}</span>
+                <span className="font-display text-2xl text-dark-accent tnum">
+                  {pad(done)}
+                  <span className="text-base text-dark-fg/60"> / {pad(total)}</span>
                 </span>
               </div>
-              <span className="mt-2 block h-[2px] bg-dark-rule">
-                <span
-                  className="block h-full bg-dark-accent transition-[width] duration-500"
-                  style={{ width: `${(done / total) * 100}%` }}
-                />
-              </span>
+              <ol className="mt-3 grid grid-cols-9 gap-1.5">
+                {block.features.map((f, i) => (
+                  <li
+                    key={f.slug}
+                    className={cn(
+                      "grid aspect-square place-items-center border text-[10px] tnum transition-[background-color,border-color,color,transform] duration-500",
+                      i < done
+                        ? "scale-100 border-dark-accent bg-dark-accent text-basalt"
+                        : "scale-90 border-dark-rule text-dark-fg/50",
+                    )}
+                  >
+                    {i < done ? <CheckIcon className="h-3 w-3" /> : pad(i + 1)}
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-3 min-h-[1.25rem] truncate text-[13px] text-dark-fg/85">
+                {done > 0 ? block.features[done - 1].title : block.features[0].title}
+              </p>
             </div>
             <ol className="space-y-4">
               {block.features.map((f, i) => (

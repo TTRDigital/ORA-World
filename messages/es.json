@@ -241,7 +241,9 @@
     "explore": "Explorar",
     "stillQuestions": "¿Tiene más preguntas?",
     "allQuestions": "Todas las preguntas",
-    "toBeAnnounced": "Por anunciar"
+    "toBeAnnounced": "Por anunciar",
+    "tabFamily": "Familia",
+    "tabPets": "Mascotas"
   },
   "amenityCat": {
     "wellness": "Bienestar",
@@ -434,5 +436,11 @@
     "intro": "Léalo en el navegador o descargue el PDF. Regístrese una vez para desbloquearlo.",
     "placeholder": "Páginas provisionales: los renders sustituyen a las páginas diseñadas del folleto.",
     "pdfSoon": "PDF por suministrar"
+  },
+  "cursor": {
+    "view": "Ver",
+    "drag": "Arrastrar",
+    "explore": "Explorar",
+    "play": "Ver"
   }
 }

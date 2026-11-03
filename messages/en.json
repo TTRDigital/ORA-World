@@ -241,7 +241,9 @@
     "explore": "Explore",
     "stillQuestions": "Still have questions?",
     "allQuestions": "All questions",
-    "toBeAnnounced": "To be announced"
+    "toBeAnnounced": "To be announced",
+    "tabFamily": "Family",
+    "tabPets": "Pets"
   },
   "amenityCat": {
     "wellness": "Wellness",
@@ -434,5 +436,11 @@
     "intro": "Read it in the browser or download the PDF. Register once to unlock.",
     "placeholder": "Placeholder spreads: renders stand in for the designed brochure pages.",
     "pdfSoon": "PDF to be supplied"
+  },
+  "cursor": {
+    "view": "View",
+    "drag": "Drag",
+    "explore": "Explore",
+    "play": "Play"
   }
 }

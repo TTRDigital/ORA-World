@@ -31,7 +31,7 @@ export async function PortfolioGrid({ block, locale }: { block: Localized<HomeCo
           </p>
         </div>
 
-        <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-20 lg:grid-cols-4 lg:gap-5">
+        <ul className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:mt-20 lg:grid-cols-4 lg:gap-5">
           {portfolio.map((p, i) => {
             const feature = i < 2;
             const image = p.image;
@@ -68,19 +68,21 @@ export async function PortfolioGrid({ block, locale }: { block: Localized<HomeCo
                     </span>
                   )}
                   <span className="absolute inset-0 bg-gradient-to-t from-basalt/75 via-basalt/5 to-transparent" />
-                  <span className="absolute top-3 left-3 rounded-full bg-bone/95 px-3 py-1 text-[11px] tracking-[0.12em] text-basalt uppercase tnum">
+                  <span className="absolute top-3 left-3 hidden rounded-full bg-bone/95 px-3 py-1 text-[11px] tracking-[0.12em] text-basalt uppercase tnum sm:inline">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
                     className={cn(
-                      "absolute top-3 right-3 rounded-full px-3 py-1 text-[11px] tracking-[0.12em] uppercase",
+                      "absolute top-2 right-2 rounded-full px-2.5 py-1 text-[10px] tracking-[0.12em] uppercase sm:top-3 sm:right-3 sm:px-3 sm:text-[11px]",
                       p.href ? "bg-accent text-white" : "bg-basalt/70 text-white/85",
                     )}
                   >
                     {p.href ? h("explore") : t("comingSoon")}
                   </span>
-                  <span className="absolute right-4 bottom-4 left-4 flex items-end justify-between gap-3 text-white">
-                    <span className={feature ? "display-m" : "display-s"}>{p.name}</span>
+                  <span className="absolute right-3 bottom-3 left-3 flex items-end justify-between gap-3 text-white sm:right-4 sm:bottom-4 sm:left-4">
+                    <span className={feature ? "display-m" : "font-display text-[1.15rem] leading-tight sm:text-2xl"}>
+                      {p.name}
+                    </span>
                     {p.href && (
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/60 transition-colors duration-500 group-hover:bg-white group-hover:text-basalt">
                         <ArrowIcon />
@@ -88,13 +90,15 @@ export async function PortfolioGrid({ block, locale }: { block: Localized<HomeCo
                     )}
                   </span>
                 </span>
-                <span className="mt-3 block small text-fg-muted">{p.tagline[locale]}</span>
+                <span className="mt-2 block text-[13px] leading-snug text-fg-muted sm:mt-3 sm:text-sm">
+                  {p.tagline[locale]}
+                </span>
               </>
             );
             return (
-              <li key={p.slug} className={feature ? "sm:col-span-2" : ""} data-reveal data-delay={(i % 4) * 0.06}>
+              <li key={p.slug} className={feature ? "col-span-2" : ""} data-reveal data-delay={(i % 4) * 0.06}>
                 {p.href ? (
-                  <Link href={p.href} className="group block">
+                  <Link href={p.href} className="group block" data-cursor="explore">
                     {card}
                   </Link>
                 ) : (

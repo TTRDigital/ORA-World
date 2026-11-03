@@ -401,3 +401,31 @@ html.lenis body {
   font-family: var(--font-sans);
   font-size: 10px;
 }
+
+/* Interludes and the brand marquee need no scroll room when motion is reduced. */
+html.reduced-motion [data-interlude] {
+  height: 100dvh;
+}
+/* Checklist ticks pop in after their row reveals. */
+html.js:not(.reduced-motion) [data-reveal]:not(.is-revealed) [data-tick] {
+  transform: scale(0);
+}
+html.js:not(.reduced-motion) [data-reveal].is-revealed [data-tick] {
+  animation: tickpop 0.7s var(--ease-out-expo) both;
+  animation-delay: calc(var(--tick-delay, 0s) + 0.25s);
+}
+@keyframes tickpop {
+  0% {
+    transform: scale(0) rotate(-30deg);
+  }
+  60% {
+    transform: scale(1.18) rotate(0deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--accent);
+}

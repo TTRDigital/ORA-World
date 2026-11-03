@@ -258,6 +258,8 @@ export interface HomeContent {
   walkthrough: { eyebrow: L; title: L; intro: L; steps: WalkStep[] };
   portfolio: { eyebrow: L; title: L; intro: L };
   faq: { eyebrow: L; title: L; slugs: string[] };
+  interludes: { image: ImageRef; lines: L[] }[];
+  marquee: L[];
 }
 
 export interface JourneyStep {

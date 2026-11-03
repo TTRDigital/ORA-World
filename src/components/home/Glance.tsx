@@ -7,6 +7,7 @@ import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
+import { coverSizes } from "@/lib/sizes";
 
 type Props = { block: Localized<HomeContent["glance"]>; stats: Localized<Stat>[] };
 
@@ -21,7 +22,7 @@ export async function Glance({ block, stats }: Props) {
   return (
     <section className="overflow-hidden bg-bg-alt py-section" aria-labelledby="glance-title">
       <div className="container-x grid grid-cols-12 items-center gap-x-6 gap-y-16">
-        <div className="col-span-12 lg:col-span-5">
+        <div className="order-2 col-span-12 lg:order-none lg:col-span-5">
           <Eyebrow>{block.eyebrow}</Eyebrow>
           <h2 id="glance-title" className="mt-6 display-l" data-reveal>
             <Accent text={block.title} />
@@ -32,7 +33,11 @@ export async function Glance({ block, stats }: Props) {
           <ul className="mt-10 divide-y divide-rule border-y border-rule">
             {block.checklist.map((item, i) => (
               <li key={i} className="flex items-start gap-4 py-4" data-reveal data-delay={0.05 * i}>
-                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent text-white">
+                <span
+                  data-tick
+                  style={{ "--tick-delay": `${0.05 * i}s` } as React.CSSProperties}
+                  className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent text-white"
+                >
                   <CheckIcon className="h-3.5 w-3.5" />
                 </span>
                 <span>{item}</span>
@@ -49,13 +54,17 @@ export async function Glance({ block, stats }: Props) {
           </div>
         </div>
 
-        <div className="relative col-span-12 lg:col-span-7">
+        <div className="relative order-1 col-span-12 lg:order-none lg:col-span-7">
           <figure className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/4] lg:ml-10" data-reveal="image">
             <Image
               src={block.image.src}
               alt={block.image.alt}
               fill
-              sizes="(min-width: 1024px) 55vw, 100vw"
+              sizes={coverSizes(block.image, [
+                [1024, 55, 5 / 4],
+                [640, 100, 5 / 4],
+                [0, 100, 4 / 5],
+              ])}
               placeholder={block.image.blurDataURL ? "blur" : "empty"}
               blurDataURL={block.image.blurDataURL}
               className="object-cover"
@@ -77,7 +86,10 @@ export async function Glance({ block, stats }: Props) {
                 src={block.inset.src}
                 alt={block.inset.alt}
                 fill
-                sizes="360px"
+                sizes={coverSizes(block.inset, [
+                  [1024, 25, 4 / 3],
+                  [0, 62, 4 / 3],
+                ])}
                 className="object-cover"
                 style={{ objectPosition: block.inset.position }}
               />
