@@ -98,11 +98,12 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
                     <span className="text-white/60"> / {String(total).padStart(2, "0")}</span>
                     <span className="ml-4">{block.steps[active].label}</span>
                   </p>
-                  <p className="truncate text-[9px] tracking-[0.12em] text-white/75 uppercase lg:text-[10px] lg:tracking-[0.14em]">
+                  <p className="hidden text-[10px] tracking-[0.14em] text-white/75 uppercase lg:block">
                     {t("rendering")}
                   </p>
                 </div>
               </div>
+              <p className="mt-2 text-[10px] tracking-[0.14em] text-fg-muted uppercase lg:hidden">{t("rendering")}</p>
               <div className="mt-5 hidden gap-2 lg:flex" role="group" aria-label={h("walkSteps")}>
                 {block.steps.map((s, i) => (
                   <button
