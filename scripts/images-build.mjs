@@ -10,10 +10,12 @@ import sharp from "sharp";
 import { readdir, mkdir, writeFile, stat } from "node:fs/promises";
 import path from "node:path";
 
-const MAX_W = 2400;
+const MAX_W = 2560;
 const groups = [
   { dir: "assets-source/images/client", out: "public/images/client", prefix: "client" },
   { dir: "assets-source/images/free", out: "public/images/free", prefix: "free" },
+  { dir: "assets-source/images/people", out: "public/images/people", prefix: "people" },
+  { dir: "assets-source/images/brochure", out: "public/images/brochure", prefix: "brochure" },
 ];
 
 const manifest = {};

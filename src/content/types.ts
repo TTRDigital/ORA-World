@@ -247,7 +247,7 @@ export interface HomeContent {
   amenities: { eyebrow: L; title: L; intro: L };
   family: { eyebrow: L; title: L; body: LP; image: ImageRef };
   pets: { eyebrow: L; title: L; body: LP; image: ImageRef };
-  prosperous: { eyebrow: L; title: L; body: LP; disclaimer: L };
+  prosperous: { eyebrow: L; title: L; body: LP; disclaimer: L; image: ImageRef };
   location: { eyebrow: L; title: L; intro: L };
   tour: { eyebrow: L; title: L; text: L; image: ImageRef };
   team: { eyebrow: L; title: L; intro: L };

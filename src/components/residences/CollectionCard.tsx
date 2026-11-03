@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import type { Collection } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { Link } from "@/i18n/navigation";
+import { parseAspect, scaleSizes } from "@/lib/sizes";
 
 export async function CollectionCard({
   collection: c,
@@ -26,7 +27,7 @@ export async function CollectionCard({
           src={c.image.src}
           alt={c.image.alt}
           fill
-          sizes="(min-width: 768px) 50vw, 100vw"
+          sizes={scaleSizes("(min-width: 768px) 50vw, 100vw", c.image, parseAspect(aspect))}
           priority={priority}
           fetchPriority={priority ? "high" : undefined}
           quality={65}
@@ -41,7 +42,7 @@ export async function CollectionCard({
             src={c.hoverImage.src}
             alt=""
             fill
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes={scaleSizes("(min-width: 768px) 50vw, 100vw", c.hoverImage, parseAspect(aspect))}
             className="object-cover opacity-0 transition-opacity duration-[900ms] ease-[var(--ease-out-expo)] group-hover:opacity-100 group-focus-visible:opacity-100"
             style={{ objectPosition: c.hoverImage.position }}
             aria-hidden="true"

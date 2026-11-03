@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { HomeContent, Incentive } from "@/content/types";
@@ -9,6 +10,7 @@ import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { coverSizes } from "@/lib/sizes";
 
 type Props = { block: Localized<HomeContent["prosperous"]>; incentives: Localized<Incentive>[] };
 
@@ -36,6 +38,20 @@ export function Prosperous({ block, incentives }: Props) {
           </p>
         </div>
 
+        <figure className="relative mt-12 aspect-[4/3] overflow-hidden sm:aspect-[21/9] md:mt-16" data-reveal="image">
+          <Image
+            src={block.image.src}
+            alt={block.image.alt}
+            fill
+            sizes={coverSizes(block.image, [
+              [640, 100, 21 / 9],
+              [0, 100, 4 / 3],
+            ])}
+            className="object-cover"
+            style={{ objectPosition: block.image.position }}
+            data-reveal-inner
+          />
+        </figure>
         {item && (
           <div className="mt-14 grid grid-cols-12 gap-x-6 gap-y-8 md:mt-20">
             <div

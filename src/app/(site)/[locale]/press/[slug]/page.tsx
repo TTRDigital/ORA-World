@@ -76,11 +76,7 @@ export default async function ArticlePage({ params }: PageProps<"/[locale]/press
       <Section className="container-x">
         <div className="grid grid-cols-12 gap-x-6">
           <article className="col-span-12 md:col-span-7 md:col-start-4">
-            {a.body.map((p, i) => (
-              <p key={i} className="mb-6 lead text-fg-muted">
-                {p}
-              </p>
-            ))}
+            {renderBody(a.body)}
             {a.url && (
               <Button as="a" href={a.url} target="_blank" rel="noopener" className="mt-6">
                 {t("readFull")}
@@ -91,4 +87,56 @@ export default async function ArticlePage({ params }: PageProps<"/[locale]/press
       </Section>
     </main>
   );
+}
+
+/**
+ * Article text is stored as plain blocks: "## " starts a heading, "• " a bullet (consecutive bullets
+ * form one list), "— " the author line; anything else is a paragraph.
+ */
+function renderBody(blocks: string[]) {
+  const out: React.ReactNode[] = [];
+  let list: string[] = [];
+  const flush = (key: number) => {
+    if (!list.length) return;
+    out.push(
+      <ul key={`ul-${key}`} className="mb-8 space-y-3 border-l border-rule pl-6">
+        {list.map((li, j) => (
+          <li
+            key={j}
+            className="relative text-fg-muted before:absolute before:top-[0.7em] before:-left-6 before:h-px before:w-3 before:bg-accent"
+          >
+            {li}
+          </li>
+        ))}
+      </ul>,
+    );
+    list = [];
+  };
+  blocks.forEach((b, i) => {
+    if (b.startsWith("• ")) {
+      list.push(b.slice(2));
+      return;
+    }
+    flush(i);
+    if (b.startsWith("## "))
+      out.push(
+        <h2 key={i} className="mt-12 mb-5 display-s">
+          {b.slice(3)}
+        </h2>,
+      );
+    else if (b.startsWith("— "))
+      out.push(
+        <p key={i} className="mt-10 eyebrow text-accent-ink">
+          {b}
+        </p>,
+      );
+    else
+      out.push(
+        <p key={i} className="mb-6 lead text-fg-muted">
+          {b}
+        </p>,
+      );
+  });
+  flush(blocks.length);
+  return out;
 }

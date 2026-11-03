@@ -109,7 +109,9 @@
     "address": "Dirección",
     "phone": "Teléfono",
     "email": "Correo",
-    "hours": "Horario"
+    "hours": "Horario",
+    "brochure": "Folleto",
+    "page": "Página"
   },
   "footer": {
     "salesGallery": "Galería de ventas",

@@ -54,7 +54,9 @@ export default async function PressPage({ params }: PageProps<"/[locale]/press">
           {press.map((a) => (
             <li key={a.slug} className="grid grid-cols-12 items-center gap-x-6 gap-y-5 py-8">
               <div className="col-span-12 md:col-span-3">
-                {a.image && <Picture image={a.image} sizes="25vw" aspect="4/3" showCaption={false} />}
+                {a.image && (
+                  <Picture image={a.image} sizes="(min-width: 768px) 25vw, 100vw" aspect="4/3" showCaption={false} />
+                )}
               </div>
               <div className="col-span-12 md:col-span-6">
                 <p className="eyebrow text-fg-muted">

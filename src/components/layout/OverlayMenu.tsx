@@ -125,7 +125,7 @@ export function OverlayMenu({ open, onClose, site }: Props) {
                   src={image.src}
                   alt=""
                   fill
-                  sizes="50vw"
+                  sizes={`(max-aspect-ratio: ${image.width * 2}/${image.height}) ${Math.ceil((100 * image.width) / image.height)}vh, 50vw`}
                   className="animate-[menufade_1.2s_var(--ease-out-expo)] object-cover"
                   style={{ objectPosition: image.position }}
                   priority={false}

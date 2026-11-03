@@ -68,25 +68,34 @@ export async function Collaboratory({
               </article>
             ))}
           <ol className="col-span-12 self-end border-t border-rule lg:col-span-4 lg:col-start-9">
-            {team
-              .filter((m) => m.placeholder)
-              .map((m, i) => (
-                <li
-                  key={m.slug}
-                  className="flex items-baseline gap-5 border-b border-rule py-5"
-                  data-reveal
-                  data-delay={i * 0.06}
-                >
-                  <span className="eyebrow text-accent-ink tnum">{String(i + 2).padStart(2, "0")}</span>
-                  <span className="flex-1">
-                    <span className="block display-s">{m.discipline}</span>
-                    <span className="mt-1 block small text-fg-muted">{m.role}</span>
-                  </span>
+            {[...team.filter((m) => !m.placeholder).slice(1), ...team.filter((m) => m.placeholder)].map((m, i) => (
+              <li
+                key={m.slug}
+                className="flex items-baseline gap-5 border-b border-rule py-5"
+                data-reveal
+                data-delay={i * 0.06}
+              >
+                <span className="eyebrow text-accent-ink tnum">{String(i + 2).padStart(2, "0")}</span>
+                <span className="flex-1">
+                  <span className="block display-s">{m.placeholder ? m.discipline : m.name}</span>
+                  <span className="mt-1 block small text-fg-muted">{m.role}</span>
+                </span>
+                {m.placeholder ? (
                   <span className="shrink-0 rounded-full border border-rule px-3 py-1 text-[11px] tracking-[0.12em] text-fg-muted uppercase">
                     {h("toBeAnnounced")}
                   </span>
-                </li>
-              ))}
+                ) : (
+                  <Image
+                    src={m.portrait.src}
+                    alt={m.portrait.alt}
+                    width={56}
+                    height={56}
+                    sizes="56px"
+                    className="h-14 w-14 shrink-0 self-center rounded-full object-cover ring-1 ring-accent"
+                  />
+                )}
+              </li>
+            ))}
           </ol>
         </div>
         <div className="mt-14" data-reveal>

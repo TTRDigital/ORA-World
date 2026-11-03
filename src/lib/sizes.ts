@@ -24,3 +24,28 @@ export function fullBleedSizes(img: { width: number; height: number }, scale = 1
   const vw = Math.ceil(100 * scale);
   return `(max-aspect-ratio: ${img.width}/${img.height}) ${vh}vh, ${vw}vw`;
 }
+
+/** Parse "4/5", "4 / 5", "aspect-[4/5]" or "16:9" into a width/height ratio. */
+export function parseAspect(aspect: string | undefined): number | null {
+  const m = aspect?.match(/(\d+(?:\.\d+)?)\s*[/:]\s*(\d+(?:\.\d+)?)/);
+  return m ? Number(m[1]) / Number(m[2]) : null;
+}
+
+/**
+ * Take an ordinary `sizes` string written for the frame's width and scale its size values (not its
+ * media conditions) by how much a cover crop enlarges the image inside that frame.
+ */
+export function scaleSizes(sizes: string, img: { width: number; height: number }, frame: number | null): string {
+  if (!frame) return sizes;
+  const f = Math.max(1, img.width / img.height / frame);
+  if (f === 1) return sizes;
+  return sizes
+    .split(",")
+    .map((entry) => {
+      const m = entry.trim().match(/^(\(.*\)\s+)?(.+)$/);
+      if (!m) return entry;
+      const value = m[2].replace(/(\d+(?:\.\d+)?)(vw|px)/g, (_, n, u) => `${Math.ceil(Number(n) * f)}${u}`);
+      return `${m[1] ?? ""}${value}`;
+    })
+    .join(", ");
+}

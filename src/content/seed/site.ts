@@ -1,5 +1,5 @@
 import type { SiteSettings } from "../types";
-import { renders, lifestyle, tdm } from "./images";
+import { renders, lifestyle, tdm, img } from "./images";
 
 export const siteSettings: SiteSettings = {
   // [[PLACEHOLDER: not published anywhere public. Pulled from env on the server when provided.]]
@@ -32,16 +32,15 @@ export const siteSettings: SiteSettings = {
   vrTourUrl: "https://kuula.co/share/collection/7Zt7D?logo=1&info=0&fs=1&vr=1&thumbs=2&margin=10&alpha=0.60",
   filmUrl: null, // set by the video pipeline or a Sanity file asset
   filmYoutubeId: "HkIPZ9pGezA", // "Live Beyond Limits | ORA World Puerto Rico" on the ORA World channel
-  brochureUrl: null, // [[PLACEHOLDER: brochure PDF]]
-  // [[PLACEHOLDER: brochure spreads. Renders stand in for the designed pages so the flipbook can be reviewed.]]
-  brochurePages: [
-    renders.tdmExterior,
-    renders.towerDetail,
-    renders.tdmPenthouse,
-    renders.poolTerrace,
-    lifestyle.beach,
-    renders.naguaboWide,
-  ].map((i) => ({ ...i, placeholder: true })),
+  // The client's own presentation (published at oraworld.com/tesoro-del-mar-pdf): "Treasure Point / PR2030",
+  // Tesoro Del Mar's working name. The PDF stays on the client's server; its nine pages power the flipbook.
+  brochureUrl: "https://www.oraworld.com/wp-content/uploads/2023/09/004-PR2030-TREASURE-POINT.pdf",
+  brochurePages: Array.from({ length: 9 }, (_, i) =>
+    img(`brochure/tdm-brochure-0${i + 1}` as Parameters<typeof img>[0], {
+      en: `Tesoro Del Mar presentation, page ${i + 1} of 9`,
+      es: `Presentación de Tesoro Del Mar, página ${i + 1} de 9`,
+    }),
+  ),
   brokerKitUrl: null, // [[PLACEHOLDER: broker kit PDF]]
   mediaKitUrl: null, // [[PLACEHOLDER: media kit]]
   consentText: {

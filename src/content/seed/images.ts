@@ -385,3 +385,356 @@ export const places = {
     { rendering: true },
   ),
 };
+
+/* ---- Full Dorado Waterfalls set (oraworld.com/dorado-waterfalls, artist's conceptual renderings) ---- */
+export const dwx = {
+  towers: img(
+    "client/doradowaterfalls8",
+    {
+      en: "Dorado Waterfalls: glass towers on a green hillside",
+      es: "Dorado Waterfalls: torres de cristal en una ladera verde",
+    },
+    { ...R, position: "50% 30%" },
+  ),
+  arrival: img(
+    "client/doradowaterfalls10",
+    {
+      en: "Dorado Waterfalls: covered arrival court beside a cascading water wall",
+      es: "Dorado Waterfalls: llegada cubierta junto a un muro de agua en cascada",
+    },
+    R,
+  ),
+  poolUmbrellas: img(
+    "client/doradowaterfalls11",
+    {
+      en: "Dorado Waterfalls: pool deck with umbrellas below the towers",
+      es: "Dorado Waterfalls: terraza de piscina con sombrillas bajo las torres",
+    },
+    { ...R, position: "50% 35%" },
+  ),
+  masterplanAerial: img(
+    "client/doradowaterfalls12-1",
+    {
+      en: "Dorado Waterfalls: aerial of the masterplan and its circular gardens",
+      es: "Dorado Waterfalls: vista aérea del plan maestro y sus jardines circulares",
+    },
+    R,
+  ),
+  valleyAerial: img(
+    "client/doradowaterfalls14-1",
+    {
+      en: "Dorado Waterfalls: towers along the green valley from above",
+      es: "Dorado Waterfalls: torres a lo largo del valle verde desde el aire",
+    },
+    R,
+  ),
+  rooftop: img(
+    "client/doradowaterfalls15",
+    {
+      en: "Dorado Waterfalls: rooftop pool and terrace crowning a tower",
+      es: "Dorado Waterfalls: piscina y terraza en la azotea de una torre",
+    },
+    { ...R, position: "50% 40%" },
+  ),
+  poolPalms: img(
+    "client/doradowaterfalls5",
+    {
+      en: "Dorado Waterfalls: palm-lined pool beneath terraced towers",
+      es: "Dorado Waterfalls: piscina con palmeras bajo torres escalonadas",
+    },
+    { ...R, position: "50% 25%" },
+  ),
+  lagoonPool: img(
+    "client/026",
+    {
+      en: "Dorado Waterfalls: lagoon pool framed by palms and towers",
+      es: "Dorado Waterfalls: piscina laguna entre palmeras y torres",
+    },
+    { ...R, position: "50% 30%" },
+  ),
+  poolLoungers: img(
+    "client/028",
+    {
+      en: "Dorado Waterfalls: pool deck with loungers facing the hills",
+      es: "Dorado Waterfalls: terraza de piscina con tumbonas frente a las colinas",
+    },
+    R,
+  ),
+  restaurant: img(
+    "client/doradowaterfallsinterior2",
+    {
+      en: "Dorado Waterfalls: restaurant with a wood bar and hanging gardens",
+      es: "Dorado Waterfalls: restaurante con barra de madera y jardines colgantes",
+    },
+    R,
+  ),
+  livingView: img(
+    "client/doradowaterfallsinterior3",
+    {
+      en: "Dorado Waterfalls: open living and dining room with valley views",
+      es: "Dorado Waterfalls: sala y comedor abiertos con vista al valle",
+    },
+    R,
+  ),
+  lobbyStair: img(
+    "client/doradowaterfallsinterior5",
+    {
+      en: "Dorado Waterfalls: double-height lobby with a glass staircase",
+      es: "Dorado Waterfalls: vestíbulo a doble altura con escalera de cristal",
+    },
+    R,
+  ),
+  lobbyTrees: img(
+    "client/doradowaterfallsinterior6",
+    {
+      en: "Dorado Waterfalls: lobby lounge planted with indoor trees",
+      es: "Dorado Waterfalls: salón del vestíbulo con árboles interiores",
+    },
+    R,
+  ),
+  lobbyLounge: img(
+    "client/doradowaterfallsinterior7",
+    {
+      en: "Dorado Waterfalls: lobby lounge with sculpted blue seating",
+      es: "Dorado Waterfalls: salón del vestíbulo con asientos azules esculpidos",
+    },
+    R,
+  ),
+  diningAquarium: img(
+    "client/doradowaterfallsinterior10",
+    {
+      en: "Dorado Waterfalls: dining room beside an aquarium wall",
+      es: "Dorado Waterfalls: comedor junto a un muro acuario",
+    },
+    R,
+  ),
+  diningCurved: img(
+    "client/doradowaterfallsinterior11",
+    {
+      en: "Dorado Waterfalls: dining hall under a curved ceiling",
+      es: "Dorado Waterfalls: comedor bajo un techo curvo",
+    },
+    R,
+  ),
+  diningGardens: img(
+    "client/doradowaterfallsinterior13",
+    {
+      en: "Dorado Waterfalls: restaurant with suspended planters",
+      es: "Dorado Waterfalls: restaurante con jardineras suspendidas",
+    },
+    R,
+  ),
+  diningTerrace: img(
+    "client/doradowaterfallsinterior14",
+    {
+      en: "Dorado Waterfalls: dining room opening to palms and sea",
+      es: "Dorado Waterfalls: comedor abierto a las palmeras y el mar",
+    },
+    R,
+  ),
+  residenceLiving: img(
+    "client/doradowaterfallsinterior16",
+    {
+      en: "Dorado Waterfalls: residence living room with mountain views",
+      es: "Dorado Waterfalls: sala de una residencia con vista a la montaña",
+    },
+    R,
+  ),
+  residenceWine: img(
+    "client/doradowaterfallsinterior17",
+    { en: "Dorado Waterfalls: living room with a lit wine wall", es: "Dorado Waterfalls: sala con cava iluminada" },
+    R,
+  ),
+  residenceBedroom: img(
+    "client/doradowaterfallsinterior18",
+    {
+      en: "Dorado Waterfalls: principal bedroom with a crystal chandelier",
+      es: "Dorado Waterfalls: dormitorio principal con candelabro de cristal",
+    },
+    R,
+  ),
+  residenceCloset: img(
+    "client/doradowaterfallsinterior19",
+    { en: "Dorado Waterfalls: glass-fronted dressing room", es: "Dorado Waterfalls: vestidor con frentes de cristal" },
+    R,
+  ),
+  residenceBath: img(
+    "client/doradowaterfallsinterior20",
+    {
+      en: "Dorado Waterfalls: bathroom vanity with a sculpted mirror",
+      es: "Dorado Waterfalls: tocador del baño con espejo esculpido",
+    },
+    R,
+  ),
+};
+
+/* ---- Portfolio cards exactly as oraworld.com/our-residences pairs them ---- */
+export const cards = {
+  theTop: img(
+    "client/home5",
+    {
+      en: "The Top: curved towers and terraced villas above the trees",
+      es: "The Top: torres curvas y villas escalonadas sobre los árboles",
+    },
+    { ...R, position: "50% 25%" },
+  ),
+  theTopTowers: img(
+    "client/tp-0082",
+    { en: "Curved residential towers rising above a garden", es: "Torres residenciales curvas sobre un jardín" },
+    { ...R, position: "50% 30%" },
+  ),
+  oceanView: img(
+    "client/vegaalta1",
+    {
+      en: "Dorado Ocean View Estates: towers set in the forest",
+      es: "Dorado Ocean View Estates: torres en medio del bosque",
+    },
+    { ...R, position: "50% 30%" },
+  ),
+  loizaOcean: img(
+    "client/loiza-57-003",
+    { en: "Loíza Ocean: glass towers on the shoreline", es: "Loíza Ocean: torres de cristal frente al mar" },
+    { ...R, position: "50% 40%" },
+  ),
+  loizaCountryside: img(
+    "client/loizacountryside1cropped",
+    {
+      en: "Loíza Countryside Estates: a villa among open fields",
+      es: "Loíza Countryside Estates: una villa entre campos abiertos",
+    },
+    R,
+  ),
+  guayama: img(
+    "client/guayama-cropped-for-home",
+    { en: "Guayama: site plan along the coast", es: "Guayama: plano del sitio a lo largo de la costa" },
+    R,
+  ),
+  ceiba: img(
+    "client/screenshot-136-scaled",
+    {
+      en: "Costa del Este, Ceiba: massing study of the towers",
+      es: "Costa del Este, Ceiba: estudio volumétrico de las torres",
+    },
+    R,
+  ),
+  aquamaria: img(
+    "client/pl-screenshot-140-scaled",
+    { en: "AquaMaria: architectural drawing of the tower", es: "AquaMaria: dibujo arquitectónico de la torre" },
+    R,
+  ),
+  forestTowers: img(
+    "client/mwc-0122",
+    { en: "Curved towers and villas above the forest canopy", es: "Torres curvas y villas sobre el dosel del bosque" },
+    { ...R, position: "50% 30%" },
+  ),
+  islandMap: img("client/pr-island-picture-narrow", {
+    en: "Map of Puerto Rico showing the ORA World locations",
+    es: "Mapa de Puerto Rico con las ubicaciones de ORA World",
+  }),
+};
+
+/* ---- More of the client's own photography and renders ---- */
+export const more = {
+  tdmDining: img(
+    "client/vertical-placeholder-image-2",
+    {
+      en: "Tesoro Del Mar: dining room under a skylight, facing the ocean",
+      es: "Tesoro Del Mar: comedor bajo un tragaluz frente al océano",
+    },
+    R,
+  ),
+  oceanTowers: img(
+    "client/image-scaled-1-1",
+    { en: "Curved residential towers along the coast", es: "Torres residenciales curvas a lo largo de la costa" },
+    { ...R, position: "50% 30%" },
+  ),
+  coastResort: img("client/tmpixodp5l9", {
+    en: "A resort above a white-sand Caribbean beach",
+    es: "Un resort sobre una playa caribeña de arena blanca",
+  }),
+  poolTower: img("client/024discover-b2731a25", {
+    en: "Pool terrace beneath a glass pavilion",
+    es: "Terraza de piscina bajo un pabellón de cristal",
+  }),
+  yacht: img("client/03activities-0c501fcf", {
+    en: "A yacht at anchor in turquoise water, from above",
+    es: "Un yate anclado en agua turquesa, desde el aire",
+  }),
+  sunsetChairs: img(
+    "client/06tax-1",
+    {
+      en: "Two beach chairs facing a Caribbean sunset",
+      es: "Dos sillas de playa frente a un atardecer caribeño",
+    },
+    { position: "50% 60%" },
+  ),
+  medical: img("client/061medical", {
+    en: "Physician using a digital health interface",
+    es: "Médico usando una interfaz de salud digital",
+  }),
+  business: img("client/029technology", {
+    en: "Colleagues meeting in a bright business lounge",
+    es: "Colegas reunidos en un salón de negocios luminoso",
+  }),
+  sport: img("client/048sport", {
+    en: "Training session in the fitness center",
+    es: "Sesión de entrenamiento en el gimnasio",
+  }),
+  atv: img("client/00-030cultural-d07afa80", {
+    en: "Riders on ATVs on a mountain trail",
+    es: "Recorrido en ATV por un sendero de montaña",
+  }),
+  toast: img("client/01-030cultural-d07afa80", {
+    en: "Friends raising a toast at dinner",
+    es: "Amigos brindando durante la cena",
+  }),
+  meeting: img("client/02-030cultural-d07afa80", {
+    en: "A business meeting by the window",
+    es: "Una reunión de negocios junto a la ventana",
+  }),
+  spaCandle: img("client/03-030cultural-d07afa80", {
+    en: "Spa treatment by candlelight",
+    es: "Tratamiento de spa a la luz de las velas",
+  }),
+  golfCart: img("client/istock-1070690724-1", {
+    en: "Smiling senior man driving his golf cart on a fairway",
+    es: "Hombre mayor sonriente conduciendo su carrito de golf",
+  }),
+  poolRelax: img("client/istock-1168908596-1", {
+    en: "Women relaxing by a swimming pool",
+    es: "Mujeres descansando junto a una piscina",
+  }),
+  gallery: [
+    img(
+      "client/g2-01",
+      { en: "Pool terrace beneath a glass pavilion", es: "Terraza de piscina bajo un pabellón de cristal" },
+      R,
+    ),
+    img("client/g2-02", { en: "Lobby lounge with a living wall", es: "Salón del vestíbulo con muro verde" }, R),
+    img(
+      "client/g2-03",
+      { en: "Sculpted loungers in a shallow pool", es: "Tumbonas esculpidas en una piscina de poca profundidad" },
+      R,
+    ),
+    img(
+      "client/g2-04",
+      { en: "Wood-clad entrance with a living wall", es: "Entrada revestida de madera con muro verde" },
+      R,
+    ),
+    img(
+      "client/g2-05",
+      { en: "Dining room under a skylight, facing the ocean", es: "Comedor bajo un tragaluz frente al océano" },
+      R,
+    ),
+    img(
+      "client/g2-06",
+      { en: "Infinity pool terrace overlooking the sea", es: "Terraza con piscina infinita sobre el mar" },
+      R,
+    ),
+  ],
+};
+
+/* ---- People ---- */
+export const people = {
+  rezaSabaii: img("people/reza-sabaii", { en: "Portrait of Reza Sabaii, ESQ.", es: "Retrato de Reza Sabaii, ESQ." }),
+};

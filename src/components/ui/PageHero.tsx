@@ -5,6 +5,7 @@ import { Accent } from "./Accent";
 import { SplitLines } from "./SplitLines";
 import { Eyebrow } from "./Eyebrow";
 import { cn } from "@/lib/utils";
+import { fullBleedSizes } from "@/lib/sizes";
 
 type Props = {
   eyebrow?: string;
@@ -34,7 +35,7 @@ export function PageHero({ eyebrow, title, intro, image, compact, children }: Pr
               fill
               priority
               fetchPriority="high"
-              sizes="100vw"
+              sizes={fullBleedSizes(image, 1.06)}
               className="object-cover"
               style={{ objectPosition: image.position }}
               placeholder={image.blurDataURL ? "blur" : "empty"}

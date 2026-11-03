@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import type { HomeContent, Locale } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { portfolio } from "@/content/seed/portfolio";
+import { cards } from "@/content/seed/images";
 import { Link } from "@/i18n/navigation";
 import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -31,7 +32,18 @@ export async function PortfolioGrid({ block, locale }: { block: Localized<HomeCo
           </p>
         </div>
 
-        <ul className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:mt-20 lg:grid-cols-4 lg:gap-5">
+        {/* The client's own locations map, shown no wider than its source so it stays sharp. */}
+        <figure className="mx-auto mt-12 max-w-[600px] md:mt-16" data-reveal>
+          <Image
+            src={cards.islandMap.src}
+            alt={cards.islandMap.alt[locale]}
+            width={cards.islandMap.width}
+            height={cards.islandMap.height}
+            sizes="(min-width: 640px) 600px, 92vw"
+            className="h-auto w-full"
+          />
+        </figure>
+        <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:mt-14 lg:grid-cols-4 lg:gap-5">
           {portfolio.map((p, i) => {
             const feature = i < 2;
             const image = p.image;

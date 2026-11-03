@@ -109,7 +109,9 @@
     "address": "Address",
     "phone": "Phone",
     "email": "Email",
-    "hours": "Hours"
+    "hours": "Hours",
+    "brochure": "Brochure",
+    "page": "Page"
   },
   "footer": {
     "salesGallery": "Sales Gallery",

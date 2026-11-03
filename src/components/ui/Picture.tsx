@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import type { ImageRef } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { cn } from "@/lib/utils";
+import { parseAspect, scaleSizes } from "@/lib/sizes";
 
 type Props = {
   image: Localized<ImageRef>;
@@ -46,7 +47,7 @@ export function Picture({
           src={image.src}
           alt={image.alt}
           fill={fill}
-          sizes={sizes}
+          sizes={scaleSizes(sizes, image, parseAspect(aspect))}
           priority={priority}
           placeholder={image.blurDataURL ? "blur" : "empty"}
           blurDataURL={image.blurDataURL}

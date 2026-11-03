@@ -1,5 +1,6 @@
 import type { TeamMember, PointOfInterest, PressArticle, InvestmentStep, Incentive } from "../types";
-import { renders, tdm } from "./images";
+import { tdm, people } from "./images";
+import { journal } from "./journal";
 
 const portrait = (name: string) => ({
   src: "/images/placeholder-portrait.svg",
@@ -30,6 +31,28 @@ export const team: TeamMember[] = [
     },
     portrait: tdm.foyerSignage,
     website: "https://www.oraworld.com",
+  },
+  {
+    slug: "reza-sabaii",
+    name: "Reza Sabaii, ESQ.",
+    role: { en: "Principal Broker", es: "Corredor principal" },
+    discipline: { en: "Sales and brokerage", es: "Ventas y corretaje" },
+    bio: {
+      en: [
+        "Reza Sabaii is the Principal Broker at Ora World, a commercial real estate company founded ten years ago which currently has twenty real estate associates and four office locations, including Washington DC, Tysons VA, Bethesda MD, and Miami, FL.",
+        "Reza holds a Juris Doctor degree from the George Washington University Law School and has the respect of industry leaders because of his wealth of expertise in all aspects of commercial real estate.",
+      ],
+      es: [
+        "Reza Sabaii es el corredor principal de Ora World, una empresa de bienes raíces comerciales fundada hace diez años que hoy cuenta con veinte asociados inmobiliarios y cuatro oficinas, entre ellas Washington DC, Tysons VA, Bethesda MD y Miami, FL.",
+        "Reza es Juris Doctor por la Facultad de Derecho de la Universidad George Washington y cuenta con el respeto de los líderes del sector por su amplia experiencia en todos los aspectos de los bienes raíces comerciales.",
+      ],
+    },
+    quote: {
+      en: "The smartest decisions are often the ones that open the door to a better life.",
+      es: "Las decisiones más inteligentes suelen ser las que abren la puerta a una vida mejor.",
+    },
+    portrait: people.rezaSabaii,
+    website: null,
   },
   {
     slug: "architect",
@@ -191,61 +214,9 @@ export const pointsOfInterest: PointOfInterest[] = [
 ];
 
 /** No press coverage is public yet. Placeholder entries keep the Press Center and strip functional. */
-export const press: PressArticle[] = [
-  {
-    slug: "placeholder-1",
-    title: { en: "Press headline to be supplied", es: "Titular de prensa por suministrar" },
-    outlet: "Outlet to be confirmed",
-    date: "2026-01-15",
-    excerpt: {
-      en: "Article summary to be supplied by the ORA World press office.",
-      es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World.",
-    },
-    body: {
-      en: ["Full article text or external link to be supplied."],
-      es: ["Texto completo o enlace externo por suministrar."],
-    },
-    url: null,
-    image: renders.tdmExterior,
-    placeholder: true,
-  },
-  {
-    slug: "placeholder-2",
-    title: { en: "Press headline to be supplied", es: "Titular de prensa por suministrar" },
-    outlet: "Outlet to be confirmed",
-    date: "2025-11-02",
-    excerpt: {
-      en: "Article summary to be supplied by the ORA World press office.",
-      es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World.",
-    },
-    body: {
-      en: ["Full article text or external link to be supplied."],
-      es: ["Texto completo o enlace externo por suministrar."],
-    },
-    url: null,
-    image: renders.doradoWaterfalls,
-    placeholder: true,
-  },
-  {
-    slug: "placeholder-3",
-    title: { en: "Press headline to be supplied", es: "Titular de prensa por suministrar" },
-    outlet: "Outlet to be confirmed",
-    date: "2025-09-20",
-    excerpt: {
-      en: "Article summary to be supplied by the ORA World press office.",
-      es: "Resumen del artículo a suministrar por la oficina de prensa de ORA World.",
-    },
-    body: {
-      en: ["Full article text or external link to be supplied."],
-      es: ["Texto completo o enlace externo por suministrar."],
-    },
-    url: null,
-    image: renders.naguabo,
-    placeholder: true,
-  },
-];
+/** Press: ORA World's own published articles (see journal.ts). Third-party coverage is added as it appears. */
+export const press: PressArticle[] = [...journal];
 
-/** Deposit schedule and timeline. Entirely placeholder until the offering plan is filed. */
 export const investmentSteps: InvestmentStep[] = [
   {
     order: 1,

@@ -1,5 +1,5 @@
 import type { ImageRef, L } from "../types";
-import { places, renders } from "./images";
+import { cards, places, renders } from "./images";
 
 export interface PortfolioItem {
   slug: string;
@@ -40,7 +40,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Elevated elegance in harmony with nature", es: "Elegancia elevada en armonía con la naturaleza" },
     thumb: "/images/portfolio/thetop.webp",
     href: null,
-    image: places.theTop,
+    image: cards.theTop,
   },
   {
     slug: "dorado-ocean-view-estates",
@@ -51,6 +51,7 @@ export const portfolio: PortfolioItem[] = [
     },
     thumb: "/images/portfolio/doradooceanviewestates.webp",
     href: null,
+    image: cards.oceanView,
   },
   {
     slug: "naguabo",
@@ -77,7 +78,7 @@ export const portfolio: PortfolioItem[] = [
     },
     thumb: "/images/portfolio/loizaocean.webp",
     href: null,
-    image: places.loizaOcean,
+    image: cards.loizaOcean,
   },
   {
     slug: "loiza-countryside-estates",
@@ -85,7 +86,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Sustainable living in harmony with nature", es: "Vida sostenible en armonía con la naturaleza" },
     thumb: "/images/portfolio/loizacountrysideestates.webp",
     href: null,
-    image: places.loizaCountryside,
+    image: cards.loizaCountryside,
   },
   {
     slug: "guayama",
@@ -93,7 +94,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Healthy living for optimal potential", es: "Vida saludable para un potencial óptimo" },
     thumb: "/images/portfolio/guayama.webp",
     href: null,
-    image: places.guayama,
+    image: cards.guayama,
   },
   {
     slug: "costa-del-este-ceiba",
@@ -101,7 +102,7 @@ export const portfolio: PortfolioItem[] = [
     tagline: { en: "Anchored in coastal living", es: "Anclado en la vida costera" },
     thumb: "/images/portfolio/costadelesteceiba.webp",
     href: null,
-    image: places.ceiba,
+    image: cards.ceiba,
   },
   {
     slug: "aquamaria",
@@ -112,6 +113,7 @@ export const portfolio: PortfolioItem[] = [
     },
     thumb: "/images/portfolio/aquamaria.webp",
     href: null,
+    image: cards.aquamaria,
   },
   {
     slug: "to-be-revealed",

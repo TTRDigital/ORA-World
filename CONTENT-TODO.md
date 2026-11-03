@@ -53,7 +53,9 @@ Every item below is either marked `[[PLACEHOLDER]]` in the CMS/seed, flagged wit
 
 Client-owned renders and photography were taken from oraworld.com (`docs/source/oraworld-com/image-urls.txt`) and optimised into `public/images/client/`. Several of the lifestyle photographs on the live site appear to be stock imagery (one file is literally `iStock-2231329012.jpg`); **confirm the client's licenses cover reuse on the new site**: `010pet-1`, `015discover`, `027entertaiment`, `030transportation`, `031cultural`, `032family`, `033sustainability`, `035sport`, `042spa`, `055fitness`, `056watersport`, `057culinary`, `058entertainment`, `059adventure`, `060family`, `062educational`, `063shopping`, `064additional`, `istock-2231329012`, `05theplace-1`.
 
-Portfolio renders (one per location, from oraworld.com/our-residences): `thetop1`, `naguabo2`, `loizaocean1`, `loizarivercity1`, `loizacountryside2`, `ceiba-001` (a massing study, not a finished render) and `guayama-50` (a site plan). Dorado Ocean View Estates and AquaMaria have no published render yet, so their cards show the gold-ring thumbnail. **Supply a finished render for each before launch.**
+Real assets now come straight from oraworld.com: every image the live site shows, at full resolution, plus the Tesoro Del Mar presentation PDF and the three published Act 60 articles. The full inventory is in `docs/source/oraworld-com/media-library.md`. Portfolio cards use the same render oraworld.com pairs with each location. AquaMaria and Costa del Este Ceiba only have architectural drawings published, and Guayama a site plan. **Supply finished renders for those three.**
+
+Reza Sabaii's portrait is published at 150 × 150 px only, so it is shown as a small avatar. **Supply a high-resolution portrait.** The Adobe Stock videos in the media library are watermarked previews and are not used.
 
 No free-license placeholder imagery is in use. The former Commons bio-bay photo was replaced by the client's sailing photograph.
 

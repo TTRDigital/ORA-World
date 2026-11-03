@@ -1,5 +1,5 @@
 import type { Amenity, Activity } from "../types";
-import { renders, lifestyle } from "./images";
+import { renders, lifestyle, more } from "./images";
 
 export const amenities: Amenity[] = [
   {
@@ -187,6 +187,16 @@ export const amenities: Amenity[] = [
       es: "Paneles solares y baterías para una energía sostenible y fiable, con ventilación natural y luz de día por diseño.",
     },
     image: renders.towerDetail,
+  },
+  {
+    slug: "business-center",
+    category: "resort",
+    name: { en: "Business center", es: "Centro de negocios" },
+    description: {
+      en: "State-of-the-art meeting rooms with video conferencing, private workspaces, high-speed internet with 24/7 IT support, and concierge help with scheduling, printing and couriers.",
+      es: "Salas de reuniones de última generación con videoconferencia, espacios de trabajo privados, internet de alta velocidad con soporte técnico 24/7 y conserjería para agenda, impresión y mensajería.",
+    },
+    image: more.business,
   },
 ];
 
@@ -414,6 +424,195 @@ export const activities: Activity[] = [
       {
         name: { en: "Treasure hunts", es: "Búsquedas del tesoro" },
         description: { en: "Family-friendly exploration games.", es: "Juegos de exploración para toda la familia." },
+      },
+    ],
+  },
+  {
+    slug: "medical",
+    group: { en: "Medical Services", es: "Servicios médicos" },
+    image: more.medical,
+    items: [
+      {
+        name: { en: "Private health clinics", es: "Clínicas de salud privadas" },
+        description: {
+          en: "On-site or nearby luxury clinics offering personalized care and consultations.",
+          es: "Clínicas de lujo en el lugar o cercanas con atención y consultas personalizadas.",
+        },
+      },
+      {
+        name: { en: "Telemedicine services", es: "Telemedicina" },
+        description: {
+          en: "24/7 access to virtual consultations with world-class doctors.",
+          es: "Acceso 24/7 a consultas virtuales con médicos de primer nivel.",
+        },
+      },
+      {
+        name: { en: "Wellness and preventative care", es: "Bienestar y medicina preventiva" },
+        description: {
+          en: "Holistic health services, including nutrition counseling and physical therapy.",
+          es: "Servicios de salud integrales, incluida asesoría nutricional y fisioterapia.",
+        },
+      },
+      {
+        name: { en: "Specialist access", es: "Acceso a especialistas" },
+        description: {
+          en: "Partnerships with top medical professionals in cardiology, dermatology, orthopedics, and more.",
+          es: "Alianzas con destacados profesionales en cardiología, dermatología, ortopedia y más.",
+        },
+      },
+      {
+        name: { en: "Emergency care access", es: "Acceso a atención de emergencia" },
+        description: {
+          en: "Priority service agreements with nearby hospitals or private emergency services.",
+          es: "Acuerdos de servicio prioritario con hospitales cercanos o servicios de emergencia privados.",
+        },
+      },
+      {
+        name: { en: "Concierge healthcare", es: "Conserjería médica" },
+        description: {
+          en: "Personal medical coordinators for check-ups, procedures, or specialist appointments.",
+          es: "Coordinadores médicos personales para chequeos, procedimientos o citas con especialistas.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "educational",
+    group: { en: "Educational Services", es: "Servicios educativos" },
+    image: lifestyle.graduation,
+    items: [
+      {
+        name: { en: "Private schools", es: "Escuelas privadas" },
+        description: {
+          en: "Partnerships with top-tier international schools offering bilingual and global curriculums.",
+          es: "Alianzas con escuelas internacionales de primer nivel con programas bilingües y globales.",
+        },
+      },
+      {
+        name: { en: "Tutoring services", es: "Tutorías" },
+        description: {
+          en: "On-demand private tutors for children and adults.",
+          es: "Tutores privados a demanda para niños y adultos.",
+        },
+      },
+      {
+        name: { en: "Workshops and classes", es: "Talleres y clases" },
+        description: {
+          en: "Local language lessons, art courses, coding workshops, or business seminars.",
+          es: "Clases de idioma, cursos de arte, talleres de programación o seminarios de negocios.",
+        },
+      },
+      {
+        name: { en: "Learning pods for kids", es: "Grupos de aprendizaje infantil" },
+        description: {
+          en: "Small, personalized learning groups for children of residents.",
+          es: "Grupos pequeños y personalizados de aprendizaje para los hijos de los residentes.",
+        },
+      },
+      {
+        name: { en: "Scholarship opportunities", es: "Oportunidades de becas" },
+        description: {
+          en: "Support for continuing education in collaboration with local and global institutions.",
+          es: "Apoyo a la formación continua en colaboración con instituciones locales y globales.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "shopping",
+    group: { en: "High-End Shopping", es: "Compras de lujo" },
+    image: lifestyle.shopping,
+    items: [
+      {
+        name: { en: "Luxury boutiques", es: "Boutiques de lujo" },
+        description: {
+          en: "On-site or nearby access to international luxury brands.",
+          es: "Acceso en el lugar o cercano a marcas internacionales de lujo.",
+        },
+      },
+      {
+        name: { en: "Designer pop-up shops", es: "Tiendas pop-up de diseñadores" },
+        description: {
+          en: "Rotating exclusive pop-ups featuring limited-edition collections.",
+          es: "Pop-ups exclusivos y rotativos con colecciones de edición limitada.",
+        },
+      },
+      {
+        name: { en: "Personal shopping", es: "Asesoría de compras" },
+        description: {
+          en: "Concierge assistance with finding and purchasing unique items.",
+          es: "Asistencia de conserjería para encontrar y adquirir piezas únicas.",
+        },
+      },
+      {
+        name: { en: "Local artisans", es: "Artesanos locales" },
+        description: {
+          en: "Private shopping experiences featuring handcrafted jewelry, art, and textiles.",
+          es: "Experiencias de compra privadas con joyería, arte y textiles artesanales.",
+        },
+      },
+      {
+        name: { en: "Private fashion shows", es: "Desfiles privados" },
+        description: {
+          en: "Invite-only showcases of the latest collections from top designers.",
+          es: "Presentaciones por invitación de las últimas colecciones de grandes diseñadores.",
+        },
+      },
+      {
+        name: { en: "Curated home décor", es: "Decoración seleccionada" },
+        description: {
+          en: "Access to high-end furniture and interior design retailers.",
+          es: "Acceso a tiendas de mobiliario y diseño interior de alta gama.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "additional",
+    group: { en: "Additional Services", es: "Servicios adicionales" },
+    image: lifestyle.motherChild,
+    items: [
+      {
+        name: { en: "Childcare and nanny services", es: "Cuidado infantil y niñeras" },
+        description: {
+          en: "Professional and vetted childcare providers available on request.",
+          es: "Cuidadores profesionales y verificados disponibles a solicitud.",
+        },
+      },
+      {
+        name: { en: "Pet services", es: "Servicios para mascotas" },
+        description: {
+          en: "Grooming, daycare, and veterinary services for pets.",
+          es: "Aseo, guardería y servicios veterinarios para mascotas.",
+        },
+      },
+      {
+        name: { en: "Event planning", es: "Organización de eventos" },
+        description: {
+          en: "Full-service support for private events, from birthdays to corporate gatherings.",
+          es: "Apoyo integral para eventos privados, desde cumpleaños hasta reuniones corporativas.",
+        },
+      },
+      {
+        name: { en: "Private transportation", es: "Transporte privado" },
+        description: {
+          en: "Arranging yachts, jets, or luxury cars for seamless travel.",
+          es: "Coordinación de yates, jets o autos de lujo para viajar sin contratiempos.",
+        },
+      },
+      {
+        name: { en: "Cultural club memberships", es: "Membresías culturales" },
+        description: {
+          en: "Access to private galleries, music venues, or exclusive events.",
+          es: "Acceso a galerías privadas, salas de música o eventos exclusivos.",
+        },
+      },
+      {
+        name: { en: "Grocery and essentials delivery", es: "Entrega de víveres" },
+        description: {
+          en: "Premium delivery service for food, wine, and other essentials.",
+          es: "Servicio premium de entrega de alimentos, vinos y otros esenciales.",
+        },
       },
     ],
   },

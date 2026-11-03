@@ -1,5 +1,5 @@
 import type { HomeContent } from "../types";
-import { renders, lifestyle, tdm } from "./images";
+import { renders, lifestyle, tdm, more } from "./images";
 
 export const home: HomeContent = {
   hero: {
@@ -334,6 +334,7 @@ export const home: HomeContent = {
         "Al establecer residencia o invertir en la isla, personas y empresas pueden reducir significativamente su carga fiscal. Más allá de estas ventajas, la cultura vibrante y la belleza natural de Puerto Rico ofrecen una calidad de vida incomparable.",
       ],
     },
+    image: more.sunsetChairs,
     disclaimer: {
       en: "General information, not tax or legal advice. Incentives depend on individual circumstances and are subject to change. Consult your tax advisor.",
       es: "Información general, no asesoría fiscal ni legal. Los incentivos dependen de cada caso y están sujetos a cambios. Consulte a su asesor fiscal.",
@@ -418,7 +419,10 @@ export const home: HomeContent = {
       es: "Un ambicioso desarrollo de 10 acres junto a un parque nacional con vistas panorámicas al océano, concebido en torno a la renovación y la comunidad.",
     },
     checklist: [
-      { en: "335,995 sq ft of land across 10 acres", es: "335,995 pies² de terreno en 10 acres" },
+      {
+        en: "335,995 sq ft of land and 498,150 sq ft of floor area across 10 acres",
+        es: "335,995 pies² de terreno y 498,150 pies² de construcción en 10 acres",
+      },
       {
         en: "129 contemporary apartments and 42 hotel suites",
         es: "129 apartamentos contemporáneos y 42 suites de hotel",
