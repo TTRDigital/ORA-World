@@ -15,7 +15,11 @@ let failures = 0;
 for (const path of paths) {
   for (const [name, viewport, dpr] of vps) {
     const ctx = await b.newContext({ viewport, deviceScaleFactor: dpr, isMobile: name === "mobile" });
-    await ctx.addInitScript(() => { try { localStorage.setItem("ora_consent", "denied"); } catch {} });
+    await ctx.addInitScript(() => {
+      try {
+        localStorage.setItem("ora_consent", "denied");
+      } catch {}
+    });
     const p = await ctx.newPage();
     await p.goto(base + path, { waitUntil: "load" });
     const H = await p.evaluate(() => document.documentElement.scrollHeight);
