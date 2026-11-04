@@ -15,7 +15,7 @@ import { Preloader } from "./Preloader";
 import { Hero } from "./Hero";
 import { Journey } from "./Journey";
 import { Manifesto } from "./Manifesto";
-import { Glance } from "./Glance";
+import { DotGrid } from "./DotGrid";
 import { Walkthrough } from "./Walkthrough";
 import { PlaceChapters } from "./PlaceChapters";
 import { CollectionTabs } from "./CollectionTabs";
@@ -32,6 +32,7 @@ import { HomeFaq } from "./HomeFaq";
 import { PresentationCta } from "./PresentationCta";
 import { Interlude } from "./Interlude";
 import { Marquee } from "./Marquee";
+import { CompareSlider } from "./CompareSlider";
 
 /**
  * Direction A · Travertine Editorial. Every section is a small story: numbered journey cards,
@@ -62,17 +63,18 @@ export async function HomePage({ locale }: { locale: Locale }) {
       {/* The rest of the page is a sheet that slides over the pinned hero. */}
       <div className="relative z-[1] bg-bg shadow-[0_-40px_80px_-30px_rgba(0,0,0,.45)]">
         <Journey block={home.journey} />
+        <Walkthrough block={home.walkthrough} />
         <Manifesto manifesto={home.manifesto} />
         <Interlude image={home.interludes[0].image} lines={home.interludes[0].lines} />
-        <Glance block={home.glance} stats={home.hero.stats} />
+        <CompareSlider block={home.compare} />
+        <DotGrid block={home.glance} />
         <Marquee words={home.marquee} />
-        <Walkthrough block={home.walkthrough} />
-        <PlaceChapters place={home.place} />
         <CollectionTabs
           block={home.residences}
           collections={collections.map((c) => ({ ...c, finishes: [], description: c.description.slice(0, 1) }))}
           planCounts={planCounts}
         />
+        <PlaceChapters place={home.place} />
         <ResilienceChecklist block={home.resilience} />
         <AmenitiesMosaic block={home.amenities} amenities={amenities} />
         <FamilyPets
@@ -90,7 +92,14 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <TourTeaser block={home.tour} url={site.vrTourUrl} />
         <Collaboratory block={home.team} team={team} />
         <PressStrip eyebrow={home.press.eyebrow} press={press} />
-        <HomeFaq block={home.faq} faqs={faqs} site={site} />
+        <HomeFaq
+          block={home.faq}
+          faqs={faqs}
+          advisor={(() => {
+            const r = team.find((m) => m.slug === "reza-sabaii");
+            return r ? { name: r.name, role: r.role, portrait: r.portrait } : null;
+          })()}
+        />
         <PresentationCta block={home.cta} site={site} residenceOptions={collections.map((c) => c.name)} />
       </div>
     </main>

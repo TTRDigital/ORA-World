@@ -136,7 +136,7 @@ export function AmenitiesMosaic({
                 key={a.slug}
                 data-flip-id={a.slug}
                 className={cn(
-                  "group relative overflow-hidden bg-surface max-md:h-[27rem] max-md:w-[78vw] max-md:shrink-0 max-md:snap-start",
+                  "group relative overflow-hidden rounded-[1.25rem] bg-surface max-md:h-[27rem] max-md:w-[78vw] max-md:shrink-0 max-md:snap-start",
                   SHAPES[i],
                 )}
               >

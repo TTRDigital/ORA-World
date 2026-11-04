@@ -86,7 +86,7 @@ export function ResilienceChecklist({ block }: { block: Localized<HomeContent["r
           {/* Pinned board */}
           <div className="col-span-12 hidden lg:col-span-6 lg:block">
             <div className="sticky top-[calc(var(--header-h)+1.5rem)]">
-              <div className="relative aspect-[5/6] max-h-[calc(100vh-var(--header-h)-3rem)] w-full overflow-hidden">
+              <div className="relative aspect-[5/6] max-h-[calc(100vh-var(--header-h)-3rem)] w-full overflow-hidden rounded-[1.5rem]">
                 <Image
                   src={block.image.src}
                   alt={block.image.alt}
@@ -108,7 +108,7 @@ export function ResilienceChecklist({ block }: { block: Localized<HomeContent["r
                     <li
                       key={f.slug}
                       className={cn(
-                        "flex min-h-[5.5rem] flex-col justify-between border p-3 backdrop-blur-sm transition-[background-color,border-color,color] duration-700",
+                        "flex min-h-[5.5rem] flex-col justify-between rounded-xl border p-3 backdrop-blur-sm transition-[background-color,border-color,color] duration-700",
                         i < done
                           ? "border-brass-light bg-brass/85 text-white"
                           : "border-white/25 bg-basalt/30 text-white/70",
@@ -174,7 +174,7 @@ export function ResilienceChecklist({ block }: { block: Localized<HomeContent["r
                     cards.current[i] = el;
                   }}
                   className={cn(
-                    "border p-6 transition-[border-color,background-color] duration-700 md:p-8",
+                    "rounded-2xl border p-6 transition-[border-color,background-color] duration-700 md:p-8",
                     i < done ? "border-dark-accent/60 bg-white/[0.04]" : "border-dark-rule",
                   )}
                 >

@@ -1,5 +1,5 @@
 import type { HomeContent } from "../types";
-import { renders, lifestyle, tdm, more } from "./images";
+import { renders, lifestyle, tdm, more, drawings } from "./images";
 
 export const home: HomeContent = {
   hero: {
@@ -336,6 +336,41 @@ export const home: HomeContent = {
       ],
     },
     image: more.sunsetChairs,
+    // From "What Is Act 60? A Practical Guide for U.S. Investors" (oraworld.com/what-is-act-60).
+    myths: [
+      {
+        tab: { en: "A loophole?", es: "¿Un vacío legal?" },
+        myth: { en: "Act 60 is an offshore loophole.", es: "La Ley 60 es un vacío legal offshore." },
+        fact: {
+          en: "It is a rules-based system that works only when its requirements are followed precisely.",
+          es: "Es un sistema de reglas que funciona solo cuando sus requisitos se cumplen con precisión.",
+        },
+      },
+      {
+        tab: { en: "0% on every gain?", es: "¿0% en todo?" },
+        myth: { en: "Every capital gain becomes tax-free.", es: "Toda ganancia de capital queda exenta." },
+        fact: {
+          en: "Only post-residency gains qualify for full exemption. Gains accrued before residency are not fully exempt.",
+          es: "Solo las ganancias posteriores a la residencia califican para la exención total. Las acumuladas antes no están totalmente exentas.",
+        },
+      },
+      {
+        tab: { en: "Part-time living?", es: "¿Vivir a medias?" },
+        myth: { en: "A few weeks a year on the island is enough.", es: "Basta con unas semanas al año en la isla." },
+        fact: {
+          en: "Bona fide residency means physical presence (generally 183 days a year), a Puerto Rico tax home and a closer connection.",
+          es: "La residencia bona fide exige presencia física (en general 183 días al año), domicilio fiscal en Puerto Rico y una conexión más cercana.",
+        },
+      },
+      {
+        tab: { en: "No federal law?", es: "¿Sin ley federal?" },
+        myth: { en: "Act 60 replaces federal law.", es: "La Ley 60 sustituye la ley federal." },
+        fact: {
+          en: "Act 60 does not eliminate federal law, and it does not replace professional tax planning.",
+          es: "La Ley 60 no elimina la ley federal ni sustituye la planificación fiscal profesional.",
+        },
+      },
+    ],
     disclaimer: {
       en: "General information, not tax or legal advice. Incentives depend on individual circumstances and are subject to change. Consult your tax advisor.",
       es: "Información general, no asesoría fiscal ni legal. Los incentivos dependen de cada caso y están sujetos a cambios. Consulte a su asesor fiscal.",
@@ -444,6 +479,53 @@ export const home: HomeContent = {
     ],
     image: tdm.aerialCoast,
     inset: renders.tdmExterior,
+    board: [
+      {
+        value: "10",
+        unit: { en: "Acres in Dorado", es: "Acres en Dorado" },
+        title: { en: "Ten acres on the north coast", es: "Diez acres en la costa norte" },
+        text: {
+          en: "335,995 sq ft of land beside a national park.",
+          es: "335,995 pies² de terreno junto a un parque nacional.",
+        },
+      },
+      {
+        value: "129",
+        unit: { en: "Contemporary apartments", es: "Apartamentos contemporáneos" },
+        title: { en: "129 contemporary apartments", es: "129 apartamentos contemporáneos" },
+        text: {
+          en: "Open-concept homes with floor-to-ceiling glass.",
+          es: "Hogares de concepto abierto con ventanales de piso a techo.",
+        },
+      },
+      {
+        value: "171",
+        unit: { en: "Homes and hotel suites", es: "Hogares y suites de hotel" },
+        title: { en: "42 boutique hotel suites", es: "42 suites de hotel boutique" },
+        text: {
+          en: "A boutique hotel and clubhouse at the heart of the community.",
+          es: "Un hotel boutique y un club social en el corazón de la comunidad.",
+        },
+      },
+      {
+        value: "65,500",
+        unit: { en: "Sq ft of amenities", es: "Pies² de amenidades" },
+        title: { en: "65,500 sq ft of amenities", es: "65,500 pies² de amenidades" },
+        text: {
+          en: "Sports courts, a fitness center and scenic jogging paths.",
+          es: "Canchas, gimnasio y senderos para correr.",
+        },
+      },
+      {
+        value: "30",
+        unit: { en: "Minutes to the airport", es: "Minutos al aeropuerto" },
+        title: { en: "A walk from Balneario Cerro Gordo", es: "A pasos del Balneario Cerro Gordo" },
+        text: {
+          en: "And thirty minutes from the international airport.",
+          es: "Y a treinta minutos del aeropuerto internacional.",
+        },
+      },
+    ],
   },
   walkthrough: {
     eyebrow: { en: "Step inside", es: "Pase adelante" },
@@ -556,4 +638,59 @@ export const home: HomeContent = {
     { en: "Nature", es: "Naturaleza" },
     { en: "Dorado, Puerto Rico", es: "Dorado, Puerto Rico" },
   ],
+  compare: {
+    eyebrow: { en: "Drawing to rendering", es: "Del dibujo al rendering" },
+    title: { en: "See the design, *line by line*", es: "Vea el diseño, *trazo a trazo*" },
+    intro: {
+      en: "Drag across each view to move between the architectural line drawing and the finished rendering.",
+      es: "Deslice sobre cada vista para pasar del dibujo arquitectónico al rendering terminado.",
+    },
+    items: [
+      {
+        render: tdm.exteriorRoad,
+        drawing: drawings.road,
+        kicker: { en: "Tesoro Del Mar · Arrival", es: "Tesoro Del Mar · Llegada" },
+        title: {
+          en: "Curved facades shaped by the flight of birds",
+          es: "Fachadas curvas inspiradas en el vuelo de las aves",
+        },
+      },
+      {
+        render: renders.tdmExterior,
+        drawing: drawings.pool,
+        kicker: { en: "Tesoro Del Mar · Pool terrace", es: "Tesoro Del Mar · Terraza de piscina" },
+        title: {
+          en: "Cantilevered terraces that extend like wings",
+          es: "Terrazas en voladizo que se extienden como alas",
+        },
+      },
+      {
+        render: tdm.aerialCoast,
+        drawing: drawings.aerial,
+        kicker: { en: "Tesoro Del Mar · From the air", es: "Tesoro Del Mar · Desde el aire" },
+        title: { en: "Ten acres beside a national park", es: "Diez acres junto a un parque nacional" },
+      },
+      {
+        render: tdm.foyerAtrium,
+        drawing: drawings.foyer,
+        kicker: { en: "Tesoro Del Mar · Foyer", es: "Tesoro Del Mar · Vestíbulo" },
+        title: { en: "Stone, wood and brushed metal", es: "Piedra, madera y metal cepillado" },
+      },
+      {
+        render: tdm.penthouseLiving,
+        drawing: drawings.penthouse,
+        kicker: { en: "Tesoro Del Mar · Penthouse", es: "Tesoro Del Mar · Penthouse" },
+        title: { en: "A floating staircase above the living room", es: "Una escalera flotante sobre la sala" },
+      },
+      {
+        render: renders.doradoWaterfalls,
+        drawing: drawings.dw,
+        kicker: { en: "Dorado Waterfalls", es: "Dorado Waterfalls" },
+        title: {
+          en: "Tiered towers along a palm-lined avenue",
+          es: "Torres escalonadas a lo largo de una avenida de palmeras",
+        },
+      },
+    ],
+  },
 };

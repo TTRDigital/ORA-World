@@ -30,8 +30,8 @@ export function Interlude({ image, lines }: { image: Localized<ImageRef>; lines:
       });
       tl.fromTo(
         frame,
-        { clipPath: "inset(14% 10% 14% 10%)" },
-        { clipPath: "inset(0% 0% 0% 0%)", duration: 1 },
+        { clipPath: "inset(14% 10% 14% 10% round 28px)" },
+        { clipPath: "inset(0% 0% 0% 0% round 0px)", duration: 1 },
         0,
       ).fromTo(pic, { scale: 1.18 }, { scale: 1, duration: 1.4 }, 0);
       items.forEach((it, i) => {

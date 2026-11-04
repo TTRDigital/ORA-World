@@ -51,7 +51,7 @@ export async function PortfolioGrid({ block, locale }: { block: Localized<HomeCo
               <>
                 <span
                   className={cn(
-                    "relative block overflow-hidden bg-travertine",
+                    "relative block overflow-hidden rounded-[1.1rem] bg-travertine",
                     feature ? "aspect-[16/10]" : "aspect-[4/3]",
                   )}
                 >

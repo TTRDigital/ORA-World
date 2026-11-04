@@ -738,3 +738,18 @@ export const more = {
 export const people = {
   rezaSabaii: img("people/reza-sabaii", { en: "Portrait of Reza Sabaii, ESQ.", es: "Retrato de Reza Sabaii, ESQ." }),
 };
+
+/* ---- Line drawings derived from the renderings (scripts/drawings-build.mjs) for the compare slider ---- */
+const drawing = (key: string, of: string) =>
+  img(`drawings/${key}-drawing` as Key, {
+    en: `Line drawing derived from the rendering of ${of}`,
+    es: `Dibujo lineal derivado del rendering de ${of}`,
+  });
+export const drawings = {
+  road: drawing("tdm-exterior-from-road-scaled", "the Tesoro Del Mar arrival"),
+  pool: drawing("tdm-exterior-from-pull-scaled", "the Tesoro Del Mar pool terrace"),
+  aerial: drawing("tdm-aerial-002-small-scaled", "Tesoro Del Mar from the air"),
+  foyer: drawing("tdm-foyer-001-small-scaled", "the Tesoro Del Mar foyer"),
+  penthouse: drawing("tdm-penthouse-living-002-small-scaled", "the Tesoro Del Mar penthouse"),
+  dw: drawing("doradowaterfalls1", "Dorado Waterfalls"),
+};

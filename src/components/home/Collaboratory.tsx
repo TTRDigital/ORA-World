@@ -41,7 +41,7 @@ export async function Collaboratory({
             .slice(0, 1)
             .map((m) => (
               <article key={m.slug} className="col-span-12 grid gap-6 sm:grid-cols-2 lg:col-span-7" data-reveal>
-                <figure className="relative aspect-[4/5] overflow-hidden bg-surface">
+                <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-surface">
                   <Image
                     src={m.portrait.src}
                     alt={m.portrait.alt}

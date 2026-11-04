@@ -1,16 +1,20 @@
-import { Instrument_Serif, Manrope } from "next/font/google";
+import { Instrument_Serif, Manrope, Sora } from "next/font/google";
 
-/**
- * Display: Instrument Serif. A contemporary, moderately condensed serif with sturdy strokes, so large
- * headlines stay crisp and readable (the earlier Didone's hairlines broke up at screen sizes).
- */
-export const display = Instrument_Serif({
+/** Headlines: Sora, a geometric sans set bold and tight, as on the Yard Vida reference. */
+export const display = Sora({
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600"],
+  display: "swap",
+  variable: "--font-display",
+});
+
+/** Accent words inside headlines (the *word* in a title) and big numerals: Instrument Serif italic. */
+export const serif = Instrument_Serif({
   subsets: ["latin", "latin-ext"],
   weight: "400",
   style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-display",
-  fallback: ["Georgia", "Times New Roman", "serif"],
+  variable: "--font-serif",
 });
 
 export const sans = Manrope({

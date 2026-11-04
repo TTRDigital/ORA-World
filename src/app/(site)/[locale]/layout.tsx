@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { display, sans } from "@/lib/fonts";
+import { display, serif, sans } from "@/lib/fonts";
 import { getSiteSettings } from "@/lib/content";
 import { siteUrl, isProd } from "@/lib/utils";
 import { MotionInit } from "@/components/providers/MotionInit";
@@ -54,7 +54,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const site = await getSiteSettings(locale as Locale);
 
   return (
-    <html lang={locale} data-direction="a" className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
+    <html lang={locale} data-direction="a" className={`${display.variable} ${serif.variable} ${sans.variable}`} suppressHydrationWarning>
       <head>
         {!isProd && (
           <script

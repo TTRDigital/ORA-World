@@ -130,7 +130,7 @@ export function CollectionTabs({ block, collections, planCounts }: Props) {
         >
           <div className="col-span-12 lg:col-span-7">
             <div
-              className="relative aspect-[16/10] touch-pan-y overflow-hidden bg-bg-alt"
+              className="relative aspect-[16/10] touch-pan-y overflow-hidden rounded-[1.5rem] bg-bg-alt"
               onTouchStart={onTouchStart}
               onTouchEnd={onTouchEnd}
             >

@@ -78,7 +78,7 @@ export function PresentationCta({
             </div>
           </dl>
         </div>
-        <div className="col-span-12 border border-white/15 bg-basalt/70 p-6 backdrop-blur-md md:p-10 lg:col-span-6 lg:col-start-7">
+        <div className="col-span-12 rounded-[1.75rem] border border-white/15 bg-basalt/70 p-6 shadow-[0_40px_80px_-40px_rgba(0,0,0,.8)] backdrop-blur-md md:p-10 lg:col-span-6 lg:col-start-7">
           <LeadForm
             variant="full"
             tone="dark"

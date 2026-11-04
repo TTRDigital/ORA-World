@@ -37,7 +37,7 @@ export function FamilyPets({ family, pets, related: names }: Props) {
     <section className="bg-bg-alt py-section" aria-labelledby={`${base}-title`}>
       <div className="container-x grid grid-cols-12 items-center gap-x-6 gap-y-12">
         <div className="relative col-span-12 lg:col-span-7">
-          <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
             {tabs.map(({ b: tb }, i) => (
               <Image
                 key={i}

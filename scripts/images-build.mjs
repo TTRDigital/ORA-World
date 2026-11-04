@@ -16,6 +16,7 @@ const groups = [
   { dir: "assets-source/images/free", out: "public/images/free", prefix: "free" },
   { dir: "assets-source/images/people", out: "public/images/people", prefix: "people" },
   { dir: "assets-source/images/brochure", out: "public/images/brochure", prefix: "brochure" },
+  { dir: "assets-source/images/drawings", out: "public/images/drawings", prefix: "drawings" },
 ];
 
 const manifest = {};

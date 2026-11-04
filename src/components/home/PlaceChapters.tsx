@@ -83,7 +83,10 @@ export function PlaceChapters({ place }: { place: Localized<HomeContent["place"]
               key={c.number}
               className={`relative w-[78vw] shrink-0 snap-start md:w-[52vw] lg:w-[44vw] ${i % 2 === 1 ? "lg:translate-y-10" : "lg:-translate-y-6"}`}
             >
-              <figure className="relative aspect-[4/5] overflow-hidden md:aspect-[4/3]" data-reveal="image">
+              <figure
+                className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] md:aspect-[4/3]"
+                data-reveal="image"
+              >
                 <Image
                   src={c.image.src}
                   alt={c.image.alt}

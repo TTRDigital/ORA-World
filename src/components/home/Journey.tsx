@@ -101,7 +101,7 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
               <li
                 key={i}
                 className={cn(
-                  "group bg-basalt-soft relative min-h-0 min-w-0 overflow-hidden transition-[flex-grow] duration-[1100ms] ease-[var(--ease-out-expo)]",
+                  "group bg-basalt-soft relative min-h-0 min-w-0 overflow-hidden rounded-2xl transition-[flex-grow] duration-[1100ms] ease-[var(--ease-out-expo)]",
                   on ? "flex-[7]" : "flex-[1]",
                 )}
                 data-active={on || undefined}

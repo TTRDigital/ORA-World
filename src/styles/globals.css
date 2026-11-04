@@ -53,11 +53,11 @@
   --dur-slow: 1200ms;
 
   /* type scale (fluid 390 → 1440) */
-  --text-display-xl: clamp(4rem, 1.3rem + 11vw, 10rem);
-  --text-display-l: clamp(2.9rem, 1.5rem + 5vw, 6.5rem);
-  --text-display-m: clamp(2.2rem, 1.5rem + 2.6vw, 4rem);
-  --text-display-s: clamp(1.65rem, 1.4rem + 0.9vw, 2.35rem);
-  --text-stat: clamp(2.5rem, 1.6rem + 3vw, 4.5rem);
+  --text-display-xl: clamp(3rem, 1rem + 8vw, 7.5rem);
+  --text-display-l: clamp(2.2rem, 1.2rem + 3.6vw, 4.6rem);
+  --text-display-m: clamp(1.75rem, 1.2rem + 1.9vw, 3rem);
+  --text-display-s: clamp(1.3rem, 1.15rem + 0.6vw, 1.75rem);
+  --text-stat: clamp(2.2rem, 1.4rem + 2.6vw, 3.75rem);
   --text-lead: clamp(1.1rem, 1.04rem + 0.35vw, 1.3rem);
   --text-body: clamp(1.0313rem, 1rem + 0.12vw, 1.125rem);
   --text-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
@@ -157,7 +157,8 @@
   --color-dark-accent: var(--dark-accent);
   --color-dark-rule: var(--dark-rule);
 
-  --font-display: var(--font-display), "Bodoni MT", "Didot", "Times New Roman", serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 
   --text-display-xl: var(--text-display-xl);
@@ -202,8 +203,8 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     text-wrap: balance;
     overflow-wrap: break-word;
   }
@@ -213,6 +214,14 @@
   em,
   .italic-accent {
     font-style: italic;
+  }
+  /* The accent word in a headline switches to the serif italic: bold sans + elegant serif. */
+  :is(h1, h2, h3, h4, .display-xl, .display-l, .display-m, .display-s) em {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.1em;
+    letter-spacing: -0.01em;
+    line-height: 0.9;
   }
   ::selection {
     background: var(--accent);
@@ -268,29 +277,37 @@
 @utility display-xl {
   font-family: var(--font-display);
   font-size: var(--text-display-xl);
-  line-height: 0.92;
-  letter-spacing: -0.025em;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-weight: 600;
 }
 @utility display-l {
   font-family: var(--font-display);
   font-size: var(--text-display-l);
-  line-height: 0.98;
-  letter-spacing: -0.02em;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  font-weight: 600;
 }
 @utility display-m {
   font-family: var(--font-display);
   font-size: var(--text-display-m);
-  line-height: 1.05;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 600;
 }
 @utility display-s {
   font-family: var(--font-display);
   font-size: var(--text-display-s);
-  line-height: 1.15;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
 }
 @utility stat {
   font-family: var(--font-display);
   font-size: var(--text-stat);
   line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums lining-nums;
 }
 @utility lead {
