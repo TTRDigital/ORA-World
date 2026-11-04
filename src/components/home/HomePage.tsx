@@ -32,6 +32,8 @@ import { HomeFaq } from "./HomeFaq";
 import { PresentationCta } from "./PresentationCta";
 import { Interlude } from "./Interlude";
 import { Marquee } from "./Marquee";
+import { renders, lifestyle, tdm } from "@/content/seed/images";
+import { localize } from "@/lib/localize";
 import { CompareSlider } from "./CompareSlider";
 
 /**
@@ -68,7 +70,10 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <Interlude image={home.interludes[0].image} lines={home.interludes[0].lines} />
         <CompareSlider block={home.compare} />
         <DotGrid block={home.glance} />
-        <Marquee words={home.marquee} />
+        <Marquee
+          words={home.marquee}
+          images={[renders.poolTerrace, lifestyle.spa, tdm.aptLiving, lifestyle.beach, tdm.aerialCoast].map((im) => localize(im, locale))}
+        />
         <CollectionTabs
           block={home.residences}
           collections={collections.map((c) => ({ ...c, finishes: [], description: c.description.slice(0, 1) }))}
