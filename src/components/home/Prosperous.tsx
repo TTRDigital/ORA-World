@@ -166,7 +166,7 @@ export function Prosperous({ block }: Props) {
                 {t("readGuide")}
               </Button>
               <Button as={Link} href="/incentives" variant="text" className="text-white">
-                {c("learnMore")}
+                {t("incentivesLink")}
               </Button>
             </div>
           </div>
