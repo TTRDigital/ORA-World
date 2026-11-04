@@ -14,8 +14,8 @@ import { cn } from "@/lib/utils";
 
 /**
  * Discover. Choose. Arrive. — a "shutter" of three full-height panels that scrolls like any other
- * section (no pinning). As the section travels up the screen the panels open one after another at
- * a medium pace (each holds for at least a second), so the visitor reads 01, 02 and 03 on the way past and simply carries on; a brass
+ * section that is held on screen (CSS sticky) while the panels open one after another, about half a
+ * screen of scrolling each, and then releases to the next section, so the visitor reads 01, 02 and 03 on the way past and simply carries on; a brass
  * line on each panel tracks that progress. Hovering (mouse) or tapping a strip opens it at once.
  * Only transforms, opacity and the panels' flex-grow animate: the images keep a fixed size inside
  * each panel and are revealed by its edge rather than being resized.
@@ -29,7 +29,7 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
   const changedAt = useRef(0);
   const scrolledAt = useRef(0);
   const n = block.steps.length;
-  const HOLD = 1100;
+  const HOLD = 500;
 
   useEffect(() => {
     const el = root.current;
@@ -40,10 +40,10 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
       const r = el.getBoundingClientRect();
       const vh = window.innerHeight;
       if (r.bottom < 0 || r.top > vh) return;
-      // 0 when the section's top reaches 85% of the viewport, 1 when its bottom reaches 45%:
-      // roughly 400px of scrolling per panel. 01 opens as the section arrives, 02 while it fills
-      // the screen and 03 as it begins to leave.
-      const p = Math.min(Math.max((vh * 0.85 - r.top) / (vh * 0.4 + r.height), 0), 0.9999);
+      // The shutter is held on screen (CSS sticky) while the section's extra height scrolls past:
+      // about half a screen of scrolling per panel, then the page moves on to the next section.
+      const travel = Math.max(1, r.height - vh);
+      const p = Math.min(Math.max(-r.top / travel, 0), 0.9999);
       const f = p * n;
       const target = Math.floor(f);
       el.style.setProperty("--seg", (f - target).toFixed(3));
@@ -104,8 +104,9 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
       ref={root}
       aria-labelledby="journey-title"
       className="relative bg-basalt text-white"
+      style={{ height: `calc(100svh + ${n * 50}svh)` }}
     >
-      <div className="flex h-[92vh] max-h-[900px] min-h-[620px] flex-col overflow-hidden">
+      <div className="sticky top-[var(--header-offset)] flex h-[calc(100svh-var(--header-offset))] min-h-[560px] flex-col overflow-hidden">
         {/* Heading band */}
         <div className="container-x flex shrink-0 items-end justify-between gap-6 pt-16 pb-5 md:pt-20 md:pb-7">
           <div>
