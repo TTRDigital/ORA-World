@@ -47,7 +47,7 @@ export async function Hero({ hero, site }: Props) {
         </div>
       </div>
 
-      <div className="relative border-t border-white/20">
+      <div className="relative border-t border-white/20 bg-gradient-to-t from-basalt/55 to-basalt/20">
         <p className="container-x pt-4 eyebrow text-white/55">{h("statsOf")}</p>
         <div className="container-x">
           <dl className="grid grid-cols-2 md:grid-cols-4">

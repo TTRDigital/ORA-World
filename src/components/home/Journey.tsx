@@ -14,41 +14,62 @@ import { cn } from "@/lib/utils";
 
 /**
  * Discover. Choose. Arrive. — a "shutter" of three full-height panels that scrolls like any other
- * section (no pinning). The active panel widens (desktop) or grows tall (mobile), its image settles and
- * its story rises in, while the other two fold into slim numbered strips. Hover or tap a strip to open
- * it; while the section is on screen the panels also advance on their own, with a timer line.
+ * section (no pinning). As the section travels up the screen the panels open one after another,
+ * scroll-linked, so the visitor reads 01, 02 and 03 on the way past and simply carries on; a brass
+ * line on each panel tracks that progress. Hovering (mouse) or tapping a strip opens it at once.
+ * Only transforms, opacity and the panels' flex-grow animate: the images keep a fixed size inside
+ * each panel and are revealed by its edge rather than being resized.
  */
 export function Journey({ block }: { block: Localized<HomeContent["journey"]> }) {
   const t = useTranslations("home");
   const root = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
-  const [visible, setVisible] = useState(false);
-  const [cycle, setCycle] = useState(0);
+  const [step, setStep] = useState(0);
+  const stepRef = useRef(-1);
+  const scrolledAt = useRef(0);
   const n = block.steps.length;
-  const DWELL = 5200;
 
-  // No scroll pinning: the section scrolls normally. Panels open on hover or tap, and advance on
-  // their own while the section is on screen; hovering or tapping a panel opens it and restarts the timer.
   useEffect(() => {
     const el = root.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.4 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      if (r.bottom < 0 || r.top > vh) return;
+      // 0 when the section's top reaches 75% of the viewport, 1 once it has risen a full section
+      // height from there: panel 01 is open as it arrives, 03 while it is fully on screen.
+      const p = Math.min(Math.max((vh * 0.75 - r.top) / r.height, 0), 0.9999);
+      const f = p * n;
+      const idx = Math.floor(f);
+      el.style.setProperty("--seg", (f - idx).toFixed(3));
+      if (idx !== stepRef.current) {
+        stepRef.current = idx;
+        setStep(idx);
+        setActive(idx);
+      }
+    };
+    const onScroll = () => {
+      scrolledAt.current = performance.now();
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, [n]);
 
-  useEffect(() => {
-    if (!visible || document.documentElement.classList.contains("reduced-motion")) return;
-    const id = window.setTimeout(() => {
-      setActive((v) => (v + 1) % n);
-      setCycle((c) => c + 1);
-    }, DWELL);
-    return () => window.clearTimeout(id);
-  }, [visible, active, cycle, n]);
-
-  const open = (i: number) => {
+  // A real mouse move opens the panel under the pointer. The browser's synthetic hover update
+  // after a scroll (no movement) is ignored so scrolling and hover never fight each other.
+  const hover = (i: number) => (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse" || (e.movementX === 0 && e.movementY === 0)) return;
+    if (performance.now() - scrolledAt.current < 200) return;
     setActive(i);
-    setCycle((c) => c + 1);
   };
   const pad = (v: number) => String(v).padStart(2, "0");
 
@@ -88,36 +109,43 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
               <li
                 key={i}
                 className={cn(
-                  "group bg-basalt-soft relative min-h-0 min-w-0 overflow-hidden rounded-2xl transition-[flex-grow] duration-[1100ms] ease-[var(--ease-out-expo)]",
+                  "group bg-basalt-soft relative min-h-0 min-w-0 overflow-hidden rounded-2xl transition-[flex-grow] duration-[1000ms] ease-[cubic-bezier(0.65,0.05,0.36,1)]",
                   on ? "flex-[7]" : "flex-[1]",
                 )}
                 data-active={on || undefined}
-                onPointerEnter={(e) => {
-                  if (e.pointerType === "mouse") open(i);
-                }}
+                onPointerMove={hover(i)}
               >
-                <Image
-                  src={s.image.src}
-                  alt={s.image.alt}
-                  fill
-                  sizes={fullBleedSizes(s.image, 1.1)}
+                {/* Fixed-size image, centred in the panel: the panel's edge reveals it, it is never resized */}
+                <div className="pointer-events-none absolute top-1/2 left-1/2 h-[64vh] w-full -translate-x-1/2 -translate-y-1/2 md:h-full md:w-[78vw] md:max-w-[1400px]">
+                  <Image
+                    src={s.image.src}
+                    alt={s.image.alt}
+                    fill
+                    sizes={fullBleedSizes(s.image, 0.85)}
+                    className={cn(
+                      "object-cover will-change-transform transition-transform duration-[1400ms] ease-[var(--ease-out-expo)]",
+                      on ? "scale-100" : "scale-[1.08]",
+                    )}
+                    style={{ objectPosition: s.image.position }}
+                  />
+                </div>
+                <div
                   className={cn(
-                    "object-cover transition-[transform,filter] duration-[1600ms] ease-[var(--ease-out-expo)]",
-                    on ? "scale-100 brightness-100" : "scale-110 brightness-[.55] saturate-[.7]",
+                    "absolute inset-0 bg-gradient-to-t from-basalt/90 via-basalt/45 to-basalt/5 transition-opacity duration-700",
+                    on ? "opacity-100" : "opacity-0",
                   )}
-                  style={{ objectPosition: s.image.position }}
                 />
                 <div
                   className={cn(
-                    "absolute inset-0 transition-opacity duration-700",
-                    on ? "bg-gradient-to-t from-basalt/90 via-basalt/45 to-basalt/5" : "bg-basalt/30",
+                    "absolute inset-0 bg-basalt/50 transition-opacity duration-700",
+                    on ? "opacity-0" : "opacity-100",
                   )}
                 />
 
                 {/* Collapsed strip: number + title, rotated on desktop */}
                 <button
                   type="button"
-                  onClick={() => open(i)}
+                  onClick={() => setActive(i)}
                   aria-expanded={on}
                   className={cn(
                     "absolute inset-0 z-[1] flex cursor-pointer items-center gap-4 px-5 text-left transition-opacity duration-500 md:flex-col md:justify-start md:gap-6 md:px-0 md:pt-8",
@@ -134,8 +162,8 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
                 {/* Open panel: the story */}
                 <div
                   className={cn(
-                    "absolute inset-x-0 bottom-0 z-[2] p-6 transition-[opacity,transform] duration-[900ms] ease-[var(--ease-out-expo)] md:p-10 lg:p-14",
-                    on ? "translate-y-0 opacity-100 delay-300" : "pointer-events-none translate-y-8 opacity-0",
+                    "absolute inset-x-0 bottom-0 z-[2] p-6 transition-[opacity,transform] duration-[800ms] ease-[var(--ease-out-expo)] md:p-10 lg:p-14",
+                    on ? "translate-y-0 opacity-100 delay-200" : "pointer-events-none translate-y-6 opacity-0 duration-300",
                   )}
                 >
                   <p className="flex items-center gap-4 eyebrow text-brass-light">
@@ -161,24 +189,18 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
                   </div>
                 </div>
 
-                {/* Per-panel progress line */}
+                {/* Scroll progress line: full on panels already passed, filling on the current one */}
                 <span aria-hidden className="absolute inset-x-0 top-0 z-[2] h-[2px] bg-white/15">
-                  {on && (
-                    <span
-                      key={cycle}
-                      className={cn(
-                        "block h-full origin-left bg-brass-light",
-                        visible ? "animate-[journeybar_5.2s_linear_both]" : "scale-x-100",
-                      )}
-                    />
-                  )}
+                  <span
+                    className="block h-full origin-left bg-brass-light"
+                    style={{ transform: i < step ? "scaleX(1)" : i === step ? "scaleX(var(--seg, 0))" : "scaleX(0)" }}
+                  />
                 </span>
               </li>
             );
           })}
         </ol>
       </div>
-      <style>{`@keyframes journeybar{from{transform:scaleX(0)}to{transform:scaleX(1)}}`}</style>
     </section>
   );
 }

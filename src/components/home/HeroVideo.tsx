@@ -60,7 +60,7 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
   const selfHosted = !!(mp4 || webm);
   const origin = typeof window !== "undefined" ? window.location.origin : "";
   const yt = youtubeId
-    ? `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3&fs=0&enablejsapi=1&origin=${encodeURIComponent(origin)}`
+    ? `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&cc_load_policy=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3&fs=0&enablejsapi=1&origin=${encodeURIComponent(origin)}`
     : null;
   const frame = useRef<HTMLIFrameElement>(null);
 
@@ -78,6 +78,7 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
       send("setOption", ["cc", "track", {}]);
       send("mute");
     };
+    let last = -1;
     const onMessage = (e: MessageEvent) => {
       if (typeof e.data !== "string" || !/youtube/.test(e.origin)) return;
       try {
@@ -87,23 +88,26 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
           silence();
           send("playVideo");
         }
-        if (data.event === "infoDelivery" && state === 1) {
+        // The player reloads its caption module whenever the film loops or rebuffers, so switch
+        // captions off again on every state change, not only at start-up.
+        if (typeof state === "number" && state !== last) {
+          last = state;
           silence();
-          setPlaying(true);
+          if (state === 1) setPlaying(true);
         }
       } catch {}
     };
     window.addEventListener("message", onMessage);
-    // Ask the player to report state, and keep captions off while its modules load.
+    // Keep listening and keep captions off for as long as the film plays (a cheap postMessage);
+    // skipped while the tab is hidden.
     const id = window.setInterval(() => {
+      if (document.hidden) return;
       frame.current?.contentWindow?.postMessage(JSON.stringify({ event: "listening", id: "ora-hero" }), "*");
       silence();
-    }, 1000);
-    const stop = window.setTimeout(() => window.clearInterval(id), 20000);
+    }, 1500);
     return () => {
       window.removeEventListener("message", onMessage);
       window.clearInterval(id);
-      window.clearTimeout(stop);
     };
   }, [useVideo, selfHosted, yt]);
 
