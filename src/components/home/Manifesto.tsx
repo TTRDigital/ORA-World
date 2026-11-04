@@ -2,13 +2,13 @@ import { getTranslations } from "next-intl/server";
 import type { HomeContent } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { Accent } from "@/components/ui/Accent";
-import { Picture } from "@/components/ui/Picture";
+import { FanGallery } from "./FanGallery";
 import { ScrollHighlight } from "@/components/ui/ScrollHighlight";
 
 /**
  * Mission as a cinematic statement on basalt: the mission sentence set large in the reading face and
- * lighting up word by word as it scrolls, a three-image band moving at different parallax depths, and
- * four commitments whose rules draw in as they arrive.
+ * lighting up word by word as it scrolls, three renders that fan out from a stack into a
+ * triptych as they scroll in, and four commitment cards whose rules draw in as they arrive.
  */
 export async function Manifesto({ manifesto: m }: { manifesto: Localized<HomeContent["manifesto"]> }) {
   const t = await getTranslations("common");
@@ -32,38 +32,20 @@ export async function Manifesto({ manifesto: m }: { manifesto: Localized<HomeCon
           />
         </div>
 
-        {/* Three renders at three parallax depths */}
-        <div className="mt-16 grid grid-cols-6 items-start gap-3 md:mt-24 md:grid-cols-12 md:gap-6">
-          <Picture
-            image={m.image}
-            sizes="(min-width: 768px) 42vw, 66vw"
-            aspect="4/5"
-            parallax={0.06}
-            className="col-span-4 md:col-span-5"
-            showCaption={false}
-          />
-          <Picture
-            image={m.inset}
-            sizes="(min-width: 768px) 25vw, 33vw"
-            aspect="3/5"
-            parallax={0.1}
-            className="col-span-2 mt-20 md:col-span-3 md:mt-40"
-            showCaption={false}
-          />
-          <Picture
-            image={m.third}
-            sizes="(min-width: 768px) 33vw, 100vw"
-            aspect="1/1"
-            parallax={0.05}
-            className="col-span-6 md:col-span-4 md:mt-16"
-            showCaption={false}
-          />
+        {/* Three renders that fan out from a stack into a triptych as they scroll in */}
+        <div className="mt-16 md:mt-24">
+          <FanGallery images={[m.image, m.third, m.inset]} />
         </div>
         <p className="mt-4 text-[11px] tracking-[0.14em] text-white/55 uppercase">{t("rendering")}</p>
 
-        <ol className="mt-16 grid gap-x-6 gap-y-10 sm:grid-cols-2 md:mt-24 lg:grid-cols-4">
+        <ol className="mt-16 grid gap-4 sm:grid-cols-2 md:mt-24 md:gap-5 lg:grid-cols-4">
           {m.pillars.map((p, i) => (
-            <li key={i} className="group" data-reveal data-delay={i * 0.1}>
+            <li
+              key={i}
+              className="group rounded-[1.25rem] border border-white/10 p-6 transition-[transform,background-color,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-brass-light/40 hover:bg-white/[0.04] md:p-7"
+              data-reveal
+              data-delay={i * 0.1}
+            >
               <span aria-hidden className="block h-px w-full origin-left bg-white/15">
                 <span className="block h-px w-full origin-left scale-x-0 bg-brass-light transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-[.is-revealed]:scale-x-100" />
               </span>
