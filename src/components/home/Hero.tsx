@@ -14,7 +14,7 @@ export async function Hero({ hero, site }: Props) {
   const t = await getTranslations("common");
   const h = await getTranslations("home");
   return (
-    <section data-hero className="sticky top-0 z-0 flex min-h-dvh flex-col justify-end overflow-hidden text-white">
+    <section data-hero className="relative flex min-h-dvh flex-col justify-end overflow-hidden text-white">
       <HeroFx />
       <div data-hero-media className="absolute inset-0 will-change-transform">
         <HeroVideo

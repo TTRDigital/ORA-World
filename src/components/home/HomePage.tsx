@@ -61,7 +61,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
       <Preloader />
       <Hero hero={home.hero} site={site} />
       {/* The rest of the page is a sheet that slides over the pinned hero. */}
-      <div className="relative z-[1] bg-bg shadow-[0_-40px_80px_-30px_rgba(0,0,0,.45)]">
+      <div className="relative z-[1] bg-bg">
         <Journey block={home.journey} />
         <Walkthrough block={home.walkthrough} />
         <Manifesto manifesto={home.manifesto} />

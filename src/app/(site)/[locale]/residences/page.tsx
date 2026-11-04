@@ -3,6 +3,7 @@ import { localeOf, pageMetaFromMessages } from "@/lib/page";
 import { getCollections, getFloorPlans } from "@/lib/content";
 import { PageHero } from "@/components/ui/PageHero";
 import { CollectionCard } from "@/components/residences/CollectionCard";
+import { CollectionLane } from "@/components/residences/CollectionLane";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Link } from "@/i18n/navigation";
@@ -33,7 +34,17 @@ export default async function ResidencesPage({ params }: PageProps<"/[locale]/re
           { name: n("residences"), path: "/residences" },
         ])}
       />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} compact>
+        <div className="col-span-12 mt-10 md:mt-12">
+          <CollectionLane
+            collections={collections}
+            planCounts={Object.fromEntries(
+              collections.map((col) => [col.slug, plans.filter((p) => p.collection === col.slug).length]),
+            )}
+            plansLabel={n("floorPlans")}
+          />
+        </div>
+      </PageHero>
       <Section className="container-x">
         <div className="grid gap-x-6 gap-y-12 md:grid-cols-2">
           {collections.map((col, i) => (

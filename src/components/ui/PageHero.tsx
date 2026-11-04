@@ -76,11 +76,16 @@ export function PageHero({ eyebrow, title, intro, image, compact, children }: Pr
     );
   }
   return (
-    <section className="container-x border-b border-rule pt-[calc(var(--header-h)+4rem)] pb-14 md:pt-[calc(var(--header-h)+7rem)] md:pb-20">
+    <section
+      className={cn(
+        "container-x border-b border-rule pt-[calc(var(--header-h)+4rem)] pb-14 md:pb-20",
+        compact ? "pt-[calc(var(--header-h)+2.5rem)] md:pt-[calc(var(--header-h)+3.5rem)]" : "md:pt-[calc(var(--header-h)+7rem)]",
+      )}
+    >
       <div className="grid grid-cols-12 gap-x-6">
-        <div className="col-span-12 md:col-span-7">
+        <div className={cn("col-span-12", compact ? "md:col-span-8" : "md:col-span-7")}>
           {eyebrow && <Eyebrow className="mb-6">{eyebrow}</Eyebrow>}
-          <SplitLines as="h1" className="display-xl">
+          <SplitLines as="h1" className={compact ? "display-l" : "display-xl"}>
             <Accent text={title} />
           </SplitLines>
         </div>

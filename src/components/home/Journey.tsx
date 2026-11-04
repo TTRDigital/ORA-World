@@ -14,8 +14,8 @@ import { cn } from "@/lib/utils";
 
 /**
  * Discover. Choose. Arrive. — a "shutter" of three full-height panels that scrolls like any other
- * section (no pinning). As the section travels up the screen the panels open one after another,
- * scroll-linked, so the visitor reads 01, 02 and 03 on the way past and simply carries on; a brass
+ * section (no pinning). As the section travels up the screen the panels open one after another at
+ * a medium pace (each holds for at least a second), so the visitor reads 01, 02 and 03 on the way past and simply carries on; a brass
  * line on each panel tracks that progress. Hovering (mouse) or tapping a strip opens it at once.
  * Only transforms, opacity and the panels' flex-grow animate: the images keep a fixed size inside
  * each panel and are revealed by its edge rather than being resized.
@@ -26,8 +26,10 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
   const [active, setActive] = useState(0);
   const [step, setStep] = useState(0);
   const stepRef = useRef(-1);
+  const changedAt = useRef(0);
   const scrolledAt = useRef(0);
   const n = block.steps.length;
+  const HOLD = 1100;
 
   useEffect(() => {
     const el = root.current;
@@ -38,17 +40,40 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
       const r = el.getBoundingClientRect();
       const vh = window.innerHeight;
       if (r.bottom < 0 || r.top > vh) return;
-      // 0 when the section's top reaches 75% of the viewport, 1 once it has risen a full section
-      // height from there: panel 01 is open as it arrives, 03 while it is fully on screen.
-      const p = Math.min(Math.max((vh * 0.75 - r.top) / r.height, 0), 0.9999);
+      // 0 when the section's top reaches 85% of the viewport, 1 when its bottom reaches 45%:
+      // roughly 400px of scrolling per panel. 01 opens as the section arrives, 02 while it fills
+      // the screen and 03 as it begins to leave.
+      const p = Math.min(Math.max((vh * 0.85 - r.top) / (vh * 0.4 + r.height), 0), 0.9999);
       const f = p * n;
-      const idx = Math.floor(f);
-      el.style.setProperty("--seg", (f - idx).toFixed(3));
-      if (idx !== stepRef.current) {
-        stepRef.current = idx;
-        setStep(idx);
-        setActive(idx);
+      const target = Math.floor(f);
+      el.style.setProperty("--seg", (f - target).toFixed(3));
+      advance(target);
+    };
+    // Medium pace: even on a fast scroll each panel stays open for at least HOLD ms, stepping one
+    // panel at a time towards where the scroll position says it should be.
+    let timer = 0;
+    let wanted = 0;
+    const advance = (target: number) => {
+      wanted = target;
+      if (stepRef.current === -1) {
+        stepRef.current = target;
+        changedAt.current = performance.now();
+        setStep(target);
+        setActive(target);
+        return;
       }
+      if (target === stepRef.current || timer) return;
+      const wait = HOLD - (performance.now() - changedAt.current);
+      timer = window.setTimeout(() => {
+        timer = 0;
+        if (wanted === stepRef.current) return;
+        const next = stepRef.current + Math.sign(wanted - stepRef.current);
+        stepRef.current = next;
+        changedAt.current = performance.now();
+        setStep(next);
+        setActive(next);
+        advance(wanted);
+      }, Math.max(0, wait));
     };
     const onScroll = () => {
       scrolledAt.current = performance.now();
@@ -61,6 +86,7 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(raf);
+      window.clearTimeout(timer);
     };
   }, [n]);
 
