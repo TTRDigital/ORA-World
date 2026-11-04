@@ -37,7 +37,7 @@ export default async function ResidencesPage({ params }: PageProps<"/[locale]/re
       <Section className="container-x">
         <div className="grid gap-x-6 gap-y-12 md:grid-cols-2">
           {collections.map((col, i) => (
-            <div key={col.slug}>
+            <div key={col.slug} data-reveal data-delay={(i % 2) * 0.1}>
               <CollectionCard collection={col} aspect="aspect-[16/11]" priority={i === 0} headingLevel={2} />
               <p className="mt-3 small text-fg-muted">
                 {plans.filter((p) => p.collection === col.slug).length} · {n("floorPlans")}

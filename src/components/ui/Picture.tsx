@@ -51,7 +51,10 @@ export function Picture({
           priority={priority}
           placeholder={image.blurDataURL ? "blur" : "empty"}
           blurDataURL={image.blurDataURL}
-          className={cn("object-cover", imgClassName)}
+          className={cn(
+            "object-cover transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]",
+            imgClassName,
+          )}
           style={{ objectPosition: image.position }}
           data-reveal-inner
         />

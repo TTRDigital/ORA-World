@@ -13,67 +13,54 @@ import { fullBleedSizes } from "@/lib/sizes";
 import { cn } from "@/lib/utils";
 
 /**
- * Discover. Choose. Arrive. — a pinned "shutter" of three full-height panels. Scrolling through the
- * section opens each step in turn: the active panel widens (desktop) or grows tall (mobile), its image
- * settles and its story rises in, while the other two fold into slim numbered strips. Tapping a strip
- * jumps to that step. With reduced motion the section is not pinned and panels open on tap.
+ * Discover. Choose. Arrive. — a "shutter" of three full-height panels that scrolls like any other
+ * section (no pinning). The active panel widens (desktop) or grows tall (mobile), its image settles and
+ * its story rises in, while the other two fold into slim numbered strips. Hover or tap a strip to open
+ * it; while the section is on screen the panels also advance on their own, with a timer line.
  */
 export function Journey({ block }: { block: Localized<HomeContent["journey"]> }) {
   const t = useTranslations("home");
   const root = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [pinned, setPinned] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [cycle, setCycle] = useState(0);
   const n = block.steps.length;
+  const DWELL = 5200;
+
+  // No scroll pinning: the section scrolls normally. Panels open on hover or tap, and advance on
+  // their own while the section is on screen; hovering or tapping a panel opens it and restarts the timer.
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.4 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
-    if (document.documentElement.classList.contains("reduced-motion")) {
-      const id = requestAnimationFrame(() => setPinned(false));
-      return () => cancelAnimationFrame(id);
-    }
-    let raf = 0;
-    const measure = () => {
-      raf = 0;
-      const el = root.current;
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      const run = el.offsetHeight - window.innerHeight;
-      const p = run > 0 ? Math.min(1, Math.max(0, -r.top / run)) : 0;
-      setProgress(p);
-      setActive(Math.min(n - 1, Math.floor(p * n * 0.999)));
-    };
-    const on = () => {
-      if (!raf) raf = requestAnimationFrame(measure);
-    };
-    raf = requestAnimationFrame(measure);
-    window.addEventListener("scroll", on, { passive: true });
-    window.addEventListener("resize", on);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", on);
-      window.removeEventListener("resize", on);
-    };
-  }, [n]);
+    if (!visible || document.documentElement.classList.contains("reduced-motion")) return;
+    const id = window.setTimeout(() => {
+      setActive((v) => (v + 1) % n);
+      setCycle((c) => c + 1);
+    }, DWELL);
+    return () => window.clearTimeout(id);
+  }, [visible, active, cycle, n]);
 
   const open = (i: number) => {
-    const el = root.current;
-    if (!pinned || !el) return setActive(i);
-    const run = el.offsetHeight - window.innerHeight;
-    const top = el.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: top + run * ((i + 0.5) / n), behavior: "smooth" });
+    setActive(i);
+    setCycle((c) => c + 1);
   };
-
   const pad = (v: number) => String(v).padStart(2, "0");
 
   return (
     <section
       ref={root}
       aria-labelledby="journey-title"
-      className={cn("relative bg-basalt text-white", pinned ? "h-[340vh]" : "")}
+      className="relative bg-basalt text-white"
     >
-      <div className={cn("flex flex-col overflow-hidden", pinned && "sticky top-0 h-dvh")}>
+      <div className="flex h-[92vh] max-h-[900px] min-h-[620px] flex-col overflow-hidden">
         {/* Heading band */}
-        <div className="container-x flex shrink-0 items-end justify-between gap-6 pt-[calc(var(--header-h)+1.25rem)] pb-5 md:pb-7">
+        <div className="container-x flex shrink-0 items-end justify-between gap-6 pt-16 pb-5 md:pt-20 md:pb-7">
           <div>
             <Eyebrow className="text-brass-light">{block.eyebrow}</Eyebrow>
             <h2 id="journey-title" className="mt-4 display-l text-white">
@@ -105,6 +92,9 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
                   on ? "flex-[7]" : "flex-[1]",
                 )}
                 data-active={on || undefined}
+                onPointerEnter={(e) => {
+                  if (e.pointerType === "mouse") open(i);
+                }}
               >
                 <Image
                   src={s.image.src}
@@ -173,18 +163,22 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
 
                 {/* Per-panel progress line */}
                 <span aria-hidden className="absolute inset-x-0 top-0 z-[2] h-[2px] bg-white/15">
-                  <span
-                    className="block h-full origin-left bg-brass-light"
-                    style={{
-                      transform: `scaleX(${pinned ? Math.min(1, Math.max(0, progress * n - i)) : on ? 1 : 0})`,
-                    }}
-                  />
+                  {on && (
+                    <span
+                      key={cycle}
+                      className={cn(
+                        "block h-full origin-left bg-brass-light",
+                        visible ? "animate-[journeybar_5.2s_linear_both]" : "scale-x-100",
+                      )}
+                    />
+                  )}
                 </span>
               </li>
             );
           })}
         </ol>
       </div>
+      <style>{`@keyframes journeybar{from{transform:scaleX(0)}to{transform:scaleX(1)}}`}</style>
     </section>
   );
 }

@@ -67,8 +67,8 @@ export default async function AmenitiesPage({ params }: PageProps<"/[locale]/ame
               <ul
                 className={`mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 ${items.length === 2 ? "" : items.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
               >
-                {items.map((a) => (
-                  <li key={a.slug} id={a.slug} className="group scroll-mt-40">
+                {items.map((a, i) => (
+                  <li key={a.slug} id={a.slug} className="group scroll-mt-40" data-reveal data-delay={(i % 4) * 0.08}>
                     <Picture
                       image={a.image}
                       sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
