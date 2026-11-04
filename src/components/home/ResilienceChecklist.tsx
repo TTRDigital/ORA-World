@@ -85,7 +85,7 @@ export function ResilienceChecklist({ block }: { block: Localized<HomeContent["r
         <div className="mt-16 grid grid-cols-12 gap-x-6 md:mt-24">
           {/* Pinned board */}
           <div className="col-span-12 hidden lg:col-span-6 lg:block">
-            <div className="sticky top-[calc(var(--header-h)+1.5rem)]">
+            <div className="sticky top-[calc(var(--header-offset)+1.5rem)] transition-[top] duration-500">
               <div className="relative aspect-[5/6] max-h-[calc(100vh-var(--header-h)-3rem)] w-full overflow-hidden rounded-[1.5rem]">
                 <Image
                   src={block.image.src}
@@ -137,7 +137,7 @@ export function ResilienceChecklist({ block }: { block: Localized<HomeContent["r
           <div className="col-span-12 lg:col-span-5 lg:col-start-8">
             {/* Mobile: a compact board that rides along while the cards scroll */}
             <div
-              className="sticky top-[var(--header-h)] z-[2] -mx-[var(--gutter)] mb-6 border-b border-dark-rule bg-dark-bg/95 px-[var(--gutter)] py-4 backdrop-blur lg:hidden"
+              className="sticky top-[var(--header-offset)] z-[2] -mx-[var(--gutter)] mb-6 border-b border-dark-rule bg-dark-bg/95 px-[var(--gutter)] py-4 backdrop-blur transition-[top] duration-500 lg:hidden"
               aria-hidden
             >
               <div className="flex items-baseline justify-between">

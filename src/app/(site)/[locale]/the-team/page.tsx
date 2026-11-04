@@ -28,7 +28,7 @@ export default async function TeamPage({ params }: PageProps<"/[locale]/the-team
       />
       <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
       <Section className="container-x">
-        <ol className="space-y-24">
+        <ol className="space-y-16">
           {team
             .filter((m) => !m.placeholder)
             .map((m, i) => (
@@ -36,14 +36,14 @@ export default async function TeamPage({ params }: PageProps<"/[locale]/the-team
                 <div className={`col-span-12 md:col-span-4 ${i % 2 ? "md:order-2 md:col-start-9" : ""}`}>
                   {m.portrait.width < 600 ? (
                     /* The supplied portrait is small, so it is shown at a size where it stays sharp. */
-                    <figure className="flex aspect-[4/5] items-center justify-center bg-surface" data-reveal>
+                    <figure className="flex md:justify-end" data-reveal>
                       <Image
                         src={m.portrait.src}
                         alt={m.portrait.alt}
                         width={m.portrait.width}
                         height={m.portrait.height}
                         sizes={`${m.portrait.width}px`}
-                        className="h-[150px] w-[150px] rounded-full object-cover ring-1 ring-accent ring-offset-8 ring-offset-surface"
+                        className="h-[150px] w-[150px] rounded-full object-cover ring-1 ring-accent ring-offset-8 ring-offset-bg"
                       />
                     </figure>
                   ) : (

@@ -117,16 +117,19 @@ export async function ProjectPage({
       {others.length > 0 && (
         <Section className="container-x">
           <Eyebrow>{t("otherProjects")}</Eyebrow>
-          <ul className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2">
+          <ul className="mt-8 space-y-6">
             {others.map((o) => (
               <li key={o.slug}>
                 <Link
                   href={o.slug === "tesoro-del-mar" ? "/tesoro-del-mar" : `/projects/${o.slug}`}
-                  className="group block"
+                  className="group grid items-center gap-6 overflow-hidden rounded-[1.5rem] bg-surface/60 p-3 md:grid-cols-2 md:gap-10 md:p-4"
                 >
-                  <Picture image={o.hero} sizes="(min-width: 768px) 50vw, 100vw" aspect="16/10" />
-                  <h3 className="mt-5 display-s transition-colors group-hover:text-accent-ink">{o.name}</h3>
-                  <p className="mt-1 text-fg-muted">{o.tagline}</p>
+                  <Picture image={o.hero} sizes="(min-width: 768px) 46vw, 92vw" aspect="16/10" />
+                  <div className="px-3 pb-4 md:px-0 md:pr-8 md:pb-0">
+                    <h3 className="display-m transition-colors group-hover:text-accent-ink">{o.name}</h3>
+                    <p className="mt-3 lead text-fg-muted">{o.tagline}</p>
+                    <span className="mt-6 inline-block link-underline eyebrow text-accent-ink">{o.location}</span>
+                  </div>
                 </Link>
               </li>
             ))}

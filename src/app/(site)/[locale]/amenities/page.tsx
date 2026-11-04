@@ -41,7 +41,7 @@ export default async function AmenitiesPage({ params }: PageProps<"/[locale]/ame
       />
       <nav
         aria-label="Amenity groups"
-        className="sticky top-header z-20 container-x flex [scrollbar-width:none] gap-x-8 overflow-x-auto border-b border-rule bg-bg/95 py-4 backdrop-blur-sm"
+        className="sticky top-[var(--header-offset)] z-20 container-x flex [scrollbar-width:none] gap-x-8 overflow-x-auto border-b border-rule bg-bg/95 py-4 backdrop-blur-sm transition-[top] duration-500"
       >
         {ORDER.map((c) => (
           <a key={c} href={`#${c}`} className="shrink-0 link-underline py-1 eyebrow">
@@ -53,31 +53,30 @@ export default async function AmenitiesPage({ params }: PageProps<"/[locale]/ame
         const items = amenities.filter((a) => a.category === c);
         if (!items.length) return null;
         return (
-          <Section key={c} id={c} tone={gi % 2 ? "alt" : "default"} className="scroll-mt-28">
+          <Section key={c} id={c} tone={gi % 2 ? "alt" : "default"} className="scroll-mt-36">
             <div className="container-x">
-              <div className="grid grid-cols-12 gap-x-6">
-                <div className="col-span-12 md:col-span-4">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
                   <Eyebrow>{String(gi + 1).padStart(2, "0")}</Eyebrow>
-                  <h2 className="mt-4 display-l">{cat(c)}</h2>
+                  <h2 className="mt-4 display-l" data-reveal>
+                    {cat(c)}
+                  </h2>
                 </div>
+                <p className="eyebrow text-fg-muted tnum">{items.length}</p>
               </div>
-              <ul className="mt-12 grid grid-cols-12 gap-x-6 gap-y-14">
-                {items.map((a, i) => (
-                  <li
-                    key={a.slug}
-                    id={a.slug}
-                    className={`col-span-12 scroll-mt-28 ${i % 3 === 0 ? "md:col-span-7" : "md:col-span-5"} ${i % 3 === 2 ? "md:col-start-2" : ""}`}
-                  >
+              <ul
+                className={`mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 ${items.length === 2 ? "" : items.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
+              >
+                {items.map((a) => (
+                  <li key={a.slug} id={a.slug} className="group scroll-mt-40">
                     <Picture
                       image={a.image}
-                      sizes="(min-width: 768px) 55vw, 100vw"
-                      aspect={i % 3 === 0 ? "16/10" : "4/5"}
+                      sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
+                      aspect="4/3"
                       showCaption={false}
                     />
-                    <div className="mt-5 grid grid-cols-12 gap-x-6">
-                      <h3 className="col-span-12 display-s md:col-span-5">{a.name}</h3>
-                      <p className="col-span-12 text-fg-muted md:col-span-7">{a.description}</p>
-                    </div>
+                    <h3 className="mt-5 display-s">{a.name}</h3>
+                    <p className="mt-2 text-fg-muted">{a.description}</p>
                   </li>
                 ))}
               </ul>

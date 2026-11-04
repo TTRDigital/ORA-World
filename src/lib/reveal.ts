@@ -208,8 +208,14 @@ function splitWords(el: HTMLElement): HTMLElement[] {
   const out: HTMLElement[] = [];
   nodes.forEach((node) => {
     const frag = document.createDocumentFragment();
-    (node.textContent ?? "").split(/(\s+)/).forEach((part) => {
+    (node.textContent ?? "").split(/(\s+)/).forEach((part, idx) => {
       if (!part) return;
+      // Punctuation straight after a word (e.g. the comma after an italic accent) joins that word, so a
+      // line can never start with it.
+      if (idx === 0 && /^[,.;:!?)\]»”’]+$/.test(part) && out.length) {
+        out[out.length - 1].textContent += part;
+        return;
+      }
       if (/^\s+$/.test(part)) return void frag.appendChild(document.createTextNode(part));
       const mask = document.createElement("span");
       mask.dataset.word = "";

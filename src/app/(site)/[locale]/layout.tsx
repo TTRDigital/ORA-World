@@ -54,7 +54,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const site = await getSiteSettings(locale as Locale);
 
   return (
-    <html lang={locale} data-direction="a" className={`${display.variable} ${serif.variable} ${sans.variable}`} suppressHydrationWarning>
+    <html
+      lang={locale}
+      data-direction="a"
+      className={`${display.variable} ${serif.variable} ${sans.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {!isProd && (
           <script

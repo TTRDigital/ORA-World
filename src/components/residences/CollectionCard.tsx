@@ -22,7 +22,10 @@ export async function CollectionCard({
   const price = c.fromPrice ? `${t("from")} $${c.fromPrice.toLocaleString("en-US")}` : t("priceOnRequest");
   return (
     <Link href={`/residences/${c.slug}`} className="group block">
-      <figure className={`relative ${aspect} overflow-hidden rounded-[1.25rem] bg-surface`} data-reveal={priority ? undefined : "image"}>
+      <figure
+        className={`relative ${aspect} overflow-hidden rounded-[1.25rem] bg-surface`}
+        data-reveal={priority ? undefined : "image"}
+      >
         <Image
           src={c.image.src}
           alt={c.image.alt}

@@ -13,7 +13,6 @@ export function Cursor() {
   const ring = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
   const [label, setLabel] = useState<string | null>(null);
-  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     const ok =
@@ -42,11 +41,11 @@ export function Cursor() {
     const move = (e: PointerEvent) => {
       x = e.clientX;
       y = e.clientY;
-      el.style.opacity = "1";
-      const target = (e.target as Element | null)?.closest?.("[data-cursor], a, button, [role=tab]");
+      // Only appears over elements that carry a label ("View", "Drag", ...); never a bare dot or ring.
+      const target = (e.target as Element | null)?.closest?.("[data-cursor]");
       const key = target?.getAttribute("data-cursor");
+      el.style.opacity = key ? "1" : "0";
       setLabel(key ? key : null);
-      setHover(!!target);
     };
     const leave = () => {
       el.style.opacity = "0";
@@ -62,7 +61,7 @@ export function Cursor() {
   }, [enabled]);
 
   if (!enabled) return null;
-  const size = label ? 84 : hover ? 40 : 8;
+  const size = label ? 84 : 0;
   return (
     <div
       ref={ring}
@@ -74,12 +73,8 @@ export function Cursor() {
         style={{
           width: size,
           height: size,
-          borderColor: label || !hover ? "transparent" : "var(--color-brass)",
-          backgroundColor: label
-            ? "color-mix(in srgb, var(--color-basalt) 82%, transparent)"
-            : hover
-              ? "transparent"
-              : "var(--color-brass)",
+          borderColor: "transparent",
+          backgroundColor: "color-mix(in srgb, var(--color-basalt) 82%, transparent)",
           backdropFilter: label ? "blur(6px)" : undefined,
         }}
       >

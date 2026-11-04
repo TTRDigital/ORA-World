@@ -66,8 +66,9 @@
   /* layout */
   --gutter: 1rem;
   --container: 90rem;
-  --section-y: clamp(6rem, 4rem + 8vw, 12rem);
+  --section-y: clamp(4rem, 2.25rem + 5vw, 7.5rem);
   --header-h: 5rem;
+  --header-offset: var(--header-h);
 
   color-scheme: light;
 }

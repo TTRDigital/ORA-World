@@ -25,8 +25,6 @@ export default async function ResidencesPage({ params }: PageProps<"/[locale]/re
     getFloorPlans(locale),
     getSiteSettings(locale),
   ]);
-  const spans = ["md:col-span-7", "md:col-span-5 md:mt-24", "md:col-span-5 md:col-start-2", "md:col-span-6 md:mt-16"];
-  const aspects = ["aspect-[4/3]", "aspect-[4/5]", "aspect-[4/5]", "aspect-[16/10]"];
   return (
     <main id="main">
       <JsonLd
@@ -37,15 +35,10 @@ export default async function ResidencesPage({ params }: PageProps<"/[locale]/re
       />
       <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
       <Section className="container-x">
-        <div className="grid grid-cols-12 gap-x-6 gap-y-14">
+        <div className="grid gap-x-6 gap-y-12 md:grid-cols-2">
           {collections.map((col, i) => (
-            <div key={col.slug} className={`col-span-12 ${spans[i % spans.length]}`}>
-              <CollectionCard
-                collection={col}
-                aspect={aspects[i % aspects.length]}
-                priority={i === 0}
-                headingLevel={2}
-              />
+            <div key={col.slug}>
+              <CollectionCard collection={col} aspect="aspect-[16/11]" priority={i === 0} headingLevel={2} />
               <p className="mt-3 small text-fg-muted">
                 {plans.filter((p) => p.collection === col.slug).length} · {n("floorPlans")}
               </p>

@@ -56,6 +56,18 @@ export function Header({ site }: Props) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Sticky bars and pinned panels sit just below the header while it shows, and at the very top when it
+  // hides, so nothing ever peeks through the gap it leaves.
+  useEffect(() => {
+    document.documentElement.style.setProperty("--header-offset", hidden && !menuOpen ? "0px" : "var(--header-h)");
+  }, [hidden, menuOpen]);
+
+  useEffect(() => {
+    return () => {
+      document.documentElement.style.removeProperty("--header-offset");
+    };
+  }, []);
+
   const light = (overHero && !scrolled) || menuOpen;
 
   return (

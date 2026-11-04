@@ -30,11 +30,18 @@ export function SplitLines({
       const textNodes: Text[] = [];
       while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
       const wrappersToUnwrap = new Set<HTMLElement>();
+      let last: HTMLElement | null = null;
       textNodes.forEach((node) => {
         const parent = node.parentElement;
         const frag = document.createDocumentFragment();
-        node.textContent?.split(/(\s+)/).forEach((part) => {
+        node.textContent?.split(/(\s+)/).forEach((part, idx) => {
           if (!part) return;
+          // Punctuation right after a word (", explained") stays with that word: no stray space, no
+          // line starting with a comma.
+          if (idx === 0 && last && /^[,.;:!?)\]»”’]+$/.test(part)) {
+            last.textContent += part;
+            return;
+          }
           if (/^\s+$/.test(part)) {
             frag.appendChild(document.createTextNode(part));
             return;
@@ -43,6 +50,7 @@ export function SplitLines({
           w.className = "inline-block";
           w.dataset.word = "";
           w.textContent = part;
+          last = w;
           if (parent && parent !== el) {
             const clone = parent.cloneNode(false) as HTMLElement;
             clone.appendChild(w);

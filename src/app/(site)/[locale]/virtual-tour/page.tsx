@@ -42,11 +42,18 @@ export default async function TourPage({ params }: PageProps<"/[locale]/virtual-
               poster={home.hero.poster.src}
               className="mt-8 aspect-video w-full bg-black"
             />
-          ) : (
-            <div className="mt-8 flex aspect-video w-full items-center justify-center border border-dark-rule">
-              <p className="eyebrow text-dark-fg/60">{t("noFilm")}</p>
+          ) : site.filmYoutubeId ? (
+            <div className="mt-8 aspect-video w-full overflow-hidden rounded-[1.5rem] bg-black">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${site.filmYoutubeId}?rel=0&modestbranding=1&cc_load_policy=0&iv_load_policy=3&playsinline=1`}
+                title={t("film")}
+                loading="lazy"
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allowFullScreen
+                className="h-full w-full border-0"
+              />
             </div>
-          )}
+          ) : null}
         </div>
       </Section>
     </main>

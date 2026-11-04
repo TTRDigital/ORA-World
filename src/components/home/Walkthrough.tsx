@@ -71,7 +71,7 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
         <div className="mt-12 grid grid-cols-12 gap-x-6 md:mt-20">
           {/* Phone */}
           <div className="max-lg:contents lg:col-span-5 lg:col-start-2">
-            <div className="sticky top-[calc(var(--header-h)+0.5rem)] z-[2] col-span-12 -mx-[var(--gutter)] flex justify-center bg-bg-alt/90 px-[var(--gutter)] pt-2 pb-5 backdrop-blur lg:top-[calc(50vh-21rem)] lg:mx-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+            <div className="sticky top-[calc(var(--header-offset)+0.5rem)] z-[2] col-span-12 -mx-[var(--gutter)] flex justify-center bg-bg-alt/90 px-[var(--gutter)] pt-2 pb-5 backdrop-blur transition-[top] duration-500 lg:top-[calc(50vh-21rem)] lg:mx-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
               <div className="relative aspect-[9/19] h-[44vh] max-h-[680px] rounded-[2.6rem] bg-basalt p-[9px] shadow-[0_50px_90px_-40px_rgba(28,27,25,.75),inset_0_0_0_1.5px_rgba(255,255,255,.08)] lg:h-[42rem]">
                 <div className="bg-basalt-soft relative h-full w-full overflow-hidden rounded-[2.05rem]">
                   {block.steps.map((s, i) => (
