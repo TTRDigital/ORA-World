@@ -1,120 +1,78 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import type { HomeContent } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { Accent } from "@/components/ui/Accent";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Picture } from "@/components/ui/Picture";
 import { ScrollHighlight } from "@/components/ui/ScrollHighlight";
-import { coverSizes } from "@/lib/sizes";
 
 /**
- * Mission: a layered render collage with a rotating seal on one side; on the other the headline,
- * the mission statement brightening word by word as it scrolls, and four numbered commitments.
+ * Mission as a cinematic statement on basalt: the mission sentence set large in the reading face and
+ * lighting up word by word as it scrolls, a three-image band moving at different parallax depths, and
+ * four commitments whose rules draw in as they arrive.
  */
 export async function Manifesto({ manifesto: m }: { manifesto: Localized<HomeContent["manifesto"]> }) {
   const t = await getTranslations("common");
-  const seal = `${m.signature} · `;
   return (
-    <section className="overflow-hidden py-section" aria-labelledby="mission-title">
-      <div className="container-x grid grid-cols-12 gap-x-6 gap-y-14">
-        {/* Collage */}
-        <div className="relative col-span-12 lg:col-span-5">
-          <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
-            <figure
-              className="relative aspect-[4/3] overflow-hidden sm:aspect-[5/4] lg:aspect-[4/5]"
-              data-reveal="image"
-            >
-              <Image
-                src={m.image.src}
-                alt={m.image.alt}
-                fill
-                sizes={coverSizes(m.image, [
-                  [1024, 40, 4 / 5],
-                  [640, 100, 5 / 4],
-                  [0, 100, 4 / 3],
-                ])}
-                placeholder={m.image.blurDataURL ? "blur" : "empty"}
-                blurDataURL={m.image.blurDataURL}
-                className="object-cover"
-                style={{ objectPosition: m.image.position }}
-                data-reveal-inner
-              />
-              <figcaption className="absolute top-3 right-3 text-[10px] tracking-[0.14em] text-white/85 uppercase">
-                {t("rendering")}
-              </figcaption>
-            </figure>
-            <div
-              className="absolute right-0 -bottom-10 w-[42%] border-[6px] border-bg shadow-[0_30px_60px_-30px_rgba(0,0,0,.45)] lg:-right-10"
-              data-reveal
-              data-delay="0.2"
-            >
-              <span className="relative block aspect-[3/4]">
-                <Image
-                  src={m.inset.src}
-                  alt={m.inset.alt}
-                  fill
-                  sizes={coverSizes(m.inset, [
-                    [1024, 17, 3 / 4],
-                    [0, 38, 3 / 4],
-                  ])}
-                  className="object-cover"
-                  style={{ objectPosition: m.inset.position }}
-                />
-              </span>
-            </div>
-            <div
-              aria-hidden
-              className="absolute -top-8 -left-4 grid h-32 w-32 place-items-center rounded-full bg-bg text-accent-ink shadow-sm md:h-36 md:w-36"
-            >
-              <svg
-                viewBox="0 0 100 100"
-                className="absolute inset-0 h-full w-full motion-safe:animate-[spin_28s_linear_infinite]"
-              >
-                <defs>
-                  <path id="mission-seal" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
-                </defs>
-                <text className="fill-current text-[7px] uppercase">
-                  <textPath href="#mission-seal" textLength="236" lengthAdjust="spacing">
-                    {seal}
-                  </textPath>
-                </text>
-              </svg>
-              <span className="font-display text-2xl tracking-[0.08em]">ORA</span>
-            </div>
-          </div>
+    <section className="relative overflow-hidden py-section dark-section" aria-labelledby="mission-title">
+      <div className="container-x">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
+          <p className="eyebrow text-brass-light">{m.eyebrow}</p>
+          <p className="eyebrow text-white/60">{m.signature}</p>
         </div>
 
-        {/* Statement */}
-        <div className="col-span-12 lg:col-span-6 lg:col-start-7 lg:pt-6">
-          <Eyebrow>{m.eyebrow}</Eyebrow>
-          <h2 id="mission-title" className="mt-6 display-l" data-reveal>
-            <Accent text={m.title} />
+        <div className="mt-12 grid grid-cols-12 gap-x-6 gap-y-10 md:mt-20">
+          <h2 id="mission-title" className="col-span-12 display-l text-white lg:col-span-5" data-reveal>
+            <Accent text={m.title} className="text-brass-light" />
           </h2>
           <ScrollHighlight
             text={m.text}
-            className="mt-10 max-w-[38ch] font-display text-[clamp(1.35rem,1.1rem+0.9vw,1.9rem)] leading-[1.35]"
+            className="col-span-12 font-sans text-[clamp(1.35rem,1.05rem+1.25vw,2.25rem)] leading-[1.35] font-medium tracking-[-0.01em] lg:col-span-7"
+            dimClass="text-[#8f8677]"
+            litClass="text-white"
           />
-          <ol className="mt-14 grid gap-px border border-rule bg-rule sm:grid-cols-2">
-            {m.pillars.map((p, i) => (
-              <li
-                key={i}
-                className="group bg-bg p-6 transition-colors duration-500 hover:bg-bg-alt md:p-8"
-                data-reveal
-                data-delay={i * 0.08}
-              >
-                <span className="grid h-9 w-9 place-items-center rounded-full border border-accent eyebrow text-accent-ink tnum transition-colors duration-500 group-hover:bg-accent group-hover:text-white">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-6 display-s">{p.title}</h3>
-                <p className="mt-3 small text-fg-muted">{p.text}</p>
-              </li>
-            ))}
-          </ol>
-          <p className="mt-10 flex items-center gap-4 eyebrow text-accent-ink" data-reveal>
-            <span aria-hidden className="h-px w-10 bg-current" />
-            {m.signature}
-          </p>
         </div>
+
+        {/* Three renders at three parallax depths */}
+        <div className="mt-16 grid grid-cols-6 items-start gap-3 md:mt-24 md:grid-cols-12 md:gap-6">
+          <Picture
+            image={m.image}
+            sizes="(min-width: 768px) 42vw, 66vw"
+            aspect="4/5"
+            parallax={0.06}
+            className="col-span-4 md:col-span-5"
+            showCaption={false}
+          />
+          <Picture
+            image={m.inset}
+            sizes="(min-width: 768px) 25vw, 33vw"
+            aspect="3/5"
+            parallax={0.1}
+            className="col-span-2 mt-20 md:col-span-3 md:mt-40"
+            showCaption={false}
+          />
+          <Picture
+            image={m.third}
+            sizes="(min-width: 768px) 33vw, 100vw"
+            aspect="1/1"
+            parallax={0.05}
+            className="col-span-6 md:col-span-4 md:mt-16"
+            showCaption={false}
+          />
+        </div>
+        <p className="mt-4 text-[11px] tracking-[0.14em] text-white/55 uppercase">{t("rendering")}</p>
+
+        <ol className="mt-16 grid gap-x-6 gap-y-10 sm:grid-cols-2 md:mt-24 lg:grid-cols-4">
+          {m.pillars.map((p, i) => (
+            <li key={i} className="group" data-reveal data-delay={i * 0.1}>
+              <span aria-hidden className="block h-px w-full origin-left bg-white/15">
+                <span className="block h-px w-full origin-left scale-x-0 bg-brass-light transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-[.is-revealed]:scale-x-100" />
+              </span>
+              <p className="mt-6 font-display text-4xl text-brass-light tnum">{String(i + 1).padStart(2, "0")}</p>
+              <h3 className="mt-4 display-s text-white">{p.title}</h3>
+              <p className="mt-3 max-w-[34ch] text-white/75">{p.text}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

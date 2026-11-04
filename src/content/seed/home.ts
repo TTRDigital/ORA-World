@@ -64,6 +64,7 @@ export const home: HomeContent = {
     ],
     image: tdm.foyerLounge,
     inset: renders.towerDetail,
+    third: more.tdmDining,
   },
   context: {
     image: tdm.aerialCoast,

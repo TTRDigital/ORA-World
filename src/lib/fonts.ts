@@ -1,13 +1,16 @@
-import { Bodoni_Moda, Manrope } from "next/font/google";
+import { Instrument_Serif, Manrope } from "next/font/google";
 
-export const display = Bodoni_Moda({
+/**
+ * Display: Instrument Serif. A contemporary, moderately condensed serif with sturdy strokes, so large
+ * headlines stay crisp and readable (the earlier Didone's hairlines broke up at screen sizes).
+ */
+export const display = Instrument_Serif({
   subsets: ["latin", "latin-ext"],
+  weight: "400",
   style: ["normal", "italic"],
-  axes: ["opsz"],
   display: "swap",
   variable: "--font-display",
-  adjustFontFallback: false,
-  fallback: ["Bodoni MT", "Didot", "Times New Roman", "serif"],
+  fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
 export const sans = Manrope({

@@ -7,7 +7,17 @@ import { cn } from "@/lib/utils";
  * Paragraph whose words brighten from muted to full ink as it scrolls through the viewport.
  * Both states meet AA contrast, the text is real DOM text, and reduced motion shows it fully lit.
  */
-export function ScrollHighlight({ text, className }: { text: string; className?: string }) {
+export function ScrollHighlight({
+  text,
+  className,
+  dimClass = "text-fg-muted",
+  litClass = "text-fg",
+}: {
+  text: string;
+  className?: string;
+  dimClass?: string;
+  litClass?: string;
+}) {
   const ref = useRef<HTMLParagraphElement>(null);
   const words = text.split(/\s+/);
   const [lit, setLit] = useState(words.length);
@@ -39,7 +49,7 @@ export function ScrollHighlight({ text, className }: { text: string; className?:
   return (
     <p ref={ref} className={className}>
       {words.map((w, i) => (
-        <span key={i} className={cn("transition-colors duration-500", i < lit ? "text-fg" : "text-fg-muted")}>
+        <span key={i} className={cn("transition-colors duration-500", i < lit ? litClass : dimClass)}>
           {w}
           {i < words.length - 1 ? " " : ""}
         </span>

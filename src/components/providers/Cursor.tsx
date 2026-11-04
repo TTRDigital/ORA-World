@@ -62,7 +62,7 @@ export function Cursor() {
   }, [enabled]);
 
   if (!enabled) return null;
-  const size = label ? 88 : hover ? 44 : 22;
+  const size = label ? 84 : hover ? 40 : 8;
   return (
     <div
       ref={ring}
@@ -74,8 +74,12 @@ export function Cursor() {
         style={{
           width: size,
           height: size,
-          borderColor: label ? "transparent" : "var(--color-brass)",
-          backgroundColor: label ? "color-mix(in srgb, var(--color-basalt) 82%, transparent)" : "transparent",
+          borderColor: label || !hover ? "transparent" : "var(--color-brass)",
+          backgroundColor: label
+            ? "color-mix(in srgb, var(--color-basalt) 82%, transparent)"
+            : hover
+              ? "transparent"
+              : "var(--color-brass)",
           backdropFilter: label ? "blur(6px)" : undefined,
         }}
       >

@@ -14,7 +14,7 @@
   --color-basalt: #1c1b19;
   --color-basalt-soft: #242321;
   --color-charcoal: #2a2825;
-  --color-charcoal-soft: #5a5650;
+  --color-charcoal-soft: #4a4640;
   --color-brass: #a8864f;
   --color-brass-ink: #684d25;
   --color-brass-light: #d4b987;
@@ -40,7 +40,7 @@
   --scrim: rgb(28 27 25 / 0.55);
   --dark-bg: var(--color-basalt);
   --dark-fg: #f2ede4;
-  --dark-muted: #a39174;
+  --dark-muted: #b9ae9c;
   --dark-accent: var(--color-brass-light);
   --dark-rule: color-mix(in srgb, var(--color-brass-light) 35%, transparent);
 
@@ -53,15 +53,15 @@
   --dur-slow: 1200ms;
 
   /* type scale (fluid 390 → 1440) */
-  --text-display-xl: clamp(3.5rem, 1.1rem + 9.6vw, 8rem);
-  --text-display-l: clamp(2.75rem, 1.45rem + 4.2vw, 5.5rem);
-  --text-display-m: clamp(2rem, 1.45rem + 2.3vw, 3.5rem);
-  --text-display-s: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+  --text-display-xl: clamp(4rem, 1.3rem + 11vw, 10rem);
+  --text-display-l: clamp(2.9rem, 1.5rem + 5vw, 6.5rem);
+  --text-display-m: clamp(2.2rem, 1.5rem + 2.6vw, 4rem);
+  --text-display-s: clamp(1.65rem, 1.4rem + 0.9vw, 2.35rem);
   --text-stat: clamp(2.5rem, 1.6rem + 3vw, 4.5rem);
-  --text-lead: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
-  --text-body: clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);
-  --text-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
-  --text-eyebrow: clamp(0.6875rem, 0.67rem + 0.1vw, 0.75rem);
+  --text-lead: clamp(1.1rem, 1.04rem + 0.35vw, 1.3rem);
+  --text-body: clamp(1.0313rem, 1rem + 0.12vw, 1.125rem);
+  --text-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --text-eyebrow: clamp(0.75rem, 0.73rem + 0.1vw, 0.8125rem);
 
   /* layout */
   --gutter: 1rem;
@@ -253,8 +253,8 @@
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: var(--text-eyebrow);
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   line-height: 1;
 }
@@ -268,35 +268,30 @@
 @utility display-xl {
   font-family: var(--font-display);
   font-size: var(--text-display-xl);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 96;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
 }
 @utility display-l {
   font-family: var(--font-display);
   font-size: var(--text-display-l);
-  line-height: 1;
-  letter-spacing: -0.015em;
-  font-variation-settings: "opsz" 72;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
 }
 @utility display-m {
   font-family: var(--font-display);
   font-size: var(--text-display-m);
   line-height: 1.05;
-  font-variation-settings: "opsz" 48;
 }
 @utility display-s {
   font-family: var(--font-display);
   font-size: var(--text-display-s);
   line-height: 1.15;
-  font-variation-settings: "opsz" 24;
 }
 @utility stat {
   font-family: var(--font-display);
   font-size: var(--text-stat);
   line-height: 1;
   font-variant-numeric: tabular-nums lining-nums;
-  font-variation-settings: "opsz" 72;
 }
 @utility lead {
   font-size: var(--text-lead);
@@ -428,4 +423,21 @@ html.js:not(.reduced-motion) [data-reveal].is-revealed [data-tick] {
 .text-outline {
   color: transparent;
   -webkit-text-stroke: 1px var(--accent);
+}
+
+/* Film grain: a barely-there texture over the whole site that keeps flat grounds from looking digital. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media print {
+  body::after {
+    display: none;
+  }
 }

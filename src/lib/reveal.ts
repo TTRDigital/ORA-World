@@ -73,6 +73,26 @@ export async function initReveals(): Promise<() => void> {
     if (el.classList.contains("is-revealed") || !bind(el)) return;
     const image = el.dataset.reveal === "image";
     const inner = image ? el.querySelector<HTMLElement>("img, video, picture, [data-reveal-inner]") : null;
+    // Section titles get a masked, word-by-word rise instead of a plain fade.
+    if (/^H[12]$/.test(el.tagName) && !image) {
+      const words = splitWords(el);
+      if (words.length) {
+        watch(el, () => {
+          gsap.set(words, { yPercent: 115, rotate: 2 });
+          el.classList.add("is-revealed");
+          gsap.to(words, {
+            yPercent: 0,
+            rotate: 0,
+            duration: 1.15,
+            ease: "expo.out",
+            stagger: 0.055,
+            delay: Number(el.dataset.delay || 0),
+            onComplete: () => gsap.set(words, { clearProps: "transform" }),
+          });
+        });
+        return;
+      }
+    }
     watch(el, () => {
       // Set the start state before the class flips opacity back on, so there is no flash.
       if (image) gsap.set(el, { clipPath: "inset(0 0 100% 0)", opacity: 1 });
@@ -174,4 +194,40 @@ function formatCounter(el: HTMLElement, value: number) {
     ? value.toFixed(decimals)
     : Math.round(value).toLocaleString(document.documentElement.lang || "en");
   return `${el.dataset.prefix || ""}${n}${el.dataset.suffix || ""}`;
+}
+
+/**
+ * Wrap each word of a heading in a clipping span so it can rise from below its own baseline.
+ * Inline wrappers such as the italic accent <em> are kept around their words. Runs once per element.
+ */
+function splitWords(el: HTMLElement): HTMLElement[] {
+  if (el.dataset.split === "done") return Array.from(el.querySelectorAll<HTMLElement>("[data-word] > span"));
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const nodes: Text[] = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode as Text);
+  const out: HTMLElement[] = [];
+  nodes.forEach((node) => {
+    const frag = document.createDocumentFragment();
+    (node.textContent ?? "").split(/(\s+)/).forEach((part) => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) return void frag.appendChild(document.createTextNode(part));
+      const mask = document.createElement("span");
+      mask.dataset.word = "";
+      mask.style.display = "inline-block";
+      mask.style.overflow = "hidden";
+      mask.style.verticalAlign = "top";
+      // Room for descenders, accents and italic overhang so nothing is clipped at rest.
+      mask.style.padding = "0.08em 0.08em 0.16em 0.02em";
+      mask.style.margin = "-0.08em -0.08em -0.16em -0.02em";
+      const inner = document.createElement("span");
+      inner.style.display = "inline-block";
+      inner.textContent = part;
+      mask.appendChild(inner);
+      frag.appendChild(mask);
+      out.push(inner);
+    });
+    node.replaceWith(frag);
+  });
+  el.dataset.split = "done";
+  return out;
 }

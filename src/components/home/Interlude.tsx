@@ -35,7 +35,7 @@ export function Interlude({ image, lines }: { image: Localized<ImageRef>; lines:
         0,
       ).fromTo(pic, { scale: 1.18 }, { scale: 1, duration: 1.4 }, 0);
       items.forEach((it, i) => {
-        tl.fromTo(it, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.55 + i * 0.3);
+        tl.fromTo(it, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 0.3 + i * 0.22);
       });
       tl.to({}, { duration: 0.3 });
       kill = () => {
@@ -60,7 +60,7 @@ export function Interlude({ image, lines }: { image: Localized<ImageRef>; lines:
               style={{ objectPosition: image.position }}
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-basalt/50 via-basalt/40 to-basalt/65" />
+          <div className="absolute inset-0 bg-gradient-to-b from-basalt/25 via-basalt/35 to-basalt/70" />
           <div className="relative grid h-full place-items-center px-[var(--gutter)] text-center text-white">
             <div className="space-y-2 md:space-y-3">
               {lines.map((l, i) => (

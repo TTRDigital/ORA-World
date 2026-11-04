@@ -239,6 +239,7 @@ export interface HomeContent {
     pillars: { title: L; text: L }[];
     image: ImageRef;
     inset: ImageRef;
+    third: ImageRef;
   };
   context: { image: ImageRef; captions: L[] };
   place: { eyebrow: L; title: L; intro: L; chapters: Chapter[] };
