@@ -5,8 +5,6 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { TourEmbed } from "@/components/tour/TourEmbed";
-import { tdm } from "@/content/seed/images";
-import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/virtual-tour">) =>
@@ -28,12 +26,7 @@ export default async function TourPage({ params }: PageProps<"/[locale]/virtual-
           { name: n("virtualTour"), path: "/virtual-tour" },
         ])}
       />
-      <PageHero
-        eyebrow={t("eyebrow")}
-        title={t("title")}
-        intro={t("intro")}
-        image={localize(tdm.penthouseDining, locale)}
-      />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
       <Section className="container-x">
         <TourEmbed url={site.vrTourUrl} poster={home.tour.image} />
       </Section>

@@ -6,8 +6,6 @@ import { Section } from "@/components/ui/Section";
 import { Picture } from "@/components/ui/Picture";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
-import { more } from "@/content/seed/images";
-import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/press">) =>
@@ -35,7 +33,7 @@ export default async function PressPage({ params }: PageProps<"/[locale]/press">
           { name: n("press"), path: "/press" },
         ])}
       />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} image={localize(more.coastResort, locale)}>
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")}>
         <div className="col-span-12 mt-10 flex flex-wrap items-center gap-6">
           {site.mediaKitUrl ? (
             <Button as="a" href={site.mediaKitUrl} download>

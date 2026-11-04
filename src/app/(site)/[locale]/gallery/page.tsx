@@ -4,11 +4,7 @@ import { getGallery } from "@/lib/content";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
-import { tdm } from "@/content/seed/images";
-import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
-import { CompareSlider } from "@/components/home/CompareSlider";
-import { getHome } from "@/lib/content";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/gallery">) =>
   pageMetaFromMessages(params, "gallery", "/gallery");
@@ -20,7 +16,6 @@ export default async function GalleryPage({ params }: PageProps<"/[locale]/galle
     getTranslations("nav"),
     getGallery(locale),
   ]);
-  const home = await getHome(locale);
   return (
     <main id="main">
       <JsonLd
@@ -29,13 +24,7 @@ export default async function GalleryPage({ params }: PageProps<"/[locale]/galle
           { name: n("gallery"), path: "/gallery" },
         ])}
       />
-      <PageHero
-        eyebrow={t("eyebrow")}
-        title={t("title")}
-        intro={t("intro")}
-        image={localize(tdm.aerialCoast, locale)}
-      />
-      <CompareSlider block={home.compare} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
       <Section className="container-x">
         <GalleryGrid items={items} />
       </Section>

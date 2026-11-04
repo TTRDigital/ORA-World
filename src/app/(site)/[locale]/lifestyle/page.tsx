@@ -10,7 +10,6 @@ import { Accordion } from "@/components/ui/Accordion";
 import { lifestyle } from "@/content/seed/images";
 import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
-import { Journey } from "@/components/home/Journey";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/lifestyle">) =>
   pageMetaFromMessages(params, "lifestyle", "/lifestyle");
@@ -23,17 +22,6 @@ export default async function LifestylePage({ params }: PageProps<"/[locale]/lif
     getActivities(locale),
     getHome(locale),
   ]);
-  const shutter = {
-    eyebrow: t("eyebrow"),
-    title: t("activities"),
-    steps: activities.slice(0, 4).map((a) => ({
-      title: a.group,
-      text: a.items.map((it) => it.name).join(" · "),
-      image: a.image,
-      href: `#${a.slug}`,
-      cta: a.items[0]?.name ?? a.group,
-    })),
-  };
   const blocks = [home.family, home.pets];
   return (
     <main id="main">
@@ -70,12 +58,11 @@ export default async function LifestylePage({ params }: PageProps<"/[locale]/lif
           </div>
         </Section>
       ))}
-      <Journey block={shutter} />
       <Section className="container-x">
         <Eyebrow>{t("activities")}</Eyebrow>
         <div className="mt-12 space-y-20">
           {activities.map((g, i) => (
-            <div key={g.slug} id={g.slug} className="grid scroll-mt-28 grid-cols-12 gap-x-6 gap-y-8">
+            <div key={g.slug} className="grid grid-cols-12 gap-x-6 gap-y-8">
               <div className={`col-span-12 md:col-span-5 ${i % 2 ? "md:order-2 md:col-start-8" : ""}`}>
                 <Picture image={g.image} sizes="(min-width: 768px) 40vw, 100vw" aspect="4/5" showCaption={false} />
               </div>

@@ -40,7 +40,6 @@ const nextConfig: NextConfig = {
     // WebP only: AVIF encodes several times slower on first request, which left visitors
     // looking at a soft image while each size was generated.
     formats: ["image/webp"],
-    qualities: [65, 75],
     deviceSizes: [390, 640, 768, 1024, 1280, 1440, 1920, 2560],
     remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
   },

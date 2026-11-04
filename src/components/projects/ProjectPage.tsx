@@ -7,11 +7,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Picture } from "@/components/ui/Picture";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { LeadFormLazy as LeadForm } from "@/components/forms/LeadFormLazy";
-import { getHome, getProjects, getSiteSettings } from "@/lib/content";
-import { DotGrid } from "@/components/home/DotGrid";
-import { Walkthrough } from "@/components/home/Walkthrough";
-import { CompareSlider } from "@/components/home/CompareSlider";
-import { Interlude } from "@/components/home/Interlude";
+import { getProjects, getSiteSettings } from "@/lib/content";
 import { Link } from "@/i18n/navigation";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 
@@ -24,21 +20,13 @@ export async function ProjectPage({
   locale: Locale;
   path: string;
 }) {
-  const [t, c, n, site, projects, home] = await Promise.all([
+  const [t, c, n, site, projects] = await Promise.all([
     getTranslations("pages.tesoro"),
     getTranslations("common"),
     getTranslations("nav"),
     getSiteSettings(locale),
     getProjects(locale),
-    getHome(locale),
   ]);
-  const tdm = p.slug === "tesoro-del-mar";
-  const compare = {
-    ...home.compare,
-    items: home.compare.items.filter((it) =>
-      tdm ? !/Dorado Waterfalls/.test(it.kicker) : /Dorado Waterfalls/.test(it.kicker),
-    ),
-  };
   const others = projects.filter((x) => x.slug !== p.slug);
   return (
     <main id="main">
@@ -74,19 +62,6 @@ export async function ProjectPage({
           </div>
         </div>
       </Section>
-      {tdm ? (
-        <>
-          <DotGrid block={home.glance} />
-          <Walkthrough block={home.walkthrough} />
-          <CompareSlider block={compare} />
-        </>
-      ) : p.slug === "dorado-waterfalls" ? (
-        <>
-          <Walkthrough block={home.walkthroughDW} place={p.name} />
-          <Interlude image={home.interludeDW.image} lines={home.interludeDW.lines} />
-          {compare.items.length > 0 && <CompareSlider block={compare} />}
-        </>
-      ) : null}
       {p.sections.map((s, i) => (
         <Section key={i} tone={i % 2 ? "default" : "alt"}>
           <div className="container-x grid grid-cols-12 items-center gap-x-6 gap-y-10">

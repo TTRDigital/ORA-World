@@ -4,8 +4,6 @@ import { localeOf, pageMetaFromMessages } from "@/lib/page";
 import { getTeam } from "@/lib/content";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
-import { tdm } from "@/content/seed/images";
-import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 import { scaleSizes } from "@/lib/sizes";
 
@@ -28,12 +26,7 @@ export default async function TeamPage({ params }: PageProps<"/[locale]/the-team
           { name: n("team"), path: "/the-team" },
         ])}
       />
-      <PageHero
-        eyebrow={t("eyebrow")}
-        title={t("title")}
-        intro={t("intro")}
-        image={localize(tdm.foyerSignage, locale)}
-      />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
       <Section className="container-x">
         <ol className="space-y-16">
           {team

@@ -8,9 +8,6 @@ import { getSiteSettings } from "@/lib/content";
 import { siteUrl, isProd } from "@/lib/utils";
 import { MotionInit } from "@/components/providers/MotionInit";
 import { Cursor } from "@/components/providers/Cursor";
-import { ScrollProgress } from "@/components/layout/ScrollProgress";
-import { NextPage } from "@/components/layout/NextPage";
-import { tdm, renders, lifestyle, dwx, more } from "@/content/seed/images";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { PageTransition } from "@/components/providers/PageTransition";
 import { Consent } from "@/components/providers/Consent";
@@ -55,33 +52,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const site = await getSiteSettings(locale as Locale);
-  const n = await getTranslations({ locale, namespace: "nav" });
-  const lc = locale as Locale;
-  // The tour of the site, in reading order; the last page loops back to the first.
-  const nextItems = (
-    [
-      ["/residences", n("residences"), tdm.aptLiving],
-      ["/floor-plans", n("floorPlans"), tdm.aptStudy],
-      ["/tesoro-del-mar", n("tesoro"), renders.tdmExterior],
-      ["/projects/dorado-waterfalls", "Dorado Waterfalls", dwx.lagoonPool],
-      ["/amenities", n("amenities"), renders.poolTerrace],
-      ["/lifestyle", n("lifestyle"), lifestyle.beach],
-      ["/location", n("location"), tdm.aerialCoast],
-      ["/resilience", n("resilience"), tdm.aerialTowers],
-      ["/incentives", n("incentives"), more.sunsetChairs],
-      ["/investment", n("investment"), tdm.exteriorGolf],
-      ["/gallery", n("gallery"), tdm.foyerAtrium],
-      ["/virtual-tour", n("virtualTour"), tdm.penthouseDining],
-      ["/the-team", n("team"), tdm.foyerSignage],
-      ["/press", n("press"), more.coastResort],
-      ["/faq", n("faq"), tdm.foyerLounge],
-      ["/contact", n("contact"), tdm.foyerReception],
-    ] as const
-  ).map(([path, label, image]) => ({
-    path,
-    label,
-    image: { ...image, altText: image.alt[lc] },
-  }));
 
   return (
     <html
@@ -104,7 +74,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         <NextIntlClientProvider>
           <MotionInit />
           <Cursor />
-          <ScrollProgress />
           <SmoothScroll />
           <PageTransition />
           <SkipLink />
@@ -112,7 +81,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           <div id="page" className="flex-1">
             {children}
           </div>
-          <NextPage items={nextItems} />
           <Footer site={site} />
           <FloatingBar site={site} />
           <Consent />

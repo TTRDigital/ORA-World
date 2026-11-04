@@ -7,8 +7,6 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { RegistrationGate } from "@/components/gate/RegistrationGate";
 import { Estimator } from "@/components/ui/Estimator";
 import { Link } from "@/i18n/navigation";
-import { tdm } from "@/content/seed/images";
-import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/investment">) =>
@@ -32,12 +30,7 @@ export default async function InvestmentPage({ params }: PageProps<"/[locale]/in
           { name: n("investment"), path: "/investment" },
         ])}
       />
-      <PageHero
-        eyebrow={t("eyebrow")}
-        title={t("title")}
-        intro={t("intro")}
-        image={localize(tdm.exteriorGolf, locale)}
-      />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
 
       <Section className="container-x">
         <div className="grid grid-cols-12 gap-x-6 gap-y-10">
