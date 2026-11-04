@@ -63,7 +63,8 @@ v3 presents ORA World the way an architecture monograph presents a building: pla
    - swipe rails with a progress line and counter
    - pinned mini boards and story-style progress bars
    - tap targets of at least 44px
-     Review every chapter at 390px before calling it done.
+
+   Review every chapter at 390px before calling it done.
 9. **Every chapter is a "wow" whether you are scrolling through it, looking at it, or resting on it.** Each needs a moment of motion or interaction that rewards attention, with no static resting state that reads as a template.
 10. **No pop-ups.** No exit-intent modals, interstitials, timed overlays or newsletter pop-ups. The client asked for v1's exit-intent brochure modal to be removed. Offers live inside chapters.
 11. **Do not reuse v1's signature moves.** Avoid its hero "curtain" sheet, expanding-frame interludes, brand-word marquee, "Discover. Choose. Arrive." shutter, resilience 3×3 board and walkthrough story bars. v3's signatures are the split stage, drawings, plates and schedules.
@@ -404,7 +405,7 @@ Each chapter sets the stage, then fills the page. Each has an interaction. No tw
 - **Invest:** the notes, the payment estimator ("estimate only"), deposit steps.
 - **Visit:** the booking journey.
 - **Portfolio:** the catalogue with the island drawing.
-- **Brokers** with registration; **Press** (hidden from the index until real articles exist); **Careers**; **Hotel development**; **FAQ** with search; **Legal pages**; **Accessibility statement**.
+- **Brokers** with registration; **Press / Journal** (the three ORA World articles); **Careers**; **Hotel development**; **FAQ** with search; **Legal pages**; **Accessibility statement**.
 
 ## 6. Motion
 
