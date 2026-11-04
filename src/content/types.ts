@@ -272,6 +272,8 @@ export interface HomeContent {
     board: { value: string; unit: L; title: L; text: L }[];
   };
   walkthrough: { eyebrow: L; title: L; intro: L; steps: WalkStep[] };
+  walkthroughDW: { eyebrow: L; title: L; intro: L; steps: WalkStep[] };
+  interludeDW: { image: ImageRef; lines: L[] };
   portfolio: { eyebrow: L; title: L; intro: L };
   faq: { eyebrow: L; title: L; slugs: string[] };
   interludes: { image: ImageRef; lines: L[] }[];

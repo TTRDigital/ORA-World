@@ -111,7 +111,8 @@
     "email": "Correo",
     "hours": "Horario",
     "brochure": "Folleto",
-    "page": "Página"
+    "page": "Página",
+    "nextPage": "Siguiente"
   },
   "footer": {
     "salesGallery": "Galería de ventas",

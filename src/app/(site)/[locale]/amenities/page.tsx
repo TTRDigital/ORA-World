@@ -9,6 +9,8 @@ import { Picture } from "@/components/ui/Picture";
 import { renders } from "@/content/seed/images";
 import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
+import { FamilyPets } from "@/components/home/FamilyPets";
+import { getHome } from "@/lib/content";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/amenities">) =>
   pageMetaFromMessages(params, "amenities", "/amenities");
@@ -23,6 +25,7 @@ export default async function AmenitiesPage({ params }: PageProps<"/[locale]/ame
     getTranslations("nav"),
     getAmenities(locale),
   ]);
+  const home = await getHome(locale);
   await getSiteSettings(locale);
   return (
     <main id="main">
@@ -84,6 +87,14 @@ export default async function AmenitiesPage({ params }: PageProps<"/[locale]/ame
           </Section>
         );
       })}
+      <FamilyPets
+        family={home.family}
+        pets={home.pets}
+        related={{
+          family: amenities.filter((a) => a.category === "family").map((a) => a.name),
+          pets: amenities.filter((a) => a.category === "pets").map((a) => a.name),
+        }}
+      />
     </main>
   );
 }

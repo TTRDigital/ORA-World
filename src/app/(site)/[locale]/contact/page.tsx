@@ -8,8 +8,13 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { BookingEmbed } from "@/components/ui/BookingEmbed";
 import { LocationMap } from "@/components/map/LocationMap";
 import { telHref, whatsappHref } from "@/lib/utils";
+import { tdm } from "@/content/seed/images";
+import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd, organizationLd } from "@/lib/seo";
 import { IntentNote } from "@/components/forms/IntentNote";
+import { HomeFaq } from "@/components/home/HomeFaq";
+import { getHome as getHomeContent, getTeam } from "@/lib/content";
+import { getFaqs as getFaqList } from "@/lib/content";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/contact">) =>
   pageMetaFromMessages(params, "contact", "/contact");
@@ -23,6 +28,10 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
     getSiteSettings(locale),
     getCollections(locale),
   ]);
+  const [homeContent, team] = await Promise.all([getHomeContent(locale), getTeam(locale)]);
+  const reza = team.find((m) => m.slug === "reza-sabaii");
+  const advisor = reza ? { name: reza.name, role: reza.role, portrait: reza.portrait } : null;
+  const allFaqs = await getFaqList(locale);
   const ct = await getTranslations("contact");
   return (
     <main id="main">
@@ -35,7 +44,12 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
           organizationLd(),
         ]}
       />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
+      <PageHero
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        intro={t("intro")}
+        image={localize(tdm.foyerReception, locale)}
+      />
       <Section className="container-x">
         <div className="grid grid-cols-12 gap-x-6 gap-y-12">
           <aside className="col-span-12 md:col-span-4">
@@ -110,6 +124,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
           </div>
         </div>
       </Section>
+      <HomeFaq block={homeContent.faq} faqs={allFaqs} advisor={advisor} />
       <Section className="container-x">
         <LocationMap pois={[]} site={{ lat: site.siteLat, lng: site.siteLng, label: h("theSite") }} compact />
       </Section>

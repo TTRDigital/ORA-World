@@ -9,6 +9,7 @@ import { LocationMap } from "@/components/map/LocationMap";
 import { lifestyle } from "@/content/seed/images";
 import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
+import { Interlude } from "@/components/home/Interlude";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/location">) =>
   pageMetaFromMessages(params, "location", "/location");
@@ -37,6 +38,7 @@ export default async function LocationPage({ params }: PageProps<"/[locale]/loca
         intro={t("intro")}
         image={localize(lifestyle.beach, locale)}
       />
+      <Interlude image={home.interludes[0].image} lines={home.interludes[0].lines} />
       <Section className="container-x">
         <Eyebrow>{t("proximity")}</Eyebrow>
         <LocationMap

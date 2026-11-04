@@ -30,7 +30,7 @@ export function Picture({
   className,
   imgClassName,
   reveal = true,
-  parallax,
+  parallax = 0.04,
   showCaption = true,
   aspect,
 }: Props) {

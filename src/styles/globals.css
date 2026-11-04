@@ -459,3 +459,14 @@ body::after {
     display: none;
   }
 }
+
+/* Inner pages: when the hero is pinned, everything after it is a sheet that slides over it. Zero
+   specificity, so any section's own background or position still wins. */
+:where(main:has(> [data-hero-sticky])) > :where(:not([data-hero-sticky], script)) {
+  position: relative;
+  z-index: 1;
+  background-color: var(--bg);
+}
+:where(main > [data-hero-sticky] + :not(script)) {
+  box-shadow: 0 -40px 80px -30px rgb(0 0 0 / 0.45);
+}

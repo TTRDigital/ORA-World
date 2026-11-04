@@ -6,6 +6,8 @@ import { Section } from "@/components/ui/Section";
 import { PlanLibrary } from "@/components/plans/PlanLibrary";
 import { PlanCard } from "@/components/plans/PlanCard";
 import { ShortlistBar } from "@/components/plans/ShortlistBar";
+import { tdm } from "@/content/seed/images";
+import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/floor-plans">) =>
@@ -40,7 +42,7 @@ export default async function FloorPlansPage({ params }: PageProps<"/[locale]/fl
           { name: n("floorPlans"), path: "/floor-plans" },
         ])}
       />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} image={localize(tdm.aptStudy, locale)} />
       <Section className="container-x">
         <PlanLibrary
           plans={plans}

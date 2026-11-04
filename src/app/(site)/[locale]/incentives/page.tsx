@@ -7,7 +7,10 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Accordion } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
+import { more } from "@/content/seed/images";
+import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
+import { Prosperous } from "@/components/home/Prosperous";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/incentives">) =>
   pageMetaFromMessages(params, "incentives", "/incentives");
@@ -31,7 +34,13 @@ export default async function IncentivesPage({ params }: PageProps<"/[locale]/in
           { name: n("incentives"), path: "/incentives" },
         ])}
       />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
+      <PageHero
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        intro={t("intro")}
+        image={localize(more.sunsetChairs, locale)}
+      />
+      <Prosperous block={home.prosperous} incentives={incentives} />
       <Section className="container-x">
         <div className="grid grid-cols-12 gap-x-6 gap-y-12">
           <div className="col-span-12 md:col-span-4">

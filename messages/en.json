@@ -111,7 +111,8 @@
     "email": "Email",
     "hours": "Hours",
     "brochure": "Brochure",
-    "page": "Page"
+    "page": "Page",
+    "nextPage": "Next"
   },
   "footer": {
     "salesGallery": "Sales Gallery",

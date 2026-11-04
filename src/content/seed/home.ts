@@ -1,5 +1,5 @@
 import type { HomeContent } from "../types";
-import { renders, lifestyle, tdm, more, drawings } from "./images";
+import { renders, lifestyle, tdm, more, drawings, dwx } from "./images";
 
 export const home: HomeContent = {
   hero: {
@@ -691,6 +691,79 @@ export const home: HomeContent = {
           es: "Torres escalonadas a lo largo de una avenida de palmeras",
         },
       },
+    ],
+  },
+  // Dorado Waterfalls: copy quoted or paraphrased from oraworld.com/dorado-waterfalls; captions describe the renders.
+  walkthroughDW: {
+    eyebrow: { en: "Step inside", es: "Pase adelante" },
+    title: { en: "A walk through *Dorado Waterfalls*", es: "Un recorrido por *Dorado Waterfalls*" },
+    intro: {
+      en: "From the water wall at the door to the pool above the treetops, follow the renderings.",
+      es: "Desde el muro de agua en la entrada hasta la piscina sobre los árboles, recorra los renderings.",
+    },
+    steps: [
+      {
+        label: { en: "Arrival", es: "Llegada" },
+        title: { en: "Water at the threshold", es: "Agua en el umbral" },
+        text: {
+          en: "Cascading water walls, reflective pools and small streams wind through the terraces and common areas.",
+          es: "Muros de agua, espejos reflectantes y pequeños arroyos recorren terrazas y áreas comunes.",
+        },
+        image: dwx.arrival,
+      },
+      {
+        label: { en: "The lobby", es: "El vestíbulo" },
+        title: { en: "Glass, light and green", es: "Cristal, luz y verde" },
+        text: {
+          en: "Fluid, multi-tiered designs with glass facades, green terraces and flowing water elements.",
+          es: "Diseños fluidos y escalonados con fachadas de cristal, terrazas verdes y elementos de agua.",
+        },
+        image: dwx.lobbyStair,
+      },
+      {
+        label: { en: "Dining", es: "Comedor" },
+        title: { en: "Gardens overhead", es: "Jardines suspendidos" },
+        text: {
+          en: "Native plants, flowers and trees extend the natural landscape into every space.",
+          es: "Plantas, flores y árboles nativos prolongan el paisaje natural en cada espacio.",
+        },
+        image: dwx.restaurant,
+      },
+      {
+        label: { en: "The residence", es: "La residencia" },
+        title: { en: "Living rooms open to the hills", es: "Salas abiertas a las colinas" },
+        text: {
+          en: "Terraces give every residence its own private outdoor space.",
+          es: "Las terrazas ofrecen a cada residencia su propio espacio exterior privado.",
+        },
+        image: dwx.residenceLiving,
+      },
+      {
+        label: { en: "The private suite", es: "La suite privada" },
+        title: { en: "A quiet principal suite", es: "Una suite principal serena" },
+        text: {
+          en: "A calm principal bedroom beneath a crystal chandelier.",
+          es: "Un dormitorio principal sereno bajo un candelabro de cristal.",
+        },
+        image: dwx.residenceBedroom,
+      },
+      {
+        label: { en: "The rooftop", es: "La azotea" },
+        title: { en: "A pool above the treetops", es: "Una piscina sobre los árboles" },
+        text: {
+          en: "A rooftop pool and terrace crown the tower.",
+          es: "Una piscina y terraza en la azotea coronan la torre.",
+        },
+        image: dwx.rooftop,
+      },
+    ],
+  },
+  interludeDW: {
+    image: dwx.towers,
+    lines: [
+      { en: "Dorado Waterfalls", es: "Dorado Waterfalls" },
+      { en: "25–30 minutes from San Juan", es: "A 25–30 minutos de San Juan" },
+      { en: "Act 60 eligible", es: "Elegible para la Ley 60" },
     ],
   },
 };

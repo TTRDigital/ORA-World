@@ -6,6 +6,7 @@ import { SplitLines } from "./SplitLines";
 import { Eyebrow } from "./Eyebrow";
 import { cn } from "@/lib/utils";
 import { fullBleedSizes } from "@/lib/sizes";
+import { HeroFx } from "@/components/home/HeroFx";
 
 type Props = {
   eyebrow?: string;
@@ -25,17 +26,23 @@ export function PageHero({ eyebrow, title, intro, image, compact, children }: Pr
     return (
       <section
         data-hero
-        className={cn("relative flex flex-col justify-end text-white", compact ? "min-h-[60vh]" : "min-h-[82vh]")}
+        data-hero-sticky
+        className={cn(
+          "sticky top-0 z-0 flex flex-col justify-end overflow-hidden text-white",
+          compact ? "min-h-[72vh]" : "min-h-[92vh]",
+        )}
       >
+        <HeroFx />
         <div className="absolute inset-0 overflow-hidden bg-basalt">
-          <div className="absolute inset-x-0 -inset-y-[3%]" data-parallax="0.03">
+          <div data-hero-media className="absolute inset-0 will-change-transform">
             <Image
               src={image.src}
               alt={image.alt}
               fill
               priority
               fetchPriority="high"
-              sizes={fullBleedSizes(image, 1.06)}
+              sizes={fullBleedSizes(image)}
+              quality={65}
               className="object-cover"
               style={{ objectPosition: image.position }}
               placeholder={image.blurDataURL ? "blur" : "empty"}
@@ -44,8 +51,12 @@ export function PageHero({ eyebrow, title, intro, image, compact, children }: Pr
           </div>
           <div className="absolute inset-0 scrim-bottom" />
           <div className="absolute inset-x-0 top-0 h-40 scrim-top" />
+          <div data-hero-shade className="pointer-events-none absolute inset-0 bg-basalt opacity-0" />
         </div>
-        <div className="relative container-x grid grid-cols-12 gap-x-6 pt-[calc(var(--header-h)+4rem)] pb-14 md:pb-20">
+        <div
+          data-hero-content
+          className="relative container-x grid grid-cols-12 gap-x-6 pt-[calc(var(--header-h)+4rem)] pb-14 md:pb-20"
+        >
           <div className="col-span-12 md:col-span-8">
             {eyebrow && (
               <p className="mb-6 eyebrow text-brass-light" data-reveal>

@@ -7,10 +7,14 @@ import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
+import { tdm } from "@/content/seed/images";
+import { localize } from "@/lib/localize";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 import { BrochureSection } from "@/components/residences/BrochureSection";
 import { Portfolio } from "@/components/residences/Portfolio";
 import { getSiteSettings } from "@/lib/content";
+import { CollectionTabs } from "@/components/home/CollectionTabs";
+import { getHome as getHomeContent } from "@/lib/content";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/residences">) =>
   pageMetaFromMessages(params, "residences", "/residences");
@@ -25,6 +29,10 @@ export default async function ResidencesPage({ params }: PageProps<"/[locale]/re
     getFloorPlans(locale),
     getSiteSettings(locale),
   ]);
+  const homeContent = await getHomeContent(locale);
+  const planCounts = Object.fromEntries(
+    collections.map((col) => [col.slug, plans.filter((p) => p.collection === col.slug).length]),
+  );
   return (
     <main id="main">
       <JsonLd
@@ -33,7 +41,8 @@ export default async function ResidencesPage({ params }: PageProps<"/[locale]/re
           { name: n("residences"), path: "/residences" },
         ])}
       />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} image={localize(tdm.aptLiving, locale)} />
+      <CollectionTabs block={homeContent.residences} collections={collections} planCounts={planCounts} />
       <Section className="container-x">
         <div className="grid gap-x-6 gap-y-12 md:grid-cols-2">
           {collections.map((col, i) => (

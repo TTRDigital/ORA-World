@@ -15,7 +15,13 @@ import { cn } from "@/lib/utils";
  * rendering with a slim app-style frame (status bar, room label, progress dots). On phones the device
  * rides at the top of the screen and the cards pass underneath.
  */
-export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrough"]> }) {
+export function Walkthrough({
+  block,
+  place = "Tesoro Del Mar",
+}: {
+  block: Localized<HomeContent["walkthrough"]>;
+  place?: string;
+}) {
   const t = useTranslations("common");
   const h = useTranslations("home");
   const [active, setActive] = useState(0);
@@ -100,9 +106,7 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
                       <span className="h-5 w-20 rounded-full bg-basalt" aria-hidden />
                       <span aria-hidden>●●●</span>
                     </div>
-                    <p className="mt-3 text-[10px] tracking-[0.14em] text-white/80 uppercase">
-                      ORA World · Tesoro Del Mar
-                    </p>
+                    <p className="mt-3 text-[10px] tracking-[0.14em] text-white/80 uppercase">ORA World · {place}</p>
                   </div>
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-basalt/85 to-transparent px-5 pt-14 pb-5 text-white">
                     <p className="text-[10px] tracking-[0.14em] text-brass-light uppercase tnum">
