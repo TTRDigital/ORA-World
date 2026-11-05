@@ -8,6 +8,7 @@ import type { SiteSettings } from "@/content/types";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 import { headerNav } from "./nav";
+import { TextRoll } from "@/components/vendor/skiper-ui/skiper58";
 import { LanguageToggle } from "./LanguageToggle";
 import { OverlayMenu } from "./OverlayMenu";
 
@@ -108,8 +109,13 @@ export function Header({ site }: Props) {
 
           <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
             {headerNav.map((item) => (
-              <Link key={item.key} href={item.href} className="link-underline py-2 eyebrow">
-                {t(item.key)}
+              <Link key={item.key} href={item.href} aria-label={t(item.key)} className="py-2 eyebrow">
+                {/* Skiper UI text roll: letters roll up and are replaced from below on hover */}
+                <span aria-hidden>
+                  <TextRoll center className="leading-[1.1]">
+                    {t(item.key)}
+                  </TextRoll>
+                </span>
               </Link>
             ))}
           </nav>

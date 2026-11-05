@@ -98,3 +98,20 @@ No Vercel token was available in the build environment, so the staging deploymen
 CLS is 0 on every page; LCP on the image-led inner pages is 3.5–4.5 s under Lighthouse's simulated slow 4G (the pessimistic model charges all page JavaScript against the hero image), 0.9–1.1 s on desktop. Desktop scores on the plan and location pages are held back by the same simulated LCP; TBT is under 100 ms there.
 
 Screenshots of every direction and key page (desktop 1440 / mobile 390) are in `reports/screenshots/`.
+
+## Third-party UI components
+
+Some components are installed as source from shadcn-style registries with `scripts/registry-add.mjs`
+(it copies the files into `src/components/vendor/<registry>/`, like `shadcn add`, without running
+`shadcn init`):
+
+| Library | Component | Used for |
+| --- | --- | --- |
+| [Skiper UI](https://skiper-ui.com) | `skiper58` (TextRoll) | Header navigation hover |
+| [Skiper UI](https://skiper-ui.com) | `skiper47` (Carousel_001, Swiper coverflow) | Gallery page opener |
+| [Skiper UI](https://skiper-ui.com) | `skiper40` (links) | Installed, not yet used |
+| [Vengeance UI](https://www.vengeanceui.com) | `perspective-carousel` | Homepage "Room by room" gallery |
+| [Vengeance UI](https://www.vengeanceui.com) | `stats-counter` | Hero stats count-up (edited: server-rendered value, thousands separators) |
+
+Skiper UI's free components require attribution to Skiper UI; the attribution is kept in each file's
+header. Dependencies added for them: `framer-motion`, `swiper`, `lucide-react`.

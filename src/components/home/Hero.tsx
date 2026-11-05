@@ -7,6 +7,7 @@ import { HeroVideo } from "./HeroVideo";
 import { FilmButton } from "./FilmLightbox";
 import { ScrollToButton } from "@/components/ui/ScrollToButton";
 import { HeroFx } from "./HeroFx";
+import StatsCounter from "@/components/vendor/vengeance-ui/stats-counter";
 
 type Props = { hero: Localized<HomeContent["hero"]>; site: Localized<SiteSettings> };
 
@@ -60,11 +61,7 @@ export async function Hero({ hero, site }: Props) {
                   {s.value === null ? (
                     <span className="text-white/40">—</span>
                   ) : (
-                    <span data-counter={s.value} data-prefix={s.prefix || ""} data-suffix={s.suffix || ""}>
-                      {s.prefix}
-                      {s.value.toLocaleString("en-US")}
-                      {s.suffix}
-                    </span>
+                    <StatsCounter value={s.value} prefix={s.prefix || ""} suffix={s.suffix || ""} duration={1.8} />
                   )}
                 </dd>
                 <dt className="mt-3 eyebrow text-white/70">

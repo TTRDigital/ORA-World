@@ -35,6 +35,7 @@ import { Marquee } from "./Marquee";
 import { renders, lifestyle, tdm } from "@/content/seed/images";
 import { localize } from "@/lib/localize";
 import { CompareSlider } from "./CompareSlider";
+import { HomeGallery } from "./HomeGallery";
 
 /**
  * Direction A · Travertine Editorial. Every section is a small story: numbered journey cards,
@@ -69,6 +70,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <Manifesto manifesto={home.manifesto} />
         <Interlude image={home.interludes[0].image} lines={home.interludes[0].lines} />
         <CompareSlider block={home.compare} />
+        <HomeGallery locale={locale} />
         <DotGrid block={home.glance} />
         <Marquee
           words={home.marquee}

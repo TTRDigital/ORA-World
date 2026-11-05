@@ -258,7 +258,10 @@
     "answersFromFaq": "Answers from our FAQ",
     "typing": "Typing",
     "tapQuestion": "Tap a question",
-    "incentivesLink": "Act 60 incentives"
+    "incentivesLink": "Act 60 incentives",
+    "galleryTitle": "Room by *room*",
+    "galleryIntro": "The lobby, apartment 1403, the penthouse and a hotel suite, as artist's conceptual renderings. Turn through them with the arrows, the dots or your keyboard.",
+    "galleryCta": "Open the full gallery"
   },
   "amenityCat": {
     "wellness": "Wellness",
