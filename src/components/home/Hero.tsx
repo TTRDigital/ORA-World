@@ -7,7 +7,6 @@ import { HeroVideo } from "./HeroVideo";
 import { FilmButton } from "./FilmLightbox";
 import { ScrollToButton } from "@/components/ui/ScrollToButton";
 import { HeroFx } from "./HeroFx";
-import StatsCounter from "@/components/vendor/vengeance-ui/stats-counter";
 
 type Props = { hero: Localized<HomeContent["hero"]>; site: Localized<SiteSettings> };
 
@@ -30,17 +29,11 @@ export async function Hero({ hero, site }: Props) {
       <div className="absolute inset-x-0 top-0 h-48 scrim-top" />
       <div data-hero-shade className="pointer-events-none absolute inset-0 bg-basalt opacity-0" />
 
-      <div data-hero-content className="relative container-x pt-[calc(var(--header-h)+4rem)] pb-14 md:pb-20">
-        <p className="mb-6 eyebrow text-brass-light" data-reveal>
-          {hero.eyebrow}
-        </p>
+      <div data-hero-content className="relative container-x pt-[calc(var(--header-h)+4rem)] pb-20 md:pb-28">
         <SplitLines as="h1" className="max-w-[12ch] display-xl text-white">
           <Accent text={hero.headline} className="text-brass-light" />
         </SplitLines>
-        <p className="mt-8 max-w-[44ch] lead text-white/85" data-reveal data-delay="0.3">
-          {hero.tagline}
-        </p>
-        <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal data-delay="0.45">
+        <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal data-delay="0.3">
           <ScrollToButton target="#inquire" variant="light">
             {t("requestPresentation")}
           </ScrollToButton>
@@ -48,36 +41,8 @@ export async function Hero({ hero, site }: Props) {
         </div>
       </div>
 
-      <div className="relative border-t border-white/20 bg-gradient-to-t from-basalt/55 to-basalt/20">
-        <p className="container-x pt-4 eyebrow text-white/55">{h("statsOf")}</p>
-        <div className="container-x">
-          <dl className="grid grid-cols-2 md:grid-cols-4">
-            {hero.stats.map((s, i) => (
-              <div
-                key={i}
-                className={`py-6 md:py-7 ${i > 0 ? "border-l border-white/15 pl-5 md:pl-8" : ""} ${i === 2 ? "border-l-0 md:border-l" : ""} ${i >= 2 ? "border-t border-white/15 md:border-t-0" : ""}`}
-              >
-                <dd className="stat text-white">
-                  {s.value === null ? (
-                    <span className="text-white/40">—</span>
-                  ) : (
-                    <StatsCounter value={s.value} prefix={s.prefix || ""} suffix={s.suffix || ""} duration={1.8} />
-                  )}
-                </dd>
-                <dt className="mt-3 eyebrow text-white/70">
-                  {s.label}
-                  {s.placeholder || s.value === null ? (
-                    <span className="ml-2 text-brass-light/70">· {h("toBeConfirmed")}</span>
-                  ) : null}
-                </dt>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
-
       <div
-        className="pointer-events-none absolute right-[var(--gutter)] bottom-[calc(7.5rem+var(--gutter))] hidden items-center gap-3 text-white/70 md:flex"
+        className="pointer-events-none absolute right-[var(--gutter)] bottom-[calc(2.5rem+var(--gutter))] hidden items-center gap-3 text-white/70 md:flex"
         aria-hidden="true"
       >
         <span className="eyebrow">{t("scroll")}</span>

@@ -113,6 +113,8 @@ export function LocationMap({ pois, site, className, compact }: Props) {
       pin.className = "ora-pin";
       pin.innerHTML = `<span class="ora-pin__dot"></span><span class="ora-pin__label">${site.label}</span>`;
       new maplibre.Marker({ element: pin, anchor: "bottom" }).setLngLat([site.lng, site.lat]).addTo(map);
+      // MapLibre labels markers "Map marker"; name the pin by its visible label instead.
+      pin.setAttribute("aria-label", site.label);
       mapRef.current = map;
     })();
     return () => {
@@ -133,7 +135,11 @@ export function LocationMap({ pois, site, className, compact }: Props) {
         const el = document.createElement("button");
         el.type = "button";
         el.className = "ora-poi";
-        el.setAttribute("aria-label", p.name);
+        // The list beside the map is the accessible control for each place; map dots are a pointer
+        // shortcut (close places overlap, so they cannot meet the 24px target spacing).
+        el.setAttribute("aria-hidden", "true");
+        el.tabIndex = -1;
+        el.title = p.name;
         el.dataset.active = String(p.slug === selected);
         el.addEventListener("click", () => setSelected(p.slug));
         const m = new maplibre.Marker({ element: el }).setLngLat([p.lng, p.lat]).addTo(map);

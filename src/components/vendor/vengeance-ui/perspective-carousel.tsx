@@ -207,19 +207,24 @@ export function PerspectiveCarousel({
           </button>
 
           {showDots && (
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-0">
               {items.map((item, index) => (
+                // ORA: 24px hit area around the dot (WCAG 2.2 target size)
                 <button
                   key={`${item.title}-${index}`}
                   type="button"
                   aria-label={`Show slide ${index + 1}: ${item.title}`}
                   aria-current={currentIndex === index ? "true" : undefined}
-                  className={cn(
-                    "h-2 rounded-full bg-current transition-[width,opacity] duration-300",
-                    currentIndex === index ? "w-7 opacity-100" : "w-2 opacity-30"
-                  )}
+                  className="grid h-6 min-w-6 cursor-pointer place-items-center"
                   onClick={() => selectSlide(index)}
-                />
+                >
+                  <span
+                    className={cn(
+                      "block h-2 rounded-full bg-current transition-[width,opacity] duration-300",
+                      currentIndex === index ? "w-7 opacity-100" : "w-2 opacity-30"
+                    )}
+                  />
+                </button>
               ))}
             </div>
           )}

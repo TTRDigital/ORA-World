@@ -26,6 +26,19 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
           <p className="mt-6 max-w-[36ch] lead text-dark-fg/80" data-reveal>
             {block.text}
           </p>
+          {url && (
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(true);
+                track("tour_open");
+              }}
+              className="mt-8 inline-flex cursor-pointer items-center gap-3 rounded-full bg-white px-6 py-3.5 eyebrow text-basalt transition-colors hover:bg-brass-light"
+            >
+              {h("openTour")}
+              <PlayGlyph className="h-3 w-3" />
+            </button>
+          )}
         </div>
         <div className="col-span-12 md:col-span-8">
           <button
@@ -45,7 +58,9 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
                 <PlayGlyph className="ml-1 h-5 w-5" />
               </span>
             </span>
-            <span className="absolute top-4 left-4 eyebrow text-white/90">360° · VR</span>
+            <span className="absolute top-4 left-4 rounded-full bg-basalt/55 px-3 py-1.5 eyebrow text-white backdrop-blur-sm">
+              360° · VR
+            </span>
           </button>
         </div>
       </div>

@@ -86,7 +86,7 @@ export async function PortfolioGrid({ block, locale }: { block: Localized<HomeCo
                   <span
                     className={cn(
                       "absolute top-2 right-2 rounded-full px-2.5 py-1 text-[10px] tracking-[0.12em] uppercase sm:top-3 sm:right-3 sm:px-3 sm:text-[11px]",
-                      p.href ? "bg-accent text-white" : "bg-basalt/70 text-white/85",
+                      p.href ? "bg-accent-ink text-white" : "bg-basalt/75 text-white",
                     )}
                   >
                     {p.href ? h("explore") : t("comingSoon")}

@@ -60,7 +60,7 @@ export function Picture({
         />
       </div>
       {showCaption && label && (
-        <figcaption className="pointer-events-none absolute bottom-3 left-3 z-[1] max-w-[70%] text-[10px] tracking-[0.14em] text-white/85 uppercase mix-blend-difference">
+        <figcaption className="pointer-events-none absolute bottom-3 left-3 z-[1] max-w-[70%] rounded-full bg-basalt/55 px-2.5 py-1 text-[10px] tracking-[0.14em] text-white uppercase backdrop-blur-sm">
           {label}
         </figcaption>
       )}

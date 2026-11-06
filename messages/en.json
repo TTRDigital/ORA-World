@@ -261,7 +261,9 @@
     "incentivesLink": "Act 60 incentives",
     "galleryTitle": "Room by *room*",
     "galleryIntro": "The lobby, apartment 1403, the penthouse and a hotel suite, as artist's conceptual renderings. Turn through them with the arrows, the dots or your keyboard.",
-    "galleryCta": "Open the full gallery"
+    "galleryCta": "Open the full gallery",
+    "walkPrev": "Previous room",
+    "walkNext": "Next room"
   },
   "amenityCat": {
     "wellness": "Wellness",

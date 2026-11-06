@@ -261,7 +261,9 @@
     "incentivesLink": "Incentivos Ley 60",
     "galleryTitle": "Espacio por *espacio*",
     "galleryIntro": "El vestíbulo, el apartamento 1403, el penthouse y una suite de hotel, en renderings conceptuales. Recórralos con las flechas, los puntos o el teclado.",
-    "galleryCta": "Ver la galería completa"
+    "galleryCta": "Ver la galería completa",
+    "walkPrev": "Espacio anterior",
+    "walkNext": "Espacio siguiente"
   },
   "amenityCat": {
     "wellness": "Bienestar",

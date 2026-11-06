@@ -76,6 +76,7 @@
 @media (min-width: 48rem) {
   :root {
     --gutter: 1.5rem;
+    --header-h: 6rem;
   }
 }
 @media (min-width: 80rem) {

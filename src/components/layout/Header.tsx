@@ -85,11 +85,11 @@ export function Header({ site }: Props) {
       >
         <div className="container-x flex h-full items-center justify-between gap-6">
           <Link href="/" aria-label="ORA World, home" className="shrink-0 py-2">
-            <span className="relative block h-11 md:h-14" style={{ aspectRatio: "1.42 / 1" }}>
+            <span className="relative block h-14 md:h-[4.75rem]" style={{ aspectRatio: "1.42 / 1" }}>
               <Logo
                 tone="white"
                 priority
-                sizes="80px"
+                sizes="(min-width: 768px) 110px, 80px"
                 className={cn(
                   "absolute inset-0 h-full w-full transition-opacity duration-500",
                   light ? "opacity-100" : "opacity-0",
@@ -98,7 +98,7 @@ export function Header({ site }: Props) {
               <Logo
                 tone="gold"
                 priority
-                sizes="80px"
+                sizes="(min-width: 768px) 110px, 80px"
                 className={cn(
                   "absolute inset-0 h-full w-full transition-opacity duration-500",
                   light ? "opacity-0" : "opacity-100",

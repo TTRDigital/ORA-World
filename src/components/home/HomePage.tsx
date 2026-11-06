@@ -13,6 +13,7 @@ import {
 } from "@/lib/content";
 import { Preloader } from "./Preloader";
 import { Hero } from "./Hero";
+import { HeroStats } from "./HeroStats";
 import { Journey } from "./Journey";
 import { Manifesto } from "./Manifesto";
 import { DotGrid } from "./DotGrid";
@@ -34,7 +35,6 @@ import { Interlude } from "./Interlude";
 import { Marquee } from "./Marquee";
 import { renders, lifestyle, tdm } from "@/content/seed/images";
 import { localize } from "@/lib/localize";
-import { CompareSlider } from "./CompareSlider";
 import { HomeGallery } from "./HomeGallery";
 
 /**
@@ -63,13 +63,14 @@ export async function HomePage({ locale }: { locale: Locale }) {
     <main id="main">
       <Preloader />
       <Hero hero={home.hero} site={site} />
-      {/* The rest of the page is a sheet that slides over the pinned hero. */}
       <div className="relative z-[1] bg-bg">
+        <HeroStats hero={home.hero} />
         <Journey block={home.journey} />
         <Walkthrough block={home.walkthrough} />
         <Manifesto manifesto={home.manifesto} />
         <Interlude image={home.interludes[0].image} lines={home.interludes[0].lines} />
-        <CompareSlider block={home.compare} />
+        {/* Client feedback: the drawing/render slider replaced by the virtual tour ("what people want to see"). */}
+        <TourTeaser block={home.tour} url={site.vrTourUrl} />
         <HomeGallery locale={locale} />
         <DotGrid block={home.glance} />
         <Marquee
@@ -96,7 +97,6 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <LocationSection block={home.location} pois={pois} site={site} />
         <Interlude image={home.interludes[1].image} lines={home.interludes[1].lines} />
         <PortfolioGrid block={home.portfolio} locale={locale} />
-        <TourTeaser block={home.tour} url={site.vrTourUrl} />
         <Collaboratory block={home.team} team={team} />
         <PressStrip eyebrow={home.press.eyebrow} press={press} />
         <HomeFaq
