@@ -17,13 +17,15 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
   const [open, setOpen] = useState(false);
   return (
     <section className="py-section dark-section">
-      <div className="container-x grid grid-cols-12 items-center gap-x-6 gap-y-10">
-        <div className="col-span-12 md:col-span-4">
+      <div className="container-x grid grid-cols-12 items-end gap-x-6 gap-y-8">
+        <div className="col-span-12 md:col-span-6">
           <Eyebrow className="text-dark-accent">{block.eyebrow}</Eyebrow>
           <h2 className="mt-6 display-l" data-reveal>
             <Accent text={block.title} className="text-dark-accent" />
           </h2>
-          <p className="mt-6 max-w-[36ch] lead text-dark-fg/80" data-reveal>
+        </div>
+        <div className="col-span-12 md:col-span-5 md:col-start-8">
+          <p className="max-w-[36ch] lead text-dark-fg/80" data-reveal>
             {block.text}
           </p>
           {url && (
@@ -40,7 +42,7 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
             </button>
           )}
         </div>
-        <div className="col-span-12 md:col-span-8">
+        <div className="col-span-12 mt-4 md:mt-8">
           <button
             type="button"
             data-cursor="play"
@@ -52,7 +54,7 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
             className="group relative block w-full cursor-pointer text-left disabled:cursor-default"
           >
             <span className="sr-only">{h("openTour")}</span>
-            <Picture image={block.image} sizes="(min-width: 768px) 66vw, 100vw" aspect="16/9" showCaption />
+            <Picture image={block.image} sizes="(min-width: 1440px) 1340px, 96vw" aspect="16/9" showCaption />
             <span className="absolute inset-0 flex items-center justify-center">
               <span className="flex h-20 w-20 items-center justify-center rounded-full border border-white/70 bg-basalt/30 text-white backdrop-blur-sm transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-110">
                 <PlayGlyph className="ml-1 h-5 w-5" />

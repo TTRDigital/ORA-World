@@ -24,9 +24,9 @@ const ROOMS = [
 export async function HomeGallery({ locale }: { locale: Locale }) {
   const h = await getTranslations("home");
   const n = await getTranslations("nav");
-  // Optimised, sharp sources: 2× the 340px slide on desktop.
+  // Optimised, sharp sources: 2× the 440px slide on desktop.
   const items = ROOMS.map((im) => {
-    const { props } = getImageProps({ src: im.src, alt: im.alt[locale], width: 750, height: 1000, quality: 75 });
+    const { props } = getImageProps({ src: im.src, alt: im.alt[locale], width: 900, height: 1200, quality: 75 });
     return { src: props.src, title: im.alt[locale], alt: im.alt[locale] };
   });
   return (

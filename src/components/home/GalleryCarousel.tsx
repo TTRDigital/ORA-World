@@ -8,16 +8,16 @@ import {
 
 /** Vengeance UI perspective carousel, sized for the viewport and set in the house palette. */
 export function GalleryCarousel({ items, label }: { items: PerspectiveCarouselItem[]; label: string }) {
-  const [w, setW] = useState(340);
+  const [w, setW] = useState(440);
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
-    const fit = () => setW(mq.matches ? 340 : 220);
+    const fit = () => setW(mq.matches ? 440 : 250);
     fit();
     mq.addEventListener("change", fit);
     return () => mq.removeEventListener("change", fit);
   }, []);
   return (
-    <div className="h-[440px] md:h-[640px]">
+    <div className="h-[480px] md:h-[780px]">
       <PerspectiveCarousel
         items={items}
         loop

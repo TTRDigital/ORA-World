@@ -64,8 +64,8 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
         </div>
 
         {/* Tablet + thumbnails, sized so both fit on one screen */}
-        <div className="mx-auto max-w-[min(100%,calc((100svh-24rem)*16/9))]">
-          <div className="mt-10 rounded-[1.6rem] bg-basalt p-2 shadow-[0_60px_100px_-50px_rgba(28,27,25,.7),inset_0_0_0_1.5px_rgba(255,255,255,.08)] md:mt-14 md:rounded-[2.4rem] md:p-4">
+        <div>
+          <div className="mt-10 rounded-[1.4rem] bg-basalt p-1.5 shadow-[0_40px_80px_-50px_rgba(28,27,25,.6)] md:mt-12 md:rounded-[2rem] md:p-2.5">
             <div className="group bg-basalt-soft relative aspect-[16/9] overflow-hidden rounded-[1.1rem] md:rounded-[1.6rem]">
               {block.steps.map((s, i) => (
                 <Image
@@ -74,7 +74,7 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
                   alt={i === active ? s.image.alt : ""}
                   aria-hidden={i !== active}
                   fill
-                  sizes="(min-width: 1440px) 1340px, 94vw"
+                  sizes="(min-width: 1440px) 1360px, 96vw"
                   priority={false}
                   className={cn(
                     "object-cover transition-[opacity,transform] duration-[1100ms] ease-[var(--ease-out-expo)]",
