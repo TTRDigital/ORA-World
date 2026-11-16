@@ -16,6 +16,7 @@ type Props = {
   parallax?: number;
   showCaption?: boolean;
   aspect?: string;
+  quality?: number;
 };
 
 /**
@@ -33,6 +34,7 @@ export function Picture({
   parallax,
   showCaption = true,
   aspect,
+  quality,
 }: Props) {
   const t = useTranslations("common");
   const label = image.rendering ? t("rendering") : image.placeholder ? t("placeholderImage") : image.caption;
@@ -49,6 +51,7 @@ export function Picture({
           fill={fill}
           sizes={scaleSizes(sizes, image, parseAspect(aspect))}
           priority={priority}
+          quality={quality}
           placeholder={image.blurDataURL ? "blur" : "empty"}
           blurDataURL={image.blurDataURL}
           className={cn(

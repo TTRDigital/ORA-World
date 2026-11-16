@@ -1,5 +1,5 @@
 import type { Collection, FloorPlan } from "../types";
-import { renders, tdm } from "./images";
+import { renders, tdm, book } from "./images";
 
 /**
  * Residence collections. Tesoro Del Mar publishes "contemporary apartments and luxurious villas"
@@ -27,8 +27,8 @@ export const collections: Collection[] = [
     bedrooms: null,
     sizeRange: null,
     fromPrice: null,
-    image: tdm.aptLiving,
-    hoverImage: tdm.aptBedroom2,
+    image: book.livingDining,
+    hoverImage: book.bedroomOcean,
     features: [
       {
         en: "Private terraces that become daily sanctuaries",
@@ -99,8 +99,8 @@ export const collections: Collection[] = [
     bedrooms: null,
     sizeRange: null,
     fromPrice: null,
-    image: tdm.penthouseDining,
-    hoverImage: tdm.penthouseLiving,
+    image: book.penthouseLiving,
+    hoverImage: book.penthousePiano,
     features: [
       {
         en: "Full-floor and half-floor layouts, to be confirmed",

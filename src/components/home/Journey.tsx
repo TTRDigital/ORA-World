@@ -149,6 +149,7 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
                     alt={s.image.alt}
                     fill
                     sizes={fullBleedSizes(s.image, 0.85)}
+                    quality={85}
                     className={cn(
                       "object-cover will-change-transform transition-transform duration-[1400ms] ease-[var(--ease-out-expo)]",
                       on ? "scale-100" : "scale-[1.08]",

@@ -1,30 +1,32 @@
 import type { Project, GalleryImage, GenericPage } from "../types";
-import { renders, lifestyle, tdm, dw, dwx, cards, more } from "./images";
+import { renders, lifestyle, tdm, dw, dwx, cards, more, book } from "./images";
 
 export const projects: Project[] = [
   {
     slug: "tesoro-del-mar",
     flagship: true,
     name: { en: "Tesoro Del Mar", es: "Tesoro Del Mar" },
-    tagline: { en: "Harmony in modernity and nature", es: "Armonía entre modernidad y naturaleza" },
+    tagline: { en: "A life to treasure", es: "Una vida para atesorar" },
     location: { en: "Dorado, Vega Alta, Puerto Rico 00692", es: "Dorado, Vega Alta, Puerto Rico 00692" },
+    // Summary and facts from the Tesoro Del Mar brochure (TeseloDelmar.pdf, client-supplied, Nov 2026).
     summary: {
       en: [
-        "Tesoro Del Mar is an ambitious 10-acre development designed to embody the themes of rejuvenation and community. Situated near a national park with panoramic ocean views, this project creates a harmonious blend of nature and modernity, with sensory gardens and scenic walking paths, the gentle sea breeze and beautiful sunsets.",
+        "At Tesoro del Mar, every detail is designed to elevate the everyday. Perched along Puerto Rico's golden shoreline, where mangroves meet the Atlantic and the horizon stretches endlessly, this 17-acre coastal community is the first expression of Ora World: a new vision for living rooted in freedom, connection, and purpose.",
+        "Phase One introduces a limited collection of 60 residences, each with panoramic ocean views, refined interiors, and access to over 65,000 square feet of amenities, from a private beach and boat slipway to resort-style wellness, social spaces, and inspiring environments to work and create.",
       ],
       es: [
-        "Tesoro Del Mar es un ambicioso desarrollo de 10 acres concebido en torno a la renovación y la comunidad. Situado junto a un parque nacional con vistas panorámicas al mar, el proyecto integra naturaleza y modernidad con jardines sensoriales y paseos escénicos, la brisa marina y atardeceres memorables.",
+        "En Tesoro del Mar, cada detalle está pensado para elevar lo cotidiano. En la costa dorada de Puerto Rico, donde los manglares se encuentran con el Atlántico y el horizonte no termina, esta comunidad costera de 17 acres es la primera expresión de Ora World: una nueva visión de vida basada en la libertad, la conexión y el propósito.",
+        "La Fase Uno presenta una colección limitada de 60 residencias, todas con vistas panorámicas al mar, interiores refinados y acceso a más de 65,000 pies cuadrados de amenidades, desde playa privada y rampa para embarcaciones hasta bienestar de resort, espacios sociales y entornos inspiradores para trabajar y crear.",
       ],
     },
     facts: [
-      { label: { en: "Land area", es: "Superficie" }, value: "335,995 sq ft · 10 acres" },
-      // From the client's presentation (oraworld.com/tesoro-del-mar-pdf).
-      { label: { en: "Total floor area", es: "Superficie construida" }, value: "498,150 sq ft" },
-      { label: { en: "Residences", es: "Residencias" }, value: "129" },
-      { label: { en: "Hotel suites", es: "Suites de hotel" }, value: "42" },
-      { label: { en: "Amenities area", es: "Área de amenidades" }, value: "65,500 sq ft" },
-      { label: { en: "To the beach", es: "A la playa" }, value: "Walking distance" },
-      { label: { en: "To the airport", es: "Al aeropuerto" }, value: "30 min" },
+      { label: { en: "Community", es: "Comunidad" }, value: "17 acres · coastal" },
+      { label: { en: "Residences, Phase One", es: "Residencias, Fase Uno" }, value: "60 · 2–6 bedrooms" },
+      { label: { en: "Penthouse", es: "Penthouse" }, value: "1" },
+      { label: { en: "Amenities", es: "Amenidades" }, value: "65,000+ sq ft" },
+      { label: { en: "Members-only clubhouse", es: "Club privado" }, value: "14,000 sq ft" },
+      { label: { en: "To the beach", es: "A la playa" }, value: "Steps away" },
+      { label: { en: "To San Juan and the airport", es: "A San Juan y al aeropuerto" }, value: "≈ 35 min" },
     ],
     sections: [
       {
@@ -39,7 +41,7 @@ export const projects: Project[] = [
             "Terrazas y balcones en voladizo se extienden como alas, ofreciendo vistas panorámicas y ajardinados con plantas y flores nativas. El diseño abierto favorece la ventilación natural y la luz de día, aportando belleza y sostenibilidad.",
           ],
         },
-        image: tdm.exteriorRoad,
+        image: book.exteriorRoad,
       },
       {
         title: { en: "Community highlights", es: "Lo mejor de la comunidad" },
@@ -53,7 +55,7 @@ export const projects: Project[] = [
             "Con énfasis en una vida activa y saludable, Tesoro Del Mar cuenta con canchas de tenis y baloncesto y un gimnasio. Senderos para correr y caminar recorren el parque nacional adyacente, y los parques infantiles ofrecen un entorno estimulante para los niños.",
           ],
         },
-        image: tdm.exteriorGolf,
+        image: book.puttingGreen,
       },
       {
         title: { en: "Interiors", es: "Interiores" },
@@ -67,24 +69,27 @@ export const projects: Project[] = [
             "Las distribuciones abiertas favorecen el flujo y la conexión, mientras amplios ventanales enmarcan vistas panorámicas y bañan los interiores de luz natural. Materiales premium, piedra, madera y metales cepillados, aportan una atmósfera de elegancia moderna.",
           ],
         },
-        image: tdm.aptLiving,
+        image: book.livingDining,
       },
     ],
-    hero: tdm.aerialCoast,
+    hero: book.aerialCoast,
     gallery: [
-      tdm.aerialCoast,
-      tdm.aerialTowers,
-      tdm.exteriorRoad,
-      renders.tdmExterior,
-      tdm.exteriorGolf,
-      tdm.foyerSignage,
-      tdm.foyerAtrium,
-      tdm.aptLiving,
-      tdm.aptBedroom,
-      tdm.aptBath2,
-      tdm.penthouseDining,
-      more.tdmDining,
-      tdm.hotelSuite,
+      book.aerialCoast,
+      book.aerialTowers,
+      book.exteriorRoad,
+      book.poolCabana,
+      book.puttingGreen,
+      book.porteCochere,
+      book.foyer,
+      book.gym,
+      book.livingDining,
+      book.kitchenDining,
+      book.primaryBedroom,
+      book.bedroomOcean,
+      book.bathTub,
+      book.study,
+      book.penthouseLiving,
+      book.penthousePiano,
     ],
   },
   {
@@ -177,30 +182,132 @@ export const projects: Project[] = [
 ];
 
 export const galleryImages: GalleryImage[] = [
+  // Tesoro Del Mar brochure renders (client-supplied), shown first.
   {
-    id: "tdm-aerial-coast",
+    id: "book-aerial-coast",
     category: "exteriors",
-    image: tdm.aerialCoast,
+    image: book.aerialCoast,
     caption: { en: "Tesoro Del Mar above the north coast", es: "Tesoro Del Mar sobre la costa norte" },
   },
   {
-    id: "tdm-pool",
+    id: "book-aerial-towers",
     category: "exteriors",
-    image: renders.tdmExterior,
-    caption: { en: "Tesoro Del Mar from the pool", es: "Tesoro Del Mar desde la piscina" },
+    image: book.aerialTowers,
+    caption: { en: "The three towers from above", es: "Las tres torres desde lo alto" },
   },
-  { id: "tdm-road", category: "exteriors", image: tdm.exteriorRoad, caption: { en: "The arrival", es: "La llegada" } },
+  {
+    id: "book-exterior-road",
+    category: "exteriors",
+    image: book.exteriorRoad,
+    caption: { en: "The towers from the approach road", es: "Las torres desde el camino de acceso" },
+  },
+  {
+    id: "book-pool-cabana",
+    category: "amenities",
+    image: book.poolCabana,
+    caption: { en: "Poolside cabana", es: "Cabaña junto a la piscina" },
+  },
+  {
+    id: "book-putting-green",
+    category: "amenities",
+    image: book.puttingGreen,
+    caption: { en: "The 18-hole putting course", es: "El campo de putting de 18 hoyos" },
+  },
+  {
+    id: "book-porte-cochere",
+    category: "exteriors",
+    image: book.porteCochere,
+    caption: { en: "The porte-cochère", es: "El porte-cochère" },
+  },
+  {
+    id: "book-foyer",
+    category: "interiors",
+    image: book.foyer,
+    caption: { en: "The residential lobby", es: "El vestíbulo residencial" },
+  },
+  {
+    id: "book-gym",
+    category: "amenities",
+    image: book.gym,
+    caption: { en: "The fitness center", es: "El gimnasio" },
+  },
+  {
+    id: "book-living-dining",
+    category: "interiors",
+    image: book.livingDining,
+    caption: { en: "Apartment living and dining", es: "Sala y comedor del apartamento" },
+  },
+  {
+    id: "book-kitchen-dining",
+    category: "interiors",
+    image: book.kitchenDining,
+    caption: { en: "Apartment kitchen and dining", es: "Cocina y comedor del apartamento" },
+  },
+  {
+    id: "book-primary-bedroom",
+    category: "interiors",
+    image: book.primaryBedroom,
+    caption: { en: "Primary bedroom", es: "Dormitorio principal" },
+  },
+  {
+    id: "book-bedroom",
+    category: "interiors",
+    image: book.bedroom,
+    caption: { en: "Bedroom", es: "Dormitorio" },
+  },
+  {
+    id: "book-bedroom-ocean",
+    category: "interiors",
+    image: book.bedroomOcean,
+    caption: { en: "Bedroom with an ocean view", es: "Dormitorio con vista al mar" },
+  },
+  {
+    id: "book-bath-vanity",
+    category: "interiors",
+    image: book.bathVanity,
+    caption: { en: "Marble vanity", es: "Tocador en mármol" },
+  },
+  {
+    id: "book-bath-tub",
+    category: "interiors",
+    image: book.bathTub,
+    caption: { en: "Freestanding bath", es: "Bañera exenta" },
+  },
+  {
+    id: "book-powder-room",
+    category: "interiors",
+    image: book.powderRoom,
+    caption: { en: "Powder room", es: "Medio baño" },
+  },
+  {
+    id: "book-study",
+    category: "interiors",
+    image: book.study,
+    caption: { en: "Study", es: "Estudio" },
+  },
+  {
+    id: "book-penthouse-living",
+    category: "interiors",
+    image: book.penthouseLiving,
+    caption: { en: "Penthouse living room", es: "Sala del penthouse" },
+  },
+  {
+    id: "book-penthouse-staircase",
+    category: "interiors",
+    image: book.penthouseStaircase,
+    caption: { en: "Penthouse, double height", es: "Penthouse, doble altura" },
+  },
+  {
+    id: "book-penthouse-piano",
+    category: "interiors",
+    image: book.penthousePiano,
+    caption: { en: "Penthouse lounge", es: "Salón del penthouse" },
+  },
   {
     id: "tdm-aerial-towers",
     category: "exteriors",
     image: tdm.aerialTowers,
     caption: { en: "The towers in the forest", es: "Las torres en el bosque" },
-  },
-  {
-    id: "tdm-golf",
-    category: "exteriors",
-    image: tdm.exteriorGolf,
-    caption: { en: "Landscaped green", es: "Áreas verdes ajardinadas" },
   },
   {
     id: "tdm-aerial-villas",
@@ -215,12 +322,6 @@ export const galleryImages: GalleryImage[] = [
     caption: { en: "The Tesoro Del Mar foyer", es: "El vestíbulo de Tesoro Del Mar" },
   },
   {
-    id: "tdm-foyer-atrium",
-    category: "interiors",
-    image: tdm.foyerAtrium,
-    caption: { en: "Double-height lobby", es: "Vestíbulo de doble altura" },
-  },
-  {
     id: "tdm-foyer-lounge",
     category: "interiors",
     image: tdm.foyerLounge,
@@ -233,64 +334,16 @@ export const galleryImages: GalleryImage[] = [
     caption: { en: "Reception", es: "Recepción" },
   },
   {
-    id: "tdm-apt-living",
-    category: "interiors",
-    image: tdm.aptLiving,
-    caption: { en: "Apartment 1403, living and dining", es: "Apartamento 1403, sala y comedor" },
-  },
-  {
     id: "tdm-apt-living-2",
     category: "interiors",
     image: tdm.aptLiving2,
     caption: { en: "Apartment 1403, living room", es: "Apartamento 1403, sala" },
   },
   {
-    id: "tdm-apt-bedroom",
-    category: "interiors",
-    image: tdm.aptBedroom,
-    caption: { en: "Apartment 1403, primary bedroom", es: "Apartamento 1403, dormitorio principal" },
-  },
-  {
-    id: "tdm-apt-bedroom-2",
-    category: "interiors",
-    image: tdm.aptBedroom2,
-    caption: { en: "Apartment 1403, second bedroom", es: "Apartamento 1403, segundo dormitorio" },
-  },
-  {
-    id: "tdm-apt-bath",
-    category: "interiors",
-    image: tdm.aptBath,
-    caption: { en: "Apartment 1403, primary bathroom", es: "Apartamento 1403, baño principal" },
-  },
-  {
-    id: "tdm-apt-bath-2",
-    category: "interiors",
-    image: tdm.aptBath2,
-    caption: { en: "Apartment 1403, bath", es: "Apartamento 1403, bañera" },
-  },
-  {
-    id: "tdm-apt-study",
-    category: "interiors",
-    image: tdm.aptStudy,
-    caption: { en: "Apartment 1403, study", es: "Apartamento 1403, estudio" },
-  },
-  {
     id: "tdm-penthouse-dining",
     category: "interiors",
     image: tdm.penthouseDining,
     caption: { en: "Penthouse dining room", es: "Comedor del penthouse" },
-  },
-  {
-    id: "tdm-penthouse-living",
-    category: "interiors",
-    image: tdm.penthouseLiving,
-    caption: { en: "Penthouse living room", es: "Sala del penthouse" },
-  },
-  {
-    id: "tdm-penthouse-piano",
-    category: "interiors",
-    image: renders.tdmPenthouse,
-    caption: { en: "Penthouse salon", es: "Salón del penthouse" },
   },
   {
     id: "tdm-hotel-suite",

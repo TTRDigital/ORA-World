@@ -119,6 +119,7 @@ export function HeroVideo({ poster, mp4, webm, mobileMp4, youtubeId }: Props) {
         fill
         priority
         fetchPriority="high"
+        quality={85}
         sizes={fullBleedSizes(poster, 1.12)}
         placeholder={poster.blurDataURL ? "blur" : "empty"}
         blurDataURL={poster.blurDataURL}

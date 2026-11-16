@@ -33,7 +33,7 @@ import { HomeFaq } from "./HomeFaq";
 import { PresentationCta } from "./PresentationCta";
 import { Interlude } from "./Interlude";
 import { Marquee } from "./Marquee";
-import { renders, lifestyle, tdm } from "@/content/seed/images";
+import { book } from "@/content/seed/images";
 import { localize } from "@/lib/localize";
 import { HomeGallery } from "./HomeGallery";
 
@@ -75,7 +75,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <DotGrid block={home.glance} />
         <Marquee
           words={home.marquee}
-          images={[renders.poolTerrace, lifestyle.spa, tdm.aptLiving, lifestyle.beach, tdm.aerialCoast].map((im) => localize(im, locale))}
+          images={[book.exteriorRoad, book.bathTub, book.livingDining, book.puttingGreen, book.aerialCoast].map((im) => localize(im, locale))}
         />
         <CollectionTabs
           block={home.residences}

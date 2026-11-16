@@ -173,9 +173,9 @@ export const pointsOfInterest: PointOfInterest[] = [
     category: "airport",
     lat: 18.4394,
     lng: -66.0018,
-    driveMinutes: 30,
+    driveMinutes: 35,
     walkMinutes: null,
-    note: { en: "Published: 30 minutes", es: "Publicado: 30 minutos" },
+    note: { en: "Brochure: approximately 35 minutes", es: "Folleto: aproximadamente 35 minutos" },
     placeholder: false,
   },
   {

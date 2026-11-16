@@ -28,10 +28,10 @@ export const faqs: Faq[] = [
     question: { en: "Where is Tesoro Del Mar?", es: "¿Dónde está Tesoro Del Mar?" },
     answer: {
       en: [
-        "Tesoro Del Mar is in Dorado, Vega Alta, Puerto Rico 00692, within walking distance of Balneario Cerro Gordo Beach, near a national park and about 30 minutes from the international airport.",
+        "Tesoro Del Mar is in Dorado, Vega Alta, Puerto Rico 00692, steps from the beach and a national park, about 35 minutes from San Juan and its international airport.",
       ],
       es: [
-        "Tesoro Del Mar está en Dorado, Vega Alta, Puerto Rico 00692, a pasos del Balneario Cerro Gordo, cerca de un parque nacional y a unos 30 minutos del aeropuerto internacional.",
+        "Tesoro Del Mar está en Dorado, Vega Alta, Puerto Rico 00692, a pasos de la playa y de un parque nacional, a unos 35 minutos de San Juan y su aeropuerto internacional.",
       ],
     },
   },
@@ -41,10 +41,10 @@ export const faqs: Faq[] = [
     question: { en: "What does Tesoro Del Mar include?", es: "¿Qué incluye Tesoro Del Mar?" },
     answer: {
       en: [
-        "The 10-acre development spans 335,995 square feet of land with 129 contemporary apartments and 42 hotel suites, a 65,500-square-foot amenities area with sports courts, a fitness center, scenic jogging paths and landscaped communal areas, plus a clubhouse and boutique hotel at the community hub.",
+        "Tesoro Del Mar is a 17-acre coastal community and the first expression of Ora World. Phase One introduces 60 residences of two to six bedrooms, plus one penthouse, each with panoramic ocean views, and access to over 65,000 square feet of amenities: a 14,000-square-foot members-only clubhouse, a private beach club, a boat slipway, resort-style pools, a fitness center and wellness spa, an 18-hole putting course and a two-mile walking path.",
       ],
       es: [
-        "El desarrollo de 10 acres abarca 335,995 pies cuadrados de terreno con 129 apartamentos contemporáneos y 42 suites de hotel, un área de amenidades de 65,500 pies cuadrados con canchas deportivas, gimnasio, senderos para correr y áreas comunes ajardinadas, además de un clubhouse y un hotel boutique.",
+        "Tesoro Del Mar es una comunidad costera de 17 acres y la primera expresión de Ora World. La Fase Uno presenta 60 residencias de dos a seis dormitorios, además de un penthouse, todas con vistas panorámicas al mar y acceso a más de 65,000 pies cuadrados de amenidades: un club privado de 14,000 pies cuadrados, club de playa privado, rampa para embarcaciones, piscinas de estilo resort, gimnasio y spa, un campo de putting de 18 hoyos y un sendero de dos millas.",
       ],
     },
   },

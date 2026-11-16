@@ -75,6 +75,7 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
                   aria-hidden={i !== active}
                   fill
                   sizes="(min-width: 1440px) 1360px, 96vw"
+                quality={85}
                   priority={false}
                   className={cn(
                     "object-cover transition-[opacity,transform] duration-[1100ms] ease-[var(--ease-out-expo)]",

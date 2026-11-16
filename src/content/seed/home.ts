@@ -1,81 +1,77 @@
 import type { HomeContent } from "../types";
-import { renders, lifestyle, tdm, more, drawings } from "./images";
+import { renders, lifestyle, tdm, more, drawings, book } from "./images";
 
 export const home: HomeContent = {
   hero: {
-    eyebrow: { en: "Dorado · Puerto Rico", es: "Dorado · Puerto Rico" },
+    eyebrow: { en: "Tesoro Del Mar · Puerto Rico", es: "Tesoro Del Mar · Puerto Rico" },
     headline: { en: "*Beyond* expectations", es: "Más allá de lo *esperado*" },
     tagline: {
       en: "Thoughtfully crafted communities where longevity, luxury, and nature exist in perfect harmony.",
       es: "Comunidades concebidas con esmero donde la longevidad, el lujo y la naturaleza conviven en perfecta armonía.",
     },
-    // Published Tesoro Del Mar figures (oraworld.com/tesoro-del-mar). Confirm these are the hero project's numbers.
+    // Figures from the Tesoro Del Mar brochure (TeseloDelmar.pdf, client-supplied, Nov 2026).
     stats: [
-      { value: 10, label: { en: "Acres in Dorado", es: "Acres en Dorado" } },
-      { value: 129, label: { en: "Contemporary residences", es: "Residencias contemporáneas" } },
-      { value: 42, label: { en: "Hotel suites", es: "Suites de hotel" } },
-      { value: 65500, label: { en: "Sq ft of amenities", es: "Pies² de amenidades" } },
+      { value: 17, label: { en: "Acre coastal community", es: "Acres de comunidad costera" } },
+      { value: 60, label: { en: "Residences in Phase One", es: "Residencias en la Fase Uno" } },
+      { value: 65000, suffix: "+", label: { en: "Sq ft of amenities", es: "Pies² de amenidades" } },
+      { value: 14000, label: { en: "Sq ft members-only clubhouse", es: "Pies² de club privado" } },
     ],
-    poster: renders.tdmExterior,
+    poster: book.poolCabana,
     videoLoop: null,
     videoLoopWebm: null,
     videoMobile: null,
   },
   manifesto: {
-    eyebrow: { en: "Our mission", es: "Nuestra misión" },
-    title: {
-      en: "Luxury living with timeless *elegance* and comfort",
-      es: "Vida de lujo con *elegancia* y confort atemporales",
-    },
+    eyebrow: { en: "Oceanfront location", es: "Ubicación frente al mar" },
+    title: { en: "A rare *vantage*", es: "Una perspectiva *única*" },
+    // Brochure, "A Rare Vantage" (opening of the paragraph).
     text: {
-      en: "Our mission is to revolutionize Puerto Rico's real estate landscape by creating luxurious, eco-friendly developments that seamlessly blend modern elegance with the island's natural beauty. We aim to enhance the lives of our residents and contribute positively to the island's vibrant culture and economy.",
-      es: "Nuestra misión es revolucionar el panorama inmobiliario de Puerto Rico creando desarrollos de lujo y ecológicos que integran la elegancia moderna con la belleza natural de la isla. Buscamos mejorar la vida de nuestros residentes y contribuir positivamente a la cultura y la economía de la isla.",
+      en: "Perched along Puerto Rico's enchanting northern shores, Tesoro del Mar unfolds like a well-kept secret, one whispered by the sea itself. Here, gentle waves lap golden, soft-sand shores. Crystal-clear waters beckon families and snorkelers alike, promising playful encounters with sea turtles and tropical fish.",
+      es: "En la encantadora costa norte de Puerto Rico, Tesoro del Mar se descubre como un secreto bien guardado, uno que susurra el propio mar. Aquí, las olas suaves acarician playas de arena dorada. Sus aguas cristalinas invitan a familias y a quienes practican snorkel, con encuentros con tortugas marinas y peces tropicales.",
     },
-    signature: { en: "ORA World · Dorado, Puerto Rico", es: "ORA World · Dorado, Puerto Rico" },
+    signature: { en: "Tesoro Del Mar · An Ora World residence", es: "Tesoro Del Mar · Una residencia Ora World" },
+    // Brochure, "The Building".
     pillars: [
       {
-        title: { en: "Exceptional quality", es: "Calidad excepcional" },
+        title: { en: "Steps from the beach", es: "A pasos de la playa" },
+        text: { en: "Steps from the beach and the national park.", es: "A pasos de la playa y del parque nacional." },
+      },
+      {
+        title: { en: "An all-glass façade", es: "Fachada de cristal" },
         text: {
-          en: "High-quality materials, eco-friendly finishes and carefully selected furnishings.",
-          es: "Materiales de alta calidad, acabados ecológicos y mobiliario cuidadosamente seleccionado.",
+          en: "Designed to maximize light and views of the Puerto Rico coastline and the Atlantic Ocean.",
+          es: "Diseñada para aprovechar la luz y las vistas de la costa de Puerto Rico y del océano Atlántico.",
         },
       },
       {
-        title: { en: "Innovative design", es: "Diseño innovador" },
+        title: { en: "Attended 24/7", es: "Atención 24/7" },
         text: {
-          en: "Curved, aerodynamic architecture inspired by the graceful flight of birds.",
-          es: "Arquitectura curva y aerodinámica inspirada en el vuelo de las aves.",
+          en: "A porte-cochère with a private residential lobby, valet parking and a luxury house car.",
+          es: "Porte-cochère con vestíbulo residencial privado, servicio de valet y auto de lujo para residentes.",
         },
       },
       {
-        title: { en: "Unparalleled comfort", es: "Confort incomparable" },
+        title: { en: "Private travel", es: "Viajes privados" },
         text: {
-          en: "Open-concept layouts that promote a sense of calm and flow.",
-          es: "Espacios abiertos que transmiten calma y fluidez.",
-        },
-      },
-      {
-        title: { en: "Rooted in the island", es: "Arraigado en la isla" },
-        text: {
-          en: "Contributing positively to Puerto Rico's vibrant culture and economy.",
-          es: "Una contribución positiva a la cultura y la economía de Puerto Rico.",
+          en: "Private jet charters by Ora World Jet and Ora Lift vertical take-off and landing vehicles.",
+          es: "Vuelos chárter privados con Ora World Jet y vehículos de despegue vertical Ora Lift.",
         },
       },
     ],
-    image: tdm.foyerLounge,
-    inset: renders.towerDetail,
-    third: more.tdmDining,
+    image: book.aerialTowers,
+    inset: book.puttingGreen,
+    third: book.aerialCoast,
   },
   context: {
-    image: tdm.aerialCoast,
+    image: book.aerialCoast,
     captions: [
       {
         en: "Curved facades inspired by the flight of birds, cantilevered terraces extending like wings.",
         es: "Fachadas curvas inspiradas en el vuelo de las aves; terrazas en voladizo que se extienden como alas.",
       },
       {
-        en: "Walking distance to Balneario Cerro Gordo. Thirty minutes from the airport.",
-        es: "A pasos del Balneario Cerro Gordo. A treinta minutos del aeropuerto.",
+        en: "Steps from the beach and national park. About 35 minutes from San Juan.",
+        es: "A pasos de la playa y del parque nacional. A unos 35 minutos de San Juan.",
       },
     ],
   },
@@ -279,7 +275,7 @@ export const home: HomeContent = {
         ],
       },
     ],
-    image: tdm.aerialTowers,
+    image: book.aerialTowers,
   },
   amenities: {
     eyebrow: { en: "Amenities", es: "Amenidades" },
@@ -380,8 +376,8 @@ export const home: HomeContent = {
     eyebrow: { en: "Location", es: "Ubicación" },
     title: { en: "Dorado, on the *north* coast", es: "Dorado, en la costa *norte*" },
     intro: {
-      en: "Minutes from the beach, a short drive from San Juan, and thirty minutes from the international airport.",
-      es: "A minutos de la playa, a un corto trayecto de San Juan y a treinta minutos del aeropuerto internacional.",
+      en: "Steps from the beach and a national park, about 35 minutes from San Juan and its international airport.",
+      es: "A pasos de la playa y de un parque nacional, a unos 35 minutos de San Juan y su aeropuerto internacional.",
     },
   },
   tour: {
@@ -391,7 +387,7 @@ export const home: HomeContent = {
       en: "Walk the residences and amenities in an immersive 360° tour.",
       es: "Recorra las residencias y amenidades en un tour inmersivo de 360°.",
     },
-    image: tdm.penthouseDining,
+    image: book.penthouseLiving,
   },
   team: {
     eyebrow: { en: "The Collaboratory", es: "El Collaboratory" },
@@ -409,120 +405,119 @@ export const home: HomeContent = {
       en: "Share a few details and a member of the sales team will arrange a private presentation at the sales gallery or by video call.",
       es: "Comparta algunos datos y un miembro del equipo de ventas organizará una presentación privada en la galería de ventas o por videollamada.",
     },
-    image: tdm.exteriorGolf,
+    image: book.poolCabana,
   },
   journey: {
-    eyebrow: { en: "Your path to ORA", es: "Su camino a ORA" },
-    title: { en: "Discover. Choose. *Arrive.*", es: "Descubra. Elija. *Llegue.*" },
+    eyebrow: { en: "Tesoro Del Mar", es: "Tesoro Del Mar" },
+    title: { en: "A life to *treasure*", es: "Una vida para *atesorar*" },
+    // The brochure's three chapters.
     steps: [
       {
-        title: { en: "Discover the island", es: "Descubra la isla" },
+        title: { en: "A rare vantage", es: "Una perspectiva única" },
         text: {
-          en: "From turquoise shores to the trails of El Yunque, explore the Puerto Rico that frames every ORA World community.",
-          es: "De las costas turquesa a los senderos de El Yunque, explore el Puerto Rico que enmarca cada comunidad de ORA World.",
+          en: "Golden, soft-sand shores, a boat slip and a coastal park, just 35 minutes from San Juan and its international airport.",
+          es: "Playas de arena dorada, un embarcadero y un parque costero, a solo 35 minutos de San Juan y su aeropuerto internacional.",
         },
-        image: lifestyle.beach,
-        href: "/lifestyle",
-        cta: { en: "The lifestyle", es: "El estilo de vida" },
+        image: book.aerialCoast,
+        href: "/location",
+        cta: { en: "Oceanfront location", es: "Ubicación frente al mar" },
       },
       {
-        title: { en: "Choose your residence", es: "Elija su residencia" },
+        title: { en: "Inspired by flight", es: "Inspirado en el vuelo" },
         text: {
-          en: "Contemporary apartments, villas, penthouses and hotel suites, each positioned to take full advantage of the views.",
-          es: "Apartamentos contemporáneos, villas, penthouses y suites de hotel, cada uno ubicado para aprovechar al máximo las vistas.",
+          en: "Curved towers arc like wings, spacious balconies stretch outward toward the expanse of endless blue, and glass facades dissolve the boundary between home and horizon.",
+          es: "Las torres curvas se arquean como alas, los amplios balcones se extienden hacia el azul infinito y las fachadas de cristal borran el límite entre el hogar y el horizonte.",
         },
-        image: tdm.aptLiving,
+        image: book.exteriorRoad,
         href: "/residences",
-        cta: { en: "The residences", es: "Las residencias" },
+        cta: { en: "Architecture & design", es: "Arquitectura y diseño" },
       },
       {
-        title: { en: "Arrive in Dorado", es: "Llegue a Dorado" },
+        title: { en: "Ease, elevated", es: "Bienestar, elevado" },
         text: {
-          en: "Book a private presentation at the sales gallery or by video call, and the sales team will walk you through every detail.",
-          es: "Reserve una presentación privada en la galería de ventas o por videollamada, y el equipo de ventas le mostrará cada detalle.",
+          en: "Over 65,000 square feet of bespoke indoor and outdoor amenities, designed to let life unfold with fluidity and grace.",
+          es: "Más de 65,000 pies cuadrados de amenidades interiores y exteriores, pensadas para que la vida fluya con naturalidad y elegancia.",
         },
-        image: tdm.foyerReception,
-        href: "#inquire",
-        cta: { en: "Request a presentation", es: "Solicitar presentación" },
+        image: book.puttingGreen,
+        href: "/amenities",
+        cta: { en: "The amenities", es: "Las amenidades" },
       },
     ],
   },
   glance: {
     eyebrow: { en: "Tesoro Del Mar", es: "Tesoro Del Mar" },
-    title: { en: "Harmony in modernity *and nature*", es: "Armonía entre modernidad *y naturaleza*" },
+    title: { en: "Exceptional *amenities*", es: "Amenidades *excepcionales*" },
     body: {
-      en: "An ambitious 10-acre development near a national park with panoramic ocean views, designed around the themes of rejuvenation and community.",
-      es: "Un ambicioso desarrollo de 10 acres junto a un parque nacional con vistas panorámicas al océano, concebido en torno a la renovación y la comunidad.",
+      en: "Tesoro Del Mar will focus on longevity and quality of life with access to modern amenities, healthcare, education and entertainment.",
+      es: "Tesoro Del Mar se centrará en la longevidad y la calidad de vida, con acceso a amenidades modernas, salud, educación y entretenimiento.",
     },
+    // Brochure, "Exceptional Amenities" and "The Building".
     checklist: [
+      { en: "A 17-acre coastal community on the north shore", es: "Una comunidad costera de 17 acres en la costa norte" },
       {
-        en: "335,995 sq ft of land and 498,150 sq ft of floor area across 10 acres",
-        es: "335,995 pies² de terreno y 498,150 pies² de construcción en 10 acres",
+        en: "Phase One: 60 residences, 2 to 6 bedrooms, and one penthouse",
+        es: "Fase Uno: 60 residencias de 2 a 6 dormitorios y un penthouse",
       },
       {
-        en: "129 contemporary apartments and 42 hotel suites",
-        es: "129 apartamentos contemporáneos y 42 suites de hotel",
+        en: "Over 65,000 sq ft of indoor and outdoor amenities",
+        es: "Más de 65,000 pies² de amenidades interiores y exteriores",
       },
       {
-        en: "65,500 sq ft of amenities: sports courts, fitness center, jogging paths",
-        es: "65,500 pies² de amenidades: canchas, gimnasio y senderos para correr",
+        en: "A 14,000 sq ft members-only clubhouse",
+        es: "Un club privado para miembros de 14,000 pies²",
       },
-      { en: "Walking distance to Balneario Cerro Gordo beach", es: "A pasos de la playa Balneario Cerro Gordo" },
+      { en: "Private beach club and a slipway for boats", es: "Club de playa privado y rampa para embarcaciones" },
       {
-        en: "Thirty minutes from the airport, beside a national park",
-        es: "A treinta minutos del aeropuerto, junto a un parque nacional",
-      },
-      {
-        en: "A clubhouse and boutique hotel at the heart of the community",
-        es: "Un club social y un hotel boutique en el corazón de la comunidad",
+        en: "Approximately 35 minutes from an international airport",
+        es: "A unos 35 minutos de un aeropuerto internacional",
       },
     ],
-    image: tdm.aerialCoast,
-    inset: renders.tdmExterior,
+    image: book.aerialCoast,
+    inset: book.exteriorRoad,
     board: [
       {
-        value: "10",
-        unit: { en: "Acres in Dorado", es: "Acres en Dorado" },
-        title: { en: "Ten acres on the north coast", es: "Diez acres en la costa norte" },
+        value: "17",
+        unit: { en: "Acres", es: "Acres" },
+        title: { en: "A 17-acre coastal community", es: "Una comunidad costera de 17 acres" },
         text: {
-          en: "335,995 sq ft of land beside a national park.",
-          es: "335,995 pies² de terreno junto a un parque nacional.",
+          en: "Where mangroves meet the Atlantic, the first expression of Ora World.",
+          es: "Donde los manglares se encuentran con el Atlántico, la primera expresión de Ora World.",
         },
       },
       {
-        value: "129",
-        unit: { en: "Contemporary apartments", es: "Apartamentos contemporáneos" },
-        title: { en: "129 contemporary apartments", es: "129 apartamentos contemporáneos" },
+        value: "60",
+        unit: { en: "Residences", es: "Residencias" },
+        title: { en: "60 residences in Phase One", es: "60 residencias en la Fase Uno" },
         text: {
-          en: "Open-concept homes with floor-to-ceiling glass.",
-          es: "Hogares de concepto abierto con ventanales de piso a techo.",
+          en: "Two to six bedrooms, each with panoramic ocean views, plus one penthouse.",
+          es: "De dos a seis dormitorios, todas con vistas panorámicas al mar, y un penthouse.",
         },
       },
       {
-        value: "171",
-        unit: { en: "Homes and hotel suites", es: "Hogares y suites de hotel" },
-        title: { en: "42 boutique hotel suites", es: "42 suites de hotel boutique" },
-        text: {
-          en: "A boutique hotel and clubhouse at the heart of the community.",
-          es: "Un hotel boutique y un club social en el corazón de la comunidad.",
-        },
-      },
-      {
-        value: "65,500",
+        value: "65,000+",
         unit: { en: "Sq ft of amenities", es: "Pies² de amenidades" },
-        title: { en: "65,500 sq ft of amenities", es: "65,500 pies² de amenidades" },
+        title: { en: "Over 65,000 sq ft of amenities", es: "Más de 65,000 pies² de amenidades" },
         text: {
-          en: "Sports courts, a fitness center and scenic jogging paths.",
-          es: "Canchas, gimnasio y senderos para correr.",
+          en: "From a private beach and boat slipway to resort-style wellness.",
+          es: "Desde playa privada y rampa para embarcaciones hasta bienestar de resort.",
         },
       },
       {
-        value: "30",
-        unit: { en: "Minutes to the airport", es: "Minutos al aeropuerto" },
-        title: { en: "A walk from Balneario Cerro Gordo", es: "A pasos del Balneario Cerro Gordo" },
+        value: "14,000",
+        unit: { en: "Sq ft clubhouse", es: "Pies² de club" },
+        title: { en: "A members-only clubhouse", es: "Un club privado para miembros" },
         text: {
-          en: "And thirty minutes from the international airport.",
-          es: "Y a treinta minutos del aeropuerto internacional.",
+          en: "Café, fine dining, a business center, sports courts and a rooftop pool.",
+          es: "Café, restaurante, centro de negocios, canchas y piscina en la azotea.",
+        },
+      },
+      {
+        value: "35",
+        unit: { en: "Minutes from San Juan", es: "Minutos de San Juan" },
+        title: { en: "Close to San Juan", es: "Cerca de San Juan" },
+        text: {
+          en: "About 35 minutes from San Juan and its international airport.",
+          es: "A unos 35 minutos de San Juan y su aeropuerto internacional.",
         },
       },
     ],
@@ -531,63 +526,46 @@ export const home: HomeContent = {
     eyebrow: { en: "Step inside", es: "Pase adelante" },
     title: { en: "A walk *through* Tesoro Del Mar", es: "Un recorrido *por* Tesoro Del Mar" },
     intro: {
-      en: "From the palm-lined approach to the penthouse, follow the renderings room by room.",
-      es: "Desde la llegada entre palmeras hasta el penthouse, recorra los renderings espacio por espacio.",
+      en: "Renderings from the Tesoro Del Mar brochure, room by room.",
+      es: "Renderings del folleto de Tesoro Del Mar, espacio por espacio.",
     },
+    // Titles are items from the brochure's specification lists.
     steps: [
       {
-        label: { en: "Arrival", es: "Llegada" },
-        title: { en: "Shaped by the flight of birds", es: "Inspirado en el vuelo de las aves" },
-        text: {
-          en: "Sleek, aerodynamic forms with curved facades and expansive glass appear to soar above the landscape.",
-          es: "Formas aerodinámicas con fachadas curvas y amplias superficies de cristal que parecen elevarse sobre el paisaje.",
-        },
-        image: tdm.exteriorRoad,
+        label: { en: "The lobby", es: "El vestíbulo" },
+        title: { en: "A private residential lobby, attended 24/7", es: "Vestíbulo residencial privado, atendido 24/7" },
+        text: { en: "Porte-cochère with a private residential lobby attended 24/7.", es: "Porte-cochère con vestíbulo residencial privado atendido 24/7." },
+        image: book.foyer,
       },
       {
-        label: { en: "The foyer", es: "El vestíbulo" },
-        title: { en: "Stone, wood and brushed metal", es: "Piedra, madera y metal cepillado" },
-        text: {
-          en: "Premium materials and a palette inspired by the natural surroundings set the tone from the first step inside.",
-          es: "Materiales de primera y una paleta inspirada en el entorno natural marcan el tono desde el primer paso.",
-        },
-        image: tdm.foyerAtrium,
+        label: { en: "Living", es: "La sala" },
+        title: { en: "Panoramic ocean views through a glass façade", es: "Vistas panorámicas al mar tras una fachada de cristal" },
+        text: { en: "Panoramic ocean views through an expansive glass façade.", es: "Vistas panorámicas al mar a través de una amplia fachada de cristal." },
+        image: book.livingDining,
       },
       {
-        label: { en: "The residence", es: "La residencia" },
-        title: { en: "Open plans, framed by the view", es: "Planos abiertos, enmarcados por la vista" },
-        text: {
-          en: "Open-concept layouts encourage flow and connection, while floor-to-ceiling windows fill each space with light.",
-          es: "Los planos abiertos favorecen la fluidez y la conexión, y los ventanales de piso a techo llenan cada espacio de luz.",
-        },
-        image: tdm.aptLiving2,
+        label: { en: "The kitchen", es: "La cocina" },
+        title: { en: "Custom Italian cabinetry and Gaggenau appliances", es: "Gabinetes italianos a medida y electrodomésticos Gaggenau" },
+        text: { en: "Gourmet kitchen with custom Italian cabinetry and a fully integrated Gaggenau appliance suite.", es: "Cocina gourmet con gabinetes italianos a medida y electrodomésticos Gaggenau integrados." },
+        image: book.kitchenDining,
       },
       {
-        label: { en: "The private suite", es: "La suite privada" },
-        title: { en: "A personal sanctuary", es: "Un santuario personal" },
-        text: {
-          en: "Retreat to a private suite with ocean or garden views, designed to nurture both luxury and ease.",
-          es: "Retírese a una suite privada con vista al mar o al jardín, pensada para el lujo y la serenidad.",
-        },
-        image: tdm.aptBedroom,
+        label: { en: "The primary suite", es: "La suite principal" },
+        title: { en: "Walk-in closets and motorized shades", es: "Vestidores y cortinas motorizadas" },
+        text: { en: "Walk-in closets with custom built-ins and motorized window shades in every room.", es: "Vestidores con muebles a medida y cortinas motorizadas en cada habitación." },
+        image: book.primaryBedroom,
       },
       {
-        label: { en: "The terraces", es: "Las terrazas" },
-        title: { en: "Terraces that extend like wings", es: "Terrazas que se extienden como alas" },
-        text: {
-          en: "Cantilevered balconies, reflecting pools and gentle cascades foster tranquility and social connection.",
-          es: "Balcones en voladizo, espejos de agua y cascadas suaves fomentan la tranquilidad y la vida en comunidad.",
-        },
-        image: renders.tdmExterior,
+        label: { en: "The bath", es: "El baño" },
+        title: { en: "Onyx, marble and Dornbracht fittings", es: "Ónix, mármol y grifería Dornbracht" },
+        text: { en: "Spa-like baths finished in stone with Dornbracht fixtures.", es: "Baños tipo spa en piedra con grifería Dornbracht." },
+        image: book.bathTub,
       },
       {
         label: { en: "The penthouse", es: "El penthouse" },
-        title: { en: "Generous rooms for entertaining", es: "Espacios amplios para recibir" },
-        text: {
-          en: "A floating staircase, sweeping views and curated finishes for life's finest moments.",
-          es: "Una escalera flotante, vistas amplias y acabados selectos para los mejores momentos.",
-        },
-        image: tdm.penthouseLiving,
+        title: { en: "One penthouse, crowning the tower", es: "Un penthouse en la cima de la torre" },
+        text: { en: "60 luxury residences and one penthouse.", es: "60 residencias de lujo y un penthouse." },
+        image: book.penthouseLiving,
       },
     ],
   },
@@ -615,11 +593,11 @@ export const home: HomeContent = {
   },
   interludes: [
     {
-      image: tdm.aerialForest,
+      image: book.aerialCoast,
       lines: [
-        { en: "Ten acres on the north coast", es: "Diez acres en la costa norte" },
-        { en: "Beside a national park", es: "Junto a un parque nacional" },
-        { en: "A walk from Balneario Cerro Gordo", es: "A pasos del Balneario Cerro Gordo" },
+        { en: "Seventeen acres on the north shore", es: "Diecisiete acres en la costa norte" },
+        { en: "Steps from the beach and national park", es: "A pasos de la playa y del parque nacional" },
+        { en: "35 minutes from San Juan", es: "A 35 minutos de San Juan" },
       ],
     },
     {
@@ -668,7 +646,7 @@ export const home: HomeContent = {
         render: tdm.aerialCoast,
         drawing: drawings.aerial,
         kicker: { en: "Tesoro Del Mar · From the air", es: "Tesoro Del Mar · Desde el aire" },
-        title: { en: "Ten acres beside a national park", es: "Diez acres junto a un parque nacional" },
+        title: { en: "Seventeen acres beside a national park", es: "Diecisiete acres junto a un parque nacional" },
       },
       {
         render: tdm.foyerAtrium,

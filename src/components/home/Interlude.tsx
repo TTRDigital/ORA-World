@@ -56,6 +56,7 @@ export function Interlude({ image, lines }: { image: Localized<ImageRef>; lines:
               alt={image.alt}
               fill
               sizes={fullBleedSizes(image, 1.18)}
+              quality={85}
               className="object-cover"
               style={{ objectPosition: image.position }}
             />

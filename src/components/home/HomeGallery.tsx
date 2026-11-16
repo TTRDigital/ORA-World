@@ -1,7 +1,7 @@
 import { getImageProps } from "next/image";
 import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/content/types";
-import { tdm } from "@/content/seed/images";
+import { book } from "@/content/seed/images";
 import { Link } from "@/i18n/navigation";
 import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -9,15 +9,16 @@ import { Button } from "@/components/ui/Button";
 import { GalleryCarousel } from "./GalleryCarousel";
 
 const ROOMS = [
-  tdm.foyerSignage,
-  tdm.aptLiving,
-  tdm.penthouseDining,
-  tdm.aptBedroom2,
-  tdm.aptBath2,
-  tdm.penthouseLiving,
-  tdm.hotelSuite,
-  tdm.foyerReception,
-  tdm.aptStudy,
+  book.foyer,
+  book.livingDining,
+  book.kitchenDining,
+  book.primaryBedroom,
+  book.bedroomOcean,
+  book.bathVanity,
+  book.study,
+  book.penthouseStaircase,
+  book.penthousePiano,
+  book.gym,
 ];
 
 /** Room-by-room renders in the Vengeance UI 3D perspective carousel. */
@@ -26,7 +27,7 @@ export async function HomeGallery({ locale }: { locale: Locale }) {
   const n = await getTranslations("nav");
   // Optimised, sharp sources: 2× the 440px slide on desktop.
   const items = ROOMS.map((im) => {
-    const { props } = getImageProps({ src: im.src, alt: im.alt[locale], width: 900, height: 1200, quality: 75 });
+    const { props } = getImageProps({ src: im.src, alt: im.alt[locale], width: 900, height: 1200, quality: 85 });
     return { src: props.src, title: im.alt[locale], alt: im.alt[locale] };
   });
   return (

@@ -5,18 +5,20 @@
  * Sources:
  *   assets-source/images/client/*   the client's own renders and photos (from oraworld.com)
  *   assets-source/images/free/*     free-license placeholders (credits in CONTENT-TODO.md)
+ *   assets-source/images/tdm/*      renders from the client's Tesoro Del Mar brochure (TeseloDelmar.pdf)
  */
 import sharp from "sharp";
 import { readdir, mkdir, writeFile, stat } from "node:fs/promises";
 import path from "node:path";
 
-const MAX_W = 2560;
+const MAX_W = 2800;
 const groups = [
   { dir: "assets-source/images/client", out: "public/images/client", prefix: "client" },
   { dir: "assets-source/images/free", out: "public/images/free", prefix: "free" },
   { dir: "assets-source/images/people", out: "public/images/people", prefix: "people" },
   { dir: "assets-source/images/brochure", out: "public/images/brochure", prefix: "brochure" },
   { dir: "assets-source/images/drawings", out: "public/images/drawings", prefix: "drawings" },
+  { dir: "assets-source/images/tdm", out: "public/images/tdm", prefix: "tdm" },
 ];
 
 const manifest = {};

@@ -753,3 +753,102 @@ export const drawings = {
   penthouse: drawing("tdm-penthouse-living-002-small-scaled", "the Tesoro Del Mar penthouse"),
   dw: drawing("doradowaterfalls1", "Dorado Waterfalls"),
 };
+
+/* ---- Tesoro Del Mar brochure renders (TeseloDelmar.pdf, client-supplied) ---- */
+const B = { rendering: true } as const;
+export const book = {
+  aerialCoast: img(
+    "tdm/aerial-coast",
+    {
+      en: "Aerial view of Tesoro Del Mar's three towers above the beach and coastal park",
+      es: "Vista aérea de las tres torres de Tesoro Del Mar sobre la playa y el parque costero",
+    },
+    { ...B, position: "50% 40%" },
+  ),
+  aerialTowers: img(
+    "tdm/aerial-towers",
+    { en: "The three curved towers seen from above", es: "Las tres torres curvas vistas desde lo alto" },
+    B,
+  ),
+  exteriorRoad: img(
+    "tdm/exterior-road",
+    {
+      en: "Curved glass towers rising behind palms along the approach road",
+      es: "Torres de cristal curvas tras las palmeras del camino de acceso",
+    },
+    { ...B, position: "50% 30%" },
+  ),
+  poolCabana: img(
+    "tdm/pool-cabana",
+    { en: "Poolside cabana beneath the towers", es: "Cabaña junto a la piscina bajo las torres" },
+    { ...B, position: "50% 40%" },
+  ),
+  puttingGreen: img(
+    "tdm/putting-green",
+    { en: "The 18-hole putting course among the gardens", es: "El campo de putting de 18 hoyos entre los jardines" },
+    B,
+  ),
+  porteCochere: img(
+    "tdm/porte-cochere",
+    { en: "Porte-cochère at the tower entrance", es: "Porte-cochère a la entrada de la torre" },
+    { ...B, position: "50% 60%" },
+  ),
+  foyer: img(
+    "tdm/foyer",
+    { en: "Double-height residential lobby", es: "Vestíbulo residencial de doble altura" },
+    B,
+  ),
+  gym: img("tdm/gym", { en: "Fitness center facing the gardens", es: "Gimnasio frente a los jardines" }, B),
+  livingDining: img(
+    "tdm/apartment-living-dining",
+    { en: "Apartment living and dining room with ocean light", es: "Sala y comedor del apartamento con luz del mar" },
+    B,
+  ),
+  kitchenDining: img(
+    "tdm/apartment-kitchen-dining",
+    { en: "Apartment kitchen and dining room", es: "Cocina y comedor del apartamento" },
+    B,
+  ),
+  primaryBedroom: img(
+    "tdm/apartment-primary-bedroom",
+    { en: "Apartment primary bedroom", es: "Dormitorio principal del apartamento" },
+    B,
+  ),
+  bedroom: img("tdm/apartment-bedroom", { en: "Apartment bedroom", es: "Dormitorio del apartamento" }, B),
+  bathVanity: img(
+    "tdm/apartment-bath-vanity",
+    { en: "Marble bathroom vanity", es: "Tocador de baño en mármol" },
+    B,
+  ),
+  bathTub: img(
+    "tdm/apartment-bath-tub",
+    { en: "Freestanding bath before an onyx wall", es: "Bañera exenta frente a un muro de ónix" },
+    B,
+  ),
+  bedroomOcean: img(
+    "tdm/apartment-bedroom-ocean",
+    { en: "Bedroom with a floor-to-ceiling ocean view", es: "Dormitorio con vista al mar de piso a techo" },
+    B,
+  ),
+  powderRoom: img(
+    "tdm/apartment-powder-room",
+    { en: "Powder room in marble and wood", es: "Medio baño en mármol y madera" },
+    B,
+  ),
+  study: img("tdm/apartment-study", { en: "Apartment study", es: "Estudio del apartamento" }, B),
+  penthouseLiving: img(
+    "tdm/penthouse-living",
+    { en: "Penthouse living room and floating staircase", es: "Sala del penthouse y escalera flotante" },
+    B,
+  ),
+  penthouseStaircase: img(
+    "tdm/penthouse-staircase",
+    { en: "Double-height penthouse living room", es: "Sala de doble altura del penthouse" },
+    B,
+  ),
+  penthousePiano: img(
+    "tdm/penthouse-piano",
+    { en: "Penthouse lounge with a grand piano", es: "Salón del penthouse con piano de cola" },
+    B,
+  ),
+};

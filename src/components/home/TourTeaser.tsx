@@ -54,7 +54,7 @@ export function TourTeaser({ block, url }: { block: Localized<HomeContent["tour"
             className="group relative block w-full cursor-pointer text-left disabled:cursor-default"
           >
             <span className="sr-only">{h("openTour")}</span>
-            <Picture image={block.image} sizes="(min-width: 1440px) 1340px, 96vw" aspect="16/9" showCaption />
+            <Picture image={block.image} sizes="(min-width: 1440px) 1340px, 96vw" aspect="16/9" showCaption quality={85} />
             <span className="absolute inset-0 flex items-center justify-center">
               <span className="flex h-20 w-20 items-center justify-center rounded-full border border-white/70 bg-basalt/30 text-white backdrop-blur-sm transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-110">
                 <PlayGlyph className="ml-1 h-5 w-5" />
