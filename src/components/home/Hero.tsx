@@ -30,7 +30,7 @@ export async function Hero({ hero, site }: Props) {
       <div data-hero-shade className="pointer-events-none absolute inset-0 bg-basalt opacity-0" />
 
       <div data-hero-content className="relative container-x pt-[calc(var(--header-h)+4rem)] pb-20 md:pb-28">
-        <SplitLines as="h1" className="max-w-[12ch] display-xl text-white">
+        <SplitLines as="h1" className="max-w-[14ch] display-l text-white">
           <Accent text={hero.headline} className="text-brass-light" />
         </SplitLines>
         <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal data-delay="0.3">
