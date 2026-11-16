@@ -158,9 +158,6 @@ export function OverlayMenu({ open, onClose, site }: Props) {
               <span className="text-dark-muted">{site.salesGalleryAddress}</span>
             </div>
             <div className="flex items-center gap-6">
-              <a href={site.portalUrl} className="link-underline eyebrow" rel="noopener">
-                {t("login")}
-              </a>
               <LanguageToggle tone="light" />
             </div>
           </div>

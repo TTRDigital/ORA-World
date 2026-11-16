@@ -82,11 +82,6 @@ export async function Footer({ site }: { site: Localized<SiteSettings> }) {
                   </Link>
                 </li>
               ))}
-              <li>
-                <a href={site.portalUrl} className="link-underline small text-dark-fg/85" rel="noopener">
-                  {t("login")}
-                </a>
-              </li>
             </ul>
           </nav>
 

@@ -121,9 +121,6 @@ export function Header({ site }: Props) {
           </nav>
 
           <div className="flex items-center gap-4 md:gap-6">
-            <a href={site.portalUrl} className="hidden link-underline py-2 eyebrow md:inline-block" rel="noopener">
-              {t("login")}
-            </a>
             <LanguageToggle className="hidden md:inline-flex" />
             <Link
               href="/contact"
