@@ -793,11 +793,7 @@ export const book = {
     { en: "Porte-cochère at the tower entrance", es: "Porte-cochère a la entrada de la torre" },
     { ...B, position: "50% 60%" },
   ),
-  foyer: img(
-    "tdm/foyer",
-    { en: "Double-height residential lobby", es: "Vestíbulo residencial de doble altura" },
-    B,
-  ),
+  foyer: img("tdm/foyer", { en: "Double-height residential lobby", es: "Vestíbulo residencial de doble altura" }, B),
   gym: img("tdm/gym", { en: "Fitness center facing the gardens", es: "Gimnasio frente a los jardines" }, B),
   livingDining: img(
     "tdm/apartment-living-dining",
@@ -815,11 +811,7 @@ export const book = {
     B,
   ),
   bedroom: img("tdm/apartment-bedroom", { en: "Apartment bedroom", es: "Dormitorio del apartamento" }, B),
-  bathVanity: img(
-    "tdm/apartment-bath-vanity",
-    { en: "Marble bathroom vanity", es: "Tocador de baño en mármol" },
-    B,
-  ),
+  bathVanity: img("tdm/apartment-bath-vanity", { en: "Marble bathroom vanity", es: "Tocador de baño en mármol" }, B),
   bathTub: img(
     "tdm/apartment-bath-tub",
     { en: "Freestanding bath before an onyx wall", es: "Bañera exenta frente a un muro de ónix" },
@@ -851,4 +843,33 @@ export const book = {
     { en: "Penthouse lounge with a grand piano", es: "Salón del penthouse con piano de cola" },
     B,
   ),
+  // Brochure photography (not renderings): lifestyle and the specified finishes.
+  running: img("tdm/lifestyle-running", {
+    en: "Two runners on a garden path",
+    es: "Dos corredores en un sendero ajardinado",
+  }),
+  kitchenFinishDetail: img("tdm/finish-kitchen-detail", {
+    en: "Kitchen cabinetry finish detail",
+    es: "Detalle del acabado de los gabinetes de cocina",
+  }),
+  kitchenFinishSlats: img("tdm/finish-kitchen-slats", {
+    en: "Kitchen finishes: slatted and smooth panels",
+    es: "Acabados de cocina: paneles lisos y con listones",
+  }),
+  kitchenFinish: img("tdm/finish-kitchen", {
+    en: "Kitchen in the specified Scavolini finishes",
+    es: "Cocina con los acabados Scavolini especificados",
+  }),
+  closetOpen: img("tdm/finish-closet-open", {
+    en: "Open wardrobe system by Rimadesio",
+    es: "Sistema de vestidor abierto de Rimadesio",
+  }),
+  closetLounge: img("tdm/finish-closet-lounge", {
+    en: "Rimadesio closet doors in a dressing room",
+    es: "Puertas de vestidor Rimadesio en un vestidor",
+  }),
+  kitchenFaucet: img("tdm/finish-kitchen-faucet", {
+    en: "Dornbracht kitchen faucet",
+    es: "Grifo de cocina Dornbracht",
+  }),
 };

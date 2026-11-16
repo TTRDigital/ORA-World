@@ -117,7 +117,7 @@ export interface Amenity {
   featured?: boolean;
 }
 
-export type GalleryCategory = "exteriors" | "interiors" | "amenities" | "lifestyle" | "construction";
+export type GalleryCategory = "exteriors" | "interiors" | "amenities" | "finishes" | "lifestyle" | "construction";
 
 export interface GalleryImage {
   id: string;

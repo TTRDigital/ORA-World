@@ -352,11 +352,12 @@
     "gallery": {
       "eyebrow": "Galería",
       "title": "Renders y *momentos*",
-      "intro": "Exteriores, interiores, amenidades, estilo de vida y avance de obra. Todos los renders son vistas conceptuales del artista.",
+      "intro": "Tesoro Del Mar, del folleto: exteriores, interiores, amenidades y acabados. Los renderings son vistas conceptuales.",
       "cats": {
         "exteriors": "Exteriores",
         "interiors": "Interiores",
         "amenities": "Amenidades",
+        "finishes": "Acabados",
         "lifestyle": "Estilo de vida",
         "construction": "Construcción"
       }

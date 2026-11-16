@@ -8,7 +8,7 @@ import type { Localized } from "@/lib/localize";
 import { Lightbox } from "./Lightbox";
 import { cn } from "@/lib/utils";
 
-const CATS: GalleryCategory[] = ["exteriors", "interiors", "amenities", "lifestyle", "construction"];
+const CATS: GalleryCategory[] = ["exteriors", "interiors", "amenities", "finishes", "lifestyle", "construction"];
 
 /** Masonry (CSS columns) with category filters and a full-screen lightbox. */
 export function GalleryGrid({

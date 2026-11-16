@@ -352,11 +352,12 @@
     "gallery": {
       "eyebrow": "Gallery",
       "title": "Renderings and *moments*",
-      "intro": "Exteriors, interiors, amenities, lifestyle and construction progress. All renderings are artist's conceptual views.",
+      "intro": "Tesoro Del Mar, from the brochure: exteriors, interiors, amenities and finishes. Renderings are artist's conceptual views.",
       "cats": {
         "exteriors": "Exteriors",
         "interiors": "Interiors",
         "amenities": "Amenities",
+        "finishes": "Finishes",
         "lifestyle": "Lifestyle",
         "construction": "Construction"
       }
