@@ -110,7 +110,7 @@ Some components are installed as source from shadcn-style registries with `scrip
 | [Skiper UI](https://skiper-ui.com) | `skiper58` (TextRoll) | Header navigation hover |
 | [Skiper UI](https://skiper-ui.com) | `skiper47` (Carousel_001, Swiper coverflow) | Gallery page opener |
 | [Skiper UI](https://skiper-ui.com) | `skiper40` (links) | Installed, not yet used |
-| [Vengeance UI](https://www.vengeanceui.com) | `perspective-carousel` | Homepage "Room by room" gallery |
+| [Vengeance UI](https://www.vengeanceui.com) | `perspective-carousel` | Installed; replaced on the homepage by a wide slideshow (client preferred large flat images) |
 | [Vengeance UI](https://www.vengeanceui.com) | `stats-counter` | Hero stats count-up (edited: server-rendered value, thousands separators) |
 
 Skiper UI's free components require attribution to Skiper UI; the attribution is kept in each file's

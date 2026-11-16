@@ -1,7 +1,7 @@
-import { getImageProps } from "next/image";
 import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/content/types";
 import { book } from "@/content/seed/images";
+import { localize } from "@/lib/localize";
 import { Link } from "@/i18n/navigation";
 import { Accent } from "@/components/ui/Accent";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -21,15 +21,11 @@ const ROOMS = [
   book.gym,
 ];
 
-/** Room-by-room renders in the Vengeance UI 3D perspective carousel. */
+/** Room-by-room renders as a wide, flat slideshow. */
 export async function HomeGallery({ locale }: { locale: Locale }) {
   const h = await getTranslations("home");
   const n = await getTranslations("nav");
-  // Optimised, sharp sources: 2× the 440px slide on desktop.
-  const items = ROOMS.map((im) => {
-    const { props } = getImageProps({ src: im.src, alt: im.alt[locale], width: 900, height: 1200, quality: 85 });
-    return { src: props.src, title: im.alt[locale], alt: im.alt[locale] };
-  });
+  const items = ROOMS.map((im) => localize(im, locale));
   return (
     <section className="overflow-hidden py-section" aria-labelledby="gallery-title">
       <div className="container-x">
@@ -50,7 +46,12 @@ export async function HomeGallery({ locale }: { locale: Locale }) {
           </div>
         </div>
         <div className="mt-10 md:mt-14" data-reveal>
-          <GalleryCarousel items={items} label={h("galleryTitle").replace(/\*/g, "")} />
+          <GalleryCarousel
+            items={items}
+            label={h("galleryTitle").replace(/\*/g, "")}
+            prev={h("walkPrev")}
+            next={h("walkNext")}
+          />
         </div>
       </div>
     </section>
