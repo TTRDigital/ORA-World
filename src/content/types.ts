@@ -292,6 +292,8 @@ export interface WalkStep {
   title: L;
   text: L;
   image: ImageRef;
+  /** Optional short muted clip of the same render (plays over the still once it can). */
+  video?: string;
 }
 
 export interface GenericPage {

@@ -37,9 +37,12 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
 
   useEffect(() => {
     if (!visible || manual || document.documentElement.classList.contains("reduced-motion")) return;
-    const id = window.setTimeout(() => setActive((a) => (a + 1) % total), 4500);
+    // Stills hold for 4.5s; a step with a clip moves on when the clip ends (the long timeout is only
+    // a fallback in case the clip cannot play).
+    const wait = block.steps[active]?.video ? 14000 : 4500;
+    const id = window.setTimeout(() => setActive((a) => (a + 1) % total), wait);
     return () => window.clearTimeout(id);
-  }, [visible, manual, active, total]);
+  }, [visible, manual, active, total, block.steps]);
 
   const pick = (i: number) => {
     setManual(true);
@@ -75,7 +78,7 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
                   aria-hidden={i !== active}
                   fill
                   sizes="(min-width: 1440px) 1360px, 96vw"
-                quality={85}
+                  quality={85}
                   priority={false}
                   className={cn(
                     "object-cover transition-[opacity,transform] duration-[1100ms] ease-[var(--ease-out-expo)]",
@@ -84,6 +87,16 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
                   style={{ objectPosition: s.image.position ?? "50% 50%" }}
                 />
               ))}
+              {step.video && visible && (
+                <WalkVideo
+                  key={active}
+                  src={step.video}
+                  loop={manual}
+                  onEnded={() => {
+                    if (!manual) setActive((a) => (a + 1) % total);
+                  }}
+                />
+              )}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden bg-gradient-to-t from-basalt/75 via-basalt/25 to-transparent px-8 pt-24 pb-7 text-white md:block">
                 <p className="eyebrow text-brass-light">{step.label}</p>
                 <p key={active} className="mt-2 animate-[walkin_.7s_var(--ease-out-expo)_both] display-s text-white">
@@ -122,7 +135,7 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
 
           {/* Room thumbnails */}
           <ol
-            className="-mx-[var(--gutter)] mt-5 flex snap-x scroll-px-[var(--gutter)] [scrollbar-width:none] gap-3 overflow-x-auto px-[var(--gutter)] pb-2 md:mx-0 md:mt-6 md:grid md:grid-cols-6 md:overflow-visible md:px-0"
+            className="-mx-[var(--gutter)] mt-5 flex snap-x scroll-px-[var(--gutter)] [scrollbar-width:none] gap-3 overflow-x-auto px-[var(--gutter)] pb-2 md:mx-0 md:mt-6 md:grid md:grid-cols-7 md:overflow-visible md:px-0"
             aria-label={h("walkSteps")}
           >
             {block.steps.map((s, i) => (
@@ -163,5 +176,38 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
       </div>
       <style>{`@keyframes walkin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}`}</style>
     </section>
+  );
+}
+
+/**
+ * The step's clip, laid over its still: muted, inline, no controls. It fades in only once frames are
+ * actually playing, so the sharp still shows while it loads (and stays if the clip can't play or the
+ * visitor prefers reduced motion).
+ */
+function WalkVideo({ src, loop, onEnded }: { src: string; loop: boolean; onEnded: () => void }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || document.documentElement.classList.contains("reduced-motion")) return;
+    v.play().catch(() => {});
+  }, []);
+  return (
+    <video
+      ref={ref}
+      src={src}
+      muted
+      playsInline
+      preload="auto"
+      loop={loop}
+      aria-hidden
+      tabIndex={-1}
+      onPlaying={() => setPlaying(true)}
+      onEnded={onEnded}
+      className={cn(
+        "absolute inset-0 h-full w-full object-cover transition-opacity duration-700",
+        playing ? "opacity-100" : "opacity-0",
+      )}
+    />
   );
 }
