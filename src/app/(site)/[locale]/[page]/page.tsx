@@ -10,7 +10,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Picture } from "@/components/ui/Picture";
 import { pages as seed } from "@/content/seed/projects";
 
-/** Generic CMS pages: hotel-development, careers, privacy, terms, accessibility, legal-disclaimer. */
+/** Generic CMS pages: privacy, terms, accessibility, legal-disclaimer. */
 export const dynamicParams = false;
 
 export function generateStaticParams() {

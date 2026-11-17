@@ -69,13 +69,17 @@ export default async function AmenitiesPage({ params }: PageProps<"/[locale]/ame
               >
                 {items.map((a, i) => (
                   <li key={a.slug} id={a.slug} className="group scroll-mt-40" data-reveal data-delay={(i % 4) * 0.08}>
-                    <Picture
-                      image={a.image}
-                      sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
-                      aspect="4/3"
-                      showCaption={false}
-                    />
-                    <h3 className="mt-5 display-s">{a.name}</h3>
+                    {a.image ? (
+                      <Picture
+                        image={a.image}
+                        sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
+                        aspect="4/3"
+                        showCaption={false}
+                      />
+                    ) : (
+                      <span aria-hidden className="block h-px w-full bg-accent" />
+                    )}
+                    <h3 className={a.image ? "mt-5 display-s" : "mt-6 display-s"}>{a.name}</h3>
                     <p className="mt-2 text-fg-muted">{a.description}</p>
                   </li>
                 ))}

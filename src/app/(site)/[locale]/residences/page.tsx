@@ -10,7 +10,6 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 import { BrochureSection } from "@/components/residences/BrochureSection";
-import { Portfolio } from "@/components/residences/Portfolio";
 import { getSiteSettings } from "@/lib/content";
 
 export const generateMetadata = ({ params }: PageProps<"/[locale]/residences">) =>
@@ -67,12 +66,6 @@ export default async function ResidencesPage({ params }: PageProps<"/[locale]/re
         </div>
       </Section>
       <BrochureSection site={site} />
-      <Section tone="alt">
-        <div className="container-x">
-          <Eyebrow>{(await getTranslations("pages.tesoro"))("portfolio")}</Eyebrow>
-          <Portfolio locale={locale} />
-        </div>
-      </Section>
     </main>
   );
 }

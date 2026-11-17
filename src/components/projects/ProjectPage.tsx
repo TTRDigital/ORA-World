@@ -7,7 +7,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Picture } from "@/components/ui/Picture";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { LeadFormLazy as LeadForm } from "@/components/forms/LeadFormLazy";
-import { getProjects, getSiteSettings } from "@/lib/content";
+import { getSiteSettings } from "@/lib/content";
 import { Link } from "@/i18n/navigation";
 import { JsonLd, breadcrumbLd } from "@/lib/seo";
 
@@ -20,14 +20,12 @@ export async function ProjectPage({
   locale: Locale;
   path: string;
 }) {
-  const [t, c, n, site, projects] = await Promise.all([
+  const [t, c, n, site] = await Promise.all([
     getTranslations("pages.tesoro"),
     getTranslations("common"),
     getTranslations("nav"),
     getSiteSettings(locale),
-    getProjects(locale),
   ]);
-  const others = projects.filter((x) => x.slug !== p.slug);
   return (
     <main id="main">
       <JsonLd
@@ -114,28 +112,6 @@ export async function ProjectPage({
           </div>
         </div>
       </Section>
-      {others.length > 0 && (
-        <Section className="container-x">
-          <Eyebrow>{t("otherProjects")}</Eyebrow>
-          <ul className="mt-8 space-y-6">
-            {others.map((o) => (
-              <li key={o.slug}>
-                <Link
-                  href={o.slug === "tesoro-del-mar" ? "/tesoro-del-mar" : `/projects/${o.slug}`}
-                  className="group grid items-center gap-6 overflow-hidden rounded-[1.5rem] bg-surface/60 p-3 md:grid-cols-2 md:gap-10 md:p-4"
-                >
-                  <Picture image={o.hero} sizes="(min-width: 768px) 46vw, 92vw" aspect="16/10" />
-                  <div className="px-3 pb-4 md:px-0 md:pr-8 md:pb-0">
-                    <h3 className="display-m transition-colors group-hover:text-accent-ink">{o.name}</h3>
-                    <p className="mt-3 lead text-fg-muted">{o.tagline}</p>
-                    <span className="mt-6 inline-block link-underline eyebrow text-accent-ink">{o.location}</span>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
     </main>
   );
 }

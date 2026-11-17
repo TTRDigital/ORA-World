@@ -241,8 +241,8 @@
     "tabFamily": "Familia",
     "tabPets": "Mascotas",
     "stepOf": "Paso {n} de {total}",
-    "apartments": "apartamentos",
-    "hotelSuites": "suites de hotel",
+    "apartments": "residencias",
+    "hotelSuites": "penthouse",
     "drawing": "Dibujo",
     "rendering": "Rendering",
     "compareLabel": "Deslice para comparar dibujo y rendering",
@@ -269,8 +269,8 @@
     "wellness": "Bienestar",
     "family": "Familia",
     "pets": "Mascotas",
-    "resort": "Resort",
-    "eco": "Eco"
+    "resort": "Club y ocio",
+    "eco": "El edificio"
   },
   "poiCat": {
     "beach": "Playas",
@@ -286,7 +286,7 @@
     "residences": {
       "eyebrow": "Residencias",
       "title": "Encuentre su *lugar* en el paraíso",
-      "intro": "Apartamentos contemporáneos, villas, penthouses y suites de hotel. Cada residencia enmarca la isla: mar, jardín o montañas."
+      "intro": "Fase Uno: una colección limitada de 60 residencias de dos a seis dormitorios y un penthouse, todas con vistas panorámicas al mar."
     },
     "floorPlans": {
       "eyebrow": "Planos",

@@ -2,8 +2,8 @@ import type { Collection, FloorPlan } from "../types";
 import { renders, tdm, book } from "./images";
 
 /**
- * Residence collections. Tesoro Del Mar publishes "contemporary apartments and luxurious villas"
- * plus 42 hotel suites and a penthouse render; bedroom counts, sizes and prices are not public.
+ * Residence collections, per the Tesoro Del Mar brochure: Phase One has 60 residences (2 to 6
+ * bedrooms) and one penthouse; sizes and prices are not public.
  * Every numeric field stays null (shown as a placeholder) until the client confirms.
  */
 export const collections: Collection[] = [
@@ -11,77 +11,66 @@ export const collections: Collection[] = [
     slug: "residences",
     name: { en: "The Residences", es: "Las Residencias" },
     tagline: {
-      en: "Contemporary apartments with ocean and garden views",
-      es: "Apartamentos contemporáneos con vistas al mar y a los jardines",
+      en: "60 residences, 2 to 6 bedrooms, each with panoramic ocean views",
+      es: "60 residencias de 2 a 6 dormitorios, todas con vistas panorámicas al mar",
     },
+    // Brochure: "Inspired by Flight", "The Building", "Inspired Living Spaces", "Elevated Kitchens".
     description: {
       en: [
-        "Open-concept layouts that encourage flow and connection. Floor-to-ceiling windows invite the outdoors in, filling each space with light, views and serenity.",
-        "Organic materials, clean lines and curated finishes echo the natural surroundings while delivering effortless luxury and comfort.",
+        "Curved towers arc like wings, spacious balconies stretch outward toward the expanse of endless blue, and glass facades dissolve the boundary between home and horizon. The residences at Tesoro del Mar are designed for indoor / outdoor living, welcoming the salt air and breathing with the ocean's breeze.",
+        "Elegant finishes from custom Italian cabinetry and porcelain tiles to fully integrated smart home technology and premium Gaggenau appliances elevate the every day, making space for what matters most.",
       ],
       es: [
-        "Distribuciones abiertas que invitan al flujo y la conexión. Ventanales de piso a techo traen el exterior adentro y llenan cada espacio de luz, vistas y serenidad.",
-        "Materiales orgánicos, líneas limpias y acabados seleccionados hacen eco del entorno natural con un lujo y una comodidad sin esfuerzo.",
+        "Las torres curvas se arquean como alas, los amplios balcones se extienden hacia el azul infinito y las fachadas de cristal borran el límite entre el hogar y el horizonte. Las residencias de Tesoro del Mar están pensadas para vivir dentro y fuera, recibiendo el aire salino y la brisa del océano.",
+        "Acabados elegantes, desde gabinetes italianos a medida y pisos de porcelanato hasta tecnología de hogar inteligente integrada y electrodomésticos Gaggenau, elevan lo cotidiano y dejan espacio para lo que más importa.",
       ],
     },
-    bedrooms: null,
+    bedrooms: "2–6",
     sizeRange: null,
     fromPrice: null,
     image: book.livingDining,
     hoverImage: book.bedroomOcean,
     features: [
       {
-        en: "Private terraces that become daily sanctuaries",
-        es: "Terrazas privadas que se convierten en santuarios diarios",
+        en: "Balconies and wraparound terraces for indoor / outdoor living",
+        es: "Balcones y terrazas envolventes para vivir dentro y fuera",
       },
       {
-        en: "Ocean or garden views from every principal room",
-        es: "Vistas al mar o al jardín desde cada estancia principal",
+        en: "Panoramic ocean views through an expansive glass façade",
+        es: "Vistas panorámicas al mar a través de una amplia fachada de cristal",
       },
-      { en: "Open-concept living and dining", es: "Sala y comedor de concepto abierto" },
+      {
+        en: "Thoughtfully designed layouts ideal for luxury living and entertaining",
+        es: "Distribuciones pensadas para vivir con lujo y recibir",
+      },
     ],
     finishes: [
       {
-        group: { en: "Living spaces", es: "Espacios de estar" },
+        group: { en: "Inspired living spaces", es: "Espacios de vida" },
         items: [
-          { en: "Floor-to-ceiling glazing", es: "Acristalamiento de piso a techo" },
-          { en: "Stone, wood and brushed metals", es: "Piedra, madera y metales cepillados" },
-          { en: "Eco-friendly finishes", es: "Acabados ecológicos" },
+          { en: "Large-format porcelain tile flooring throughout", es: "Pisos de porcelanato de gran formato" },
+          { en: "Motorized window shades in every room", es: "Cortinas motorizadas en cada habitación" },
+          { en: "Mitsubishi Electric multi-split air", es: "Aire acondicionado multi-split Mitsubishi Electric" },
+          { en: "Walk-in closets with custom built-ins", es: "Vestidores con muebles a medida" },
+          {
+            en: "Integrated smart home technology, pre-wired for high-speed Wi-Fi",
+            es: "Tecnología de hogar inteligente integrada, precableado para Wi-Fi de alta velocidad",
+          },
         ],
       },
       {
-        group: { en: "Kitchens and baths", es: "Cocinas y baños" },
+        group: { en: "Elevated kitchens", es: "Cocinas" },
         items: [
-          { en: "Custom cabinetry, brand to be confirmed", es: "Gabinetes a medida, marca por confirmar" },
-          { en: "Premium appliances, brand to be confirmed", es: "Electrodomésticos premium, marca por confirmar" },
-          { en: "Natural stone surfaces", es: "Superficies de piedra natural" },
+          { en: "Gourmet kitchen with custom Italian cabinetry", es: "Cocina gourmet con gabinetes italianos a medida" },
+          { en: "Quartzite countertops and backsplashes", es: "Encimeras y salpicaderos de cuarcita" },
+          {
+            en: "Gaggenau refrigerator and freezer, convection oven, dishwasher and built-in coffee machine",
+            es: "Refrigerador y congelador, horno de convección, lavavajillas y cafetera integrada Gaggenau",
+          },
+          { en: "Optional Fisher & Paykel wine refrigerator", es: "Vinoteca Fisher & Paykel opcional" },
         ],
       },
     ],
-    placeholder: true,
-  },
-  {
-    slug: "villas",
-    name: { en: "The Villas", es: "Las Villas" },
-    tagline: { en: "Luxurious villas within the landscape", es: "Villas de lujo integradas en el paisaje" },
-    description: {
-      en: [
-        "Private villas landscaped with native plants and flowers, with cantilevered terraces that extend outward like wings and reflecting pools that foster tranquility.",
-      ],
-      es: [
-        "Villas privadas ajardinadas con plantas y flores nativas, con terrazas en voladizo que se extienden como alas y espejos de agua que invitan a la calma.",
-      ],
-    },
-    bedrooms: null,
-    sizeRange: null,
-    fromPrice: null,
-    image: tdm.aerialVillas,
-    hoverImage: renders.poolTerrace,
-    features: [
-      { en: "Private pool and garden", es: "Piscina y jardín privados" },
-      { en: "Natural ventilation and daylight by design", es: "Ventilación natural y luz de día por diseño" },
-    ],
-    finishes: [],
     placeholder: true,
   },
   {
@@ -107,35 +96,6 @@ export const collections: Collection[] = [
         es: "Distribuciones de planta completa y media planta, por confirmar",
       },
       { en: "Wrap-around terraces", es: "Terrazas envolventes" },
-    ],
-    finishes: [],
-    placeholder: true,
-  },
-  {
-    slug: "hotel-suites",
-    name: { en: "Hotel Suites", es: "Suites de hotel" },
-    tagline: {
-      en: "42 suites in the boutique hotel at the community hub",
-      es: "42 suites en el hotel boutique del centro de la comunidad",
-    },
-    description: {
-      en: [
-        "The community hub includes a state-of-the-art clubhouse and a boutique hotel, ensuring exceptional hospitality and recreational facilities for residents and their guests.",
-      ],
-      es: [
-        "El centro de la comunidad incluye un clubhouse de última generación y un hotel boutique, garantizando hospitalidad y espacios recreativos excepcionales para residentes e invitados.",
-      ],
-    },
-    bedrooms: null,
-    sizeRange: null,
-    fromPrice: null,
-    image: tdm.hotelSuite,
-    hoverImage: tdm.foyerSignage,
-    features: [
-      {
-        en: "Ownership model to be confirmed",
-        es: "Modelo de propiedad por confirmar",
-      },
     ],
     finishes: [],
     placeholder: true,
@@ -245,23 +205,6 @@ export const floorPlans: FloorPlan[] = [
       { en: "Private elevator landing, to be confirmed", es: "Vestíbulo privado de ascensor, por confirmar" },
     ],
     kp: [8, 56, 40, 34],
-  }),
-  plan({
-    slug: "villa-v1",
-    name: { en: "Villa V1", es: "Villa V1" },
-    collection: "villas",
-    bedrooms: 4,
-    bathrooms: 4.5,
-    interiorSqFt: null,
-    exteriorSqFt: null,
-    orientation: "E",
-    view: { en: "Garden", es: "Jardín" },
-    tower: "Villas",
-    floors: "2",
-    status: "available",
-    fromPrice: null,
-    highlights: [{ en: "Private pool", es: "Piscina privada" }],
-    kp: [52, 56, 40, 34],
   }),
   plan({
     slug: "penthouse-ph1",

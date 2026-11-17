@@ -241,8 +241,8 @@
     "tabFamily": "Family",
     "tabPets": "Pets",
     "stepOf": "Step {n} of {total}",
-    "apartments": "apartments",
-    "hotelSuites": "hotel suites",
+    "apartments": "residences",
+    "hotelSuites": "penthouse",
     "drawing": "Drawing",
     "rendering": "Rendering",
     "compareLabel": "Drag to compare drawing and rendering",
@@ -269,8 +269,8 @@
     "wellness": "Wellness",
     "family": "Family",
     "pets": "Pets",
-    "resort": "Resort",
-    "eco": "Eco"
+    "resort": "Clubhouse & leisure",
+    "eco": "The building"
   },
   "poiCat": {
     "beach": "Beaches",
@@ -286,7 +286,7 @@
     "residences": {
       "eyebrow": "Residences",
       "title": "Find your *place* in paradise",
-      "intro": "Contemporary apartments, villas, penthouses and hotel suites. Every residence frames the island: ocean, garden or mountains."
+      "intro": "Phase One: a limited collection of 60 residences of two to six bedrooms and one penthouse, each with panoramic ocean views."
     },
     "floorPlans": {
       "eyebrow": "Floor plans",

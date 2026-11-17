@@ -38,10 +38,15 @@ export function AmenitiesMosaic({
   const grid = useRef<HTMLUListElement>(null);
   const pending = useRef<unknown>(null);
 
+  // Only amenities the brochure shows in a render appear here; the full list is on /amenities.
+  const pics = amenities.filter(
+    (a): a is Localized<Amenity> & { image: NonNullable<Localized<Amenity>["image"]> } => !!a.image,
+  );
+  const present = CATS.filter((c) => pics.some((a) => a.category === c));
   const items = (
     active === "all"
-      ? amenities.filter((a) => a.featured).concat(amenities.filter((a) => !a.featured))
-      : amenities.filter((a) => a.category === active)
+      ? pics.filter((a) => a.featured).concat(pics.filter((a) => !a.featured))
+      : pics.filter((a) => a.category === active)
   ).slice(0, 6);
 
   async function select(cat: AmenityCategory | "all") {
@@ -103,7 +108,7 @@ export function AmenitiesMosaic({
           aria-label={block.eyebrow}
           className="-mx-[var(--gutter)] mt-12 flex [scrollbar-width:none] gap-x-8 gap-y-3 overflow-x-auto border-b border-rule px-[var(--gutter)] md:mx-0 md:flex-wrap md:px-0 [&::-webkit-scrollbar]:hidden"
         >
-          {(["all", ...CATS] as const).map((cat) => (
+          {(["all", ...present] as const).map((cat) => (
             <button
               key={cat}
               role="tab"

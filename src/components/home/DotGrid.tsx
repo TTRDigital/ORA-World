@@ -11,12 +11,13 @@ import { Button } from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
 
-const APTS = 129;
-const SUITES = 42;
-const COLS = 19; // 19 × 9 = 171 = 129 apartments + 42 hotel suites
+// Brochure, Phase One: 60 residences + 1 penthouse.
+const APTS = 60;
+const SUITES = 1;
+const COLS = 11; // 11 × 6 grid holds the 61 dots
 
 /**
- * Tesoro Del Mar in one picture: a pinned board of 171 dots, one per apartment and hotel suite, that fills
+ * Tesoro Del Mar in one picture: a pinned board of 61 dots, one per residence and the penthouse, that fills
  * in as the published facts tick off on the right. Apartments light in brass, suites in white; the big
  * counter under the board follows the active fact. Same choreography on phones, stacked.
  */

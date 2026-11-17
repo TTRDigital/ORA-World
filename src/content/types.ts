@@ -115,7 +115,8 @@ export interface Amenity {
   name: L;
   description: L;
   category: AmenityCategory;
-  image: ImageRef;
+  /** Only when the brochure has a render of this amenity; otherwise it shows as text. */
+  image?: ImageRef;
   featured?: boolean;
 }
 

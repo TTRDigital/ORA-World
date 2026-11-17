@@ -18,14 +18,11 @@ import { Journey } from "./Journey";
 import { Manifesto } from "./Manifesto";
 import { DotGrid } from "./DotGrid";
 import { Walkthrough } from "./Walkthrough";
-import { PlaceChapters } from "./PlaceChapters";
 import { CollectionTabs } from "./CollectionTabs";
 import { ResilienceChecklist } from "./ResilienceChecklist";
 import { AmenitiesMosaic } from "./AmenitiesMosaic";
-import { FamilyPets } from "./FamilyPets";
 import { Prosperous } from "./Prosperous";
 import { LocationSection } from "./LocationSection";
-import { PortfolioGrid } from "./PortfolioGrid";
 import { TourTeaser } from "./TourTeaser";
 import { Collaboratory } from "./Collaboratory";
 import { PressStrip } from "./PressStrip";
@@ -82,21 +79,10 @@ export async function HomePage({ locale }: { locale: Locale }) {
           collections={collections.map((c) => ({ ...c, finishes: [], description: c.description.slice(0, 1) }))}
           planCounts={planCounts}
         />
-        <PlaceChapters place={home.place} />
         <ResilienceChecklist block={home.resilience} />
         <AmenitiesMosaic block={home.amenities} amenities={amenities} />
-        <FamilyPets
-          family={home.family}
-          pets={home.pets}
-          related={{
-            family: amenities.filter((a) => a.category === "family").map((a) => a.name),
-            pets: amenities.filter((a) => a.category === "pets").map((a) => a.name),
-          }}
-        />
         <Prosperous block={home.prosperous} incentives={incentives} />
         <LocationSection block={home.location} pois={pois} site={site} />
-        <Interlude image={home.interludes[1].image} lines={home.interludes[1].lines} />
-        <PortfolioGrid block={home.portfolio} locale={locale} />
         <Collaboratory block={home.team} team={team} />
         <PressStrip eyebrow={home.press.eyebrow} press={press} />
         <HomeFaq

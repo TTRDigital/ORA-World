@@ -3,7 +3,6 @@ export const primaryNav = [
   { key: "residences", href: "/residences", image: "residences" },
   { key: "floorPlans", href: "/floor-plans", image: "floorPlans" },
   { key: "amenities", href: "/amenities", image: "amenities" },
-  { key: "lifestyle", href: "/lifestyle", image: "lifestyle" },
   { key: "location", href: "/location", image: "location" },
   { key: "gallery", href: "/gallery", image: "gallery" },
   { key: "contact", href: "/contact", image: "contact" },
@@ -17,8 +16,6 @@ export const secondaryNav = [
   { key: "team", href: "/the-team" },
   { key: "investment", href: "/investment" },
   { key: "press", href: "/press" },
-  { key: "hotel", href: "/hotel-development" },
-  { key: "careers", href: "/careers" },
   { key: "faq", href: "/faq" },
   { key: "brokers", href: "/brokers" },
 ] as const;

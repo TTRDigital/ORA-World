@@ -3,14 +3,13 @@ import { routing } from "@/i18n/routing";
 import { siteUrl } from "@/lib/utils";
 import { collections, floorPlans } from "@/content/seed/collections";
 import { press } from "@/content/seed/people-places";
-import { pages, projects } from "@/content/seed/projects";
+import { pages } from "@/content/seed/projects";
 
 const STATIC = [
   "",
   "/residences",
   "/floor-plans",
   "/amenities",
-  "/lifestyle",
   "/tesoro-del-mar",
   "/location",
   "/resilience",
@@ -32,7 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...floorPlans.map((p) => `/floor-plans/${p.slug}`),
     ...press.map((p) => `/press/${p.slug}`),
     ...pages.map((p) => `/${p.slug}`),
-    ...projects.filter((p) => p.slug !== "tesoro-del-mar").map((p) => `/projects/${p.slug}`),
   ];
   return paths.map((p) => ({
     url: `${siteUrl}/en${p}`,
