@@ -16,10 +16,11 @@ export const home: HomeContent = {
       { value: 65000, suffix: "+", label: { en: "Sq ft of amenities", es: "Pies² de amenidades" } },
       { value: 14000, label: { en: "Sq ft members-only clubhouse", es: "Pies² de club privado" } },
     ],
-    poster: book.poolCabana,
-    videoLoop: null,
+    // Client's layout film (Tesoro-Layout-Film-v5). Poster is its opening aerial, so the start is seamless.
+    poster: book.aerialCoast,
+    videoLoop: "/videos/hero/tesoro-film.mp4",
     videoLoopWebm: null,
-    videoMobile: null,
+    videoMobile: "/videos/hero/tesoro-film-mobile.mp4",
   },
   manifesto: {
     eyebrow: { en: "Oceanfront location", es: "Ubicación frente al mar" },

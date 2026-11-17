@@ -6,6 +6,7 @@ import type { ImageRef } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { ArrowIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/utils";
+import { LiveVideo } from "@/components/ui/LiveVideo";
 
 /**
  * Room-by-room slideshow (client: "larger images, not cards"). Each render is shown wide and flat
@@ -80,6 +81,7 @@ export function GalleryCarousel({
                 className="object-cover"
                 style={{ objectPosition: im.position }}
               />
+              {im.video && <LiveVideo src={im.video} position={im.position} />}
             </figure>
           </li>
         ))}

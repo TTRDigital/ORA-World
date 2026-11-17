@@ -873,3 +873,24 @@ export const book = {
     es: "Grifo de cocina Dornbracht",
   }),
 };
+
+/* Clips generated from the brochure renders (client-supplied), played over the stills. */
+const clips: Partial<Record<keyof typeof book, string>> = {
+  aerialCoast: "aerial-coast",
+  exteriorRoad: "exterior-road",
+  poolCabana: "pool-cabana",
+  puttingGreen: "putting-green",
+  porteCochere: "porte-cochere",
+  foyer: "foyer",
+  gym: "gym",
+  livingDining: "living",
+  kitchenDining: "kitchen",
+  primaryBedroom: "primary-suite",
+  bedroom: "bedroom",
+  bathTub: "bath-tub",
+  bedroomOcean: "bedroom-ocean",
+  powderRoom: "powder-room",
+  penthouseLiving: "penthouse-living",
+  penthouseStaircase: "penthouse-staircase",
+};
+for (const [k, v] of Object.entries(clips)) book[k as keyof typeof book].video = `/videos/tdm/${v}.mp4`;

@@ -39,7 +39,7 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
     if (!visible || manual || document.documentElement.classList.contains("reduced-motion")) return;
     // Stills hold for 4.5s; a step with a clip moves on when the clip ends (the long timeout is only
     // a fallback in case the clip cannot play).
-    const wait = block.steps[active]?.video ? 14000 : 4500;
+    const wait = (block.steps[active]?.video ?? block.steps[active]?.image.video) ? 14000 : 4500;
     const id = window.setTimeout(() => setActive((a) => (a + 1) % total), wait);
     return () => window.clearTimeout(id);
   }, [visible, manual, active, total, block.steps]);
@@ -87,10 +87,10 @@ export function Walkthrough({ block }: { block: Localized<HomeContent["walkthrou
                   style={{ objectPosition: s.image.position ?? "50% 50%" }}
                 />
               ))}
-              {step.video && visible && (
+              {(step.video ?? step.image.video) && visible && (
                 <WalkVideo
                   key={active}
-                  src={step.video}
+                  src={(step.video ?? step.image.video)!}
                   loop={manual}
                   onEnded={() => {
                     if (!manual) setActive((a) => (a + 1) % total);

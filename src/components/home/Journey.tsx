@@ -11,6 +11,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ArrowIcon } from "@/components/ui/Icons";
 import { fullBleedSizes } from "@/lib/sizes";
 import { cn } from "@/lib/utils";
+import { LiveVideo } from "@/components/ui/LiveVideo";
 
 /**
  * Discover. Choose. Arrive. — a "shutter" of three full-height panels that scrolls like any other
@@ -156,6 +157,7 @@ export function Journey({ block }: { block: Localized<HomeContent["journey"]> })
                     )}
                     style={{ objectPosition: s.image.position }}
                   />
+                  {s.image.video && <LiveVideo src={s.image.video} position={s.image.position} />}
                 </div>
                 <div
                   className={cn(

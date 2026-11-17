@@ -22,6 +22,8 @@ export interface ImageRef {
   blurDataURL?: string;
   /** CSS object-position focal point, e.g. "50% 15%" keeps tower tops in frame when cropped. */
   position?: string;
+  /** Optional short muted clip of the same render, played over the still where it appears. */
+  video?: string;
 }
 
 export interface Social {

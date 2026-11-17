@@ -1,5 +1,6 @@
 "use client";
 
+import { LiveVideo } from "@/components/ui/LiveVideo";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
@@ -60,6 +61,7 @@ export function Interlude({ image, lines }: { image: Localized<ImageRef>; lines:
               className="object-cover"
               style={{ objectPosition: image.position }}
             />
+            {image.video && <LiveVideo src={image.video} position={image.position} />}
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-basalt/25 via-basalt/35 to-basalt/70" />
           <div className="relative grid h-full place-items-center px-[var(--gutter)] text-center text-white">

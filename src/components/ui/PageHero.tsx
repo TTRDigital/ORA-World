@@ -6,6 +6,7 @@ import { SplitLines } from "./SplitLines";
 import { Eyebrow } from "./Eyebrow";
 import { cn } from "@/lib/utils";
 import { fullBleedSizes } from "@/lib/sizes";
+import { LiveVideo } from "./LiveVideo";
 
 type Props = {
   eyebrow?: string;
@@ -41,6 +42,7 @@ export function PageHero({ eyebrow, title, intro, image, compact, children }: Pr
               placeholder={image.blurDataURL ? "blur" : "empty"}
               blurDataURL={image.blurDataURL}
             />
+            {image.video && <LiveVideo src={image.video} position={image.position} />}
           </div>
           <div className="absolute inset-0 scrim-bottom" />
           <div className="absolute inset-x-0 top-0 h-40 scrim-top" />

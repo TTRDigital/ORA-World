@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import type { ImageRef } from "@/content/types";
 import type { Localized } from "@/lib/localize";
 import { cn } from "@/lib/utils";
+import { LiveVideo } from "./LiveVideo";
 import { parseAspect, scaleSizes } from "@/lib/sizes";
 
 type Props = {
@@ -61,6 +62,7 @@ export function Picture({
           style={{ objectPosition: image.position }}
           data-reveal-inner
         />
+        {image.video && <LiveVideo src={image.video} position={image.position} />}
       </div>
       {showCaption && label && (
         <figcaption className="pointer-events-none absolute bottom-3 left-3 z-[1] max-w-[70%] rounded-full bg-basalt/55 px-2.5 py-1 text-[10px] tracking-[0.14em] text-white uppercase backdrop-blur-sm">
