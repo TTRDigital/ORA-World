@@ -57,7 +57,10 @@ export function PlanLibrary({ plans, collections, cards, rows }: Props) {
   const [tower, setTower] = useState("all");
 
   const towers = useMemo(() => Array.from(new Set(plans.map((p) => p.tower))), [plans]);
-  const orients = useMemo(() => Array.from(new Set(plans.map((p) => p.orientation))), [plans]);
+  const orients = useMemo(
+    () => Array.from(new Set(plans.map((p) => p.orientation).filter((o): o is Orientation => !!o))),
+    [plans],
+  );
   const bedOptions = useMemo(() => Array.from(new Set(plans.map((p) => p.bedrooms))).sort((a, b) => a - b), [plans]);
   const sizeDef = SIZES.find((s) => s.id === size)!;
   const shown = plans.filter(
@@ -107,16 +110,18 @@ export function PlanLibrary({ plans, collections, cards, rows }: Props) {
             </Chip>
           ))}
         </Group>
-        <Group label={c("orientation")}>
-          <Chip active={orient === "all"} onClick={() => setOrient("all")}>
-            {c("all")}
-          </Chip>
-          {orients.map((o) => (
-            <Chip key={o} active={orient === o} onClick={() => setOrient(o)}>
-              {o}
+        {orients.length > 0 && (
+          <Group label={c("orientation")}>
+            <Chip active={orient === "all"} onClick={() => setOrient("all")}>
+              {c("all")}
             </Chip>
-          ))}
-        </Group>
+            {orients.map((o) => (
+              <Chip key={o} active={orient === o} onClick={() => setOrient(o)}>
+                {o}
+              </Chip>
+            ))}
+          </Group>
+        )}
         <Group label={c("tower")}>
           <Chip active={tower === "all"} onClick={() => setTower("all")}>
             {c("all")}

@@ -16,7 +16,9 @@ export async function PlanCard({
 }) {
   const t = await getTranslations("common");
   const pl = await getTranslations("plan");
-  const status = { available: t("available"), reserved: t("reserved"), sold: t("sold") }[p.status];
+  const status = p.status
+    ? { available: t("available"), reserved: t("reserved"), sold: t("sold") }[p.status]
+    : t("askAvailability");
   const size = p.interiorSqFt ? `${p.interiorSqFt.toLocaleString("en-US")} ${t("sqft")}` : t("placeholder");
   if (list) {
     return (
@@ -36,7 +38,9 @@ export async function PlanCard({
           {pl("bed", { n: p.bedrooms })} · {pl("bath", { n: p.bathrooms })}
         </span>
         <span className="col-span-2 hidden text-fg-muted tnum md:block">{size}</span>
-        <span className="col-span-1 hidden eyebrow text-fg-muted md:block">{p.orientation}</span>
+        <span className="col-span-1 hidden eyebrow text-fg-muted md:block">
+          {t("floor")} {p.floors}
+        </span>
         <span className="col-span-5 flex items-center justify-end gap-4 md:col-span-2">
           <span className="eyebrow text-fg-muted">{status}</span>
           <ShortlistButton slug={p.slug} />
@@ -70,7 +74,7 @@ export async function PlanCard({
             {collectionName} · {p.tower}
           </p>
           <p className="mt-2 text-sm text-fg-muted tnum">
-            {pl("bed", { n: p.bedrooms })} · {pl("bath", { n: p.bathrooms })} · {size} · {p.orientation}
+            {pl("bed", { n: p.bedrooms })} · {pl("bath", { n: p.bathrooms })} · {size} · {t("floor")} {p.floors}
           </p>
         </div>
         <ShortlistButton slug={p.slug} className="mt-1" />

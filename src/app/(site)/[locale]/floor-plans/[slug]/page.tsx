@@ -50,14 +50,16 @@ export default async function PlanPage({ params }: PageProps<"/[locale]/floor-pl
     getFloorPlans(locale),
     getSiteSettings(locale),
   ]);
-  const status = { available: c("available"), reserved: c("reserved"), sold: c("sold") }[p.status];
+  const status = p.status
+    ? { available: c("available"), reserved: c("reserved"), sold: c("sold") }[p.status]
+    : c("askAvailability");
   const specs: [string, string][] = [
     [c("bedrooms"), String(p.bedrooms)],
     [c("bathrooms"), String(p.bathrooms)],
     [c("interior"), p.interiorSqFt ? `${p.interiorSqFt.toLocaleString("en-US")} ${c("sqft")}` : c("placeholder")],
     [c("exterior"), p.exteriorSqFt ? `${p.exteriorSqFt.toLocaleString("en-US")} ${c("sqft")}` : c("placeholder")],
     [c("view"), p.view],
-    [c("orientation"), p.orientation],
+    ...(p.orientation ? ([[c("orientation"), p.orientation]] as [string, string][]) : []),
     [c("tower"), p.tower],
     [c("floor"), p.floors ?? c("placeholder")],
     [c("status"), status],
@@ -124,7 +126,7 @@ export default async function PlanPage({ params }: PageProps<"/[locale]/floor-pl
                   <div className="col-span-12 sm:col-span-5">
                     <Eyebrow>{t("keyplan")}</Eyebrow>
                     <p className="mt-3 small text-fg-muted">
-                      {p.tower} · {p.orientation}
+                      {p.tower} · {c("floor")} {p.floors}
                     </p>
                   </div>
                   <div className="relative col-span-12 mt-4 aspect-square overflow-hidden border border-rule bg-bone sm:col-span-7 sm:mt-0">

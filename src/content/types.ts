@@ -93,11 +93,11 @@ export interface FloorPlan {
   bathrooms: number;
   interiorSqFt: number | null;
   exteriorSqFt: number | null;
-  orientation: Orientation;
+  orientation: Orientation | null;
   view: L;
   tower: string;
   floors: string | null;
-  status: PlanStatus;
+  status: PlanStatus | null;
   fromPrice: number | null;
   image: ImageRef;
   keyplan: ImageRef | null;

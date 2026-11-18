@@ -59,7 +59,7 @@ const nextConfig: NextConfig = {
       { source: `/${loc}/hotel-development`, destination: "/:locale", permanent: true },
       { source: `/${loc}/careers`, destination: "/:locale/contact", permanent: true },
       { source: `/${loc}/residences/:c(villas|hotel-suites)`, destination: "/:locale/residences", permanent: true },
-      { source: `/${loc}/floor-plans/villa-v1`, destination: "/:locale/floor-plans", permanent: true },
+      { source: `/${loc}/floor-plans/:p(villa-v1|residence-a1|residence-b1|residence-b2|residence-c1|penthouse-ph1)`, destination: "/:locale/floor-plans", permanent: true },
     ];
   },
   async headers() {

@@ -111,7 +111,8 @@
     "email": "Email",
     "hours": "Hours",
     "brochure": "Brochure",
-    "page": "Page"
+    "page": "Page",
+    "askAvailability": "Ask for availability"
   },
   "footer": {
     "salesGallery": "Sales Gallery",
@@ -291,7 +292,7 @@
     "floorPlans": {
       "eyebrow": "Floor plans",
       "title": "Plans for every *way* of living",
-      "intro": "Filter by collection, bedrooms, size, orientation and building. Register once to unlock full plans, keyplans and PDFs.",
+      "intro": "Phase One, Tower 1, floors 5 to 18: 59 residences and the two-level penthouse, all with 10′ ceilings. Starting from $2,000 per sq ft. Register once to see full plans.",
       "gridView": "Grid",
       "listView": "List",
       "sizeAny": "Any size",
@@ -305,11 +306,11 @@
       "specs": "Specifications",
       "highlights": "Highlights",
       "similar": "Other plans in this collection",
-      "illustrative": "Illustrative placeholder plan. Final plans will be supplied by the architect.",
+      "illustrative": "Plan from the Phase One plan set. Areas are approximate and subject to the Offering Plan.",
       "compareTitle": "Compare *plans*",
       "compareIntro": "Up to three plans side by side.",
       "addMore": "Add plans from the floor plan library",
-      "gated": "Register to view the full plan, keyplan and PDF."
+      "gated": "Register to view the full plan."
     },
     "amenities": {
       "eyebrow": "Amenities",

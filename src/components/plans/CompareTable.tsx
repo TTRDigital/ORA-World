@@ -35,10 +35,16 @@ export function CompareTable({
     [c("interior"), (p) => (p.interiorSqFt ? `${p.interiorSqFt.toLocaleString()} ${c("sqft")}` : c("placeholder"))],
     [c("exterior"), (p) => (p.exteriorSqFt ? `${p.exteriorSqFt.toLocaleString()} ${c("sqft")}` : c("placeholder"))],
     [c("view"), (p) => p.view],
-    [c("orientation"), (p) => p.orientation],
+    [c("orientation"), (p) => p.orientation ?? "—"],
     [c("tower"), (p) => p.tower],
     [c("floor"), (p) => p.floors ?? c("placeholder")],
-    [c("status"), (p) => ({ available: c("available"), reserved: c("reserved"), sold: c("sold") })[p.status]],
+    [
+      c("status"),
+      (p) =>
+        p.status
+          ? { available: c("available"), reserved: c("reserved"), sold: c("sold") }[p.status]
+          : c("askAvailability"),
+    ],
     [c("from"), (p) => (p.fromPrice ? `$${p.fromPrice.toLocaleString()}` : c("priceOnRequest"))],
   ];
   return (

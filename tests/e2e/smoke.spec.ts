@@ -68,7 +68,7 @@ test.describe("ORA World smoke", () => {
     await page.route("**/api/lead", (route) =>
       route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) }),
     );
-    await page.goto("/en/floor-plans/residence-b1");
+    await page.goto("/en/floor-plans/residence-1002");
     await expect(page.getByText("Register to view")).toBeVisible();
     const gate = page.locator("form").first();
     await gate.locator('input[name="name"]').fill("Gate Tester");
@@ -77,7 +77,6 @@ test.describe("ORA World smoke", () => {
     await gate.locator('input[name="consent"]').check({ force: true });
     await gate.getByRole("button", { name: /unlock floor plans/i }).click();
     await expect(page.getByRole("group", { name: "Zoom" })).toBeVisible();
-    await expect(page.getByText("Keyplan", { exact: true })).toBeVisible();
     // Remembered on another gated page
     await page.goto("/en/investment");
     await expect(page.getByRole("button", { name: /unlock floor plans/i })).toHaveCount(0);
@@ -88,7 +87,8 @@ test.describe("ORA World smoke", () => {
     await page.goto("/en/floor-plans");
     await page.getByRole("button", { name: /essential only/i }).click();
     await page.getByRole("group", { name: "Bedrooms" }).getByRole("button", { name: "2", exact: true }).click();
-    await expect(page.getByText(/2 plans/)).toBeVisible();
+    // Phase One plan set: 30 two-bedroom residences.
+    await expect(page.getByText(/^30 plans$/)).toBeVisible();
     await page
       .getByRole("button", { name: /add to shortlist/i })
       .first()
@@ -140,7 +140,7 @@ test.describe("accessibility (axe, WCAG 2.2 AA)", () => {
     "/en",
     "/en/residences",
     "/en/floor-plans",
-    "/en/floor-plans/residence-b1",
+    "/en/floor-plans/residence-1002",
     "/en/amenities",
     "/en/location",
     "/en/gallery",

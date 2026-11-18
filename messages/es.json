@@ -111,7 +111,8 @@
     "email": "Correo",
     "hours": "Horario",
     "brochure": "Folleto",
-    "page": "Página"
+    "page": "Página",
+    "askAvailability": "Consultar disponibilidad"
   },
   "footer": {
     "salesGallery": "Galería de ventas",
@@ -291,7 +292,7 @@
     "floorPlans": {
       "eyebrow": "Planos",
       "title": "Planos para cada *forma* de vivir",
-      "intro": "Filtre por colección, habitaciones, tamaño, orientación y edificio. Regístrese una vez para desbloquear planos completos, planos clave y PDF.",
+      "intro": "Fase Uno, Torre 1, pisos 5 a 18: 59 residencias y el penthouse de dos niveles, todos con techos de 10′. Desde $2,000 por pie². Regístrese una vez para ver los planos completos.",
       "gridView": "Cuadrícula",
       "listView": "Lista",
       "sizeAny": "Cualquier tamaño",
@@ -305,11 +306,11 @@
       "specs": "Especificaciones",
       "highlights": "Destacados",
       "similar": "Otros planos de esta colección",
-      "illustrative": "Plano ilustrativo provisional. Los planos finales serán suministrados por el arquitecto.",
+      "illustrative": "Plano del conjunto de la Fase Uno. Las áreas son aproximadas y están sujetas al Offering Plan.",
       "compareTitle": "Comparar *planos*",
       "compareIntro": "Hasta tres planos lado a lado.",
       "addMore": "Añada planos desde la biblioteca de planos",
-      "gated": "Regístrese para ver el plano completo, el plano clave y el PDF."
+      "gated": "Regístrese para ver el plano completo."
     },
     "amenities": {
       "eyebrow": "Amenidades",
