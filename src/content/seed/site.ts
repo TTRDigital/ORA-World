@@ -55,6 +55,7 @@ export const siteSettings: SiteSettings = {
     finishes: book.kitchenFinish,
     amenities: book.poolCabana,
     longevity: book.gym,
+    living: book.puttingGreen,
     location: book.aerialCoast,
     gallery: book.foyer,
     contact: book.porteCochere,

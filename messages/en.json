@@ -42,7 +42,8 @@
     "english": "English",
     "spanish": "Español",
     "finishes": "Finishes",
-    "longevity": "Longevity"
+    "longevity": "Longevity",
+    "living": "Living"
   },
   "bar": {
     "call": "Call",
@@ -306,7 +307,8 @@
         "title": "Act 60, the tax benefits of living here",
         "text": "Act 60 may offer qualifying residents preferential Puerto Rico tax on certain investment income. We can connect you with independent tax advisers.",
         "cta": "Act 60"
-      }
+      },
+      "mission": "More than a destination, Ora World is a movement: we exist to erase limitations and create a future where living is effortless, exhilarating and endlessly rewarding."
     }
   },
   "amenityCat": {
@@ -387,11 +389,90 @@
       "intro": "Hurricane and seismic engineering, security, backup power and sustainability in every ORA World development."
     },
     "incentives": {
-      "eyebrow": "A Prosperous Environment",
-      "title": "Puerto Rico's *incentives*, explained",
-      "intro": "An overview of Act 60 for individuals and businesses. General information only; consult your tax advisor.",
-      "whoBenefits": "Who could benefit",
-      "consult": "Speak with an advisor"
+      "eyebrow": "Act 60",
+      "title": "Keep more of what you *earn*",
+      "intro": "Act 60 may offer qualifying residents preferential Puerto Rico income-tax treatment on certain interest, dividends and post-residency capital appreciation.",
+      "programEyebrow": "The program",
+      "program": "Puerto Rico's Act 60 Resident Individual Investor program may offer preferential Puerto Rico income-tax treatment to eligible individuals who establish bona fide residency. Qualifying applicants filing by December 31, 2026 may receive 0% Puerto Rico income tax on certain interest, dividends and post-residency capital appreciation through December 31, 2035. Applications filed beginning January 1, 2027 generally fall under a 4% regime extending through December 31, 2055. Eligibility, income sourcing, federal tax rules and decree compliance apply.",
+      "rates": {
+        "0": {
+          "v": "0%",
+          "text": "Potential Puerto Rico rate for qualifying 2026 applicants; benefits generally expire December 31, 2035."
+        },
+        "1": {
+          "v": "4%",
+          "text": "Preferential Puerto Rico rate for qualifying applications filed from January 1, 2027."
+        },
+        "2": {
+          "v": "2055",
+          "text": "End of the extended 4% program period, not the end date of the original 0% decree."
+        }
+      },
+      "ratesNote": "Rates apply only to qualifying Puerto Rico income-tax treatment under an approved decree; they are not US federal rates. The 0% and 4% regimes are separate: a 2026 decree does not continue automatically at 4% after 2035.",
+      "calcTitle": "An illustrative *comparison*",
+      "calcIntro": "Possible federal long-term capital gains tax compared with preferential Puerto Rico income-tax treatment for fully qualifying post-residency gains. These figures are examples, not estimates of your personal tax liability or guaranteed savings.",
+      "calc": {
+        "title": "Act 60 calculator",
+        "r0": "0% · 2026 applications",
+        "r4": "4% · from 2027",
+        "gains": "Fully qualifying post-residency gains",
+        "federal": "Illustrative mainland federal tax (23.8%)",
+        "pr": "Illustrative Puerto Rico tax",
+        "diff": "Illustrative tax difference",
+        "note": "Federal figure uses the top 20% long-term capital gains rate plus 3.8% NIIT. Actual treatment depends on tax residency, sourcing, pre-relocation appreciation, federal and Puerto Rico rules, and decree terms. Consult qualified tax counsel."
+      },
+      "residencyEyebrow": "Residency",
+      "residencyTitle": "Establish bona fide *Puerto Rico residency*",
+      "residencyIntro": "The IRS generally requires all three of the following. Other presence tests and year-of-move rules may apply; day counting alone is not enough.",
+      "residency": {
+        "0": {
+          "title": "Presence",
+          "text": "A qualifying presence test, often 183 days in Puerto Rico in the tax year."
+        },
+        "1": {
+          "title": "Tax home",
+          "text": "Your tax home, your main place of work or business, is in Puerto Rico."
+        },
+        "2": {
+          "title": "Closer connection",
+          "text": "No closer connection to the United States or another foreign country."
+        }
+      },
+      "stepsTitle": "Four steps to a *decree*",
+      "steps": {
+        "0": "Review eligibility with an independent Puerto Rico tax professional.",
+        "1": "Submit a complete decree application through the official DDEC Incentives Portal.",
+        "2": "Establish bona fide Puerto Rico residency and satisfy the applicable primary-residence acquisition requirement.",
+        "3": "Maintain the decree's annual reporting, charitable-contribution and other compliance obligations."
+      },
+      "stepsNote": "The primary-residence commitment is generally to acquire a home within two years after the decree; applications filed from 2027 have specific ownership and title rules. Buying a residence, including at Tesoro del Mar, does not by itself qualify you or automatically satisfy the rule.",
+      "blocks": {
+        "0": {
+          "kicker": "2026 application deadline",
+          "title": "December 31",
+          "text": "DDEC guidance states that eligible applications received by 11:59 p.m. on December 31, 2026, based on the Incentives Portal filing-fee timestamp, retain the substantive terms in effect at filing even if approved later. Timely filing does not guarantee approval or replace residency and compliance requirements."
+        },
+        "1": {
+          "kicker": "Government decree",
+          "title": "Established under Puerto Rico law",
+          "text": "Act 60 tax decrees are issued by the Government of Puerto Rico and define the applicable benefits and obligations. Decrees remain subject to eligibility, compliance, governing law and potential revocation."
+        },
+        "2": {
+          "kicker": "Advice",
+          "title": "Independent tax advisers",
+          "text": "Every situation is specific. ORA World can connect you with independent Puerto Rico tax advisers to review yours."
+        }
+      },
+      "sourcesTitle": "Official sources",
+      "sources": {
+        "act38": "Puerto Rico Act 38-2026 (official text)",
+        "bulletin": "DDEC Informative Bulletin 2026-004",
+        "irs": "IRS Publication 570: bona fide residence",
+        "portal": "DDEC Incentives Portal"
+      },
+      "faqTitle": "Act 60, *answered*",
+      "consult": "Talk to us about Act 60",
+      "disclaimer": "General information, not tax or legal advice, and not an offer of tax results. Based on Act 60 as amended by Act 38-2026, DDEC Bulletin 2026-004 and IRS Publication 570. ORA World can connect you with independent Puerto Rico tax advisers; consult qualified tax counsel about your situation."
     },
     "gallery": {
       "eyebrow": "Gallery",
@@ -506,7 +587,7 @@
           "text": "ORA World makes all of this easy for you."
         }
       },
-      "quote": "Planes don't fall from the sky. ORA checks you before anything breaks, so what matters is caught early.",
+      "quote": "Have you heard about anything like this? Never. That's ORA World.",
       "programEyebrow": "Your ORA program",
       "programTitle": "Seven things, *done for you*",
       "programIntro": "From the first scan to the meals on your table: the whole program, in the order you meet it.",
@@ -566,7 +647,115 @@
       },
       "question": "What is the value of an extra ten years for you?",
       "questionText": "Time and health are the real investment. Tell us your goals; we'll show you how ORA World makes them easy.",
-      "cta": "Inquire"
+      "cta": "Inquire",
+      "planesEyebrow": "Preventive health",
+      "planesTitle": "Planes don't fall *from the sky*",
+      "planesText": "Two things keep them up: redundancy and preventive maintenance. You have two lungs and two kidneys, so you have redundancy, but no preventive maintenance: most people see a doctor only when something hurts. ORA checks you before anything breaks, so what can be caught early, like heart issues, is caught early.",
+      "selfEyebrow": "Fitness and nutrition",
+      "selfTitle": "Your body is *self-made*",
+      "selfText": "Some people look 50 or 60 at 80; others look old at 60. Around 50 is the age to start: how do you make yourself at 50 feel like 30 or 35? The aim is to be among the strongest and fittest for your age.",
+      "selfItems": {
+        "0": "Gaining muscle and losing weight, made easy",
+        "1": "Nutrition set by nutritionists, cooked for you",
+        "2": "A fitness program built around your goals"
+      }
+    },
+    "living": {
+      "eyebrow": "Living",
+      "title": "A life, *by the sea*",
+      "intro": "Seventeen coastal acres on Puerto Rico's north shore: the beach below, gardens all around, and everything you need a short walk from your door.",
+      "easeEyebrow": "A day here",
+      "easeTitle": "Over 65,000 sq ft of *ease*",
+      "easeText": "Indoors and out, the amenities are built around how you actually spend a day: the water in the morning, the gardens at noon, friends at night.",
+      "water": {
+        "title": "By the water",
+        "items": {
+          "0": "A private beach club",
+          "1": "A boat slipway",
+          "2": "The resort-style pool and pool bar"
+        }
+      },
+      "gardens": {
+        "title": "In the gardens",
+        "items": {
+          "0": "An 18-hole putting course",
+          "1": "A two-mile garden path",
+          "2": "Tennis, beach volleyball and an outdoor yoga terrace"
+        }
+      },
+      "day": {
+        "0": {
+          "kicker": "Morning",
+          "title": "The pool",
+          "text": "Resort-style, with sundeck and pool bar."
+        },
+        "1": {
+          "kicker": "Midday",
+          "title": "Putting course",
+          "text": "Eighteen holes among the gardens."
+        },
+        "2": {
+          "kicker": "Afternoon",
+          "title": "Fitness",
+          "text": "With garden views."
+        },
+        "3": {
+          "kicker": "Sunset",
+          "title": "Spa",
+          "text": "Treatments facing the sea."
+        },
+        "4": {
+          "kicker": "Evening",
+          "title": "Lobby",
+          "text": "Double height, attended 24/7."
+        }
+      },
+      "clubEyebrow": "The clubhouse",
+      "clubTitle": "Your club, *14,000 sq ft* of it",
+      "clubText": "Members only. Coffee in the morning, a quiet desk for work, a golf simulator after lunch, and cocktails on the roof under the stars.",
+      "inside": {
+        "title": "Inside",
+        "items": {
+          "0": "Café and lounge",
+          "1": "Spaces for focused work",
+          "2": "A golf simulator lounge"
+        }
+      },
+      "everyone": {
+        "title": "For everyone",
+        "items": {
+          "0": "A fitness center and pilates studio",
+          "1": "Spa and salon",
+          "2": "A teen lounge and kids' play"
+        }
+      },
+      "familyEyebrow": "Family and pets",
+      "familyTitle": "Room for everyone *you love*",
+      "familyText": "Camps and pools for the children, parks and care for the dog: the whole household is looked after.",
+      "family": {
+        "title": "Family",
+        "items": {
+          "0": "Kids' adventure camps",
+          "1": "Family pools",
+          "2": "Interactive game rooms",
+          "3": "Private school partnerships and tutoring",
+          "4": "Family movie screenings and cultural nights",
+          "5": "Personalized healthcare clinics and concierge"
+        }
+      },
+      "pets": {
+        "title": "Pets",
+        "items": {
+          "0": "Secure dog parks",
+          "1": "Grooming stations",
+          "2": "Daycare facilities",
+          "3": "Open play areas",
+          "4": "On-demand veterinary care and training",
+          "5": "Pet-friendly community events"
+        }
+      },
+      "cta": "Come and see it for yourself",
+      "tour": "360° tour"
     }
   },
   "contact": {

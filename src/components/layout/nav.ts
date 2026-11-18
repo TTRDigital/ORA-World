@@ -5,6 +5,7 @@ export const primaryNav = [
   { key: "finishes", href: "/finishes", image: "finishes" },
   { key: "amenities", href: "/amenities", image: "amenities" },
   { key: "longevity", href: "/longevity", image: "longevity" },
+  { key: "living", href: "/living", image: "living" },
   { key: "location", href: "/location", image: "location" },
   { key: "gallery", href: "/gallery", image: "gallery" },
   { key: "contact", href: "/contact", image: "contact" },

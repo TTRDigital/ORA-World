@@ -34,7 +34,13 @@ export default async function LongevityPage({ params }: PageProps<"/[locale]/lon
           { name: n("longevity"), path: "/longevity" },
         ])}
       />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} image={localize(book.gym, locale)} compact />
+      <PageHero
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        intro={t("intro")}
+        image={localize(book.gym, locale)}
+        compact
+      />
 
       <Section>
         <div className="container-x">
@@ -54,6 +60,33 @@ export default async function LongevityPage({ params }: PageProps<"/[locale]/lon
           <blockquote className="mt-16 max-w-3xl font-serif text-[clamp(1.6rem,1.2rem+1.6vw,2.6rem)] leading-tight italic">
             “{t("quote")}”
           </blockquote>
+        </div>
+      </Section>
+
+      {/* Dr. Yan: preventive maintenance and the self-made body */}
+      <Section tone="alt">
+        <div className="container-x grid grid-cols-12 gap-x-6 gap-y-10">
+          <div className="col-span-12 lg:col-span-6">
+            <Eyebrow>{t("planesEyebrow")}</Eyebrow>
+            <h2 className="mt-5 display-m" data-reveal>
+              <Accent text={t("planesTitle")} />
+            </h2>
+            <p className="mt-5 lead text-fg-muted">{t("planesText")}</p>
+          </div>
+          <div className="col-span-12 lg:col-span-5 lg:col-start-8">
+            <Eyebrow>{t("selfEyebrow")}</Eyebrow>
+            <h2 className="mt-5 display-m" data-reveal>
+              <Accent text={t("selfTitle")} />
+            </h2>
+            <p className="mt-5 lead text-fg-muted">{t("selfText")}</p>
+            <ul className="mt-6 divide-y divide-rule border-y border-rule">
+              {[0, 1, 2].map((i) => (
+                <li key={i} className="py-3">
+                  {t(`selfItems.${i}`)}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Section>
 

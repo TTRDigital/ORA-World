@@ -42,7 +42,8 @@
     "english": "English",
     "spanish": "Español",
     "finishes": "Acabados",
-    "longevity": "Longevidad"
+    "longevity": "Longevidad",
+    "living": "Vivir"
   },
   "bar": {
     "call": "Llamar",
@@ -306,7 +307,8 @@
         "title": "Ley 60, los beneficios fiscales de vivir aquí",
         "text": "La Ley 60 puede ofrecer a residentes que califiquen un tratamiento fiscal preferente en Puerto Rico sobre ciertos ingresos de inversión. Podemos ponerle en contacto con asesores fiscales independientes.",
         "cta": "Ley 60"
-      }
+      },
+      "mission": "Más que un destino, Ora World es un movimiento: existimos para borrar límites y crear un futuro donde vivir sea fácil, estimulante y gratificante sin fin."
     }
   },
   "amenityCat": {
@@ -387,11 +389,90 @@
       "intro": "Ingeniería contra huracanes y sismos, seguridad, energía de respaldo y sostenibilidad en cada desarrollo de ORA World."
     },
     "incentives": {
-      "eyebrow": "Un entorno próspero",
-      "title": "Los *incentivos* de Puerto Rico, explicados",
-      "intro": "Una visión general de la Ley 60 para personas y empresas. Solo información general; consulte a su asesor fiscal.",
-      "whoBenefits": "Quién podría beneficiarse",
-      "consult": "Hable con un asesor"
+      "eyebrow": "Ley 60",
+      "title": "Conserve más de lo que *gana*",
+      "intro": "La Ley 60 puede ofrecer a residentes que califiquen un trato fiscal preferente en Puerto Rico sobre ciertos intereses, dividendos y plusvalías posteriores a la residencia.",
+      "programEyebrow": "El programa",
+      "program": "El programa de Inversionista Residente Individual de la Ley 60 puede ofrecer un trato fiscal preferente en Puerto Rico a personas elegibles que establezcan residencia bona fide. Quienes soliciten hasta el 31 de diciembre de 2026 pueden recibir 0% de impuesto de Puerto Rico sobre ciertos intereses, dividendos y plusvalías posteriores a la residencia hasta el 31 de diciembre de 2035. Las solicitudes desde el 1 de enero de 2027 suelen quedar en un régimen de 4% hasta el 31 de diciembre de 2055. Aplican requisitos de elegibilidad, origen del ingreso, reglas federales y cumplimiento del decreto.",
+      "rates": {
+        "0": {
+          "v": "0%",
+          "text": "Tasa potencial en Puerto Rico para solicitantes de 2026 que califiquen; los beneficios suelen vencer el 31 de diciembre de 2035."
+        },
+        "1": {
+          "v": "4%",
+          "text": "Tasa preferente en Puerto Rico para solicitudes presentadas desde el 1 de enero de 2027."
+        },
+        "2": {
+          "v": "2055",
+          "text": "Fin del periodo extendido del programa de 4%, no la fecha final del decreto original de 0%."
+        }
+      },
+      "ratesNote": "Las tasas aplican solo al trato fiscal de Puerto Rico bajo un decreto aprobado; no son tasas federales de EE. UU. Los regímenes de 0% y 4% son distintos: un decreto de 2026 no pasa automáticamente al 4% después de 2035.",
+      "calcTitle": "Una *comparación* ilustrativa",
+      "calcIntro": "El posible impuesto federal sobre ganancias de capital a largo plazo frente al trato preferente de Puerto Rico para ganancias que califiquen plenamente tras la residencia. Son ejemplos, no estimaciones de su obligación fiscal ni ahorros garantizados.",
+      "calc": {
+        "title": "Calculadora Ley 60",
+        "r0": "0% · solicitudes 2026",
+        "r4": "4% · desde 2027",
+        "gains": "Ganancias que califican plenamente",
+        "federal": "Impuesto federal ilustrativo (23.8%)",
+        "pr": "Impuesto ilustrativo en Puerto Rico",
+        "diff": "Diferencia ilustrativa",
+        "note": "La cifra federal usa la tasa máxima de 20% sobre ganancias a largo plazo más 3.8% NIIT. El trato real depende de la residencia fiscal, el origen del ingreso, la plusvalía previa, las reglas federales y de Puerto Rico y el decreto. Consulte a un asesor fiscal."
+      },
+      "residencyEyebrow": "Residencia",
+      "residencyTitle": "Establezca *residencia bona fide* en Puerto Rico",
+      "residencyIntro": "En general, el IRS exige las tres condiciones siguientes. Pueden aplicar otras pruebas de presencia y reglas del año de mudanza; contar días no basta.",
+      "residency": {
+        "0": {
+          "title": "Presencia",
+          "text": "Una prueba de presencia que califique, a menudo 183 días en Puerto Rico en el año fiscal."
+        },
+        "1": {
+          "title": "Domicilio fiscal",
+          "text": "Su domicilio fiscal, su lugar principal de trabajo o negocio, está en Puerto Rico."
+        },
+        "2": {
+          "title": "Conexión más cercana",
+          "text": "Sin una conexión más cercana con Estados Unidos u otro país."
+        }
+      },
+      "stepsTitle": "Cuatro pasos hacia un *decreto*",
+      "steps": {
+        "0": "Revise su elegibilidad con un profesional fiscal independiente de Puerto Rico.",
+        "1": "Presente una solicitud completa en el Portal de Incentivos oficial del DDEC.",
+        "2": "Establezca residencia bona fide en Puerto Rico y cumpla el requisito aplicable de adquirir residencia principal.",
+        "3": "Mantenga los informes anuales, las donaciones y demás obligaciones del decreto."
+      },
+      "stepsNote": "El compromiso de residencia principal suele ser adquirir una vivienda en los dos años siguientes al decreto; las solicitudes desde 2027 tienen reglas específicas de titularidad. Comprar una residencia, también en Tesoro del Mar, no le califica por sí solo ni cumple la regla automáticamente.",
+      "blocks": {
+        "0": {
+          "kicker": "Fecha límite 2026",
+          "title": "31 de diciembre",
+          "text": "Según la guía del DDEC, las solicitudes elegibles recibidas antes de las 11:59 p. m. del 31 de diciembre de 2026, según el sello del pago en el Portal de Incentivos, conservan los términos vigentes al presentarse aunque se aprueben después. Presentar a tiempo no garantiza la aprobación ni sustituye los requisitos de residencia y cumplimiento."
+        },
+        "1": {
+          "kicker": "Decreto del gobierno",
+          "title": "Establecido por ley de Puerto Rico",
+          "text": "Los decretos de la Ley 60 los emite el Gobierno de Puerto Rico y definen los beneficios y obligaciones. Siguen sujetos a elegibilidad, cumplimiento, la ley aplicable y posible revocación."
+        },
+        "2": {
+          "kicker": "Asesoría",
+          "title": "Asesores fiscales independientes",
+          "text": "Cada caso es distinto. ORA World puede ponerle en contacto con asesores fiscales independientes de Puerto Rico para revisar el suyo."
+        }
+      },
+      "sourcesTitle": "Fuentes oficiales",
+      "sources": {
+        "act38": "Ley 38-2026 de Puerto Rico (texto oficial)",
+        "bulletin": "Boletín Informativo DDEC 2026-004",
+        "irs": "Publicación 570 del IRS: residencia bona fide",
+        "portal": "Portal de Incentivos del DDEC"
+      },
+      "faqTitle": "Ley 60, *respondida*",
+      "consult": "Hable con nosotros sobre la Ley 60",
+      "disclaimer": "Información general, no asesoría fiscal ni legal, ni una oferta de resultados fiscales. Basado en la Ley 60 enmendada por la Ley 38-2026, el Boletín DDEC 2026-004 y la Publicación 570 del IRS. ORA World puede ponerle en contacto con asesores fiscales independientes de Puerto Rico; consulte a un asesor fiscal sobre su caso."
     },
     "gallery": {
       "eyebrow": "Galería",
@@ -506,7 +587,7 @@
           "text": "ORA World lo hace todo fácil para usted."
         }
       },
-      "quote": "Los aviones no se caen del cielo. ORA le revisa antes de que algo falle, para detectar a tiempo lo que importa.",
+      "quote": "¿Ha oído algo así? Nunca. Eso es ORA World.",
       "programEyebrow": "Su programa ORA",
       "programTitle": "Siete cosas, *hechas para usted*",
       "programIntro": "Del primer escáner a las comidas en su mesa: todo el programa, en el orden en que lo vive.",
@@ -566,7 +647,115 @@
       },
       "question": "¿Cuánto valen diez años más para usted?",
       "questionText": "El tiempo y la salud son la verdadera inversión. Cuéntenos sus metas y le mostraremos cómo ORA World las hace fáciles.",
-      "cta": "Consultar"
+      "cta": "Consultar",
+      "planesEyebrow": "Salud preventiva",
+      "planesTitle": "Los aviones no se caen *del cielo*",
+      "planesText": "Dos cosas los mantienen en el aire: redundancia y mantenimiento preventivo. Usted tiene dos pulmones y dos riñones, así que tiene redundancia, pero no mantenimiento preventivo: la mayoría va al médico solo cuando algo duele. ORA le revisa antes de que algo falle, para detectar a tiempo lo que se puede detectar, como problemas del corazón.",
+      "selfEyebrow": "Ejercicio y nutrición",
+      "selfTitle": "Su cuerpo es *obra suya*",
+      "selfText": "Algunas personas aparentan 50 o 60 a los 80; otras parecen mayores a los 60. Alrededor de los 50 es el momento de empezar: ¿cómo lograr que a los 50 se sienta como a los 30 o 35? La meta es estar entre los más fuertes y en forma de su edad.",
+      "selfItems": {
+        "0": "Ganar músculo y perder peso, de forma fácil",
+        "1": "Nutrición definida por nutricionistas, cocinada para usted",
+        "2": "Un programa de ejercicio pensado para sus metas"
+      }
+    },
+    "living": {
+      "eyebrow": "Vivir",
+      "title": "Una vida, *junto al mar*",
+      "intro": "Diecisiete acres en la costa norte de Puerto Rico: la playa abajo, jardines alrededor y todo lo que necesita a pocos pasos de su puerta.",
+      "easeEyebrow": "Un día aquí",
+      "easeTitle": "Más de 65,000 pies² de *bienestar*",
+      "easeText": "Dentro y fuera, las amenidades se adaptan a cómo pasa realmente el día: el agua por la mañana, los jardines al mediodía, los amigos por la noche.",
+      "water": {
+        "title": "Junto al agua",
+        "items": {
+          "0": "Un club de playa privado",
+          "1": "Una rampa para botes",
+          "2": "La piscina estilo resort y su bar"
+        }
+      },
+      "gardens": {
+        "title": "En los jardines",
+        "items": {
+          "0": "Un campo de putting de 18 hoyos",
+          "1": "Un sendero de dos millas",
+          "2": "Tenis, vóley playa y terraza de yoga"
+        }
+      },
+      "day": {
+        "0": {
+          "kicker": "Mañana",
+          "title": "La piscina",
+          "text": "Estilo resort, con solárium y bar."
+        },
+        "1": {
+          "kicker": "Mediodía",
+          "title": "Campo de putting",
+          "text": "Dieciocho hoyos entre los jardines."
+        },
+        "2": {
+          "kicker": "Tarde",
+          "title": "Gimnasio",
+          "text": "Con vista a los jardines."
+        },
+        "3": {
+          "kicker": "Atardecer",
+          "title": "Spa",
+          "text": "Tratamientos frente al mar."
+        },
+        "4": {
+          "kicker": "Noche",
+          "title": "Vestíbulo",
+          "text": "Doble altura, atendido 24/7."
+        }
+      },
+      "clubEyebrow": "El club",
+      "clubTitle": "Su club, *14,000 pies²*",
+      "clubText": "Solo para miembros. Café por la mañana, un escritorio tranquilo para trabajar, simulador de golf después del almuerzo y cócteles en la azotea bajo las estrellas.",
+      "inside": {
+        "title": "Dentro",
+        "items": {
+          "0": "Café y salón",
+          "1": "Espacios para trabajar",
+          "2": "Salón con simulador de golf"
+        }
+      },
+      "everyone": {
+        "title": "Para todos",
+        "items": {
+          "0": "Gimnasio y estudio de pilates",
+          "1": "Spa y salón de belleza",
+          "2": "Salón juvenil y juegos infantiles"
+        }
+      },
+      "familyEyebrow": "Familia y mascotas",
+      "familyTitle": "Espacio para todos *los que quiere*",
+      "familyText": "Campamentos y piscinas para los niños, parques y cuidados para el perro: todo el hogar está atendido.",
+      "family": {
+        "title": "Familia",
+        "items": {
+          "0": "Campamentos de aventura",
+          "1": "Piscinas familiares",
+          "2": "Salas de juegos interactivos",
+          "3": "Alianzas con colegios privados y tutorías",
+          "4": "Cine familiar y noches culturales",
+          "5": "Clínicas de salud personalizadas y conserjería"
+        }
+      },
+      "pets": {
+        "title": "Mascotas",
+        "items": {
+          "0": "Parques para perros",
+          "1": "Estaciones de aseo",
+          "2": "Guardería",
+          "3": "Áreas de juego",
+          "4": "Atención veterinaria y adiestramiento a demanda",
+          "5": "Eventos para mascotas"
+        }
+      },
+      "cta": "Venga a verlo",
+      "tour": "Tour 360°"
     }
   },
   "contact": {

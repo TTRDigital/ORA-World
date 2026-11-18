@@ -24,6 +24,7 @@ export async function WhyOra({ locale }: { locale: Locale }) {
         <h2 id="why-title" className="mt-6 max-w-[22ch] display-l" data-reveal>
           <Accent text={t("title")} />
         </h2>
+        <p className="mt-6 max-w-[60ch] lead text-fg-muted">{t("mission")}</p>
         <ul className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((c, i) => (
             <li key={c.k} data-reveal data-delay={i * 0.08}>

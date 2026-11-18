@@ -12,6 +12,7 @@ const STATIC = [
   "/amenities",
   "/finishes",
   "/longevity",
+  "/living",
   "/tesoro-del-mar",
   "/location",
   "/resilience",
