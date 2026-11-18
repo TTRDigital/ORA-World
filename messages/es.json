@@ -266,7 +266,48 @@
     "galleryIntro": "El vestíbulo, las residencias, el penthouse y el gimnasio, del folleto de Tesoro Del Mar.",
     "galleryCta": "Ver la galería completa",
     "walkPrev": "Espacio anterior",
-    "walkNext": "Espacio siguiente"
+    "walkNext": "Espacio siguiente",
+    "tower": {
+      "eyebrow": "Planos · Torre 1",
+      "title": "Encuentre su *residencia*",
+      "intro": "Fase Uno: pisos 5 a 18, de un dormitorio con estudio al penthouse de dos niveles. Todas las residencias tienen techos de 10′. Elija un piso y luego una residencia.",
+      "bedrooms": "Dormitorios",
+      "any": "Todos",
+      "level": "Piso",
+      "residences": "residencias",
+      "penthouse": "Penthouse, dos niveles",
+      "beds": "Dormitorios",
+      "baths": "Baños",
+      "interior": "Interior",
+      "exterior": "Terrazas",
+      "viewPlan": "Ver plano",
+      "allPlans": "Todos los planos",
+      "note": "Las áreas son aproximadas y están sujetas al Offering Plan."
+    },
+    "why": {
+      "eyebrow": "Por qué ORA World",
+      "title": "Longevidad, lujo y naturaleza, *en armonía*",
+      "travel": {
+        "title": "Viajes, resueltos",
+        "text": "Vuelos chárter privados entre EE. UU. y su hogar, un vestíbulo atendido 24/7 y un auto esperándole.",
+        "cta": "Viajes privados"
+      },
+      "longevity": {
+        "title": "Longevidad, integrada",
+        "text": "Un escáner corporal completo, nutricionistas, una cocina que cocina para usted y un programa de ejercicio sencillo.",
+        "cta": "El programa"
+      },
+      "finishes": {
+        "title": "Terminado hasta el último detalle",
+        "text": "Gabinetes italianos en 71 acabados, encimeras de piedra sinterizada, cocina Gaggenau y grifería Dornbracht en champán cepillado.",
+        "cta": "Los acabados"
+      },
+      "act60": {
+        "title": "Ley 60, los beneficios fiscales de vivir aquí",
+        "text": "La Ley 60 puede ofrecer a residentes que califiquen un tratamiento fiscal preferente en Puerto Rico sobre ciertos ingresos de inversión. Podemos ponerle en contacto con asesores fiscales independientes.",
+        "cta": "Ley 60"
+      }
+    }
   },
   "amenityCat": {
     "wellness": "Bienestar",

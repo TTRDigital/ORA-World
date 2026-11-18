@@ -266,7 +266,48 @@
     "galleryIntro": "The lobby, the residences, the penthouse and the fitness center, from the Tesoro Del Mar brochure.",
     "galleryCta": "Open the full gallery",
     "walkPrev": "Previous room",
-    "walkNext": "Next room"
+    "walkNext": "Next room",
+    "tower": {
+      "eyebrow": "Floor plans · Tower 1",
+      "title": "Find your *residence*",
+      "intro": "Phase One: floors 5 to 18, from one bedroom with den to the two-level penthouse. Every residence has 10′ ceilings. Choose a floor, then a residence.",
+      "bedrooms": "Bedrooms",
+      "any": "Any",
+      "level": "Level",
+      "residences": "residences",
+      "penthouse": "Penthouse, two levels",
+      "beds": "Bedrooms",
+      "baths": "Baths",
+      "interior": "Interior",
+      "exterior": "Terraces",
+      "viewPlan": "View plan",
+      "allPlans": "All floor plans",
+      "note": "Areas are approximate and subject to the Offering Plan."
+    },
+    "why": {
+      "eyebrow": "Why ORA World",
+      "title": "Longevity, luxury and nature, *in harmony*",
+      "travel": {
+        "title": "Travel, taken care of",
+        "text": "Private charter flights between the US and your home, a lobby attended 24/7 and a house car waiting.",
+        "cta": "Private travel"
+      },
+      "longevity": {
+        "title": "Longevity, built in",
+        "text": "A total body scan, nutritionists, a ghost kitchen that cooks for you and an easy fitness program.",
+        "cta": "The program"
+      },
+      "finishes": {
+        "title": "Finished to the last detail",
+        "text": "Italian cabinetry in 71 finishes, sintered-stone counters, a Gaggenau kitchen and Dornbracht fixtures in brushed champagne.",
+        "cta": "The finishes"
+      },
+      "act60": {
+        "title": "Act 60, the tax benefits of living here",
+        "text": "Act 60 may offer qualifying residents preferential Puerto Rico tax on certain investment income. We can connect you with independent tax advisers.",
+        "cta": "Act 60"
+      }
+    }
   },
   "amenityCat": {
     "wellness": "Wellness",

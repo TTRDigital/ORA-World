@@ -400,11 +400,12 @@ export const home: HomeContent = {
   },
   press: { eyebrow: { en: "Press Center", es: "Centro de prensa" } },
   cta: {
-    eyebrow: { en: "Private presentation", es: "Presentación privada" },
-    title: { en: "Your residence in Dorado *awaits*", es: "Su residencia en Dorado le *espera*" },
+    // Copy from ORA World v2.
+    eyebrow: { en: "Inquire", es: "Consultar" },
+    title: { en: "Inquire about *Tesoro Del Mar*", es: "Consulte sobre *Tesoro Del Mar*" },
     text: {
-      en: "Share a few details and a member of the sales team will arrange a private presentation at the sales gallery or by video call.",
-      es: "Comparta algunos datos y un miembro del equipo de ventas organizará una presentación privada en la galería de ventas o por videollamada.",
+      en: "For professionals, business owners and doctors who have built something, whose children are taken care of, and who see time and health as the real investment. Tell us your goals; we'll follow up personally with the brochure, the Phase One floor plans and pricing.",
+      es: "Para profesionales, empresarios y médicos que han construido algo, cuyos hijos ya están encaminados y que ven el tiempo y la salud como la verdadera inversión. Cuéntenos sus metas; le responderemos personalmente con el folleto, los planos de la Fase Uno y los precios.",
     },
     image: book.poolCabana,
   },

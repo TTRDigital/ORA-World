@@ -1,60 +1,31 @@
 import type { Locale } from "@/content/types";
-import {
-  getAmenities,
-  getCollections,
-  getFaqs,
-  getFloorPlans,
-  getHome,
-  getIncentives,
-  getPointsOfInterest,
-  getPress,
-  getSiteSettings,
-  getTeam,
-} from "@/lib/content";
+import { getAmenities, getCollections, getFloorPlans, getHome, getPointsOfInterest, getSiteSettings } from "@/lib/content";
 import { Preloader } from "./Preloader";
 import { Hero } from "./Hero";
 import { HeroStats } from "./HeroStats";
 import { Journey } from "./Journey";
-import { Manifesto } from "./Manifesto";
-import { DotGrid } from "./DotGrid";
 import { Walkthrough } from "./Walkthrough";
-import { CollectionTabs } from "./CollectionTabs";
-import { ResilienceChecklist } from "./ResilienceChecklist";
+import { FloorPlanSection } from "./FloorPlanSection";
 import { AmenitiesMosaic } from "./AmenitiesMosaic";
-import { Prosperous } from "./Prosperous";
-import { LocationSection } from "./LocationSection";
+import { WhyOra } from "./WhyOra";
 import { TourTeaser } from "./TourTeaser";
-import { Collaboratory } from "./Collaboratory";
-import { PressStrip } from "./PressStrip";
-import { HomeFaq } from "./HomeFaq";
+import { LocationSection } from "./LocationSection";
 import { PresentationCta } from "./PresentationCta";
-import { Interlude } from "./Interlude";
-import { Marquee } from "./Marquee";
-import { book } from "@/content/seed/images";
-import { localize } from "@/lib/localize";
-import { HomeGallery } from "./HomeGallery";
 
 /**
- * Direction A · Travertine Editorial. Every section is a small story: numbered journey cards,
- * a fact checklist, a pinned walkthrough, tabbed collections, a resilience board that completes
- * on scroll, a tabbed incentives reader, the portfolio grid and the FAQ.
+ * Homepage, Tesoro Del Mar only, kept short (client: "cleaner and shorter"): the film, the figures,
+ * the three chapters, a walk through the rooms, the tower floor by floor, the amenities, why ORA World,
+ * the 360° tour, the location and the inquiry.
  */
 export async function HomePage({ locale }: { locale: Locale }) {
-  const [site, home, collections, plans, amenities, pois, team, press, faqs, incentives] = await Promise.all([
+  const [site, home, collections, plans, amenities, pois] = await Promise.all([
     getSiteSettings(locale),
     getHome(locale),
     getCollections(locale),
     getFloorPlans(locale),
     getAmenities(locale),
     getPointsOfInterest(locale),
-    getTeam(locale),
-    getPress(locale),
-    getFaqs(locale),
-    getIncentives(locale),
   ]);
-  const planCounts = Object.fromEntries(
-    collections.map((c) => [c.slug, plans.filter((p) => p.collection === c.slug).length]),
-  );
 
   return (
     <main id="main">
@@ -64,35 +35,11 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <HeroStats hero={home.hero} />
         <Journey block={home.journey} />
         <Walkthrough block={home.walkthrough} />
-        <Manifesto manifesto={home.manifesto} />
-        <Interlude image={home.interludes[0].image} lines={home.interludes[0].lines} />
-        {/* Client feedback: the drawing/render slider replaced by the virtual tour ("what people want to see"). */}
-        <TourTeaser block={home.tour} url={site.vrTourUrl} />
-        <HomeGallery locale={locale} />
-        <DotGrid block={home.glance} />
-        <Marquee
-          words={home.marquee}
-          images={[book.exteriorRoad, book.bathTub, book.livingDining, book.puttingGreen, book.aerialCoast].map((im) => localize(im, locale))}
-        />
-        <CollectionTabs
-          block={home.residences}
-          collections={collections.map((c) => ({ ...c, finishes: [], description: c.description.slice(0, 1) }))}
-          planCounts={planCounts}
-        />
-        <ResilienceChecklist block={home.resilience} />
+        <FloorPlanSection plans={plans} />
         <AmenitiesMosaic block={home.amenities} amenities={amenities} />
-        <Prosperous block={home.prosperous} incentives={incentives} />
+        <WhyOra locale={locale} />
+        <TourTeaser block={home.tour} url={site.vrTourUrl} />
         <LocationSection block={home.location} pois={pois} site={site} />
-        <Collaboratory block={home.team} team={team} />
-        <PressStrip eyebrow={home.press.eyebrow} press={press} />
-        <HomeFaq
-          block={home.faq}
-          faqs={faqs}
-          advisor={(() => {
-            const r = team.find((m) => m.slug === "reza-sabaii");
-            return r ? { name: r.name, role: r.role, portrait: r.portrait } : null;
-          })()}
-        />
         <PresentationCta block={home.cta} site={site} residenceOptions={collections.map((c) => c.name)} />
       </div>
     </main>
