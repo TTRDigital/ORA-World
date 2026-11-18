@@ -8,33 +8,49 @@ export const amenities: Amenity[] = [
     category: "wellness",
     featured: true,
     name: { en: "Fitness center and pilates studio", es: "Gimnasio y estudio de pilates" },
-    description: { en: "A state-of-the-art fitness center and pilates studio.", es: "Un gimnasio de última generación y estudio de pilates." },
+    description: {
+      en: "A state-of-the-art fitness center and pilates studio.",
+      es: "Un gimnasio de última generación y estudio de pilates.",
+    },
     image: book.gym,
   },
   {
     slug: "spa",
     category: "wellness",
     name: { en: "Wellness spa", es: "Spa de bienestar" },
-    description: { en: "A spa area equipped for massage, treatments and salon services.", es: "Un spa equipado para masajes, tratamientos y servicios de salón." },
+    description: {
+      en: "A spa area equipped for massage, treatments and salon services.",
+      es: "Un spa equipado para masajes, tratamientos y servicios de salón.",
+    },
+    image: book.spa,
   },
   {
     slug: "yoga",
     category: "wellness",
     name: { en: "Outdoor yoga terrace", es: "Terraza de yoga al aire libre" },
-    description: { en: "Sun salutations on the outdoor yoga terrace.", es: "Saludos al sol en la terraza de yoga al aire libre." },
+    description: {
+      en: "Sun salutations on the outdoor yoga terrace.",
+      es: "Saludos al sol en la terraza de yoga al aire libre.",
+    },
   },
   {
     slug: "walking-path",
     category: "wellness",
     name: { en: "Two-mile walking path", es: "Sendero de dos millas" },
-    description: { en: "A two-mile walking path through landscaped gardens.", es: "Un sendero de dos millas entre jardines paisajísticos." },
+    description: {
+      en: "A two-mile walking path through landscaped gardens.",
+      es: "Un sendero de dos millas entre jardines paisajísticos.",
+    },
   },
   {
     slug: "pool",
     category: "resort",
     featured: true,
     name: { en: "Resort-style pool", es: "Piscina estilo resort" },
-    description: { en: "An outdoor resort-style pool with sundeck and poolside bar, plus a rooftop pool at the clubhouse.", es: "Una piscina exterior estilo resort con solárium y bar, y una piscina en la azotea del club." },
+    description: {
+      en: "An outdoor resort-style pool with sundeck and poolside bar, plus a rooftop pool at the clubhouse.",
+      es: "Una piscina exterior estilo resort con solárium y bar, y una piscina en la azotea del club.",
+    },
     image: book.poolCabana,
   },
   {
@@ -42,7 +58,10 @@ export const amenities: Amenity[] = [
     category: "resort",
     featured: true,
     name: { en: "18-hole putting course", es: "Campo de putting de 18 hoyos" },
-    description: { en: "Next-generation golf featuring an 18-hole putting course.", es: "Golf de nueva generación con un campo de putting de 18 hoyos." },
+    description: {
+      en: "Next-generation golf featuring an 18-hole putting course.",
+      es: "Golf de nueva generación con un campo de putting de 18 hoyos.",
+    },
     image: book.puttingGreen,
   },
   {
@@ -50,50 +69,74 @@ export const amenities: Amenity[] = [
     category: "resort",
     featured: true,
     name: { en: "Private beach club", es: "Club de playa privado" },
-    description: { en: "Shaded lounges, food and drink service and effortless access to the sea, by walking path or golf cart.", es: "Tumbonas a la sombra, servicio de comida y bebida y acceso directo al mar, a pie o en carrito de golf." },
+    description: {
+      en: "Shaded lounges, food and drink service and effortless access to the sea, by walking path or golf cart.",
+      es: "Tumbonas a la sombra, servicio de comida y bebida y acceso directo al mar, a pie o en carrito de golf.",
+    },
     image: book.aerialCoast,
   },
   {
     slug: "slipway",
     category: "resort",
     name: { en: "Boat slipway", es: "Rampa para embarcaciones" },
-    description: { en: "A slipway for easy boat launching: snorkeling, jet skiing or sunset cruising.", es: "Una rampa para botar embarcaciones con facilidad: snorkel, moto acuática o paseos al atardecer." },
+    description: {
+      en: "A slipway for easy boat launching: snorkeling, jet skiing or sunset cruising.",
+      es: "Una rampa para botar embarcaciones con facilidad: snorkel, moto acuática o paseos al atardecer.",
+    },
   },
   {
     slug: "sports-courts",
     category: "resort",
     name: { en: "Outdoor sports courts", es: "Canchas deportivas" },
-    description: { en: "Tennis courts, a half basketball court and a beach volleyball court, also usable for beach tennis.", es: "Canchas de tenis, media cancha de baloncesto y cancha de vóley playa, también para tenis playa." },
+    description: {
+      en: "Tennis courts, a half basketball court and a beach volleyball court, also usable for beach tennis.",
+      es: "Canchas de tenis, media cancha de baloncesto y cancha de vóley playa, también para tenis playa.",
+    },
   },
   {
     slug: "golf-simulator",
     category: "resort",
     name: { en: "Multisport simulator and lounge", es: "Simulador multideporte y salón" },
-    description: { en: "A programmable multisport (golf) simulator and lounge.", es: "Un simulador multideporte (golf) programable y salón." },
+    description: {
+      en: "A programmable multisport (golf) simulator and lounge.",
+      es: "Un simulador multideporte (golf) programable y salón.",
+    },
   },
   {
     slug: "dining",
     category: "resort",
     name: { en: "Fine dining and café", es: "Restaurante y café" },
-    description: { en: "A fine-dining restaurant, plus a café, bakery and corner store for daily necessities.", es: "Un restaurante de alta cocina, además de café, panadería y tienda para lo cotidiano." },
+    description: {
+      en: "A fine-dining restaurant, plus a café, bakery and corner store for daily necessities.",
+      es: "Un restaurante de alta cocina, además de café, panadería y tienda para lo cotidiano.",
+    },
   },
   {
     slug: "events",
     category: "resort",
     name: { en: "Spaces to gather", es: "Espacios para reunirse" },
-    description: { en: "Elegant indoor and outdoor spaces for socializing and hosting events.", es: "Elegantes espacios interiores y exteriores para socializar y celebrar eventos." },
+    description: {
+      en: "Elegant indoor and outdoor spaces for socializing and hosting events.",
+      es: "Elegantes espacios interiores y exteriores para socializar y celebrar eventos.",
+    },
   },
   {
     slug: "children",
     category: "family",
     name: { en: "Children's play area", es: "Área de juegos infantil" },
-    description: { en: "A children's play area and outdoor playgrounds, with splash zones.", es: "Área de juegos infantil y parques al aire libre, con zonas de agua." },
+    description: {
+      en: "A children's play area and outdoor playgrounds, with splash zones.",
+      es: "Área de juegos infantil y parques al aire libre, con zonas de agua.",
+    },
   },
   {
     slug: "teen-lounge",
     category: "family",
     name: { en: "Teen game lounge", es: "Salón juvenil" },
-    description: { en: "A teen game lounge and entertainment room.", es: "Un salón de juegos juvenil y sala de entretenimiento." },
+    description: {
+      en: "A teen game lounge and entertainment room.",
+      es: "Un salón de juegos juvenil y sala de entretenimiento.",
+    },
   },
   {
     slug: "dog-parks",
@@ -106,7 +149,10 @@ export const amenities: Amenity[] = [
     category: "eco",
     featured: true,
     name: { en: "Private residential lobby", es: "Vestíbulo residencial privado" },
-    description: { en: "A porte-cochère with a private residential lobby attended 24/7.", es: "Porte-cochère con vestíbulo residencial privado atendido 24/7." },
+    description: {
+      en: "A porte-cochère with a private residential lobby attended 24/7.",
+      es: "Porte-cochère con vestíbulo residencial privado atendido 24/7.",
+    },
     image: book.porteCochere,
   },
   {
@@ -114,32 +160,47 @@ export const amenities: Amenity[] = [
     category: "eco",
     featured: true,
     name: { en: "Resident lounge", es: "Salón de residentes" },
-    description: { en: "A resident lounge with curated art and bar service.", es: "Un salón de residentes con arte seleccionado y servicio de bar." },
+    description: {
+      en: "A resident lounge with curated art and bar service.",
+      es: "Un salón de residentes con arte seleccionado y servicio de bar.",
+    },
     image: book.foyer,
   },
   {
     slug: "business-center",
     category: "eco",
     name: { en: "Business center", es: "Centro de negocios" },
-    description: { en: "Conference rooms, reservable private offices, a coffee bar, high-speed Wi-Fi and IT services available 24/7.", es: "Salas de reuniones, oficinas privadas reservables, café, Wi-Fi de alta velocidad y servicio de TI 24/7." },
+    description: {
+      en: "Conference rooms, reservable private offices, a coffee bar, high-speed Wi-Fi and IT services available 24/7.",
+      es: "Salas de reuniones, oficinas privadas reservables, café, Wi-Fi de alta velocidad y servicio de TI 24/7.",
+    },
   },
   {
     slug: "arrival",
     category: "eco",
     name: { en: "Valet, house car and golf carts", es: "Valet, auto de la casa y carritos" },
-    description: { en: "On-site valet and self-parking, a luxury house car and golf cart service.", es: "Valet y estacionamiento propio, auto de lujo para residentes y servicio de carritos de golf." },
+    description: {
+      en: "On-site valet and self-parking, a luxury house car and golf cart service.",
+      es: "Valet y estacionamiento propio, auto de lujo para residentes y servicio de carritos de golf.",
+    },
   },
   {
     slug: "private-travel",
     category: "eco",
     name: { en: "Ora World Jet and Ora Lift", es: "Ora World Jet y Ora Lift" },
-    description: { en: "Private jet charters by Ora World Jet and Ora Lift vertical take-off and landing vehicles.", es: "Vuelos chárter con Ora World Jet y vehículos de despegue vertical Ora Lift." },
+    description: {
+      en: "Private jet charters by Ora World Jet and Ora Lift vertical take-off and landing vehicles.",
+      es: "Vuelos chárter con Ora World Jet y vehículos de despegue vertical Ora Lift.",
+    },
   },
   {
     slug: "storage",
     category: "eco",
     name: { en: "Private storage", es: "Almacenamiento privado" },
-    description: { en: "Private, secure, climate-controlled storage.", es: "Almacenamiento privado, seguro y climatizado." },
+    description: {
+      en: "Private, secure, climate-controlled storage.",
+      es: "Almacenamiento privado, seguro y climatizado.",
+    },
   },
 ];
 

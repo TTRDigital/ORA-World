@@ -844,6 +844,11 @@ export const book = {
     B,
   ),
   // Brochure photography (not renderings): lifestyle and the specified finishes.
+  spa: img(
+    "tdm/spa-ocean",
+    { en: "Spa treatment room facing the ocean", es: "Sala de tratamientos del spa frente al mar" },
+    { rendering: true },
+  ),
   running: img("tdm/lifestyle-running", {
     en: "Two runners on a garden path",
     es: "Dos corredores en un sendero ajardinado",
@@ -881,7 +886,8 @@ const clips: Partial<Record<keyof typeof book, string>> = {
   poolCabana: "pool-cabana",
   puttingGreen: "putting-green",
   porteCochere: "porte-cochere",
-  foyer: "foyer",
+  foyer: "lobby",
+  spa: "spa",
   gym: "gym",
   livingDining: "living",
   kitchenDining: "kitchen",

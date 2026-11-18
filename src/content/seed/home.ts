@@ -537,7 +537,7 @@ export const home: HomeContent = {
         title: { en: "A private residential lobby, attended 24/7", es: "Vestíbulo residencial privado, atendido 24/7" },
         text: { en: "Porte-cochère with a private residential lobby attended 24/7.", es: "Porte-cochère con vestíbulo residencial privado atendido 24/7." },
         image: book.foyer,
-        video: "/videos/tdm/foyer.mp4",
+        video: "/videos/tdm/lobby.mp4",
       },
       {
         label: { en: "Living", es: "La sala" },
