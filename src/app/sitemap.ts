@@ -10,6 +10,8 @@ const STATIC = [
   "/residences",
   "/floor-plans",
   "/amenities",
+  "/finishes",
+  "/longevity",
   "/tesoro-del-mar",
   "/location",
   "/resilience",

@@ -192,6 +192,7 @@ export const amenities: Amenity[] = [
       en: "Private jet charters by Ora World Jet and Ora Lift vertical take-off and landing vehicles.",
       es: "Vuelos chárter con Ora World Jet y vehículos de despegue vertical Ora Lift.",
     },
+    image: book.jet,
   },
   {
     slug: "storage",

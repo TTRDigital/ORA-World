@@ -1,5 +1,5 @@
 import type { SiteSettings } from "../types";
-import { renders, lifestyle, tdm, img } from "./images";
+import { renders, lifestyle, tdm, img, book } from "./images";
 
 export const siteSettings: SiteSettings = {
   // [[PLACEHOLDER: not published anywhere public. Pulled from env on the server when provided.]]
@@ -50,12 +50,13 @@ export const siteSettings: SiteSettings = {
   siteLat: Number(process.env.NEXT_PUBLIC_SITE_LAT || 18.4542),
   siteLng: Number(process.env.NEXT_PUBLIC_SITE_LNG || -66.3178),
   menuImages: {
-    residences: tdm.aptLiving,
-    floorPlans: tdm.aptStudy,
-    amenities: renders.poolTerrace,
-    lifestyle: lifestyle.familyPool,
-    location: tdm.aerialCoast,
-    gallery: tdm.foyerAtrium,
-    contact: tdm.foyerSignage,
+    residences: book.livingDining,
+    floorPlans: book.study,
+    finishes: book.kitchenFinish,
+    amenities: book.poolCabana,
+    longevity: book.gym,
+    location: book.aerialCoast,
+    gallery: book.foyer,
+    contact: book.porteCochere,
   },
 };

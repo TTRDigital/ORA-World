@@ -40,7 +40,9 @@
     "home": "Inicio",
     "language": "Idioma",
     "english": "English",
-    "spanish": "Español"
+    "spanish": "Español",
+    "finishes": "Acabados",
+    "longevity": "Longevidad"
   },
   "bar": {
     "call": "Llamar",
@@ -428,6 +430,102 @@
     },
     "legal": {
       "eyebrow": "Legal"
+    },
+    "finishes": {
+      "eyebrow": "Acabados",
+      "title": "Cada línea fluye con *propósito*",
+      "intro": "Superficies y acabados elegidos para elevar lo cotidiano: de los gabinetes italianos al hogar inteligente.",
+      "swatches": "Los {n} acabados Scavolini",
+      "ctaTitle": "Elija sus acabados *con nosotros*",
+      "ctaText": "Cuéntenos qué le gusta y le guiaremos en cada elección.",
+      "cta": "Consultar",
+      "note": "Marcas, productos y acabados según la presentación de Tesoro del Mar; las selecciones y la disponibilidad están sujetas al Offering Plan."
+    },
+    "longevity": {
+      "eyebrow": "Longevidad",
+      "title": "Longevidad, *integrada*",
+      "intro": "Un escáner corporal completo, nutricionistas, una cocina que cocina para usted y un programa de ejercicio sencillo.",
+      "promiseEyebrow": "La promesa",
+      "promiseTitle": "Una vida más larga. Una vida *mejor*.",
+      "promise": {
+        "0": {
+          "title": "Vivir más",
+          "text": "La longevidad es la base de nuestro mundo."
+        },
+        "1": {
+          "title": "Vivir mejor",
+          "text": "Si ya tiene una vida más larga, ¿no quiere una vida mejor?"
+        },
+        "2": {
+          "title": "Más fuerte y en forma",
+          "text": "Una vida mejor significa estar más fuerte y en forma, y sentirlo."
+        },
+        "3": {
+          "title": "Fácil",
+          "text": "ORA World lo hace todo fácil para usted."
+        }
+      },
+      "quote": "Los aviones no se caen del cielo. ORA le revisa antes de que algo falle, para detectar a tiempo lo que importa.",
+      "programEyebrow": "Su programa ORA",
+      "programTitle": "Siete cosas, *hechas para usted*",
+      "programIntro": "Del primer escáner a las comidas en su mesa: todo el programa, en el orden en que lo vive.",
+      "program": {
+        "0": {
+          "title": "Escáner corporal completo",
+          "text": "Para cada miembro, antes de que algo duela."
+        },
+        "1": {
+          "title": "Entrevista personal",
+          "text": "Sus metas, en sus palabras: vivir más, ponerse en forma."
+        },
+        "2": {
+          "title": "Nutricionistas en plantilla",
+          "text": "Definen los detalles, como su proteína diaria."
+        },
+        "3": {
+          "title": "Comidas que le gustan",
+          "text": "Muchas opciones pensadas para usted, no un único plan."
+        },
+        "4": {
+          "title": "La cocina fantasma",
+          "text": "En el lugar, cocinando para usted."
+        },
+        "5": {
+          "title": "Un programa de ejercicio",
+          "text": "Pensado para que ponerse en forma sea fácil."
+        },
+        "6": {
+          "title": "Cardiólogos",
+          "text": "Conexión con una lista de especialistas del corazón."
+        }
+      },
+      "placesEyebrow": "Dónde sucede",
+      "placesTitle": "Entrenar, recuperarse, *moverse*",
+      "places": {
+        "0": {
+          "kicker": "Entrenamiento",
+          "title": "Gimnasio y pilates",
+          "text": "Un gimnasio de última generación y estudio de pilates con vista a los jardines."
+        },
+        "1": {
+          "kicker": "Recuperación",
+          "title": "Spa",
+          "text": "Masajes, tratamientos y servicios de salón, frente al mar."
+        },
+        "2": {
+          "kicker": "Movimiento",
+          "title": "Sendero de dos millas",
+          "text": "Entre jardines paisajísticos, junto a un parque nacional."
+        },
+        "3": {
+          "kicker": "Juego",
+          "title": "Campo de putting",
+          "text": "Dieciocho hoyos entre los jardines."
+        }
+      },
+      "question": "¿Cuánto valen diez años más para usted?",
+      "questionText": "El tiempo y la salud son la verdadera inversión. Cuéntenos sus metas y le mostraremos cómo ORA World las hace fáciles.",
+      "cta": "Consultar"
     }
   },
   "contact": {

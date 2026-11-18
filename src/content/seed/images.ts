@@ -849,6 +849,11 @@ export const book = {
     { en: "Spa treatment room facing the ocean", es: "Sala de tratamientos del spa frente al mar" },
     { rendering: true },
   ),
+  jet: img(
+    "tdm/jet-arrival",
+    { en: "An Ora World Jet on the tarmac", es: "Un Ora World Jet en la pista" },
+    { rendering: true },
+  ),
   running: img("tdm/lifestyle-running", {
     en: "Two runners on a garden path",
     es: "Dos corredores en un sendero ajardinado",
@@ -888,6 +893,9 @@ const clips: Partial<Record<keyof typeof book, string>> = {
   porteCochere: "porte-cochere",
   foyer: "lobby",
   spa: "spa",
+  bathVanity: "bath-vanity",
+  study: "study",
+  jet: "jet-arrival",
   gym: "gym",
   livingDining: "living",
   kitchenDining: "kitchen",

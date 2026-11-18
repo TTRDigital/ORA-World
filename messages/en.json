@@ -40,7 +40,9 @@
     "home": "Home",
     "language": "Language",
     "english": "English",
-    "spanish": "Español"
+    "spanish": "Español",
+    "finishes": "Finishes",
+    "longevity": "Longevity"
   },
   "bar": {
     "call": "Call",
@@ -428,6 +430,102 @@
     },
     "legal": {
       "eyebrow": "Legal"
+    },
+    "finishes": {
+      "eyebrow": "Finishes",
+      "title": "Every line flows with *purpose*",
+      "intro": "Surfaces and finishes selected to elevate the every day: from Italian cabinetry to the smart home.",
+      "swatches": "All {n} Scavolini finishes",
+      "ctaTitle": "Choose your finishes *with us*",
+      "ctaText": "Tell us what you like and we will walk you through every choice.",
+      "cta": "Inquire",
+      "note": "Brands, products and finishes as shown in the Tesoro del Mar presentation; selections and availability are subject to the Offering Plan."
+    },
+    "longevity": {
+      "eyebrow": "Longevity",
+      "title": "Longevity, *built in*",
+      "intro": "A total body scan, nutritionists, a ghost kitchen that cooks for you and an easy fitness program.",
+      "promiseEyebrow": "The promise",
+      "promiseTitle": "A longer life. A *better* life.",
+      "promise": {
+        "0": {
+          "title": "Live longer",
+          "text": "Longevity is the foundation of our world."
+        },
+        "1": {
+          "title": "Live better",
+          "text": "If you already have a longer life, don't you want a better life?"
+        },
+        "2": {
+          "title": "Stronger and fitter",
+          "text": "A better life means being stronger and fitter, and feeling it."
+        },
+        "3": {
+          "title": "Made easy",
+          "text": "ORA World makes all of this easy for you."
+        }
+      },
+      "quote": "Planes don't fall from the sky. ORA checks you before anything breaks, so what matters is caught early.",
+      "programEyebrow": "Your ORA program",
+      "programTitle": "Seven things, *done for you*",
+      "programIntro": "From the first scan to the meals on your table: the whole program, in the order you meet it.",
+      "program": {
+        "0": {
+          "title": "Total body scan",
+          "text": "For every member, before anything hurts."
+        },
+        "1": {
+          "title": "Personal interview",
+          "text": "Your goals, in your words: live longer, get fit."
+        },
+        "2": {
+          "title": "Nutritionists on staff",
+          "text": "They set the specifics, like your daily protein."
+        },
+        "3": {
+          "title": "Meals you like",
+          "text": "Many options built around you, not one plan."
+        },
+        "4": {
+          "title": "The ghost kitchen",
+          "text": "On the premises, cooking for you."
+        },
+        "5": {
+          "title": "A fitness program",
+          "text": "Designed to make getting fit easy."
+        },
+        "6": {
+          "title": "Cardiologists",
+          "text": "A connection to a list of heart specialists."
+        }
+      },
+      "placesEyebrow": "Where it happens",
+      "placesTitle": "Train, recover, *move*",
+      "places": {
+        "0": {
+          "kicker": "Training",
+          "title": "Fitness and pilates",
+          "text": "A state-of-the-art fitness center and pilates studio with garden views."
+        },
+        "1": {
+          "kicker": "Recovery",
+          "title": "Spa",
+          "text": "Massage, treatments and salon services, facing the sea."
+        },
+        "2": {
+          "kicker": "Movement",
+          "title": "Two-mile walking path",
+          "text": "Through landscaped gardens, beside a national park."
+        },
+        "3": {
+          "kicker": "Play",
+          "title": "Putting course",
+          "text": "Eighteen holes among the gardens."
+        }
+      },
+      "question": "What is the value of an extra ten years for you?",
+      "questionText": "Time and health are the real investment. Tell us your goals; we'll show you how ORA World makes them easy.",
+      "cta": "Inquire"
     }
   },
   "contact": {
